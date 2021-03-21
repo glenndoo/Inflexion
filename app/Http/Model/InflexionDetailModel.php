@@ -37,7 +37,7 @@ class InflexionDetailModel extends Model
         $save->inflexion_detail_birth= $request->dateOfBirth;
 
         if($save->save()){
-            $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 2]);
+            $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 2,'inflexion_user_token' => 'Completed']);
             return true;
         }else{
             return false;

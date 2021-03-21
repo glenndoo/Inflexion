@@ -46,7 +46,7 @@ class InflexionUserModel extends Model
     public function verifyRegistry($request){
         $checkInfo = $this->where('inflexion_username','=',$request->val)->first();
         
-        if($checkInfo->inflexion_user_status == 0){
+        if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
             $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
                 if($updateInfo){
                     return "Successfully verified!";

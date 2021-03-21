@@ -8,6 +8,7 @@ use App\Http\Model\InflexionUserModel;
 use App\Http\Model\InflexionDetailModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
+use App\Mail\CompleteRegistryMail;
 use Hash;
 use Session;
 
@@ -40,7 +41,15 @@ class InflexionController extends Controller
         $token = str_shuffle($pin);
         $SaveRegistry = $this->InflexionUserModel->saveRegistry($request, $token);
         if($SaveRegistry){
-            $this->SendEmail($request->username, $token);
+            $details = [
+                'title' => 'Inflexion Global Registration',
+                'body' => 'Congratulations! You have successfully registered an account with Inflexion Global. To fully verify your account and utilize all our services, please click the link below.',
+                'token' => $token,
+                'email' => Hash::make($request->username),
+                'valid' => $request->username
+            ];
+            $mailerFunction = 'RegisterMail';
+            $this->SendEmail($request->username, $token, $details, $mailerFunction);
             return view('welcome')->with('Success','Successfully registered!');
         }else{
             return view('register')->with("Errors","Username already taken");
@@ -70,16 +79,15 @@ class InflexionController extends Controller
 
 
     //EMAILER FUNCTION
-    public function SendEmail($email, $token){
-                $details = [
-                    'title' => 'Inflexion Global Registration',
-                    'body' => 'Congratulations! You have successfully registered an account with Inflexion Global. To fully verify your account and utilize all our services, please click the link below.',
-                    'token' => $token,
-                    'email' => Hash::make($email),
-                    'valid' => $email
-                ];
-        
-                Mail::to($email)->send(new RegisterMail($details));
+    public function SendEmail($email, $token, $details, $mailFunction){
+        if($mailFunction == "RegisterMail"){
+           Mail::to($email)->send(new RegisterMail($details));
+        }else if($mailFunction == "CompleteRegistryMail"){
+            Mail::to($email)->send(new CompleteRegistryMail($details));
+        }else{
+
+        }
+           
     }
 
 
@@ -113,6 +121,13 @@ class InflexionController extends Controller
         ]);
        $complete = $this->InflexionDetailModel->completeRegistration($request);
        if($complete){
+        $details = [
+            'title' => 'Inflexion Global Profile Completion',
+            'body' => 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!',
+        ];
+        $mailerFunction = 'CompleteRegistryMail';
+        $token = "";
+            $this->SendEmail($request->email, $token, $details, $mailerFunction);
         return 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!';
        }else{
         return 'Account creation failed';
