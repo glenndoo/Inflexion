@@ -101,8 +101,12 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
-            if($login){
+            if($login->inflexion_user_status == 1){
                 return view('completeprofile')->with('Details', $login);
+            }else if($login->inflexion_user_status == 0){
+                return "Please check your email to verify your account";
+            }else{
+                return view('welcome');
             }
             return $login;
         }
