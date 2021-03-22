@@ -137,4 +137,9 @@ class InflexionController extends Controller
         return 'Account creation failed';
        }
     }
+
+    //CREATE POST FUNCTION
+    public function PostMessage(Request $request){
+        
+    }
 }
