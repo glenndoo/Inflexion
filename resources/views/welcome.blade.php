@@ -64,7 +64,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Teacher's Login</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -75,8 +75,8 @@
                     <!-- Login Form -->
                     <form action="{{ route('LoginUser') }}" method="post">
                     @csrf
-                        <input type='text' name='username' required/><br />
-                        <input type='password' name='password' required/><br />
+                        <input type='text' name='username' placeholder="enter email e.g example@gmail.com " required/><br />
+                        <input type='password' name='password' placeholder ="password" required/><br />
                         <input type='submit' value='Login' />
                     </form>
 
@@ -115,12 +115,17 @@
                             
                             <div class="form-group row">
                                 <div class="col-sm">
-                                    <input type='password' name='password' /><br />
+                                    <input type='email' name='username' placeholder="email address" /><br />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm">
-                                    <input type='email' name='username' /><br />
+                                    <input type='password' name='password' placeholder="password" /><br />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <input type='password' name='confirmPassword' placeholder="confirm password" /><br />
                                 </div>
                             </div>
                             <div class="form-group row">
