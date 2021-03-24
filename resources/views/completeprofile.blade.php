@@ -1,23 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Registration</title>
-</head>
-<body>
-    <form action="{{ route('CompleteRegistration') }}" method="post">
-    @csrf
-    <input type='email' readonly='readonly' value='{{ $Details->inflexion_username }}' name='email'/><br />
-    <input type='hidden' name='id' value='{{ $Details->inflexion_user_id }}'/>
-    <input type="text" name='firstName' placeholder='First Name'/><br />
-    <input type="text" name='middleName' placeholder='Middle Name' /><br />
-    <input type="text" name='lastName'  placeholder='Last Name'/><br />
-    <input type="text" name='address'  placeholder='Address'/><br />
-    <input type="number" name='contactNumber'  placeholder='Contact Number'/><br />
-    <input type="date" name='dateOfBirth' placeholder='Date of Birth' /><br />
-    <input type="submit" value="Register Information" />
-    </form>
-</body>
-</html>
+<x-template data='completeprofile' />
+    
+<div class="container">
+    <div class="row">
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <center>
+                <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
+                    @csrf
+
+                    <input class="form-control" type='hidden' name='id' value='{{ $Details->inflexion_user_id }}'/>
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type='email' readonly='readonly' value='{{ $Details->inflexion_username }}' name='email'required/>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type="text" name='firstName' placeholder='First Name'required/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type="text" name='middleName' placeholder='Middle Name' required/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type="text" name='lastName'  placeholder='Last Name'required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type="text" name='address'  placeholder='Address'required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm">
+                            <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
+                        </div>
+                        <div class="col-sm">
+                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="dateOfBirth" name="dateOfBirth" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        
+                    </div>
+                    <input class="btn btn-submit" type="submit" value="Register Information" />
+                </form>
+            </center>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

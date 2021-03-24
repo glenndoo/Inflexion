@@ -106,7 +106,7 @@ class InflexionController extends Controller
             }else if($login->inflexion_user_status == 0){
                 return "Please check your email to verify your account";
             }else{
-                return view('welcome');
+                return view('student/studentindex');
             }
             return $login;
         }
