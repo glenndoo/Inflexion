@@ -37358,7 +37358,6 @@ module.exports = g;
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
-<<<<<<< HEAD
 
 module.exports = function(module) {
 	if (!module.webpackPolyfill) {
@@ -37382,35 +37381,10 @@ module.exports = function(module) {
 	}
 	return module;
 };
-=======
->>>>>>> parent of 2cd3813 (react js installation)
 
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
 
 /***/ }),
 
-<<<<<<< HEAD
 >>>>>>> parent of 2cd3813 (react js installation)
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
@@ -37422,15 +37396,6 @@ module.exports = function(module) {
 
 throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\Inflexion\\resources\\js\\app.js: Support for the experimental syntax 'decorators-legacy' isn't currently enabled (16:1):\n\n\u001b[0m \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 15 |\u001b[39m require(\u001b[32m'./components/Example'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m \u001b[33m@\u001b[39m\u001b[36mimport\u001b[39m \u001b[32m\"node_modules/font-awesome/scss/font-awesome.scss\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Object._raise (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:775:17)\n    at Object.raiseWithData (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:768:17)\n    at Object.expectOnePlugin (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:9714:18)\n    at Object.parseDecorator (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12399:10)\n    at Object.parseDecorators (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12381:30)\n    at Object.parseStatement (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12212:12)\n    at Object.parseBlockOrModuleBlockBody (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12795:25)\n    at Object.parseBlockBody (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12786:10)\n    at Object.parseProgram (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12150:10)\n    at Object.parseTopLevel (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:12141:25)\n    at Object.parse (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:13842:10)\n    at parse (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\parser\\lib\\index.js:13894:38)\n    at parser (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\core\\lib\\parser\\index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:59:38)\n    at normalizeFile.next (<anonymous>)\n    at run (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\core\\lib\\transformation\\index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\core\\lib\\transform.js:19:41)\n    at transform.next (<anonymous>)\n    at step (C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:261:32)\n    at C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:223:11)\n    at C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:189:28\n    at C:\\xampp\\htdocs\\Inflexion\\node_modules\\@babel\\core\\lib\\gensync-utils\\async.js:62:7\n    at C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:113:33\n    at step (C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:287:14)\n    at C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:273:13\n    at async.call.result.err.err (C:\\xampp\\htdocs\\Inflexion\\node_modules\\gensync\\index.js:223:11)");
 =======
-=======
-/***/ }),
-
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no static exports found */
->>>>>>> parent of 2cd3813 (react js installation)
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -37479,9 +37444,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-<<<<<<< HEAD
->>>>>>> parent of 2cd3813 (react js installation)
-=======
 >>>>>>> parent of 2cd3813 (react js installation)
 
 /***/ }),
