@@ -1,30 +1,89 @@
 <x-template data='welcome' />
 <div class="container">
-        <div class="container">
-            <div id="carouselControls" class="carousel slide" data-interval="false">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img class="d-block w-75 mx-auto" src="{{ asset('img/placeholder-image.png')}}" alt="First slide" >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 top-carousel" >
+                <div id="carouselControls" class="carousel slide" data-interval="false">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-block w-75 mx-auto">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h1>Learn English</h1>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-rectangle.jpg')}}" alt="..." class="carousel-image-top">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-rectangle.jpg')}}" alt="..." class="carousel-image-top">
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="d-block w-75 mx-auto">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h1>About US</h1>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                                <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-sm-11">
+                                                <img src="{{ asset('img/placeholder-square.jpg')}}" alt="..." class="carousel-image-top">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item ">
+                        <div class="d-block w-75 mx-auto">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h1>Become a Tutor</h1>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-square.jpg')}}" alt="..." class="carousel-image-small">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-square.jpg')}}" alt="..." class="carousel-image-small">
+                                           
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-square.jpg')}}" alt="..." class="carousel-image-small">
+                                            
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="{{ asset('img/placeholder-square.jpg')}}" alt="..." class="carousel-image-small">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev" >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
-                <div class="carousel-item">
-                  <img class="d-block w-75 mx-auto" src="{{ asset('img/placeholder-image.png')}}" alt="Second slide" >
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-75 mx-auto" src="{{ asset('img/placeholder-image.png')}}" alt="Third slide" >
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev" >
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
+            <div class="col-sm-12 carousel-bot">
                 <div class="col-xl-9 mx-auto">
                     <div class="cta-inner text-center rounded">
                         <h2 class="section-heading mb-4">
@@ -55,9 +114,25 @@
                     </div>
                 </div>
             </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
+    </div>
 </div>
-
+<!--FOOTER-->
+  <footer class="py-4 bg-dark flex-shrink-0">
+    <div class="container text-center">
+      <a href="https://bootstrapious.com/snippets" class="text-muted">Bootstrap snippet by Bootstrapious</a>
+    </div>
+  </footer>
+<!--END FOOTER-->
 
 <!-- login Modal -->
 <div class="splashModal modal fade" id="logInTeacherModal" tabindex="-1" role="dialog" aria-labelledby="logInTeacherModalTitle" aria-hidden="true">
@@ -88,8 +163,6 @@
                   </div>
                 </div>
             </div>
-            <div class="modal-footer">
-            </div>
         </div>
     </div>
 </div>
@@ -115,17 +188,17 @@
                             
                             <div class="form-group row">
                                 <div class="col-sm">
-                                    <input type='email' name='username' placeholder="email address" /><br />
+                                    <input type='email' name='username' placeholder="email address" required /><br />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm">
-                                    <input type='password' name='password' placeholder="password" /><br />
+                                    <input type='password' name='password' placeholder="password" required/><br />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm">
-                                    <input type='password' name='confirmPassword' placeholder="confirm password" /><br />
+                                    <input type='password' name='confirmPassword' placeholder="confirm password" required/><br />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -148,9 +221,6 @@
                     </form>
                   </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-            
             </div>
         </div>
     </div>
