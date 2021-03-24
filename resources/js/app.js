@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+@import "node_modules/font-awesome/scss/font-awesome.scss";
