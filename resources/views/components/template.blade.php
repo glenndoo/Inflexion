@@ -65,6 +65,97 @@
     {{ $err }}
     @endforeach
 @endif
+<!-- login Modal -->
+<div class="splashModal modal fade" id="logInTeacherModal" tabindex="-1" role="dialog" aria-labelledby="logInTeacherModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="wrapper fadeInDown">
+                  <div id="formContent">
+                    <!-- Login Form -->
+                    <form action="{{ route('LoginUser') }}" method="post">
+                    @csrf
+                        <input type='text' name='username' placeholder="enter email e.g example@gmail.com " required/><br />
+                        <input type='password' name='password' placeholder ="password" required/><br />
+                        <input type='submit' value='Login' />
+                    </form>
+
+                    <!-- Remind Passowrd -->
+                    <div id="formFooter">
+                      <a class="underlineHover" href="#">Forgot Password?</a>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- register / signup Modal -->
+<div class="splashModal modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Sign-up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="wrapper fadeInDown">
+                  <div id="formContent">
+                    <!-- Login Form -->
+                    <form action="{{ route('ValidateRegistry') }}" method="post">
+                        @csrf
+                           
+                           
+                            
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <input type='email' name='username' placeholder="email address" required /><br />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <input type='password' name='password' placeholder="password" required/><br />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm">
+                                    <input type='password' name='confirmPassword' placeholder="confirm password" required/><br />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-12 align-middle">
+                                    <select class="" name='type' required>
+                                        <option value="" disabled selected>are you student or teacher?</option>
+                                        <option value='0'>Student</option>
+                                        <option value='1'>Tutor</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12">
+                                    
+                                <input type='submit' value='Register' />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                
+                            </div>
+
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
 	$('.navbar-collapse a').click(function(){

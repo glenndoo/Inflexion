@@ -1,4 +1,4 @@
-<x-template data="Restricted" />
+<x-student-template data="studentindex" />
 <div class="container">
 	<br/>
 	<br/>
