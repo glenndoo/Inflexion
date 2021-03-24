@@ -42,7 +42,7 @@
 			        </div>
 			        <div class="social-avatar">
 			            <a href="" class="pull-left">
-			                <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+			                <img alt="image" src="https://tinyurl.com/376azf5j">
 			            </a>
 			            <div class="media-body">
 			                <a href="#">
@@ -68,7 +68,7 @@
 			        <div class="social-footer">
 			            <div class="social-comment">
 			                <a href="" class="pull-left">
-			                    <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+			                    <img alt="image" src="https://tinyurl.com/376azf5j">
 			                </a>
 			                <div class="media-body">
 			                    <a href="#">
@@ -83,7 +83,7 @@
 
 			            <div class="social-comment">
 			                <a href="" class="pull-left">
-			                    <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
+			                    <img alt="image" src="https://tinyurl.com/376azf5j">
 			                </a>
 			                <div class="media-body">
 			                    <a href="#">
@@ -96,13 +96,18 @@
 			                </div>
 			            </div>
 
-			            <div class="social-comment">
-			                <a href="" class="pull-left">
-			                    <img alt="image" src="https://bootdey.com/img/Content/avatar/avatar1.png">
-			                </a>
-			                <div class="media-body">
-			                     <textarea class="form-control" placeholder="Write comment..."></textarea>
-			                </div>
+			            <div class="row social-comment">
+			            	<div class="col-sm-1">
+			            		<a href="" class="pull-left">
+			                    <img alt="image" src="https://tinyurl.com/376azf5j">
+				                </a>
+			            	</div>
+			            	<div class="col-sm-11">
+			            		
+				                <div class="media-body">
+				                     <textarea class="form-control" placeholder="Write comment..."></textarea>
+				                </div>
+				            </div>
 			            </div>
 
 			        </div>
