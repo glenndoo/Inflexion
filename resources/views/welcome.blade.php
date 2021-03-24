@@ -204,7 +204,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-12 align-middle">
-                                    <select class="" name='type'>
+                                    <select class="" name='type' required>
                                         <option value="" disabled selected>are you student or teacher?</option>
                                         <option value='0'>Student</option>
                                         <option value='1'>Tutor</option>
