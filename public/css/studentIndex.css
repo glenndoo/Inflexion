@@ -23,27 +23,40 @@ body {
        -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
             box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
-
+.navbar{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 .navbar-custom .navbar-brand {
   text-transform: uppercase;
   font-size: 1rem !important;
   letter-spacing: 0.1rem;
-  font-weight: 700;
-  width: 50%;
+
 }
 
-.navbar-custom .navbar-nav .nav-item .nav-link {
+.navbar-custom .navbar-nav{
   font-size: 1rem !important;
   font-weight: ;
   letter-spacing: 0.1rem;
 }
 .circleLogo{
-  margin: 10px;
 	border-radius: 50%;
+  border: 1px solid #555;
+  border-color: pink;
 	background-color: white;
-	padding: .1rem;
+  height: 3rem;
 }
-.nav-item .dropdown-menu{
+.nav-link{
+  margin: 0px ;
+}
+.btn.btn-secondary.dropdown-toggle{
+  padding: 0px;
+  margin: 0px;
+}
+
+.dropdown-button {
+  padding: 10px !important;
+  right: 0px !important;
 }
 
 /*animation*/
@@ -95,10 +108,10 @@ body {
 }
 
 /* side nav */
-.fa-2x {
+.icon-side {
 font-size: 2em;
 }
-.fa {
+.fa-size {
 position: relative;
 display: table-cell;
 width: 60px;
@@ -127,6 +140,9 @@ overflow:hidden;
 transition:width .05s linear;
 -webkit-transform:translateZ(0) scale(1,1);
 z-index:1000;
+  -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .main-menu>ul {
@@ -269,7 +285,7 @@ height: 100%;
   border: 1px solid #e7eaec;
   background: #fff;
   margin-bottom: 15px;
-  
+
   border-radius: 1rem;
 }
 .article .social-feed-box {
@@ -391,4 +407,55 @@ height: 100%;
   font-size: 90%;
   background: #ffffff;
   padding: 10px 15px;
+}
+/*search*/
+
+.search {
+    width: 100%;
+    margin-bottom: auto;
+    margin-top: .3rem;
+    height: 50px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px
+}
+
+.search-input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top: 5px;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.4s linear
+}
+
+.search .search-input {
+    width: 100%;
+    caret-color: #536bf6;
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear
+}
+
+.search-icon {
+    height: 34px;
+    width: 34px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #536bf6;
+    font-size: 10px;
+    bottom: 30px;
+    position: relative;
+    border-radius: 5px
+}
+
+.search-icon:hover {
+    color: #fff !important
 }

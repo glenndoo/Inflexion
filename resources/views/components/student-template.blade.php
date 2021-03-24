@@ -13,60 +13,41 @@
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top ease-loadTop">
-	    <img class="circleLogo" src="{{ asset('img/inflex_icon.png') }}" width="2.5%">
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+	<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
+	    <a href="#" class="navbar-brand">
+	       <img class="" src="{{ asset('img/inflex_icon.png') }}" >
+	    </a>
+	    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 	        <span class="navbar-toggler-icon"></span>
 	    </button>
-	    <div class="collapse navbar-collapse" id="navbarNav">
-	        <ul class="navbar-nav mr-auto">
-	            <li class="nav-item active">
-	                <!--li class="nav-item">
-		                 <a class="nav-link" href="#" title="home"><i class="fa fa-home"></i></i></a>
-		            </li-->
-	                <li class="nav-item">
-		                 <a class="nav-link" href="#" title="home"><i class="fa fa-envelope"></i></a>
-		            </li>
-	            </li>
-	        </ul>
-	        <ul class="navbar-nav">
-	            <li class="nav-item">
-	                <div class="btn-group">
-					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					     <img class=" dropdown-toggle" src="{{ asset('img/placeholder-male-square.png') }}" width=30rem">user</img>
-					  </button>
-					  <div class="dropdown-menu dropdown-menu-right">
-					    <button class="dropdown-item" type="button">Action</button>
-					    <button class="dropdown-item" type="button">Another action</button>
-					    <button class="dropdown-item" type="button">Something else here</button>
-					  </div>
-					</div>
-	            </li>
-	            <li class="nav-item">
-	                <div class="btn-group">
-					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    notifications
-					  </button>
-					  <div class="dropdown-menu dropdown-menu-right">
-					    <button class="dropdown-item" type="button">Action</button>
-					    <button class="dropdown-item" type="button">Another action</button>
-					    <button class="dropdown-item" type="button">Something else here</button>
-					  </div>
-					</div>
-	            </li>
-	            <li class="nav-item">
-	               <div class="btn-group">
-					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    settings
-					  </button>
-					  <div class="dropdown-menu dropdown-menu-right">
-					    <button class="dropdown-item" type="button">Action</button>
-					    <button class="dropdown-item" type="button">Another action</button>
-					    <button class="dropdown-item" type="button">Something else here</button>
-					  </div>
-					</div>
-	            </li>
-	        </ul>
+
+	    <div class="collapse navbar-collapse" id="navbarCollapse">
+	        <div class="navbar-nav">
+	            <a href="#" class="nav-item nav-link">Profile</a>
+	            <a href="#" class="nav-item nav-link">Mail</a>
+	            <a href="#" class="nav-item nav-link" tabindex="-1">Credits</a>
+	        </div>
+	        <div class="navbar-nav ml-auto">
+	        	
+	        	
+	            <div class="search ">
+	            	<input type="text" class="search-input" placeholder="Search..." name="">
+	            		<a href="#" class="search-icon">
+	            			<i class="fa fa-search"></i>
+	            		</a>
+	            </div>
+	        	<div class="btn-group">
+				  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  	<a href="#" class="dropdown-button disabled" tabindex="-1"><img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}"></a>
+				  </button>
+				  <div class="dropdown-menu dropdown-menu-right">
+				    <button class="dropdown-item" type="button">Settings</button>
+				    <!--button class="dropdown-item" type="button">Profile</button-->
+				    <button class="dropdown-item" type="button">Credits</button>
+
+				  </div>
+				</div>
+	        </div>
 	    </div>
 	</nav>
 	@if(isset($Errors))
@@ -79,7 +60,7 @@
 	    <ul>
 	        <li>
 	            <a href="/student">
-	                <i class="fa fa-home fa-2x"></i>
+	                <i class="fa fa-home icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Dashboard
 	                </span>
@@ -88,66 +69,66 @@
 	        </li>
 	        <li class="has-subnav">
 	            <a href="#">
-	                <i class="fa fa-laptop fa-2x"></i>
+	                <i class="fa fa-laptop icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Stars Components
+	                    link
 	                </span>
 	            </a>
 	            
 	        </li>
 	        <li class="has-subnav">
 	            <a href="#">
-	               <i class="fa fa-list fa-2x"></i>
+	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Forms
+	                    link
 	                </span>
 	            </a>
 	            
 	        </li>
 	        <li class="has-subnav">
 	            <a href="#">
-	               <i class="fa fa-folder-open fa-2x"></i>
+	               <i class="fa fa-folder-open icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Pages
+	                    link
 	                </span>
 	            </a>
 	           
 	        </li>
 	        <li>
 	            <a href="#">
-	                <i class="fa fa-bar-chart-o fa-2x"></i>
+	                <i class="fa fa-bar-chart-o icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Graphs and Statistics
+	                    link
 	                </span>
 	            </a>
 	        </li>
 	        <li>
 	            <a href="#">
-	                <i class="fa fa-font fa-2x"></i>
+	                <i class="fa fa-font icon-side fa-size"></i>
 	                <span class="nav-text">
-	                   Quotes
+	                   link
 	                </span>
 	            </a>
 	        </li>
 	        <li>
 	           <a href="#">
-	               <i class="fa fa-table fa-2x"></i>
+	               <i class="fa fa-table icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Tables
+	                    link
 	                </span>
 	            </a>
 	        </li>
 	        <li>
 	           <a href="#">
-	                <i class="fa fa-map-marker fa-2x"></i>
+	                <i class="fa fa-map-marker icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Maps
+	                    link
 	                </span>
 	            </a>
 	        </li>
 	        <li>
 	            <a href="#">
-	               <i class="fa fa-info fa-2x"></i>
+	               <i class="fa fa-info icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Documentation
 	                </span>
@@ -158,7 +139,7 @@
 	    <ul class="logout">
 	        <li>
 	           <a href="#">
-	                 <i class="fa fa-power-off fa-2x"></i>
+	                 <i class="fa fa-power-off icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Logout
 	                </span>

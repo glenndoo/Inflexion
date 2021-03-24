@@ -65,7 +65,9 @@
 			                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
 			            </div>
 			        </div>
+
 			        <div class="social-footer">
+			        	<!-- this comment-->
 			            <div class="social-comment">
 			                <a href="" class="pull-left">
 			                    <img alt="image" src="https://tinyurl.com/376azf5j">
@@ -81,21 +83,7 @@
 			                </div>
 			            </div>
 
-			            <div class="social-comment">
-			                <a href="" class="pull-left">
-			                    <img alt="image" src="https://tinyurl.com/376azf5j">
-			                </a>
-			                <div class="media-body">
-			                    <a href="#">
-			                        Glenn Dumaguing
-			                    </a>
-			                    Making this the first true generator on the Internet. It uses a dictionary of.
-			                    <br>
-			                    <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 11 Like this!</a> -
-			                    <small class="text-muted">10.07.2014</small>
-			                </div>
-			            </div>
-
+			            <!-- this write comment part-->
 			            <div class="row social-comment">
 			            	<div class="col-sm-1">
 			            		<a href="" class="pull-left">
