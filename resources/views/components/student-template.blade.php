@@ -21,9 +21,9 @@
 	    <div class="collapse navbar-collapse" id="navbarNav">
 	        <ul class="navbar-nav mr-auto">
 	            <li class="nav-item active">
-	                <li class="nav-item">
+	                <!--li class="nav-item">
 		                 <a class="nav-link" href="#" title="home"><i class="fa fa-home"></i></i></a>
-		            </li>
+		            </li-->
 	                <li class="nav-item">
 		                 <a class="nav-link" href="#" title="home"><i class="fa fa-envelope"></i></a>
 		            </li>
@@ -31,13 +31,40 @@
 	        </ul>
 	        <ul class="navbar-nav">
 	            <li class="nav-item">
-	                <img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}" width=30rem">user</img>
+	                <div class="btn-group">
+					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					     <img class=" dropdown-toggle" src="{{ asset('img/placeholder-male-square.png') }}" width=30rem">user</img>
+					  </button>
+					  <div class="dropdown-menu dropdown-menu-right">
+					    <button class="dropdown-item" type="button">Action</button>
+					    <button class="dropdown-item" type="button">Another action</button>
+					    <button class="dropdown-item" type="button">Something else here</button>
+					  </div>
+					</div>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal" title="setting"><i class="fa fa-bell"></i></a>
+	                <div class="btn-group">
+					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    notifications
+					  </button>
+					  <div class="dropdown-menu dropdown-menu-right">
+					    <button class="dropdown-item" type="button">Action</button>
+					    <button class="dropdown-item" type="button">Another action</button>
+					    <button class="dropdown-item" type="button">Something else here</button>
+					  </div>
+					</div>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal" title="setting"><i class="fa fa-cog"></i></a>
+	               <div class="btn-group">
+					  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    settings
+					  </button>
+					  <div class="dropdown-menu dropdown-menu-right">
+					    <button class="dropdown-item" type="button">Action</button>
+					    <button class="dropdown-item" type="button">Another action</button>
+					    <button class="dropdown-item" type="button">Something else here</button>
+					  </div>
+					</div>
 	            </li>
 	        </ul>
 	    </div>
@@ -51,7 +78,7 @@
 	<nav class="main-menu ease-loadLeft">
 	    <ul>
 	        <li>
-	            <a href="">
+	            <a href="/student">
 	                <i class="fa fa-home fa-2x"></i>
 	                <span class="nav-text">
 	                    Dashboard
