@@ -14,7 +14,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top ease-loadTop">
-	    <img src="{{ asset('img/inflex_icon.png') }}" width="2.5%">
+	    <img class="circleLogo" src="{{ asset('img/inflex_icon.png') }}" width="2.5%">
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 	        <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -22,16 +22,22 @@
 	        <ul class="navbar-nav mr-auto">
 	            <li class="nav-item active">
 	                <li class="nav-item">
-		                <!--<a class="nav-link" href="#"   data-toggle="collapse" data-target="#collapseNaviagtion" aria-expanded="false" aria-controls="collapseNaviagtion">+About Us</a>-->
+		                 <a class="nav-link" href="#" title="home"><i class="fa fa-home"></i></i></a>
+		            </li>
+	                <li class="nav-item">
+		                 <a class="nav-link" href="#" title="home"><i class="fa fa-envelope"></i></a>
 		            </li>
 	            </li>
 	        </ul>
 	        <ul class="navbar-nav">
 	            <li class="nav-item">
-	                <a class="nav-link" href="#">(name) Logout</a>
+	                <a class="nav-link" href="/LogoutUser" title="logout">name<i class="fa fa-sign-out"></i></a>
 	            </li>
 	            <li class="nav-item">
-	                <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal"></a>
+	                <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal" title="setting"><i class="fa fa-bell"></i></a>
+	            </li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="#" data-toggle="modal" data-target="#signUpModal" title="setting"><i class="fa fa-cog"></i></a>
 	            </li>
 	        </ul>
 	    </div>

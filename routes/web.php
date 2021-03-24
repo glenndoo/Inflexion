@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'access'], function(){
     Route::get('/', function () {
         return view('welcome');
+    });
+
+    Route::get('/student', function () {  //added by maiko 
+        return view('student/studentindex');
     });    
+    
     Route::view('register','register');
     Route::view('login','login');
     Route::post('ValidateRegistry', array(
