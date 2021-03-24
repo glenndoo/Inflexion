@@ -13,7 +13,7 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top ease-loadTop">
 	    <img src="{{ asset('img/inflex_logo.png') }}" width="10%">
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 	        <span class="navbar-toggler-icon"></span>

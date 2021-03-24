@@ -407,7 +407,33 @@ background-color: #f6f6f6;
 .card-nav{
 	margin: 5px;
 
-}*/
+}
+
+*/
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideInFromBot {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
 #carouselControls{
 	margin-top: 5rem;
 }
@@ -422,8 +448,18 @@ background-color: #f6f6f6;
 	padding: .20rem;
 	width: 100%;
 }
-.carousel-bot{
+.fade-load{
+	animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
+.ease-loadTop{
+	animation: 1s ease-out 0s 1 slideInFromTop;
+}
+.ease-loadBot{
+	animation: 1s ease-out 0s 1 slideInFromBot;
+}
+
 
 /* footer */
 footer{

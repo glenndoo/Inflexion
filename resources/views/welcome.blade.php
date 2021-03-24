@@ -1,6 +1,6 @@
 <x-template data='welcome' />
 <div class="container">
-    <div class="container">
+    <div class="container fade-load">
         <div class="row">
             <div class="col-sm-12 top-carousel" >
                 <div id="carouselControls" class="carousel slide" data-interval="false">
@@ -127,7 +127,7 @@
     </div>
 </div>
 <!--FOOTER-->
-  <footer class="py-4 bg-dark flex-shrink-0">
+  <footer class="py-4 bg-dark flex-shrink-0 ease-loadBot">
     <div class="container text-center">
       <a href="" class="text-muted">footer</a>
     </div>
