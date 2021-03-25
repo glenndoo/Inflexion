@@ -24,8 +24,16 @@
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
 	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
-	            <a href="#" class="nav-item nav-link">Mail</a>
-	            <a href="#" class="nav-item nav-link" tabindex="-1">Credits</a>
+
+	            <!-- trigger modalMail -->
+				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalMail">
+				  Mail
+				</a>
+				<!-- trigger modalCredits -->
+				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
+				  Credits
+				</a>
+	            
 	        </div>
 	        <div class="navbar-nav ml-auto">
 	        	
@@ -45,8 +53,7 @@
 				    <button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
 				    <button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
 				    <!--button class="dropdown-item" type="button">Profile</button-->
-				    <button class="dropdown-item" type="button">Credits</button>
-
+				    
 				  </div>
 				</div>
 	        </div>
@@ -149,5 +156,48 @@
 	        </li>  
 	    </ul>
 	</nav>
+
+<!-- modalMail -->
+<div class="modal fade" id="modalMail" tabindex="-1" role="dialog" aria-labelledby="modalMail" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">modalMail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalCredits -->
+<div class="modal fade" id="modalCredits" tabindex="-1" role="dialog" aria-labelledby="modalCredits" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">modalCredits</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
