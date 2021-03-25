@@ -117,7 +117,7 @@ class InflexionController extends Controller
                         'userId' => $login->inflexion_user_id
                     ];
                     $request->session()->put('info', $sess);
-                    return view('student/studentindex');
+                    return redirect('/studentIndex');
                 }
             }
             
