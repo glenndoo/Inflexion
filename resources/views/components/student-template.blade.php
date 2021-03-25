@@ -23,7 +23,7 @@
 
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
-	            <a href="#" class="nav-item nav-link">Profile</a>
+	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
 	            <a href="#" class="nav-item nav-link">Mail</a>
 	            <a href="#" class="nav-item nav-link" tabindex="-1">Credits</a>
 	        </div>
@@ -41,7 +41,9 @@
 				  	<a href="#" class="dropdown-button disabled" tabindex="-1"><img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}"></a>
 				  </button>
 				  <div class="dropdown-menu dropdown-menu-right">
-				    <button class="dropdown-item" type="button">Settings</button>
+				    <button class="dropdown-item" type="button">User's Name</button>
+				    <button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
+				    <button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
 				    <!--button class="dropdown-item" type="button">Profile</button-->
 				    <button class="dropdown-item" type="button">Credits</button>
 
@@ -59,7 +61,7 @@
 	<nav class="main-menu ease-loadLeft">
 	    <ul>
 	        <li>
-	            <a href="/student">
+	            <a href="/studentIndex">
 	                <i class="fa fa-home icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Dashboard

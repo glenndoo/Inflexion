@@ -69,4 +69,10 @@ Route::group(['middleware' => 'Student'], function(){
         'as' => 'studentIndex',
         'uses' => 'StudentController@studentIndex'
     ));
+    Route::get('/studentSettings', function () { //added for tetsing maiko
+        return view('student/studentsettings');
+    });
+    Route::get('/studentProfile', function () { //added for tetsing maiko
+        return view('student/studentProfile');
+    });
 });
