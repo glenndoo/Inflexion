@@ -41,7 +41,7 @@
 			                <i class="fa fa-angle-down"></i>
 			            </button>
 			            <ul class="dropdown-menu m-t-xs">
-			                <li><a href="#">text</a></li>
+			                <li><a href="#">Delete</a></li>
 			            </ul>
 			        </div>
 			        <div class="social-avatar">
