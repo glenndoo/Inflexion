@@ -136,8 +136,8 @@
                                 <div class="col-sm-12 align-middle">
                                     <select class="" name='type' required>
                                         <option value="" disabled selected>are you student or teacher?</option>
-                                        <option value='0'>Student</option>
-                                        <option value='1'>Tutor</option>
+                                        <option value='1'>Student</option>
+                                        <option value='2'>Tutor</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12">

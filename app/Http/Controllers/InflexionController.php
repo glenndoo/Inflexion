@@ -73,12 +73,20 @@ class InflexionController extends Controller
         if($Valid->fails()){
             return view('welcome');
         }else{
-            if(Hash::check($request->val,$request->vry)){
+            
                 $check = $this->InflexionUserModel->verifyRegistry($request);
-                return $check;
-            }else{
-                return "Invalid link.";
-            }
+
+                if($check == 1){
+                    return view('welcome')->with('Success','Account successfully verified. You may now login.');
+                }else if($check == 2){
+                    return view('welcome')->with('Error','Cannot verify account');
+                }else if($check == 3){
+                    return view('welcome')->with('Error',"Account is already verified, please log in to your account");
+                }else{
+                    return view('welcome')->with('Error',"Invalid Verifcation Link");
+                }
+                
+                
         }
     }
 
@@ -147,9 +155,9 @@ class InflexionController extends Controller
         $mailerFunction = 'CompleteRegistryMail';
         $token = "";
             $this->SendEmail($request->email, $token, $details, $mailerFunction);
-        return 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!';
+        return view('welcome')->with('Success','You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!');
        }else{
-        return 'Account creation failed';
+        return view('welcome')->with('Errors','Account creation failed');
        }
     }
 

@@ -44,18 +44,26 @@ class InflexionUserModel extends Model
 
 
     public function verifyRegistry($request){
+        $status = 0;
         $checkInfo = $this->where('inflexion_username','=',$request->val)->first();
-        
-        if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
-            $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
-                if($updateInfo){
-                    return "Successfully verified!";
-                }else{
-                    return "Failed to verify account";
-                }
+        if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
+            if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
+                $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
+                    if($updateInfo){
+                        $status = 1;
+                        return $status;
+                    }else{
+                        $status = 2;
+                        return $status;
+                    }
+            }else{
+                $status = 3;
+                return $status;
+            }
         }else{
-            return "Account has already been verified. Please login.";
+            return $status;
         }
+        
                 
     }
 

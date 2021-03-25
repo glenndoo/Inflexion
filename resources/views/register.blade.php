@@ -25,7 +25,7 @@
 				        <input type='password' name='password' placeholder="password"/><br />
 				        <input type='password' name='confirmPassword' placeholder="confirm password"/><br />
 				        <select name='type'>
-				        	<option value="" disabled selected>are you student or teacher?</option>
+				        	<option value="" disabled selected>are you student or tutor?</option>
 				            <option value='1'>Student</option>
 				            <option value='2'>Tutor</option>
 				        </select><br />

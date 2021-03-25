@@ -147,7 +147,7 @@
 
 	    <ul class="logout">
 	        <li>
-	           <a href="#">
+	           <a href="{{ route('LogoutUser') }}">
 	                 <i class="fa fa-power-off icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Logout

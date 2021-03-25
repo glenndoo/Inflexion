@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['middleware' => 'access'], function(){
     Route::get('/', function () {
         return view('welcome');
     });
@@ -22,34 +21,39 @@ Route::group(['middleware' => 'access'], function(){
     
     
     Route::view('register','register');
+
     Route::view('login','login');
+
     Route::post('ValidateRegistry', array(
         'as' => 'ValidateRegistry',
         'uses' => 'InflexionController@ValidateRegistry'
     ));
+
     Route::post('LoginUser', array(
         'as' => 'LoginUser',
         'uses' => 'InflexionController@LoginUser'
     ));
+
     Route::get('email',function(){
         view('emails.register');
     });
+
     Route::post('ValidateRegistry', array(
         'as' => 'ValidateRegistry',
         'uses' => 'InflexionController@ValidateRegistry'
     ));
+
     Route::post('LoginUser', array(
         'as' => 'LoginUser',
         'uses' => 'InflexionController@LoginUser'
     ));
-    Route::view('completeprofile','completeprofile');
-});
 
-Route::group(['middleware' => 'access'], function(){
+    Route::view('completeprofile','completeprofile');
     Route::get('RegistryVerification', array(
         'as' => 'RegistryVerification',
         'uses' => 'InflexionController@RegistryVerification'
     ));
+
     Route::get('LogoutUser', array(
         'as' => 'LogoutUser',
         'uses' => 'InflexionController@LogoutUser'
@@ -66,7 +70,7 @@ Route::group(['middleware' => 'access'], function(){
         'as' => 'LikePost',
         'uses' => 'InflexionController@LikePost'
     ));
-});
+
 
 Route::group(['middleware' => 'Student'], function(){
     Route::post('PostMessage', array(

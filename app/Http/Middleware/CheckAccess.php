@@ -16,7 +16,7 @@ class CheckAccess
     public function handle($request, Closure $next)
     {
         // dd($request->session()->get('info',[0]));
-        if($request->session()->get('info',[0]) == 1){
+        if(!empty($request->session()->get('info.status')) || $request->session()->get('info.status') == 1){
             return $next($request);
         }
             return $next($request);
