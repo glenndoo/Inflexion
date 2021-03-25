@@ -1,6 +1,15 @@
 <x-template data='welcome' />
     <div class="container fade-load">
         <div class="row">
+            @if(isset($Success))
+                <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>{{ $Success}}</strong><br/>
+                  <p>please check your email to verify your account.</p>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            @endif
             <div class="col-sm-12 top-carousel" >
                 <div id="carouselControls" class="carousel slide" data-interval="false">
                   <div class="carousel-inner">
@@ -9,7 +18,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h1>English as a Second Language</h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
                                     <button class="btn btn-primary">Read more</button>
                                 </div>
                                 <div class="col-sm-6">
@@ -226,3 +235,4 @@
         </div>
     </div>
 </div>
+
