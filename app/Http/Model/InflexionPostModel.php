@@ -32,7 +32,7 @@ class InflexionPostModel extends Model
     }
 
     public function fetchAllPosts(){
-        $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->distinct()->get();
+        $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
 }

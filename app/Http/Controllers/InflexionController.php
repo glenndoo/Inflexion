@@ -156,7 +156,7 @@ class InflexionController extends Controller
         $savePost = $this->InflexionPostModel->insertPost($request);
 
         if($savePost){
-            return view('student.studentindex');
+            return redirect('/studentIndex');
         }else{
             return "Post failed";
         }
