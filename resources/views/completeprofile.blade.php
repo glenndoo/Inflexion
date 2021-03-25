@@ -14,7 +14,7 @@
             <center>
                 <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
                     @csrf
-
+                    <h3>Please complete your account information</h3>
                     <input class="form-control" type='hidden' name='id' value='{{ $Details->inflexion_user_id }}'/>
                     <div class="form-group row">
                         <div class="col-sm">
@@ -24,7 +24,7 @@
                     
 
                     <div class="form-group row">
-                        <div class="col-sm-12">
+                        <div class="col-sm">
                             <input class="form-control" type="text" name='firstName' placeholder='First Name'required/>
                         </div>
                     </div>
@@ -46,13 +46,14 @@
                             <input class="form-control" type="text" name='address'  placeholder='Address'required/>
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <div class="col-sm-6">
+                        <div class="col-sm">
                             <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
                         </div>
+                    </div>
 
-                        <div class="col-sm-6">
+                    <div class="form-group row">
+                        <div class="col-sm">
                             <input class="form-control" type="date" value="2011-08-19T13:45:00" id="dateOfBirth" name="dateOfBirth" required/>
                         </div>
                     </div>
