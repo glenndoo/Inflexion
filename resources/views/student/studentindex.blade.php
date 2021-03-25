@@ -40,8 +40,11 @@
 			            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
 			                <i class="fa fa-angle-down"></i>
 			            </button>
+						@php
+						$id = $post->inflexion_post_id;
+						@endphp
 			            <ul class="dropdown-menu m-t-xs">
-			                <li><a href="#">text</a></li>
+			                <li><a href="{{ route('DeletePost',[$id]) }}">Delete Post</a></li>
 			            </ul>
 			        </div>
 			        <div class="social-avatar">

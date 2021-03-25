@@ -35,4 +35,14 @@ class InflexionPostModel extends Model
         $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
+
+    public function deletePost($id){
+        $delete = $this->where('inflexion_post_id','=',$id)->delete();
+
+        if($delete){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

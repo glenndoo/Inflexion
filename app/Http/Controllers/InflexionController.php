@@ -161,4 +161,14 @@ class InflexionController extends Controller
             return "Post failed";
         }
     }
+
+    public function DeletePost(Request $request, $id){
+        $deletePost = $this->InflexionPostModel->deletePost($id);
+
+        if($deletePost){
+            return redirect('/studentIndex')->with('Success','Successfully deleted post');
+        }else{
+            return redirect('/studentIndex')->with('Errors','Failed to delete post');
+        }
+    }
 }
