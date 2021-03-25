@@ -45,7 +45,8 @@
 						@endphp
 			            <ul class="dropdown-menu m-t-xs">
 						@if($post->inflexion_post_poster == session()->get('info.userId'))
-			                <li><a href="{{ route('DeletePost',[$id]) }}">Delete Post</a></li>
+			                <li><a class="postUser" href="{{ route('DeletePost',[$id]) }}">Delete</a></li>
+			                <li><a class="postUser" href="#">Edit</a></li>
 						@endif
 			            </ul>
 			        </div>

@@ -4,7 +4,6 @@
             @if(isset($Success))
                 <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
                   <strong>{{ $Success}}</strong><br/>
-                  <p>please check your email to verify your account.</p>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

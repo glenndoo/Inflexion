@@ -55,7 +55,7 @@ class InflexionController extends Controller
             ];
             $mailerFunction = 'RegisterMail';
             $this->SendEmail($request->username, $token, $details, $mailerFunction);
-            return view('welcome')->with('Success','Successfully registered!');
+            return view('welcome')->with('Success','Successfully registered! Please check your email to verify your account');
         }else{
             return view('register')->with("Errors","Username already taken");
         }

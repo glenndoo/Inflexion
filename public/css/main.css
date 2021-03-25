@@ -150,9 +150,8 @@ input.splashInput[type=text]:focus {
 input.splashInput[type=text]:placeholder {
   color: #cccccc;
 }
-
 /* FORM TYPOGRAPHY*/
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit], input[type=reset]   {
   background-color: #56baed;
   border: none;
   color: white;
@@ -186,7 +185,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], [type=password], [type=email] {
+input[type=text], [type=password], [type=email],[type=date],[type=number]  {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -206,6 +205,7 @@ input[type=text], [type=password], [type=email] {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+
 
 input[type=text]:focus, [type=password]:focus, [type=email]:focus  {
   background-color: #fff;
