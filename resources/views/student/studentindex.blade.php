@@ -105,6 +105,8 @@
 			</div>
 		</div>
 		@endforeach
+		@else
+		No posts to show
 		@endif
 		<!--end posts-->
 	</div>

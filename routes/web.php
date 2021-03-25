@@ -65,9 +65,6 @@ Route::group(['middleware' => 'Student'], function(){
         'as' => 'PostMessage',
         'uses' => 'InflexionController@PostMessage'
     ));
-    Route::get('/student', function () {  //added by maiko 
-        return view('student/studentindex');
-    });    
     Route::get('/studentIndex', array(
         'as' => 'studentIndex',
         'uses' => 'StudentController@studentIndex'

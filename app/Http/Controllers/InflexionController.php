@@ -104,18 +104,23 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
-            if($login->inflexion_user_status == 1){
-                return view('completeprofile')->with('Details', $login);
-            }else if($login->inflexion_user_status == 0){
-                return "Please check your email to verify your account";
+            if(!$login){
+                return redirect()->back()->with('Errors','Username not found');
             }else{
-                $sess = [
-                    'status' => $login->inflexion_user_type,
-                    'userId' => $login->inflexion_user_id
-                ];
-                $request->session()->put('info', $sess);
-                return view('student/studentindex');
+                if($login->inflexion_user_status == 1){
+                    return view('completeprofile')->with('Details', $login);
+                }else if($login->inflexion_user_status == 0){
+                    return "Please check your email to verify your account";
+                }else{
+                    $sess = [
+                        'status' => $login->inflexion_user_type,
+                        'userId' => $login->inflexion_user_id
+                    ];
+                    $request->session()->put('info', $sess);
+                    return view('student/studentindex');
+                }
             }
+            
         }
     }
 

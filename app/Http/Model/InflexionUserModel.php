@@ -62,15 +62,15 @@ class InflexionUserModel extends Model
 
     public function checkLogin($request){
         $check = $this->where('inflexion_username','=',$request->username)->first();
-
-        if($check){
+        // dd($check);
+        if($check != null){
             if(Hash::check($request->password, $check->inflexion_user_pass)){
                 return $check;
             }else{
                 return "Invalid username/password";
             }
         }else{
-            return 'User not found';
+            return false;
         }
     }
 
