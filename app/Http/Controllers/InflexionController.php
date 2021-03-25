@@ -147,7 +147,7 @@ class InflexionController extends Controller
         $mailerFunction = 'CompleteRegistryMail';
         $token = "";
             $this->SendEmail($request->email, $token, $details, $mailerFunction);
-        return 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!';
+        return view('welcome')->with('Success','You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!');
        }else{
         return 'Account creation failed';
        }

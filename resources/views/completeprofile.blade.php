@@ -5,6 +5,8 @@
         <br/>
         <br/>
         <br/>
+        <br/>
+        <br/>
     </div>
     <div class="row">
         <div class="col-sm-2"></div>
@@ -22,7 +24,7 @@
                     
 
                     <div class="form-group row">
-                        <div class="col-sm">
+                        <div class="col-sm-12">
                             <input class="form-control" type="text" name='firstName' placeholder='First Name'required/>
                         </div>
                     </div>
@@ -46,10 +48,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col-sm">
+                        <div class="col-sm-6">
                             <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
                         </div>
-                        <div class="col-sm">
+
+                        <div class="col-sm-6">
                             <input class="form-control" type="date" value="2011-08-19T13:45:00" id="dateOfBirth" name="dateOfBirth" required/>
                         </div>
                     </div>
