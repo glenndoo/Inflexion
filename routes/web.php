@@ -62,6 +62,10 @@ Route::group(['middleware' => 'access'], function(){
         'as' => 'DeletePost',
         'uses' => 'InflexionController@DeletePost'
     ));
+    Route::get('LikePost/{id}', array(
+        'as' => 'LikePost',
+        'uses' => 'InflexionController@LikePost'
+    ));
 });
 
 Route::group(['middleware' => 'Student'], function(){

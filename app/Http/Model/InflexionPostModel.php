@@ -45,4 +45,17 @@ class InflexionPostModel extends Model
             return false;
         }
     }
+
+    public function likePost($request, $id){
+        $likePost = $this->where('inflexion_post_id','=',$id)->first();
+        $likeCount = $likePost->inflexion_post_like + 1;
+        
+        $save = $this->where('inflexion_post_id','=',$id)->update(['inflexion_post_like' => $likeCount]);
+
+        if($save){
+            return true;
+        }else{
+
+        }
+    }
 }
