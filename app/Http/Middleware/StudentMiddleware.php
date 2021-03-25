@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Session;
-class CheckAccess
+
+class StudentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,12 +15,13 @@ class CheckAccess
      */
     public function handle($request, Closure $next)
     {
-        // dd($request->session()->get('info',[0]));
-        if($request->session()->get('info',[0]) == 1){
+        // dd($request->session()->get('info.status'));
+
+        if($request->session()->get('info.status') == 1){
             return $next($request);
+        }else{
+            return response(view('welcome'));
         }
-            return $next($request);
-        
         
     }
 }

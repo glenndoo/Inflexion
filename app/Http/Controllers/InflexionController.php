@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Model\InflexionUserModel;
 use App\Http\Model\InflexionDetailModel;
+use App\Http\Model\InflexionPostModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -16,9 +17,11 @@ class InflexionController extends Controller
 {
     public $InflexionUserModel;
     public $InflexionDetailModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel){
+    public $InflexionPostModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
+        $this->InflexionPostModel = $InflexionPostModel;
     }
 
     public function ValidateRegistry(Request $request){
@@ -106,15 +109,20 @@ class InflexionController extends Controller
             }else if($login->inflexion_user_status == 0){
                 return "Please check your email to verify your account";
             }else{
+                $sess = [
+                    'status' => $login->inflexion_user_type,
+                    'userId' => $login->inflexion_user_id
+                ];
+                $request->session()->put('info', $sess);
                 return view('student/studentindex');
             }
-            return $login;
         }
     }
 
     //LOGOUT FUNCTION
     public function LogoutUser(){
         Session::flush();
+        return view('welcome');
     }
 
 
@@ -140,6 +148,12 @@ class InflexionController extends Controller
 
     //CREATE POST FUNCTION
     public function PostMessage(Request $request){
-        
+        $savePost = $this->InflexionPostModel->insertPost($request);
+
+        if($savePost){
+            return view('student.studentindex');
+        }else{
+            return "Post failed";
+        }
     }
 }

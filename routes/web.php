@@ -19,9 +19,7 @@ Route::group(['middleware' => 'access'], function(){
         return view('welcome');
     });
 
-    Route::get('/student', function () {  //added by maiko 
-        return view('student/studentindex');
-    });    
+    
     
     Route::view('register','register');
     Route::view('login','login');
@@ -59,5 +57,19 @@ Route::group(['middleware' => 'access'], function(){
     Route::post('CompleteRegistration', array(
         'as' => 'CompleteRegistration',
         'uses' => 'InflexionController@CompleteRegistration'
+    ));
+});
+
+Route::group(['middleware' => 'Student'], function(){
+    Route::post('PostMessage', array(
+        'as' => 'PostMessage',
+        'uses' => 'InflexionController@PostMessage'
+    ));
+    Route::get('/student', function () {  //added by maiko 
+        return view('student/studentindex');
+    });    
+    Route::get('/studentIndex', array(
+        'as' => 'studentIndex',
+        'uses' => 'StudentController@studentIndex'
     ));
 });

@@ -12,23 +12,27 @@
 		<!--start post to feed -->
 		<div class="row">
 			<div class="col-sm-12">
-				
+				<form action="{{ route('PostMessage') }}" method="post">
+				@csrf
 				<div class="panel">
 		            <div class="panel-body">
-		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage"></textarea>
 		        		<div class="mar-top clearfix">
-		        			<button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i></button>
+		        			<input class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
 		        			<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
 		        			<a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#" data-original-title="Add Photo" data-toggle="tooltip"></a>
 		        			<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
 		        		</div>
 		        	</div>
 		        </div>
+				</form>
 			</div>
 		</div>
 		<!--post to feed end-->
 
 		<!--start posts-->
+		@if(isset($details))
+		@foreach($details as $post)
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="social-feed-box">
@@ -46,17 +50,14 @@
 			            </a>
 			            <div class="media-body">
 			                <a href="#">
-			                    Glenn Dumaguing
+			                    {{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}
 			                </a>
-			                <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+			                <small class="text-muted">{{ $post->inflexion_post_timestamp }}</small>
 			            </div>
 			        </div>
 			        <div class="social-body">
 			            <p>
-			                Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-			                default model text, and a search for 'lorem ipsum' will uncover many web sites still
-			                in their infancy. Packages and web page editors now use Lorem Ipsum as their
-			                default model text.
+			                {{ $post->inflexion_post_message }}
 			            </p>
 
 			            <div class="btn-group">
@@ -103,6 +104,8 @@
 			    </div>
 			</div>
 		</div>
+		@endforeach
+		@endif
 		<!--end posts-->
 	</div>
 </div>
