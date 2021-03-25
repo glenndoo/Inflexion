@@ -58,6 +58,14 @@ Route::group(['middleware' => 'access'], function(){
         'as' => 'CompleteRegistration',
         'uses' => 'InflexionController@CompleteRegistration'
     ));
+    Route::get('DeletePost/{id}', array(
+        'as' => 'DeletePost',
+        'uses' => 'InflexionController@DeletePost'
+    ));
+    Route::get('LikePost/{id}', array(
+        'as' => 'LikePost',
+        'uses' => 'InflexionController@LikePost'
+    ));
 });
 
 Route::group(['middleware' => 'Student'], function(){

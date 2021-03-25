@@ -31,7 +31,7 @@
 		<!--post to feed end-->
 
 		<!--start posts-->
-		@if(isset($details))
+		@if(count($details) > 0)
 		@foreach($details as $post)
 		<div class="row">
 			<div class="col-sm-12">
@@ -40,8 +40,13 @@
 			            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
 			                <i class="fa fa-angle-down"></i>
 			            </button>
+						@php
+						$id = $post->inflexion_post_id;
+						@endphp
 			            <ul class="dropdown-menu m-t-xs">
-			                <li><a href="#">Delete</a></li>
+						@if($post->inflexion_post_poster == session()->get('info.userId'))
+			                <li><a href="{{ route('DeletePost',[$id]) }}">Delete Post</a></li>
+						@endif
 			            </ul>
 			        </div>
 			        <div class="social-avatar">
@@ -51,6 +56,9 @@
 			            <div class="media-body">
 			                <a href="#">
 			                    {{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}
+								@if($post->inflexion_post_poster == session()->get('info.userId'))
+			                (You)
+						@endif
 			                </a>
 			                <small class="text-muted">{{ $post->inflexion_post_timestamp }}</small>
 			            </div>
@@ -61,7 +69,13 @@
 			            </p>
 
 			            <div class="btn-group">
-			                <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
+						@if($post->inflexion_post_like == 1)
+							{{ $post->inflexion_post_like }} person likes this
+						@elseif($post->inflexion_post_like > 1)
+						{{ $post->inflexion_post_like }} people like this
+						@else
+						@endif
+			                <a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
 			                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
 			                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
 			            </div>
@@ -106,7 +120,7 @@
 		</div>
 		@endforeach
 		@else
-		No posts to show
+		{{ 'No posts to show' }}
 		@endif
 		<!--end posts-->
 	</div>

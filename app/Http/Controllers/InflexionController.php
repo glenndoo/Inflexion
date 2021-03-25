@@ -24,6 +24,8 @@ class InflexionController extends Controller
         $this->InflexionPostModel = $InflexionPostModel;
     }
 
+
+    //VALIDATE REGISTRY FUNCTION
     public function ValidateRegistry(Request $request){
         $Valid = Validator::make($request->all(),[
             'username' => 'required',
@@ -154,11 +156,29 @@ class InflexionController extends Controller
     //CREATE POST FUNCTION
     public function PostMessage(Request $request){
         $savePost = $this->InflexionPostModel->insertPost($request);
-
+        
         if($savePost){
             return redirect('/studentIndex');
         }else{
             return "Post failed";
         }
+    }
+
+    //DELETE POST FUNCTION
+    public function DeletePost(Request $request, $id){
+        $deletePost = $this->InflexionPostModel->deletePost($id);
+
+        if($deletePost){
+            return redirect('/studentIndex')->with('Success','Successfully deleted post');
+        }else{
+            return redirect('/studentIndex')->with('Errors','Failed to delete post');
+        }
+    }
+
+    //LIKE POST FUNCTION
+    public function LikePost(Request $request, $id){
+        $likePost = $this->InflexionPostModel->likePost($request, $id);
+
+        return redirect('/studentIndex');
     }
 }
