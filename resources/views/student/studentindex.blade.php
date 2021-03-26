@@ -1,5 +1,5 @@
 <x-student-template data="studentindex" />
-<div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
+<div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container">
 		<div class="row">
 			<div class="col-sm">

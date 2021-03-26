@@ -1,6 +1,6 @@
 <x-student-template data="studentindex" />
-<div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
-	<div class="container">
+<div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
+	<div class="container ">
 		<div class="row">
 			<div class="col-sm">
 				<br/>
@@ -86,10 +86,10 @@
 							<div class="tabs white nomargin-top">
 								<ul class="nav nav-tabs tabs-primary">
 									<li class="active">
-										<a href="#overview" data-toggle="tab">Overview</a>
+										<a href="#overview" data-toggle="tab" class="form-control">Overview</a>
 									</li>
 									<li>
-										<a href="#edit" data-toggle="tab">Edit</a>
+										<a href="#edit" data-toggle="tab" class="form-control">Edit</a>
 									</li>
 								</ul>
 
@@ -396,26 +396,90 @@
 									<h2 class="panel-title elipsis">
 										<i class="fa fa-rss"></i> SCHEDULE
 									</h2>
+									<div class="row">
+												<div class="col-sm-4">
+													<a class="sched-button legend form-control btn btn-secondary disabled">CLOSED</a>
+												</div>
+												<div class="col-sm-4">
+													<a class="sched-button legend form-control btn btn-success disabled">OPEN</a>
+												</div>
+												<div class="col-sm-4">
+													<a class="sched-button legend form-control btn btn-primary disabled">BOOKED</a>
+												</div>
+											</div>
+											<hr/>
 								</header>
 
 								<div class="panel-body noradius padding-10">
 									<!-- activity list -->
 									<div class="row profile-activity">
 										<!-- activity item -->
-										<div class="col-xs-2 col-sm-1">
+										<div class="col-sm-2">
 											<time datetime="2014-06-29" class="datebox">
 												<strong>Mar</strong>
 												<span>29</span>
 											</time>
 										</div>
 
-										<div class="col-xs-10 col-sm-11">
-											<h6><a href="page-sidebar.html">Lorem ipsum dolor sit amet</a></h6>
-											<p>
-												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-												tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam 
-												tincidunt erat volutpat.
-											</p>
+										<div class="col-sm-10">
+											<div class="row">
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">8:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a  class="sched-button form-control btn btn-success">9:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">10:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">11:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">12:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">13:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-secondary disabled">14:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">15:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">16:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">17:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">18:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">19:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">20:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">21:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">22:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">23:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">24:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">10:00</a>
+													</div>
+											</div>
+											
+											
 										</div>
 										<!-- /activity item -->
 
@@ -424,20 +488,70 @@
 										</div><!-- /activity separator -->
 
 										<!-- activity item -->
-										<div class="col-xs-2 col-sm-1">
+										<div class="col-sm-2">
 											<time datetime="2014-06-29" class="datebox">
 												<strong>Mar</strong>
 												<span>30</span>
 											</time>
 										</div>
 
-										<div class="col-xs-10 col-sm-11">
-											<h6><a href="page-sidebar.html">Sed diam nonummy nibh euismod</a></h6>
-											<p>
-												Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
-												tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam 
-												tincidunt erat volutpat.
-											</p>
+										<div class="col-sm-10">
+											<div class="row">
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">8:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a  class="sched-button form-control btn btn-success">9:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">10:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">11:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">12:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">13:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-secondary disabled">14:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">15:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">16:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">17:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">18:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">19:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">20:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">21:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-primary disabled">22:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">23:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">24:00</a>
+													</div>
+													<div class="col-sm-4">
+														<a class="sched-button form-control btn btn-success">00:00</a>
+													</div>
+											</div>
 										</div>
 										<!-- /activity item -->
 
@@ -446,16 +560,19 @@
 										</div><!-- /activity separator -->
 
 										<!-- paginatoin -->
-										<div class="text-center">
-											<ul class="pagination pagination-sm">
-												<li class="disabled"><a href="#">Prev</a></li>
-												<li class="active"><a href="#">1</a></li>
-												<li><a href="#">2</a></li>
-												<li><a href="#">3</a></li>
-												<li><a href="#">4</a></li>
-												<li><a href="#">Next</a></li>
-											</ul>													
+										<div class="col-sm-12">
+											<div class="text-center">
+												<ul class="pagination pagination-sm">
+													<li class="disabled"><a href="#">Prev</a></li>
+													<li class="active"><a href="#">1</a></li>
+													<li><a href="#">2</a></li>
+													<li><a href="#">3</a></li>
+													<li><a href="#">4</a></li>
+													<li><a href="#">Next</a></li>
+												</ul>													
+											</div>
 										</div>
+										
 										<!-- /paginatoin -->
 									</div>
 									<!-- /activity list -->
