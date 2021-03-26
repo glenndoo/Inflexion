@@ -20,8 +20,8 @@
 		<!--settings start-->
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="container register-form">
-		            <div class="form">
+				<div class="panel container register-form">
+		            <div class="panel-body form shadow">
 		                <div class="note">
 		                    <p>We will never share your information with anyone</p>
 		                </div>
