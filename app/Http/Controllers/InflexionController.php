@@ -137,7 +137,7 @@ class InflexionController extends Controller
     //LOGOUT FUNCTION
     public function LogoutUser(){
         Session::flush();
-        return view('welcome');
+        return redirect('/');
     }
 
 
