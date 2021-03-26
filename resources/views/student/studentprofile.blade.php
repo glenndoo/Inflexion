@@ -24,7 +24,7 @@
 					<div class="row">
 						<!-- COL 1 -->
 						<div class="col-md-3">
-							<section class="panel">
+							<section class="panel shadow">
 								<div class="panel-body noradius padding-10">
 									<figure class="margin-bottom-10"><!-- image -->
 										<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="235rem">
@@ -73,7 +73,7 @@
 						<!-- COL 2 -->
 						<div class="middle-col col-md-5">
 
-							<div class="tabs white nomargin-top">
+							<div class="tabs white nomargin-top shad">
 								<ul class="nav nav-tabs tabs-primary">
 									<li class="active">
 										<a href="#overview" data-toggle="tab" class="form-control">Overview</a>
@@ -83,7 +83,7 @@
 									</li>
 								</ul>
 
-								<div class="tab-content">
+								<div class="tab-content shadow">
 									<!-- Overview -->
 									<div id="overview" class="tab-pane active">
 										<form class="well">
@@ -350,7 +350,7 @@
 						<!-- COL 3 -->
 						<div class="col-md-4">
 							<!-- projects -->
-							<section class="panel panel-default">
+							<section class="panel panel-default shadow">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
 										<i class="fa fa-tag"></i> TAGS
@@ -381,7 +381,7 @@
 							<!-- /projects -->
 
 							<!-- activity -->
-							<section class="panel panel-default">
+							<section class="panel panel-default shadow">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
 										<i class="fa fa-list"></i> SCHEDULE

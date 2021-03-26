@@ -10,11 +10,11 @@
 			</div>
 		</div>
 		<!--start post to feed -->
-		<div class="row">
+		<div class="row ">
 			<div class="col-sm-12">
 				<form action="{{ route('PostMessage') }}" method="post">
 				@csrf
-				<div class="panel">
+				<div class="panel shadow">
 		            <div class="panel-body">
 		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage"></textarea>
 		        		<div class="mar-top clearfix">
@@ -35,7 +35,7 @@
 		@foreach($details as $post)
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="social-feed-box">
+				<div class="social-feed-box shadow">
 			        <div class="pull-right social-action dropdown">
 			            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
 			                <i class="fa fa-angle-down"></i>
