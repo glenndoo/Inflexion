@@ -48,34 +48,24 @@
 									</ul><!-- /updated -->
 
 									<hr class="half-margins">
-									
+									<!-- Social -->
+									<h6>RATING</h6>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star-half"></i>
+										4.89 / 5
+									<!-- /Social -->
+									<hr class="half-margins">
+
 									<!-- About -->
 									<h3 class="text-black">
 										John Doe 
-										<small class="text-gray size-14"> / Tutor</small>
+										<small class="text-gray size-14"> Tutor</small>
 									</h3>
 									<p class="size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p>
 									<!-- /About -->
-
-									<hr class="half-margins">
-									<!-- Social -->
-									<h6>Hobbies and Interest</h6>
-									<a href="#" class="btn ico-only btn-facebook btn-xs" title="Facebook"><i class="fa fa-facebook"></i></a>
-									<a href="#" class="btn ico-only btn-twitter btn-xs" title="Twitter"><i class="fa fa-twitter"></i></a>
-									<a href="#" class="btn ico-only btn-google-plus btn-xs" title="Google plus"><i class="fa fa-google-plus"></i></a>
-									<a href="#" class="btn ico-only btn-linkedin btn-xs" title="Linked In"><i class="fa fa-linkedin"></i></a>
-									<a href="#" class="btn ico-only btn-pinterest btn-xs" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-									<a href="#" class="btn ico-only btn-flickr btn-xs" title="Flickr"><i class="fa fa-flickr"></i></a>
-									<a href="#" class="btn ico-only btn-tumblr btn-xs" title="Tumblr"><i class="fa fa-tumblr"></i></a>
-									<a href="#" class="btn ico-only btn-skype btn-xs" title="Skype"><i class="fa fa-skype"></i></a>
-									<a href="#" class="btn ico-only btn-stackoverflow btn-xs" title="Stack Overflow"><i class="fa fa-stack-overflow"></i></a>
-									<a href="#" class="btn ico-only btn-instagram btn-xs" title="Instagram"><i class="fa fa-instagram"></i></a>
-									<a href="#" class="btn ico-only btn-dribbble btn-xs" title="Dribble"><i class="fa fa-dribbble"></i></a>
-									<a href="#" class="btn ico-only btn-youtube btn-xs" title="Youtube"><i class="fa fa-youtube"></i></a>
-									<a href="#" class="btn ico-only btn-vimeo btn-xs" title="Vimeo"><i class="fa fa-vimeo-square"></i></a>
-									<a href="#" class="btn ico-only btn-rss btn-xs" title="Rss"><i class="fa fa-rss"></i></a>
-									<!-- /Social -->
-
 								</div>
 							</section>
 						</div><!-- /COL 1 -->
@@ -363,7 +353,7 @@
 							<section class="panel panel-default">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
-										<i class="fa fa-rss"></i> TAGS
+										<i class="fa fa-tag"></i> TAGS
 									</h2>
 								</header>
 
@@ -394,7 +384,7 @@
 							<section class="panel panel-default">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
-										<i class="fa fa-rss"></i> SCHEDULE
+										<i class="fa fa-list"></i> SCHEDULE
 									</h2>
 									<div class="row">
 												<div class="col-sm-4">
