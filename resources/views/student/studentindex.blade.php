@@ -9,6 +9,11 @@
 				<br/>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h6>student></h6>
+			</div>
+		</div>
 		<!--start post to feed -->
 		<div class="row ">
 			<div class="col-sm-12">

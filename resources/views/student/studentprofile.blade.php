@@ -12,7 +12,7 @@
 		<!--start post to feed -->
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Profile</h1>
+				<h6>student>studentProfile</h6>
 			</div>
 		</div>
 		<!--post to feed end-->
