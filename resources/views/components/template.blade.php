@@ -112,11 +112,8 @@
                 <div class="wrapper fadeInDown">
                   <div id="formContent">
                     <!-- Login Form -->
-                    <form action="{{ route('ValidateRegistry') }}" method="post">
+                    <form action="{{ route('ValidateRegistry') }}" method="post" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
                         @csrf
-                           
-                           
-                            
                             <div class="form-group row">
                                 <div class="col-sm">
                                     <input type='email' name='username' placeholder="email address" required /><br />
