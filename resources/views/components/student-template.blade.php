@@ -31,7 +31,7 @@
 				</a>
 				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
-					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>Credits
+					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
 				</a>
 	            
 	        </div>

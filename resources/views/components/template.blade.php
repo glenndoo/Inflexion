@@ -36,30 +36,6 @@
 	        </ul>
 	    </div>
 	</nav>
-	<!--<div class="collapse" id="collapseNaviagtion">
-	    <div class="container navbar-sub">
-	        <div class="row card-nav">
-			  <div class="col-sm">
-			    <div class="card">
-			      <div class="card-body">
-			        <h5 class="card-title">Inflexion</h5>
-			        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			        <a href="#" class="btn btn-primary">Go somewhere</a>
-			      </div>
-			    </div>
-			  </div>
-			  <div class="col-sm">
-			    <div class="card">
-			      <div class="card-body">
-			        <h5 class="card-title">Vision - Mission</h5>
-			        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			        <a href="#" class="btn btn-primary">Go somewhere</a>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-	    </div>
-	</div>-->
 @if(isset($Errors))
     @foreach($Errors as $err)
     {{ $err }}
