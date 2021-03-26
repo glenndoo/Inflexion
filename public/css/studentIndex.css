@@ -810,3 +810,10 @@ time.datebox {
   margin-bottom: .2rem;
   font-size: 7pt !important;
 }
+.post-status{
+  padding: 0px;
+  border-bottom: 1px solid lightgrey;
+}
+.post-react{
+  padding-bottom: 0rem;
+}

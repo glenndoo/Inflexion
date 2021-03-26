@@ -68,17 +68,26 @@
 			            <p>
 			                {{ $post->inflexion_post_message }}
 			            </p>
-
-			            <div class="btn-group">
-						@if($post->inflexion_post_like == 1)
-							{{ $post->inflexion_post_like }} person likes this
-						@elseif($post->inflexion_post_like > 1)
-						{{ $post->inflexion_post_like }} people like this
-						@else
-						@endif
-			                <a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
-			                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
-			                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+			            <div class="row post-status">
+			           		<div class="btn-group">
+			            		<div class="col-sm-12">
+			            			@if($post->inflexion_post_like == 1)
+										{{ $post->inflexion_post_like }}<a href="#"><i class="fa fa-thumbs-up">person likes this</i></a>
+									@elseif($post->inflexion_post_like > 1)
+										<a href="">{{ $post->inflexion_post_like }}<i class="fa fa-thumbs-up">people like this</i></a>
+									@else
+									@endif
+			            		</div>
+			            	</div>
+			            </div>
+			            <div class="row post-react">
+			            	<div class="btn-group">
+			            		<div class="col-sm-12">
+			            			<a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like</a>
+					                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
+					                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+								</div>
+			            	</div>
 			            </div>
 			        </div>
 
