@@ -31,17 +31,17 @@
 			                    <div class="row">
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="First Name *" value="John"/>
+			                                <input type="text" class="form-control" placeholder="First Name *" value="{{ session()->get('persInfo.inflexion_detail_first') }}" name="first"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Middle Name*" value="James"/>
+			                                <input type="text" class="form-control" placeholder="Middle Name*" value="{{ session()->get('persInfo.inflexion_detail_middle') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Last Name*" value="Doe"/>
+			                                <input type="text" class="form-control" placeholder="Last Name*" value="{{ session()->get('persInfo.inflexion_detail_last') }}"/>
 			                            </div>
 			                        </div>
 			                    </div>
@@ -49,7 +49,7 @@
 			                    <div class="row">
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Email Address*" value=""/>
+			                                <input type="text" class="form-control" placeholder="Email Address*" value="{{ session()->get('persInfo.inflexion_username') }}" disabled/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-2">
@@ -59,7 +59,7 @@
 			                        </div>
 			                        <div class="col-md-6">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Phone Number*" value=""/>
+			                                <input type="text" class="form-control" placeholder="Phone Number*" value="{{ session()->get('persInfo.inflexion_detail_contact') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-3">
