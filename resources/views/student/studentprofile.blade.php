@@ -216,66 +216,108 @@
 									<div id="edit" class="tab-pane">
 
 										<form class="form-horizontal padding-10" method="get">
-											<h4>Personal Information</h4>
+											<h4>YOUR BADGES</h4>
 											<fieldset>
+												<!--start hobbies And Interests input-->
 												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileFirstName">First Name</label>
-													<div class="col-md-8">
-														<input type="text" class="form-control" id="profileFirstName">
+													<div class="row">
+														<label class="col-md control-label" for="profileFirstName">Hobbies and Interest</label>
+													</div>
+													<div class="row">
+														<div class="col-md">
+														<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">PHOTOGRAPHY<span aria-hidden="true">&times;</span></a>
+															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">ART<span aria-hidden="true">&times;</span></a>
+															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">TRAVEL<span aria-hidden="true">&times;</span></a>
+															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">MUSIC<span aria-hidden="true">&times;</span></a>
+															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">BOOKS<span aria-hidden="true">&times;</span></a>
+													</div>
+													</div>
+													<div class="row">
+														<div class="col-md-10">
+															<input type="text" class="form-control" id="hobbiesAndInterests">
+														</div>
+														<div class="col-md-2">
+															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+														</div>
+													</div>
+													
+												</div>
+												<!--end hobbies And Interests input-->
+												<hr/>
+												<!--end tags input-->
+												<div class="form-group">
+													<div class="row">
+														<label class="col-md control-label" for="tags">Tags</label>
+													</div>
+													<div class="row">
+														<div class="col-md">
+															<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">TOEIC<span aria-hidden="true">&times;</span></a>
+																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">FREE TALKING<span aria-hidden="true">&times;</span></a>
+																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">AVAILABLE FOR KIDS<span aria-hidden="true">&times;</span></a>
+																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">BUSNINESS CONVERSATION<span aria-hidden="true">&times;</span></a>
+																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">ACCENTS<span aria-hidden="true">&times;</span></a>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-10">
+															<input type="text" class="form-control" id="tags" value="ACCENTS">
+														</div>
+														<div class="col-md-2">
+															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+														</div>
 													</div>
 												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileLastName">Last Name</label>
-													<div class="col-md-8">
-														<input type="text" class="form-control" id="profileLastName">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileAddress">Address</label>
-													<div class="col-md-8">
-														<input type="text" class="form-control" id="profileAddress">
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileCompany">Company</label>
-													<div class="col-md-8">
-														<input type="text" class="form-control" id="profileCompany">
-													</div>
-												</div>
+												<!--end tags input-->
 											</fieldset>
 
 											<hr>
 
-											<h4>About</h4>
+											<h4>About me</h4>
 											<fieldset>
+												
 												<div class="form-group">
-													<label class="col-xs-3 control-label">Public Profile</label>
-													<div class="col-md-8">
-														<label class="checkbox">
-															<input type="checkbox" value="1" checked="checked" id="profilePublic">
-															<i></i> Checkbox 1
-														</label>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="col-md-3 control-label" for="profileBio">Biographical Info</label>
-													<div class="col-md-8">
-														<textarea class="form-control" rows="3" id="profileBio"></textarea>
-													</div>
-												</div>
-												<div class="form-group">
-													<div class="sky-form">
-														<label class="col-xs-3 control-label">Profile Image</label>
-														<div class="col-md-8">
-															<label for="file" class="input input-file">
-																<div class="button">
-																	<input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">Browse
-																</div>
-																<input type="text" readonly="">
-															</label>
-															<a href="#" class="btn btn-danger btn-xs nomargin"><i class="fa fa-times"></i> Remove Current Image</a>
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label" for="profileBio">Information</label>
 														</div>
 													</div>
+
+													<div class="row">
+														<div class="col-md-10">
+															<textarea class="form-control" rows="3" id="profileBio"></textarea>
+														</div>
+														<div class="col-md-2">
+															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-save"></i></button>
+														</div>
+													</div>
+
+													
+													<div class="col-md-8">
+														
+													</div>
+												</div>
+
+												<hr/>
+
+												<div class="form-group">
+													<div class="row">
+														<div class="col-md-12">
+															<label class="control-label">Profile Image</label>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="sky-form">
+																<label for="file" class="input input-file">
+																	<div class="button">
+																		<input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.value">
+																	</div>
+																</label>
+																<a href="#" class="btn btn-danger btn-xs nomargin"><i class="fa fa-times"></i> Remove Current Image</a>
+															</div>
+														</div>
+													</div>
+													
 												</div>
 
 
