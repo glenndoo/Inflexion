@@ -77,10 +77,10 @@
 	          
 	        </li>
 	        <li class="has-subnav">
-	            <a href="#">
-	                <i class="fa fa-laptop icon-side fa-size"></i>
+	            <a href="/studentGroups">
+	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    link
+	                    Groups
 	                </span>
 	            </a>
 	            

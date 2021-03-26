@@ -87,4 +87,7 @@ Route::group(['middleware' => 'Student'], function(){
     Route::get('/studentProfile', function () { //added for tetsing maiko
         return view('student/studentProfile');
     });
+    Route::get('/studentGroups', function () { //added for tetsing maiko
+        return view('student/studentgroups');
+    });
 });
