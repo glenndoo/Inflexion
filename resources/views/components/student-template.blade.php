@@ -27,11 +27,11 @@
 
 	            <!-- trigger modalMail -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalMail">
-				  Mail
+					<i class="fa fa-envelope" aria-hidden="true"></i>mail
 				</a>
 				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
-				  Credits
+					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>Credits
 				</a>
 	            
 	        </div>
@@ -162,17 +162,36 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">modalMail</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Compose Mail</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+  	 	<div class="form-group row">
+		    <label for="staticEmail" class="col-sm-2 col-form-label">To:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+		    </div>
+	  	</div>
+  	 	<div class="form-group row">
+		    <label for="staticEmail" class="col-sm-2 col-form-label">Subject:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+		    </div>
+	  	</div>
+
+	  	<hr/>
+
+        <div class="form-group">
+		  <label for="comment">Message:</label>
+		  <textarea class="form-control" rows="5" id="comment"></textarea>
+		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary mr-auto" data-dismiss="modal"><i class="fa fa-inbox" aria-hidden="true"></i>Inbox</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
       </div>
     </div>
   </div>
