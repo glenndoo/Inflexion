@@ -16,7 +16,7 @@
 				@csrf
 				<div class="panel shadow">
 		            <div class="panel-body">
-		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage"></textarea>
+		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea>
 		        		<div class="mar-top clearfix">
 		        			<input class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
 		        			<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>

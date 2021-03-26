@@ -89,7 +89,7 @@
 	            <a href="#">
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Schedule
+	                    My classes
 	                </span>
 	            </a>
 	            
