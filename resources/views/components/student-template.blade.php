@@ -171,13 +171,13 @@
   	 	<div class="form-group row">
 		    <label for="staticEmail" class="col-sm-2 col-form-label">To:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="recievers name">
 		    </div>
 	  	</div>
   	 	<div class="form-group row">
 		    <label for="staticEmail" class="col-sm-2 col-form-label">Subject:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="email@example.com">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="e.g last lesson">
 		    </div>
 	  	</div>
 
