@@ -45,6 +45,36 @@
 			                            </div>
 			                        </div>
 			                    </div>
+			                    <div class="row">
+			                        <div class="col-md-1">
+			                            <div class="form-group">
+			                                <label class="form-control" title="date of birth">DOB</label>
+			                            </div>
+			                        </div>
+			                        <div class="col-md-3">
+			                            <div class="form-group">
+			                                <input type="date" class="form-control" value="" name="dob"/>
+			                            </div>
+			                        </div>
+			                        <div class="col-md-4">
+			                            <div class="form-group">
+										    <select class="form-control" id="exampleFormControlSelect1">
+										    	<option selected="true" disabled="disabled">select gender</option>    
+										     	<option>Male</option>
+										      	<option>Female</option>
+										      	<option>Unspecified</option>
+										    </select>
+										  </div>
+			                        </div>
+			                        <div class="col-md-4">
+			                            <div class="form-group">
+										    <select class="form-control" id="exampleFormControlSelect1">
+										    	<option selected="true" disabled="disabled">Citizenship</option>    
+										     	<option>//Get from api</option>
+										    </select>
+										  </div>
+			                        </div>
+			                    </div>
 			                    <hr/>
 			                    <div class="row">
 			                        <div class="col-md-4">
@@ -89,7 +119,7 @@
 			                        </div>
 			                    </div>
 			                    <hr/>
-			                    <div class="row">
+			                    <!--div class="row">
 			                        <div class="col-md-6">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="Taxpayer Identification Number (TIN):" value=""/>
@@ -107,14 +137,19 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                    <hr/>
+			                    <hr/-->
 			                    <div class="row">
-			                        <div class="col-md-6">
+			                        <div class="col-md-4">
+			                            <div class="form-group">
+			                                <input type="text" class="form-control" placeholder="Current Password" value=""/>
+			                            </div>
+			                        </div>
+			                        <div class="col-md-4">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="New Password" value=""/>
 			                            </div>
 			                        </div>
-			                        <div class="col-md-6">
+			                        <div class="col-md-4">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="Confirm  New Password" value=""/>
 			                            </div>
