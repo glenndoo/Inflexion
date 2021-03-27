@@ -54,11 +54,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <select class="form-control" name="state" required>
-                                    <option selected disabled>State</option>    
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
+                                <input class="form-control" type="text" name='state'  placeholder='Province'required/>
                               </div>
                         </div>
                         <div class="col-md-3">
