@@ -1057,6 +1057,7 @@ time.datebox {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     background: #ffffff;
+    
 
 }
 
@@ -1085,4 +1086,8 @@ time.datebox {
 
 .fa-caret-right{
   padding: 0 10px 0 10px;
+}
+.group-card.card{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
 }
