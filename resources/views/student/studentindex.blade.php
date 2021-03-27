@@ -11,7 +11,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<h6>student></h6>
+				<h6>student>studentindex</h6>
 			</div>
 		</div>
 		<!--start post to feed -->
@@ -99,6 +99,15 @@
 			        <div class="social-footer">
 			        	<!-- this comment-->
 			            <div class="social-comment">
+			                <div class="pull-right social-action dropdown">
+					            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
+					                <i class="fa fa-angle-down"></i>
+					            </button>
+					            <ul class="dropdown-menu m-t-xs">
+					                <li><a class="postUser" href="">Delete</a></li>
+					                <li><a class="postUser" href="#">Edit</a></li>
+					            </ul>
+					        </div>
 			                <a href="" class="pull-left">
 			                    <img alt="image" src="https://tinyurl.com/376azf5j">
 			                </a>
