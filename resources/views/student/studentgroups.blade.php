@@ -160,30 +160,55 @@
 
 					  	<!--Discover Starts-->
 					  	<div class="tab-pane" id="discover" role="tabpanel">
-					  		<!--start post status to this group -->
+					  		<!--start results for groups not joined -->
 							<div class="row ">
 								<div class="col-sm-12">
 									<div class="group-card card shadow">
 								  		<div class="card-header">
 								  			<div class="row">
 								  				<div class="col-sm-6">
-								  					<h5>English for Begginers</h5>By Glen Dumaguing
+								  					<h5>Tasty Recipes</h5>By John Doe
 								  				</div>
 								  				<div class="col-sm-3">
 								  					
 								  				</div>
 								  				<div class="col-sm-3 text-right">
-								  					<a href="#" class="btn btn-success">Leave Group</a>
+								  					<a href="#" class="btn btn-primary">Join Group</a>
 								  				</div>
 								  			</div>
 								  		</div>
 								  		<div class="card-body">
-								    		
+								    		Watch, Cook, Share: Recipes and How-To’s for Real Life
 								  		</div>
 									</div>
 								</div>
 							</div>
-							<!--end post status to this group -->
+
+							<hr/>
+							
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>Photographers & Travel Nomads</h5>By Paul Smith
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-primary">Join Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		Need travel inspiration? Some of the best travel photographers share their favourite pictures and the stories behind them in this group. This is the perfect place to discover new travel photographers as they capture beautiful images of people, landscapes, and animals around the world. They will provide you a little snapshot into their lives. 
+								  		</div>
+									</div>
+								</div>
+							</div>
+							<!--end results for groups not joined -->
 
 							<hr/>
 					  	</div>
