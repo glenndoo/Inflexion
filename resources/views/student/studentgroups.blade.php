@@ -20,19 +20,26 @@
 			            </div>
 		            </div>
 				</div>
-				<div class="">
-				    <div class="">
-				      <ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
-				        <li class="nav-item">
-				            <a class="nav-link active" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
-				        </li>
-				        <li class="nav-item"><!-- connected to tab-pane tabpanel discover-->
-				            <a class="nav-link" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
-				        </li>
-				        </li>
-				    </ul>
+				<div class="row">
+				    <div class="col-sm-12">
+				      	<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
+					        <li class="nav-item">
+					            <a class="nav-link active" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
+					        </li>
+					        <li class="nav-item"><!-- connected to tab-pane tabpanel discover-->
+					            <a class="nav-link" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
+					        </li>
+					        </li>
+					    </ul>
 					</div>
+				</div>
 
+				<hr/>
+
+				<div class="row">
+				    <div class="col-sm-12">
+				      	<strong>Your groups</strong>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-6">
@@ -40,6 +47,7 @@
 				<br/>
 				<h6>RECENT ACTIVITY</h6>
 				<div class="panel panel-default">
+					<!--tab content start-->
 					<div class="tab-content"> 
 					  	<div class="tab-pane active" id="yourFeed" role="tabpanel">
 						  	<!--all group posts start--> 
@@ -134,8 +142,29 @@
 							</div>
 							<!--all group posts end-->
 					  	</div>
-					  	<div class="tab-pane" id="discover" role="tabpanel">..2.</div>
+					  	<div class="tab-pane" id="discover" role="tabpanel">
+					  		<div class="group-card card shadow">
+						  		<h5 class="card-header">Tutor Name</h5>
+						  		<div class="card-body">
+						    		<h5 class="card-title">Group Name</h5>
+						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						    		<a href="#" class="btn btn-primary">Join Group</a>
+						  		</div>
+							</div>
+
+							<hr/>
+
+					  		<div class="group-card card shadow">
+						  		<h5 class="card-header">Tutor Name</h5>
+						  		<div class="card-body">
+						    		<h5 class="card-title">Group Name</h5>
+						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						    		<a href="#" class="btn btn-primary">Join Group</a>
+						  		</div>
+							</div>
+					  	</div>
 					</div>
+					<!--tab content end-->
 				    <div class="">
 				    	
 				    </div>

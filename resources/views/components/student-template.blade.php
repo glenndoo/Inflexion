@@ -47,8 +47,8 @@
 				  </button>
 				  	<div class="dropdown-menu dropdown-menu-right">
 				    	<button class="dropdown-item" type="button">User's Name</button>
-				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
-				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
+				    	<button class="dropdown-item" type="button"><a href="/student/settings" class="">Settings</a></button>
+				    	<button class="dropdown-item" type="button"><a href="/student/profile" class="">Profile</a></button>
 				   	 <!--button class="dropdown-item" type="button">Profile</button-->
 				  	</div>
 				</div>
