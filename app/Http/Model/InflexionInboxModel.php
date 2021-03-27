@@ -30,7 +30,7 @@ class InflexionInboxModel extends Model
 
     public function sendMessage($request){
         $checkUser = $this->join('inflexion_users','inflexion_user_id','=','inflexion_inbox_rcpt')->where('inflexion_username','=',$request->rcpt)->first();
-
+        $status = 0;
         if($checkUser){
             $sendMsg = $this;
 
@@ -40,14 +40,16 @@ class InflexionInboxModel extends Model
             $sendMsg->inflexion_inbox_rcpt = $request->rcpt;
             $sendMsg->inflexion_inbox_date = Carbon::now();
             $sendMsg->inflexion_inbox_read = 0;
-    
+            
             if($sendMsg->save()){
-                return true;
+                return $status;
             }else{
-                return false;
+                $status = 1;
+                return $status;
             }
         }else{
-            return redirect()->back()->with('Errors', 'User email not found');
+            $status = 2;
+            return $status;
         }
     }
 
