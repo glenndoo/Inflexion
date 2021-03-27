@@ -7,7 +7,7 @@
 				<br/>
 			</div>
 		</div>
-		<!--start post to feed -->
+		<!--start group main -->
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="row">
@@ -38,6 +38,7 @@
 								</div>
 							</div>
 							<br/>
+							
 							<!-- for each start here for joined groups-->
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
@@ -55,8 +56,7 @@
 				
 			</div>
 
-			<div class="col-sm-6">
-
+			<div class="col-sm-9">
 				<br/>
 				<div class="panel panel-default">
 					<!--tab content start-->
@@ -65,7 +65,7 @@
 					  	<div class="tab-pane active" id="allYourGroupFeed" role="tabpanel">
 							<h6>RECENT ACTIVITY</h6>
 					    	<div class="row">
-								<div class="col-sm-12">
+								<div class="col-sm-9">
 									<div class="social-feed-box shadow">
 								        <div class="pull-right social-action dropdown">
 								            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
@@ -152,6 +152,9 @@
 
 								    </div>
 								</div>
+								<div class="col-sm-3">
+									
+								</div>
 							</div>
 							
 					  	</div>
@@ -160,57 +163,62 @@
 
 					  	<!--Discover Starts-->
 					  	<div class="tab-pane" id="discover" role="tabpanel">
-					  		<!--start results for groups not joined -->
-							<div class="row ">
-								<div class="col-sm-12">
-									<div class="group-card card shadow">
-								  		<div class="card-header">
-								  			<div class="row">
-								  				<div class="col-sm-6">
-								  					<h5>Tasty Recipes</h5>By John Doe
-								  				</div>
-								  				<div class="col-sm-3">
-								  					
-								  				</div>
-								  				<div class="col-sm-3 text-right">
-								  					<a href="#" class="btn btn-primary">Join Group</a>
-								  				</div>
-								  			</div>
-								  		</div>
-								  		<div class="card-body">
-								    		Watch, Cook, Share: Recipes and How-To’s for Real Life
-								  		</div>
+					  		<div class="col-sm-9">
+						  		<!--start results for groups not joined -->
+								<div class="row ">
+									<div class="col-sm-12">
+										<div class="group-card card shadow">
+									  		<div class="card-header">
+									  			<div class="row">
+									  				<div class="col-sm-6">
+									  					<h5>Tasty Recipes</h5>By John Doe
+									  				</div>
+									  				<div class="col-sm-3">
+									  					
+									  				</div>
+									  				<div class="col-sm-3 text-right">
+									  					<a href="#" class="btn btn-primary">Join Group</a>
+									  				</div>
+									  			</div>
+									  		</div>
+									  		<div class="card-body">
+									    		Watch, Cook, Share: Recipes and How-To’s for Real Life
+									  		</div>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<hr/>
-							
-							<div class="row ">
-								<div class="col-sm-12">
-									<div class="group-card card shadow">
-								  		<div class="card-header">
-								  			<div class="row">
-								  				<div class="col-sm-6">
-								  					<h5>Photographers & Travel Nomads</h5>By Paul Smith
-								  				</div>
-								  				<div class="col-sm-3">
-								  					
-								  				</div>
-								  				<div class="col-sm-3 text-right">
-								  					<a href="#" class="btn btn-primary">Join Group</a>
-								  				</div>
-								  			</div>
-								  		</div>
-								  		<div class="card-body">
-								    		Need travel inspiration? Some of the best travel photographers share their favourite pictures and the stories behind them in this group. This is the perfect place to discover new travel photographers as they capture beautiful images of people, landscapes, and animals around the world. They will provide you a little snapshot into their lives. 
-								  		</div>
+								<hr/>
+								
+								<div class="row ">
+									<div class="col-sm-12">
+										<div class="group-card card shadow">
+									  		<div class="card-header">
+									  			<div class="row">
+									  				<div class="col-sm-6">
+									  					<h5>Photographers & Travel Nomads</h5>By Paul Smith
+									  				</div>
+									  				<div class="col-sm-3">
+									  					
+									  				</div>
+									  				<div class="col-sm-3 text-right">
+									  					<a href="#" class="btn btn-primary">Join Group</a>
+									  				</div>
+									  			</div>
+									  		</div>
+									  		<div class="card-body">
+									    		Need travel inspiration? Some of the best travel photographers share their favourite pictures and the stories behind them in this group. This is the perfect place to discover new travel photographers as they capture beautiful images of people, landscapes, and animals around the world. They will provide you a little snapshot into their lives. 
+									  		</div>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!--end results for groups not joined -->
+								<!--end results for groups not joined -->
 
-							<hr/>
+								<hr/>
+							</div>
+							<div class="col-sm-3">
+								
+							</div>
 					  	</div>
 					  	<!--Discover end-->
 
@@ -218,7 +226,7 @@
 					  	<div class="tab-pane" id="joined_group_1" role="tabpanel">
 					  		<!--start post status to this group -->
 							<div class="row ">
-								<div class="col-sm-12">
+								<div class="col-sm-9">
 									<div class="group-card card shadow">
 								  		<div class="card-header">
 								  			<div class="row">
@@ -249,12 +257,17 @@
 								  		</div>
 									</div>
 								</div>
+								<div class="col-sm-3">
+									MEMBER'S AREA COLUMN
+								</div>
 							</div>
 							<!--end post status to this group -->
-							<hr/>
+
+							<br/>
+
 							<!--start post results in this group-->
 							<div class="row ">
-								<div class="col-sm-12">
+								<div class="col-sm-9">
 									<div class="social-feed-box shadow">
 								        <div class="pull-right social-action dropdown">
 								            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
@@ -349,7 +362,7 @@
 					  	<div class="tab-pane" id="joined_group_2" role="tabpanel">
 					  		<!--start post status to this group -->
 							<div class="row ">
-								<div class="col-sm-12">
+								<div class="col-sm-9">
 									<div class="group-card card shadow">
 								  		<div class="card-header">
 								  			<div class="row">
@@ -380,9 +393,12 @@
 								  		</div>
 									</div>
 								</div>
+								<div class="col-sm-3">
+									MEMBER'S AREA COLUMN
+								</div>
 							</div>
 							<!--end post status to this group -->
-							<hr/>
+							<br/>
 							<div class="row ">
 								<div class="col-sm-12">
 									No posts to show
@@ -398,12 +414,6 @@
 				</div>
 			</div>
 		</div>
-		<!--post to feed end-->
-
-		<!--student groups start-->
-		<div class="row">
-			
-		</div>
-		<!--end settings-->
+		<!--end group main-->
 	</div>
 </div>
