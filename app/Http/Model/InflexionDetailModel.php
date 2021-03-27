@@ -16,7 +16,11 @@ class InflexionDetailModel extends Model
       'inflexion_detail_first',
       'inflexion_detail_middle',
       'inflexion_detail_last',
-      'inflexion_detail_address',
+      'inflexion_detail_street',
+      'inflexion_detail_city',
+      'inflexion_detail_state',
+      'inflexion_detail_country',
+      'inflexion_detail_zip',
       'inflexion_detail_contact',
       'inflexion_detail_birth'
     ];
@@ -32,7 +36,11 @@ class InflexionDetailModel extends Model
         $save->inflexion_detail_first = $request->firstName;
         $save->inflexion_detail_middle = $request->middleName;
         $save->inflexion_detail_last = $request->lastName;
-        $save->inflexion_detail_address = $request->address;
+        $save->inflexion_detail_street = $request->street;
+        $save->inflexion_detail_city = $request->city;
+        $save->inflexion_detail_state = $request->state;
+        $save->inflexion_detail_country = $request->country;
+        $save->inflexion_detail_zip = $request->zipCode;
         $save->inflexion_detail_contact = $request->contactNumber;
         $save->inflexion_detail_birth = $request->dateOfBirth;
 

@@ -92,4 +92,8 @@ Route::group(['middleware' => 'Student'], function(){
     Route::get('/studentInbox', function () { //added for testing maiko
         return view('student.studentinbox');
     });
+    Route::get('/ShowInbox', array(
+        'as' => 'ShowInbox',
+        'uses' => 'InflexionController@ShowInbox'
+    ));
 });

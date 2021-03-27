@@ -1,4 +1,4 @@
-<x-student-template data="studentinbox" />
+<x-student-template data="Student Inbox" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container">
 		<div class="row">
@@ -35,12 +35,8 @@
 									<div class="nav nav-pills nav-stacked">
 										<div class="row">
 											<div class="col-sm-12 header">Folders</div>
-											<div class="col-sm-12 active"><a href="#"><i class="fa fa-inbox"></i> Inbox (14)</a></div>
-											<div class="col-sm-12"><a href="#"><i class="fa fa-star"></i> Starred</a></div>
-											<div class="col-sm-12"><a href="#"><i class="fa fa-bookmark"></i> Important</a></div>
+											<div class="col-sm-12 active"><a href="#"><i class="fa fa-inbox"></i> Inbox {{ count($Messages) }}</a></div>
 											<div class="col-sm-12"><a href="#"><i class="fa fa-mail-forward"></i> Sent</a></div>
-											<div class="col-sm-12"><a href="#"><i class="fa fa-pencil-square-o"></i> Drafts</a></div>
-											<div class="col-sm-12"><a href="#"><i class="fa fa-folder"></i> Archived (217)</a></div>
 										</div>
 									</div>
 								</div>
@@ -86,100 +82,26 @@
 								<div class="table-responsive">
 									<table class="table">
 										<tbody>
+										@if(count($Messages) > 0)
+											@foreach($Messages as $msgs)
 											<tr>
 												<td class="action"><input type="checkbox" /></td>
 												<td class="action"><i class="fa fa-star-o"></i></td>
 												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Glenn Dumaguin</a></td>
+												<td class="name"><a href="#">{{ $msgs->inflexion_inbox_sender }}</a></td>
 												<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-													<a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a>
+													<a href="#">{{ $msgs->inflexion_inbox_message }}</a>
 												</td>
-												<td class="time">just now</td>
+												<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
 											</tr>
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Glenn Dumaguin</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">5 mins</td>
-											</tr>
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark"></i></td>
-												<td class="name"><a href="#">Glenn Dumaguin</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">30 mins</td>
-											</tr>
-											<tr class="read">
-												<td class="action"><div class="icheckbox_square-blue" st<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star"></i></td>
-												<td class="action"><i class="fa fa-bookmark"></i></td>
-												<td class="name"><a href="#">Mark Robles</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">1 hour ago</td>
-											</tr>
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Glenn Dumaguin</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">09:30 AM</td>
-											</tr>
-											<tr class="read">
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Mark Robles</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">08:30 AM</td>
-											</tr>
-											<tr class="read">
-			                                    <td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark"></i></td>
-												<td class="name"><a href="#">Mark Robles</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">yesterday</td>
-											</tr>
-											<tr>
-			                                    <td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Mark Robles</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">yesterday</td>
-											</tr>
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Jane Doe</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">2 days ago</td>
-											</tr>
-											<tr class="read">
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star"></i></td>
-												<td class="action"><i class="fa fa-bookmark"></i></td>
-												<td class="name"><a href="#">Jane Doe</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">3 days ago</td>
-											</tr>
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">Marky Plier</a></td>
-												<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-												<td class="time">3 days ago</td>
-											</tr>
+											@endforeach
+										@else
+										No messages to show
+										@endif
 										</tbody>
 									</table>
 								</div>
-
+								
 								<ul class="pagination">
 									<li class="disabled"><a href="#">«</a></li>
 									<li class="active"><a href="#">1</a></li>

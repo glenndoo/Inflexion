@@ -91,7 +91,7 @@
 	            
 	        </li>
 	        <li class="has-subnav">
-	            <a href="/studentInbox">
+	            <a href="{{ route('ShowInbox') }}">
 	               <i class="fa fa-inbox icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Inbox

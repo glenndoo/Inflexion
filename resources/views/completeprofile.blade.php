@@ -44,27 +44,29 @@
                     </div>
                     <hr/>
                     <div class="form-group row">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3"><input class="form-control" type="text" name='street'  placeholder='street'required/>
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                            <input class="form-control" type="text" name='city'  placeholder='City'required/>
+                              </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                            <input class="form-control" type="text" name='state'  placeholder='State/Province'required/>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
                             <select class="form-control" name='country' required>
                                 <option selected disabled>Country</option>
                                 @foreach($Countries as $country)
                                 <option value='{{ $country }}'>{{ $country }}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name='state'  placeholder='Province'required/>
-                              </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name='city'  placeholder='City'required/>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name='zipCode'  placeholder='Zip Code'required/>
+                               
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@
                             
                         </div>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" name='street'  placeholder='street'required/>
+                        <input class="form-control" type="number" name='zipCode'  placeholder='Zip Code'required/>
                         </div>
                     </div>
 

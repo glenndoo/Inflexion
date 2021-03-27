@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Model\InflexionUserModel;
 use App\Http\Model\InflexionDetailModel;
 use App\Http\Model\InflexionPostModel;
+use App\Http\Model\InflexionInboxModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -19,10 +20,12 @@ class InflexionController extends Controller
     public $InflexionUserModel;
     public $InflexionDetailModel;
     public $InflexionPostModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel){
+    public $InflexionInboxModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
+        $this->InflexionInboxModel = $InflexionInboxModel;
     }
 
     //DISPLAY INDEX
@@ -202,5 +205,12 @@ class InflexionController extends Controller
         $likePost = $this->InflexionPostModel->likePost($request, $id);
 
         return redirect('/studentIndex');
+    }
+
+    //INBOX FUNCTION
+    public function ShowInbox(Request $request){
+        $messages = $this->InflexionInboxModel->fetchAllMessages($request);
+        
+        return view('student.studentinbox')->with('Messages', $messages);
     }
 }
