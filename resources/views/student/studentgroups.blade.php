@@ -38,6 +38,7 @@
 								</div>
 							</div>
 							<br/>
+							
 							<!-- for each start here for joined groups-->
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
