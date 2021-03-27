@@ -23,8 +23,8 @@
 				<div class="row">
 				    <div class="col-sm-12">
 				      	<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
-					        <li class="nav-item  group-tabs">
-					            <a class="nav-link active group-tabs" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
+					        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel allYourGroupFeed-->
+					            <a class="nav-link active group-tabs" data-toggle="tab" href="#allYourGroupFeed" role="tab" aria-controls="allYourGroupFeed">Your Feed</a>
 					        </li>
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
@@ -43,7 +43,7 @@
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
 					        </li>
 
-					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 180)-->
+					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_2 (start at line 318)-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_2" role="tab" aria-controls="yourGroups">ESL Master Chefs</a>
 					        </li>
 
@@ -62,7 +62,7 @@
 					<!--tab content start-->
 					<div class="tab-content">
 						<!--all group posts start--> 
-					  	<div class="tab-pane active" id="yourFeed" role="tabpanel">
+					  	<div class="tab-pane active" id="allYourGroupFeed" role="tabpanel">
 							<h6>RECENT ACTIVITY</h6>
 					    	<div class="row">
 								<div class="col-sm-12">
@@ -160,29 +160,36 @@
 
 					  	<!--Discover Starts-->
 					  	<div class="tab-pane" id="discover" role="tabpanel">
-					  		<div class="group-card card shadow">
-						  		<h5 class="card-header">Tutor Name</h5>
-						  		<div class="card-body">
-						    		<h5 class="card-title">Group Name</h5>
-						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    		<a href="#" class="btn btn-primary">Join Group</a>
-						  		</div>
+					  		<!--start post status to this group -->
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>English for Begginers</h5>By Glen Dumaguing
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-success">Leave Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		
+								  		</div>
+									</div>
+								</div>
 							</div>
+							<!--end post status to this group -->
 
 							<hr/>
-
-					  		<div class="group-card card shadow">
-						  		<h5 class="card-header">Tutor Name</h5>
-						  		<div class="card-body">
-						    		<h5 class="card-title">Group Name</h5>
-						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    		<a href="#" class="btn btn-primary">Join Group</a>
-						  		</div>
-							</div>
 					  	</div>
 					  	<!--Discover end-->
 
-					  	<!--your Groups start-->
+					  	<!--your Groups "joined_group_1" start-->
 					  	<div class="tab-pane" id="joined_group_1" role="tabpanel">
 					  		<!--start post status to this group -->
 							<div class="row ">
@@ -309,9 +316,11 @@
 								</div>
 							</div>
 							<!--end post results in this group-->
-							
 					  	</div>
+					  	<!--your Groups "joined_group_1" end-->
 
+
+					  	<!--your Groups "joined_group_2" Start-->
 					  	<div class="tab-pane" id="joined_group_2" role="tabpanel">
 					  		<!--start post status to this group -->
 							<div class="row ">
@@ -355,7 +364,7 @@
 								</div>
 							</div>
 					  	</div>
-					  	<!--your Groups end-->
+					  	<!--your Groups "joined_group_2" End-->
 					</div>
 					<!--tab content end-->
 				    <div class="">
