@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@index'
     ));
 
-    // Route::get('/completeprofile', array(
-    //     'as' => 'completeprofile',
-    //     'uses' => 'InflexionController@CompleteProfile'
-    // ));
-    
     Route::view('register','register');
 
     Route::view('login','login');
@@ -91,10 +86,10 @@ Route::group(['middleware' => 'Student'], function(){
     Route::get('/studentProfile', function () { //added for testing maiko
         return view('student.studentProfile');
     });
-    Route::get('/studentgroups', function () { //added for testing maiko
+    Route::get('/studentGroups', function () { //added for testing maiko
         return view('student.studentgroups');
     });
-    Route::get('/student/inbox', function () { //added for testing maiko
+    Route::get('/studentInbox', function () { //added for testing maiko
         return view('student.studentinbox');
     });
 });
