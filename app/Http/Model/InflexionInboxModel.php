@@ -49,7 +49,6 @@ class InflexionInboxModel extends Model
         }else{
             return redirect()->back()->with('Errors', 'User email not found');
         }
-       
     }
 
 
