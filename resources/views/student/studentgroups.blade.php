@@ -38,7 +38,7 @@
 								</div>
 							</div>
 							<br/>
-							
+
 							<!-- for each start here for joined groups-->
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
@@ -258,7 +258,13 @@
 									</div>
 								</div>
 								<div class="col-sm-3">
-									MEMBER'S AREA COLUMN
+									<div class="group-members-card card">
+								      	<div class="card-body">
+								        	<h5 class="card-title">MEMBERS</h5>
+								        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+								        	<a href="#" class="btn btn-primary">Go somewhere</a>
+								      	</div>
+								    </div>
 								</div>
 							</div>
 							<!--end post status to this group -->

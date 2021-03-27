@@ -1116,3 +1116,7 @@ time.datebox {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
+.group-members-card.card{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
