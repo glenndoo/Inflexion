@@ -12,6 +12,7 @@ use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
 use Hash;
 use Session;
+use Monarobase\CountryList\CountryListFacade;
 
 class InflexionController extends Controller
 {
@@ -24,6 +25,13 @@ class InflexionController extends Controller
         $this->InflexionPostModel = $InflexionPostModel;
     }
 
+    //DISPLAY INDEX
+
+    public function index(){
+        $countries = CountryListFacade::getList('en');
+
+        return view('welcome');
+    }
 
     //VALIDATE REGISTRY FUNCTION
     public function ValidateRegistry(Request $request){
@@ -62,13 +70,17 @@ class InflexionController extends Controller
     }
 
 
+
     //CHECK IF TOKEN RETURNED FROM VERIFICATION IS VALID
     public function RegistryVerification(Request $request){
         $Valid = Validator::make($request->all(),[
             'token' => 'required',
             'vry' => 'required',
             'val' => 'required'
-        ]);
+        ],[
+
+        ]
+        );
 
         if($Valid->fails()){
             return view('welcome');
@@ -114,11 +126,13 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
+
             if(!$login){
                 return view('/login')->with('Errors','Username not found'); //changed from return redirect()->back()->with('Errors','Username not found'); -maiko
             }else{
                 if($login->inflexion_user_status == 1){
-                    return view('completeprofile')->with('Details', $login);
+                    $countries = CountryListFacade::getList('en');
+                    return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
                 }else if($login->inflexion_user_status == 0){
                     return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
                 }else{

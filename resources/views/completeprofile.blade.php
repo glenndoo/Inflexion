@@ -1,4 +1,4 @@
-<x-template data='completeprofile' />
+<x-template data='Complete Profile' />
     
 <div class="container">
     <div class="row">
@@ -43,7 +43,12 @@
 
                     <div class="form-group row">
                         <div class="col-sm">
-                            <input class="form-control" type="text" name='address'  placeholder='Address'required/>
+                            <select name='country'>
+                            <option>Select Country</option>
+                            @foreach($Countries as $country)
+                                <option value='{{ $country }}'>{{ $country }}</option>
+                            @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">

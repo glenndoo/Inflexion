@@ -46,6 +46,7 @@ class InflexionUserModel extends Model
     public function verifyRegistry($request){
         $status = 0;
         $checkInfo = $this->where('inflexion_username','=',$request->val)->first();
+        // dd($checkInfo);
         if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
             if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
                 $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
@@ -69,8 +70,7 @@ class InflexionUserModel extends Model
 
 
     public function checkLogin($request){
-        $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_users.inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
-        // dd($check);
+        $check = $this->where('inflexion_username','=',$request->username)->first();
         if($check != null){
             if(Hash::check($request->password, $check->inflexion_user_pass)){
                 $request->session()->put('persInfo', $check);
