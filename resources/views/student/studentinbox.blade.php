@@ -156,7 +156,7 @@
 		      <input type="text" class="form-control" id="name" value="Glenn Dumaguin" disabled placeholder="recievers name">
 		    </div>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="staticEmail" value="glenn@email.com" disabled placeholder="recievers name">
+		      <input type="text" class="form-control" id="staticEmail" value="" disabled placeholder="recievers name">
 		    </div>
 	  	</div>
   	 	<div class="form-group row">
