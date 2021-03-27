@@ -141,7 +141,9 @@ class InflexionController extends Controller
                 }else{
                     $sess = [
                         'status' => $login->inflexion_user_type,
-                        'userId' => $login->inflexion_user_id
+                        'userId' => $login->inflexion_user_id,
+                        'userName' => $login->inflexion_username,
+                        'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last
                     ];
                     $request->session()->put('info', $sess);
                     return redirect('/studentIndex');

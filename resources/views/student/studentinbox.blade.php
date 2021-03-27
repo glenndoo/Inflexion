@@ -104,7 +104,7 @@
 												<td class="action"><input type="checkbox" /></td>
 												<td class="action"><i class="fa fa-star-o"></i></td>
 												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">{{ $msgs->inflexion_inbox_sender }}</a></td>
+												<td class="name"><a href="#">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</a></td>
 												<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
 													<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
 												</td>

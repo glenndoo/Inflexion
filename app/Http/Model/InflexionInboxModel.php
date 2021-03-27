@@ -23,7 +23,7 @@ class InflexionInboxModel extends Model
     ];
 
     public function fetchAllMessages($request){
-        $fetchMessage = $this->join('inflexion_users','inflexion_username','=','inflexion_inbox_rcpt')->where('inflexion_inbox_owner','=',$request->session()->get('info.userId'))->orderBy('inflexion_inbox_date','desc')->get();
+        $fetchMessage = $this->join('inflexion_users','inflexion_username','=','inflexion_inbox_rcpt')->join('inflexion_user_details','inflexion_detail_id','=','inflexion_inbox_owner')->where('inflexion_username','=',$request->session()->get('info.userName'))->orderBy('inflexion_inbox_date','desc')->get();
         return $fetchMessage;
     }
 
