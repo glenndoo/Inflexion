@@ -200,8 +200,8 @@
       </div>
       <div class="modal-footer">
         <!--a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>-->
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
+        <button type="button" class="btn btn-danger mr-auto" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="btn btn-primary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
       </div>
     </div>
   </div>
