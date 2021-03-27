@@ -22,14 +22,14 @@ class InflexionInboxModel extends Model
       'inflexion_inbox_read'
     ];
 
-
     public function fetchAllMessages($request){
         $fetchMessage = $this->join('inflexion_users','inflexion_username','=','inflexion_inbox_rcpt')->where('inflexion_inbox_owner','=',$request->session()->get('info.userId'))->orderBy('inflexion_inbox_date','desc')->get();
         return $fetchMessage;
     }
 
     public function sendMessage($request){
-        $checkUser = $this->join('inflexion_users','inflexion_user_id','=','inflexion_inbox_rcpt')->where('inflexion_username','=',$request->rcpt)->first();
+        $clientDetails = new InflexionUserModel;
+        $checkUser = $clientDetails->findUserEmail($request->rcpt);
         $status = 0;
         if($checkUser){
             $sendMsg = $this;

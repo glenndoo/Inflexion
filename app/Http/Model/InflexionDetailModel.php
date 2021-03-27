@@ -51,4 +51,5 @@ class InflexionDetailModel extends Model
             return false;
         }
     }
+    
 }
