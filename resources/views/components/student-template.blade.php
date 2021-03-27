@@ -17,10 +17,9 @@
 	    <a href="#" class="navbar-brand">
 	       <img class="" src="{{ asset('img/inflex_icon.png') }}" >
 	    </a>
-	    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+	    <button type="button" class="navbar-toggler float-right" data-toggle="collapse" data-target="#navbarCollapse">
 	        <span class="navbar-toggler-icon"></span>
 	    </button>
-
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
 	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
@@ -33,28 +32,24 @@
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
 					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
 				</a>
-	            
 	        </div>
 	        <div class="navbar-nav ml-auto">
-	        	
-	        	
 	            <div class="search ">
 	            	<input type="text" class="search-input" placeholder="Search..." name="">
-	            		<a href="#" class="search-icon">
-	            			<i class="fa fa-search"></i>
-	            		</a>
+            		<a href="#" class="search-icon">
+            			<i class="fa fa-search"></i>
+            		</a>
 	            </div>
 	        	<div class="btn-group">
 				  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				  	<a href="#" class="dropdown-button disabled" tabindex="-1"><img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}"></a>
 				  </button>
-				  <div class="dropdown-menu dropdown-menu-right">
-				    <button class="dropdown-item" type="button">User's Name</button>
-				    <button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
-				    <button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
-				    <!--button class="dropdown-item" type="button">Profile</button-->
-				    
-				  </div>
+				  	<div class="dropdown-menu dropdown-menu-right">
+				    	<button class="dropdown-item" type="button">User's Name</button>
+				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
+				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
+				   	 <!--button class="dropdown-item" type="button">Profile</button-->
+				  	</div>
 				</div>
 	        </div>
 	    </div>
@@ -189,7 +184,7 @@
 		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary mr-auto" data-dismiss="modal"><i class="fa fa-inbox" aria-hidden="true"></i>Inbox</button>
+        <a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
         <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
       </div>
