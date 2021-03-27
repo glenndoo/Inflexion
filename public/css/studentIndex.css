@@ -1120,3 +1120,8 @@ time.datebox {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
 }
+.group-members-card img {
+  border-radius: 50%;
+  width: 50px;
+  margin: .5rem;
+}

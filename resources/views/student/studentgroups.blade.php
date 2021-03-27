@@ -224,9 +224,9 @@
 
 					  	<!--your Groups "joined_group_1" start-->
 					  	<div class="tab-pane" id="joined_group_1" role="tabpanel">
-					  		<!--start post status to this group -->
 							<div class="row ">
 								<div class="col-sm-9">
+									<!--start post status to this group -->
 									<div class="group-card card shadow">
 								  		<div class="card-header">
 								  			<div class="row">
@@ -256,24 +256,11 @@
 											</form>
 								  		</div>
 									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="group-members-card card">
-								      	<div class="card-body">
-								        	<h5 class="card-title">MEMBERS</h5>
-								        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								        	<a href="#" class="btn btn-primary">Go somewhere</a>
-								      	</div>
-								    </div>
-								</div>
-							</div>
-							<!--end post status to this group -->
+									<!--end post status to this group -->
 
-							<br/>
+									<hr/>
 
-							<!--start post results in this group-->
-							<div class="row ">
-								<div class="col-sm-9">
+									<!--start post results in this group-->
 									<div class="social-feed-box shadow">
 								        <div class="pull-right social-action dropdown">
 								            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
@@ -357,18 +344,46 @@
 								            </div>
 								        </div>
 								    </div>
+									<!--end post results in this group-->
+								</div>
+								<div class="col-sm-3">
+									<!--start members area-->
+									<div class="group-members-card card shadow">
+								      	<div class="card-body">
+								        	<h5 class="card-title">MEMBERS</h5>
+								        	<p class="card-text">NEWEST</p>
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<hr/>
+
+								        	<p class="card-text">ALL</p>
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<a href="#">Load more...</a>
+								      	</div>
+								    </div>
+								    <!--start members area-->
 								</div>
 							</div>
-							<!--end post results in this group-->
 					  	</div>
 					  	<!--your Groups "joined_group_1" end-->
 
 
 					  	<!--your Groups "joined_group_2" Start-->
 					  	<div class="tab-pane" id="joined_group_2" role="tabpanel">
-					  		<!--start post status to this group -->
+					  		
 							<div class="row ">
 								<div class="col-sm-9">
+									<!--start post status to this group -->
 									<div class="group-card card shadow">
 								  		<div class="card-header">
 								  			<div class="row">
@@ -398,18 +413,42 @@
 											</form>
 								  		</div>
 									</div>
+									<!--end post status to this group -->
+									<hr/>
+									No post to show
 								</div>
 								<div class="col-sm-3">
-									MEMBER'S AREA COLUMN
+									<!--start members area-->
+									<div class="group-members-card card shadow">
+								      	<div class="card-body">
+								        	<h5 class="card-title">MEMBERS</h5>
+								        	<p class="card-text">NEWEST</p>
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<hr/>
+
+								        	<p class="card-text">ALL</p>
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        	<a href="#">Load more...</a>
+								      	</div>
+								    </div>
+								    <!--start members area-->
 								</div>
 							</div>
-							<!--end post status to this group -->
 							<br/>
-							<div class="row ">
-								<div class="col-sm-12">
-									No posts to show
-								</div>
-							</div>
+							
 					  	</div>
 					  	<!--your Groups "joined_group_2" End-->
 					</div>
