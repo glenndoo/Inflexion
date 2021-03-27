@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@index'
     ));
 
-    // Route::get('/completeprofile', array(
-    //     'as' => 'completeprofile',
-    //     'uses' => 'InflexionController@CompleteProfile'
-    // ));
-    
     Route::view('register','register');
 
     Route::view('login','login');
