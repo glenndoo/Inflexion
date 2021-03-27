@@ -14,6 +14,31 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+.btn-group .btn{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+a.bell-icon.dropdown-button{
+  font-size: 1.5rem;
+  color: grey;
+
+}
+a.bell-icon.dropdown-button{
+  font-size: 2rem;
+}
+ul.Notification-ul{
+  list-style-type: none;
+}
+ul.Notification-ul div.dropdown-item{
+  padding: 0px;
+  margin: 0px;
+  
+}
+.dropdown-menu.dropdown-menu-left{
+  width: 20rem;
+  background-color: #f1dfd1;
+  background-image: linear-gradient(315deg, #f1dfd1 0%, #f6f0ea 74%);
+}
 .navbar-custom {
   background: #6190E8;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #A7BFE8, #6190E8);  /* Chrome 10-25, Safari 5.1-6 */

@@ -23,8 +23,8 @@
 				<div class="row">
 				    <div class="col-sm-12">
 				      	<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
-					        <li class="nav-item  group-tabs">
-					            <a class="nav-link active group-tabs" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
+					        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel allYourGroupFeed-->
+					            <a class="nav-link active group-tabs" data-toggle="tab" href="#allYourGroupFeed" role="tab" aria-controls="allYourGroupFeed">Your Feed</a>
 					        </li>
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
@@ -38,24 +38,32 @@
 								</div>
 							</div>
 							<br/>
-					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
-					            <a class="nav-link group-tabs" data-toggle="tab" href="#yourGroups" role="tab" aria-controls="yourGroups">Discover</a>
+							<!-- for each start here for joined groups-->
+					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
 					        </li>
+
+					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_2 (start at line 318)-->
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_2" role="tab" aria-controls="yourGroups">ESL Master Chefs</a>
+					        </li>
+
+					        <!-- for each start here for joined groups-->
 					    </ul>
 					</div>
 				</div>
 
 				
 			</div>
+
 			<div class="col-sm-6">
 
 				<br/>
-				<h6>RECENT ACTIVITY</h6>
 				<div class="panel panel-default">
 					<!--tab content start-->
-					<div class="tab-content"> 
-					  	<div class="tab-pane active" id="yourFeed" role="tabpanel">
-						  	<!--all group posts start--> 
+					<div class="tab-content">
+						<!--all group posts start--> 
+					  	<div class="tab-pane active" id="allYourGroupFeed" role="tabpanel">
+							<h6>RECENT ACTIVITY</h6>
 					    	<div class="row">
 								<div class="col-sm-12">
 									<div class="social-feed-box shadow">
@@ -145,43 +153,243 @@
 								    </div>
 								</div>
 							</div>
-							<!--all group posts end-->
+							
 					  	</div>
+					  	<!--all group posts end-->
+					  	<br/>
 
+					  	<!--Discover Starts-->
 					  	<div class="tab-pane" id="discover" role="tabpanel">
-					  		<div class="group-card card shadow">
-						  		<h5 class="card-header">Tutor Name</h5>
-						  		<div class="card-body">
-						    		<h5 class="card-title">Group Name</h5>
-						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    		<a href="#" class="btn btn-primary">Join Group</a>
-						  		</div>
+					  		<!--start results for groups not joined -->
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>Tasty Recipes</h5>By John Doe
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-primary">Join Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		Watch, Cook, Share: Recipes and How-To’s for Real Life
+								  		</div>
+									</div>
+								</div>
 							</div>
 
 							<hr/>
-
-					  		<div class="group-card card shadow">
-						  		<h5 class="card-header">Tutor Name</h5>
-						  		<div class="card-body">
-						    		<h5 class="card-title">Group Name</h5>
-						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    		<a href="#" class="btn btn-primary">Join Group</a>
-						  		</div>
+							
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>Photographers & Travel Nomads</h5>By Paul Smith
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-primary">Join Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		Need travel inspiration? Some of the best travel photographers share their favourite pictures and the stories behind them in this group. This is the perfect place to discover new travel photographers as they capture beautiful images of people, landscapes, and animals around the world. They will provide you a little snapshot into their lives. 
+								  		</div>
+									</div>
+								</div>
 							</div>
-					  	</div>
-
-					  	<div class="tab-pane" id="yourGroups" role="tabpanel">
-					  		<div class="group-card card shadow">
-						  		<h5 class="card-header">Tutor Name</h5>
-						  		<div class="card-body">
-						    		<h5 class="card-title">Group Name</h5>
-						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-						    		<a href="#" class="btn btn-primary">Join Group</a>
-						  		</div>
-							</div>
+							<!--end results for groups not joined -->
 
 							<hr/>
 					  	</div>
+					  	<!--Discover end-->
+
+					  	<!--your Groups "joined_group_1" start-->
+					  	<div class="tab-pane" id="joined_group_1" role="tabpanel">
+					  		<!--start post status to this group -->
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>English for Begginers</h5>By Glen Dumaguing
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-success">Leave Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		<form action="" method="post">
+								        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea>
+
+								        		<br/>
+
+								        		<div class="mar-top clearfix">
+								        			<input class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
+								        			<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
+								        			<a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#" data-original-title="Add Photo" data-toggle="tooltip"></a>
+								        			<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
+								        		</div>
+											</form>
+								  		</div>
+									</div>
+								</div>
+							</div>
+							<!--end post status to this group -->
+							<hr/>
+							<!--start post results in this group-->
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="social-feed-box shadow">
+								        <div class="pull-right social-action dropdown">
+								            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
+								                <i class="fa fa-angle-down"></i>
+								            </button>
+								            <ul class="dropdown-menu m-t-xs">
+								                <li><a class="postUser" href="#">Delete</a></li>
+								                <li><a class="postUser" href="#">Edit</a></li>
+								            </ul>
+								        </div>
+								        <div class="social-avatar">
+								            <a href="" class="pull-left">
+								                <img alt="image" src="https://tinyurl.com/376azf5j">
+								            </a>
+								            <div class="media-body">
+								                <a href="#">Glenn Dumaguing</a>
+								            </div>
+								        </div>
+								        <div class="social-body">
+								            <p>
+								                lorem ipsum
+								            </p>
+								            <div class="row post-status">
+								           		<div class="btn-group">
+								            		<div class="col-sm-12">
+								            			<a href="#"><i class="fa fa-thumbs-up">person likes this</i></a>
+														<a href=""><i class="fa fa-thumbs-up">people like this</i></a>
+								            		</div>
+								            	</div>
+								            </div>
+								            <div class="row post-react">
+								            	<div class="btn-group">
+								            		<div class="col-sm-12">
+								            			<a href='#' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like</a>
+										                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
+										                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+													</div>
+								            	</div>
+								            </div>
+								        </div>
+
+								        <div class="social-footer">
+								        	<!-- this comment-->
+								            <div class="social-comment">
+								                <div class="pull-right social-action dropdown">
+										            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
+										                <i class="fa fa-angle-down"></i>
+										            </button>
+										            <ul class="dropdown-menu m-t-xs">
+										                <li><a class="postUser" href="">Delete</a></li>
+										                <li><a class="postUser" href="#">Edit</a></li>
+										            </ul>
+										        </div>
+								                <a href="" class="pull-left">
+								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+								                </a>
+								                <div class="media-body">
+								                    <a href="#">
+								                        Glenn Dumaguing
+								                    </a>
+								                    Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.
+								                    <br>
+								                    <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
+								                    <small class="text-muted">12.06.2014</small>
+								                </div>
+								            </div>
+
+								            <!-- this write comment part-->
+								            <div class="row social-comment">
+								            	<div class="col-sm-1">
+								            		<a href="" class="pull-left">
+								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+									                </a>
+								            	</div>
+								            	<div class="col-sm-11">
+								            		
+									                <div class="media-body">
+									                     <textarea class="form-control" placeholder="Write comment..."></textarea>
+									                </div>
+									            </div>
+								            </div>
+								        </div>
+								    </div>
+								</div>
+							</div>
+							<!--end post results in this group-->
+					  	</div>
+					  	<!--your Groups "joined_group_1" end-->
+
+
+					  	<!--your Groups "joined_group_2" Start-->
+					  	<div class="tab-pane" id="joined_group_2" role="tabpanel">
+					  		<!--start post status to this group -->
+							<div class="row ">
+								<div class="col-sm-12">
+									<div class="group-card card shadow">
+								  		<div class="card-header">
+								  			<div class="row">
+								  				<div class="col-sm-6">
+								  					<h5>ESL Master Chefs</h5>By Mark Robles
+								  				</div>
+								  				<div class="col-sm-3">
+								  					
+								  				</div>
+								  				<div class="col-sm-3 text-right">
+								  					<a href="#" class="btn btn-success">Leave Group</a>
+								  				</div>
+								  			</div>
+								  		</div>
+								  		<div class="card-body">
+								    		<form action="" method="post">
+								        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea>
+
+								        		<br/>
+
+								        		<div class="mar-top clearfix">
+								        			<input class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
+								        			<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
+								        			<a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#" data-original-title="Add Photo" data-toggle="tooltip"></a>
+								        			<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
+								        		</div>
+											</form>
+								  		</div>
+									</div>
+								</div>
+							</div>
+							<!--end post status to this group -->
+							<hr/>
+							<div class="row ">
+								<div class="col-sm-12">
+									No posts to show
+								</div>
+							</div>
+					  	</div>
+					  	<!--your Groups "joined_group_2" End-->
 					</div>
 					<!--tab content end-->
 				    <div class="">

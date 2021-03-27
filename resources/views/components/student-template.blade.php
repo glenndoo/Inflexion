@@ -35,17 +35,58 @@
 				</a>
 	        </div>
 	        <div class="navbar-nav ml-auto">
+	        	<div class="btn-group">
+				  	<div class="dropdown-menu dropdown-menu-left shadow">
+				    	<ul class="Notification-ul">
+				    		<!--should only show 3 latest-->
+				    		<li>
+				    			<div class="dropdown-item">
+				    				<div class="col-sm-12 ">
+				    					<a>Class Canceled<small class="float-right"><i>9:00am 30/3/21</i></small></a>
+				    				</div>
+				    			</div>
+				    		</li>
+				    		<li>
+				    			<div class="dropdown-item">
+				    				<div class="col-sm-12 ">
+				    					<a>Class Booked<small class="float-right"><i>9:00am 30/3/21</i></small></a>
+				    				</div>
+				    			</div>
+				    		</li>
+				    		<li>
+				    			<div class="dropdown-item">
+				    				<div class="col-sm-12 ">
+				    					<a>You Missed a class<small class="float-right"><i>9:00am 30/3/21</i></small></a>
+				    				</div>
+				    			</div>
+				    		</li>
+
+				    		<!--see more link for modal-->
+				    		<li>
+				    			<div class="dropdown-item">
+				    				<div class="col-sm-12 text-center">
+				    					<a href=""><i>see more</i></a>
+				    				</div>
+				    			</div>
+				    		</li>
+				    	</ul>
+				   	 <!--button class="dropdown-item" type="button">Profile</button-->
+				  	</div>
+				</div>
 	            <div class="search ">
 	            	<input type="text" class="search-input" placeholder="Search..." name="">
             		<a href="#" class="search-icon">
             			<i class="fa fa-search"></i>
             		</a>
 	            </div>
+	            <button type="button" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Notifications">
+				  	<a href="#" class="bell-icon dropdown-button disabled" tabindex="-1"><i class="fa fa-bell" aria-hidden="true"></i></a>
+				  </button>
 	        	<div class="btn-group">
 				  <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				  	<a href="#" class="dropdown-button disabled" tabindex="-1"><img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}"></a>
 				  </button>
-				  	<div class="dropdown-menu dropdown-menu-right">
+				  	<div class="dropdown-menu dropdown-menu-right shadow">
 				    	<button class="dropdown-item" type="button">User's Name</button>
 				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
 				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
