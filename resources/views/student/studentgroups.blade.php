@@ -23,11 +23,11 @@
 				<div class="row">
 				    <div class="col-sm-12">
 				      	<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
-					        <li class="nav-item">
-					            <a class="nav-link active" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
+					        <li class="nav-item  group-tabs">
+					            <a class="nav-link active group-tabs" data-toggle="tab" href="#yourFeed" role="tab" aria-controls="yourFeed">Your Feed</a>
 					        </li>
-					        <li class="nav-item"><!-- connected to tab-pane tabpanel discover-->
-					            <a class="nav-link" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
+					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
 					        </li>
 					        </li>
 					    </ul>
