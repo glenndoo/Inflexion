@@ -88,7 +88,7 @@ Route::group(['middleware' => 'Student'], function(){
     Route::get('/student/settings', function () { //added for testing maiko
         return view('student/studentsettings');
     });
-    Route::get('/student/grofile', function () { //added for testing maiko
+    Route::get('/student/profile', function () { //added for testing maiko
         return view('student/studentProfile');
     });
     Route::get('/student/groups', function () { //added for testing maiko
