@@ -42,93 +42,180 @@
 						<div class="row">
 							<!-- BEGIN INBOX MENU -->
 							<div class="col-md-3">
-								<h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
+								<h2 class="grid-title"><i class="fa fa-inbox"></i> Mail</h2>
 								<a class="btn btn-block btn-primary" data-toggle="modal" data-target="#modalCompose"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
 
 								<hr>
 
-								<div>
-									<div class="nav nav-pills nav-stacked">
-										<div class="row">
-											<div class="col-sm-12 header">Folders</div>
-											<div class="col-sm-12 active"><a href="#"><i class="fa fa-inbox"></i> Inbox {{ count($Messages) }}</a></div>
-											<div class="col-sm-12"><a href="#"><i class="fa fa-mail-forward"></i> Sent</a></div>
+
+								<div class="nav nav-tabs nav-stacked" id="myTab" role="tablist">
+									<div class="row">
+										<!--div class="col-sm-12 header">Folders</div-->
+										<div class="col-sm-12">
+											<a class="nav-link group-tabs" data-toggle="tab" href="#inboxMessages" role="tab" aria-controls="inboxMessages">
+												
+											</a>
+										</div>
+
+										<div class="col-sm-12">
+											<a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
+												
+											</a>
 										</div>
 									</div>
 								</div>
+								<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
+							        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel allYourGroupFeed-->
+							            <a class="nav-link active group-tabs" data-toggle="tab" href="#inboxMessages" role="tab" aria-controls="inboxMessages">
+								            <i class="fa fa-inbox"></i>
+								            Inbox <span class="badge badge-light"> {{ count($Messages) }}</span>
+								        </a>
+							        </li>
+							        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
+							            <a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
+								            <i class="fa fa-mail-forward"></i> Sent
+								        </a>
+							        </li>
+							        <!-- for each start here for joined groups-->
+							    </ul>
 							</div>
 							<!-- END INBOX MENU -->
 							
-							<!-- BEGIN INBOX CONTENT -->
+							
 							<div class="col-md-9">
-								<div class="row">
-									<div class="col-sm-6">
-										<label style="margin-right: 8px;" class="">
-											<div class="icheckbox_square-blue" style="position: relative;"><input type="checkbox" id="check-all" class="icheck" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
-										</label>
-										<div class="btn-group">
-											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-												Action <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">Mark as read</a></li>
-												<li><a href="#">Mark as unread</a></li>
-												<li><a href="#">Mark as important</a></li>
-												<li class="divider"></li>
-												<li><a href="#">Report spam</a></li>
-												<li><a href="#">Delete</a></li>
-											</ul>
+								<div class="tab-content">
+									<!-- BEGIN INBOX CONTENT TAB PANEL -->
+							  		<div class="tab-pane active" id="inboxMessages" role="tabpanel">
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="btn-group">
+													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+														Action <span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" role="menu">
+														<li><a href="#">Mark as read</a></li>
+														<li><a href="#">Mark as unread</a></li>
+														<li><a href="#">Mark as important</a></li>
+														<li class="divider"></li>
+														<li><a href="#">Report spam</a></li>
+														<li><a href="#">Delete</a></li>
+													</ul>
+												</div>
+											</div>
+
+											<div class="col-md-6 search-form">
+												<form action="#" class="text-right">
+													<div class="input-group">
+														<input type="text" class="form-control input-sm" placeholder="Search inbox...">
+
+														<span class="input-group-btn">
+				                                            <button type="submit" name="searchInbox" class="btn btn-primary form-control">
+				                                            	<i class="fa fa-search"></i>
+				                                            </button>
+				                                        </span>
+													</div>			 
+												</form>
+											</div>
 										</div>
+								
+										<div class="padding"></div>
+								
+										<div class="table-responsive">
+											<table class="table">
+												<tbody>
+												@if(count($Messages) > 0)
+													@foreach($Messages as $msgs)
+													<tr>
+														<td class="action"><input type="checkbox" /></td>
+														<td class="action"><i class="fa fa-star-o"></i></td>
+														<td class="action"><i class="fa fa-bookmark-o"></i></td>
+														<td class="name"><a href="#">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</a></td>
+														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
+															<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
+														</td>
+														<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
+													</tr>
+													@endforeach
+												@else
+												No messages to show
+												@endif
+												</tbody>
+											</table>
+										</div>
+										<ul class="pagination">
+											<li class="disabled"><a href="#">«</a></li>
+											<li class=""><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#">5</a></li>
+											<li><a href="#">»</a></li>
+										</ul>
 									</div>
+									<!-- END INBOX CONTENT  TAB PANEL-->
 
-									<div class="col-md-6 search-form">
-										<form action="#" class="text-right">
-											<div class="input-group">
-												<input type="text" class="form-control input-sm" placeholder="Search inbox...">
+									<!-- BEGIN SENT CONTENT TAB PANEL -->
+							  		<div class="tab-pane" id="sentMessages" role="tabpanel">
+										<div class="row">
+											<div class="col-sm-6">
+												<div class="btn-group">
+													<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+														Action <span class="caret"></span>
+													</button>
+													<ul class="dropdown-menu" role="menu">
+														<li><a href="#">Mark as read</a></li>
+														<li><a href="#">Mark as unread</a></li>
+														<li><a href="#">Mark as important</a></li>
+														<li class="divider"></li>
+														<li><a href="#">Report spam</a></li>
+														<li><a href="#">Delete</a></li>
+													</ul>
+												</div>
+											</div>
 
-												<span class="input-group-btn">
-		                                            <button type="submit" name="searchInbox" class="btn btn-primary form-control"><i class="fa fa-search"></i></button></span>
-											</div>			 
-										</form>
+											<div class="col-md-6 search-form">
+												<!--form action="#" class="text-right">
+													<div class="input-group">
+														<input type="text" class="form-control input-sm" placeholder="Search sent...">
+
+														<span class="input-group-btn">
+				                                            <button type="submit" name="searchInbox" class="btn btn-primary form-control"><i class="fa fa-search"></i></button></span>
+													</div>			 
+												</form-->
+											</div>
+										</div>
+								
+										<div class="padding"></div>
+								
+										<div class="table-responsive">
+											<table class="table">
+												<tbody>
+													<tr>
+														<td class="action"><input type="checkbox" /></td>
+														<td class="action"><i class="fa fa-star-o"></i></td>
+														<td class="action"><i class="fa fa-bookmark-o"></i></td>
+														<td class="name"><a href="#">FIRTS NAME LAST NAME</a></td>
+														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
+															<a href="#">SUBJECT</a>
+														</td>
+														<td class="time">2021-03-27 15:38:06</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<ul class="pagination">
+											<li class="disabled"><a href="#">«</a></li>
+											<li class="active"><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li><a href="#">4</a></li>
+											<li><a href="#">5</a></li>
+											<li><a href="#">»</a></li>
+										</ul>
 									</div>
-								</div>
-								
-								<div class="padding"></div>
-								
-								<div class="table-responsive">
-									<table class="table">
-										<tbody>
-										@if(count($Messages) > 0)
-											@foreach($Messages as $msgs)
-											<tr>
-												<td class="action"><input type="checkbox" /></td>
-												<td class="action"><i class="fa fa-star-o"></i></td>
-												<td class="action"><i class="fa fa-bookmark-o"></i></td>
-												<td class="name"><a href="#">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</a></td>
-												<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-													<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
-												</td>
-												<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
-											</tr>
-											@endforeach
-										@else
-										No messages to show
-										@endif
-										</tbody>
-									</table>
-								</div>
-								
-								<ul class="pagination">
-									<li class="disabled"><a href="#">«</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">»</a></li>
-								</ul>						
+									<!-- END SENT CONTENT  TAB PANEL-->
+								</div>					
 							</div>
-							<!-- END INBOX CONTENT -->
 						</div>
 					</div>
 				</div>

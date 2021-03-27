@@ -133,9 +133,9 @@
 	        </li>
 	        <li class="has-subnav">
 	            <a href="{{ route('ShowInbox') }}">
-	               <i class="fa fa-inbox icon-side fa-size"></i>
+	               <i class="fa fa-envelope icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Inbox
+	                    Mail
 	                </span>
 	            </a>
 	           
