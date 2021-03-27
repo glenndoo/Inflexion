@@ -85,16 +85,16 @@ Route::group(['middleware' => 'Student'], function(){
         'as' => 'studentIndex',
         'uses' => 'StudentController@studentIndex'
     ));
-    Route::get('/student/settings', function () { //added for testing maiko
-        return view('student/studentsettings');
+    Route::get('/studentSettings', function () { //added for testing maiko
+        return view('student.studentsettings');
     });
-    Route::get('/student/grofile', function () { //added for testing maiko
-        return view('student/studentProfile');
+    Route::get('/studentProfile', function () { //added for testing maiko
+        return view('student.studentProfile');
     });
-    Route::get('/student/groups', function () { //added for testing maiko
-        return view('student/studentgroups');
+    Route::get('/studentgroups', function () { //added for testing maiko
+        return view('student.studentgroups');
     });
     Route::get('/student/inbox', function () { //added for testing maiko
-        return view('student/studentinbox');
+        return view('student.studentinbox');
     });
 });
