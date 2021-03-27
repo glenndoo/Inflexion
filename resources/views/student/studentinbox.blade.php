@@ -9,7 +9,7 @@
 				<br/>
 			</div>
 		</div>
-		<!--start post to feed -->
+		<!--start SUCCESS ERROR MESSAGE -->
 		<div class="row">
 			<div class="col-sm-12">
 				@if(isset($Success))
@@ -28,14 +28,14 @@
 	                  </button>
 	                </div>
 	            @endif
-				<h6>student>studentinbox Note: top email (justnow) message has modal</h6>
+				<h6>student>studentinbox Note: top email has modal</h6>
 			</div>
 		</div>
-		<!--post to feed end-->
+		<!--END SUCCESS ERROR MESSAGE -->
 
-		<!--student groups start-->
+
+		<!-- BEGIN MAIL -->
 		<div class="row">
-			<!-- BEGIN INBOX -->
 			<div class="col-md-12">
 				<div class="grid email shadow">
 					<div class="grid-body">
@@ -48,30 +48,15 @@
 								<hr>
 
 
-								<div class="nav nav-tabs nav-stacked" id="myTab" role="tablist">
-									<div class="row">
-										<!--div class="col-sm-12 header">Folders</div-->
-										<div class="col-sm-12">
-											<a class="nav-link group-tabs" data-toggle="tab" href="#inboxMessages" role="tab" aria-controls="inboxMessages">
-												
-											</a>
-										</div>
-
-										<div class="col-sm-12">
-											<a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
-												
-											</a>
-										</div>
-									</div>
-								</div>
+								<!-- START MAIL SIDE MENU -->
 								<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
-							        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel allYourGroupFeed-->
+							        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel inboxMessages-->
 							            <a class="nav-link active group-tabs" data-toggle="tab" href="#inboxMessages" role="tab" aria-controls="inboxMessages">
 								            <i class="fa fa-inbox"></i>
 								            Inbox <span class="badge badge-light"> {{ count($Messages) }}</span>
 								        </a>
 							        </li>
-							        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
+							        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel sentMessages-->
 							            <a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
 								            <i class="fa fa-mail-forward"></i> Sent
 								        </a>
@@ -79,9 +64,9 @@
 							        <!-- for each start here for joined groups-->
 							    </ul>
 							</div>
-							<!-- END INBOX MENU -->
+							<!-- END MAIL SIDE MENU -->
 							
-							
+							<!-- START TAB CONTENT CONTAINING PANELS LINK TO TAB-->
 							<div class="col-md-9">
 								<div class="tab-content">
 									<!-- BEGIN INBOX CONTENT TAB PANEL -->
@@ -216,13 +201,13 @@
 									<!-- END SENT CONTENT  TAB PANEL-->
 								</div>					
 							</div>
+							<!-- END TAB CONTENT CONTAINING PANELS LINK TO TAB-->
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- END INBOX -->
 		</div>
-		<!--end settings-->
+		<!-- END MAIL -->
 	</div>
 </div>
 
