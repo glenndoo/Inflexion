@@ -12,6 +12,22 @@
 		<!--start post to feed -->
 		<div class="row">
 			<div class="col-sm-12">
+				@if(isset($Success))
+	                <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
+	                  <strong>{{ $Success}}</strong><br/>
+	                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                  </button>
+	                </div>
+	            @endif
+				@if(isset($Errors))
+	                <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
+	                  <strong>{{ $Errors}}</strong><br/>
+	                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	                    <span aria-hidden="true">&times;</span>
+	                  </button>
+	                </div>
+	            @endif
 				<h6>student>studentinbox Note: top email (justnow) message has modal</h6>
 			</div>
 		</div>
