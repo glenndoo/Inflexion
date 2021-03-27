@@ -1,4 +1,4 @@
-<x-template data='welcome' />
+<x-template data='Welcome' />
     <div class="container fade-load">
         <div class="row">
             @if(isset($Success))

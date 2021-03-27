@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', array(
+        'as' => '/',
+        'uses' => 'InflexionController@index'
+    ));
 
-    
+    // Route::get('/completeprofile', array(
+    //     'as' => 'completeprofile',
+    //     'uses' => 'InflexionController@CompleteProfile'
+    // ));
     
     Route::view('register','register');
 
