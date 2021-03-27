@@ -218,12 +218,14 @@ class InflexionController extends Controller
     //SEND MESSAGE FUNCTION
     public function SendMessageInbox(Request $request){
         $sendMessage = $this->InflexionInboxModel->sendMessage($request);
+        $messages = $this->InflexionInboxModel->fetchAllMessages($request);
+        // dd($messages);
         if($sendMessage == 0){
-            return redirect()->back()->with('Success', 'Sent message successfully!');
+            return view('student.studentinbox')->with('Messages', $messages)->with('Success', 'Sent message successfully!');
         }else if($sendMessage == 1){
-            return redirect()->back()->with('Errors', 'Failed to send message');
+            return view('student.studentinbox')->with('Messages', $messages)->with('Errors', 'Failed to send message');
         }else{
-            return redirect()->back()->with('Errors', 'Receipient not found');
+            return view('student.studentinbox')->with('Messages', $messages)->with('Errors', 'Receipient not found');
         }
     }
 
