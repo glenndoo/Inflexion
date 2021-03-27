@@ -27,7 +27,7 @@
 							<!-- BEGIN INBOX MENU -->
 							<div class="col-md-3">
 								<h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>
-								<a class="btn btn-block btn-primary" data-toggle="modal" data-target="#modalMail"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
+								<a class="btn btn-block btn-primary" data-toggle="modal" data-target="#modalCompose"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
 
 								<hr>
 
@@ -240,6 +240,46 @@
         <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</button>
         <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modalCompose -->
+<div class="modal fade" id="modalCompose" tabindex="-1" role="dialog" aria-labelledby="modalCompose" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Compose Mail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  	 	<div class="form-group row">
+		    <label for="staticEmail" class="col-sm-2 col-form-label">To:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="recievers name">
+		    </div>
+	  	</div>
+  	 	<div class="form-group row">
+		    <label for="staticEmail" class="col-sm-2 col-form-label">Subject:</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="e.g last lesson">
+		    </div>
+	  	</div>
+
+	  	<hr/>
+
+        <div class="form-group">
+		  <label for="comment">Message:</label>
+		  <textarea class="form-control" rows="5" id="comment"></textarea>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <!--a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>-->
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
       </div>
     </div>
   </div>

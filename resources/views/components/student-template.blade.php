@@ -73,7 +73,7 @@
 	          
 	        </li>
 	        <li class="has-subnav">
-	            <a href="/studentGroups">
+	            <a href="/student/groups">
 	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Groups
@@ -91,7 +91,7 @@
 	            
 	        </li>
 	        <li class="has-subnav">
-	            <a href="#">
+	            <a href="/student/inbox">
 	               <i class="fa fa-inbox icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Inbox
@@ -152,46 +152,6 @@
 	        </li>  
 	    </ul>
 	</nav>
-
-<!-- modalMail -->
-<div class="modal fade" id="modalMail" tabindex="-1" role="dialog" aria-labelledby="modalMail" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Compose Mail</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  	 	<div class="form-group row">
-		    <label for="staticEmail" class="col-sm-2 col-form-label">To:</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="recievers name">
-		    </div>
-	  	</div>
-  	 	<div class="form-group row">
-		    <label for="staticEmail" class="col-sm-2 col-form-label">Subject:</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="e.g last lesson">
-		    </div>
-	  	</div>
-
-	  	<hr/>
-
-        <div class="form-group">
-		  <label for="comment">Message:</label>
-		  <textarea class="form-control" rows="5" id="comment"></textarea>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <!--a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>-->
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- modalCredits -->
 <div class="modal fade" id="modalCredits" tabindex="-1" role="dialog" aria-labelledby="modalCredits" aria-hidden="true">
