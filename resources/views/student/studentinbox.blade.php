@@ -90,7 +90,7 @@
 												<td class="action"><i class="fa fa-bookmark-o"></i></td>
 												<td class="name"><a href="#">{{ $msgs->inflexion_inbox_sender }}</a></td>
 												<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-													<a href="#">{{ $msgs->inflexion_inbox_message }}</a>
+													<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
 												</td>
 												<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
 											</tr>
@@ -168,6 +168,8 @@
 </div>
 
 <!-- modalCompose -->
+<form action="{{ route('SendMessageInbox') }}" method="post">
+@csrf
 <div class="modal fade" id="modalCompose" tabindex="-1" role="dialog" aria-labelledby="modalCompose" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -181,13 +183,13 @@
   	 	<div class="form-group row">
 		    <label for="staticEmail" class="col-sm-2 col-form-label">To:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="recievers name">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="Receipient Email" name='rcpt'>
 		    </div>
 	  	</div>
   	 	<div class="form-group row">
 		    <label for="staticEmail" class="col-sm-2 col-form-label">Subject:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="e.g last lesson">
+		      <input type="text" class="form-control" id="staticEmail" value="" placeholder="e.g last lesson" name='subject'>
 		    </div>
 	  	</div>
 
@@ -195,14 +197,15 @@
 
         <div class="form-group">
 		  <label for="comment">Message:</label>
-		  <textarea class="form-control" rows="5" id="comment"></textarea>
+		  <textarea class="form-control" rows="5" id="comment" name='message'></textarea>
 		</div>
       </div>
       <div class="modal-footer">
         <!--a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>-->
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
-        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
+        <input type="submit" class="btn btn-secondary"><Send</button>
       </div>
     </div>
   </div>
 </div>
+</form>

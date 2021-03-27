@@ -83,4 +83,15 @@ class InflexionUserModel extends Model
         }
     }
 
+
+    public function findUserEmail($request){
+        $find = $this->where('inflexion_username','=',$request)->first();
+
+        if($find){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

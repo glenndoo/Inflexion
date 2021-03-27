@@ -96,4 +96,8 @@ Route::group(['middleware' => 'Student'], function(){
         'as' => 'ShowInbox',
         'uses' => 'InflexionController@ShowInbox'
     ));
+    Route::post('/SendMessageInbox', array(
+        'as' => 'SendMessageInbox',
+        'uses' => 'InflexionController@SendMessageInbox'
+    ));
 });
