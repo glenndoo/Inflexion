@@ -29,18 +29,23 @@
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#discover" role="tab" aria-controls="discover">Discover</a>
 					        </li>
+
+					        <hr/>
+
+							<div class="row">
+							    <div class="col-sm-12">
+							      	<strong>Your groups</strong>
+								</div>
+							</div>
+							<br/>
+					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel discover-->
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#yourGroups" role="tab" aria-controls="yourGroups">Discover</a>
 					        </li>
 					    </ul>
 					</div>
 				</div>
 
-				<hr/>
-
-				<div class="row">
-				    <div class="col-sm-12">
-				      	<strong>Your groups</strong>
-					</div>
-				</div>
+				
 			</div>
 			<div class="col-sm-6">
 
@@ -142,6 +147,7 @@
 							</div>
 							<!--all group posts end-->
 					  	</div>
+
 					  	<div class="tab-pane" id="discover" role="tabpanel">
 					  		<div class="group-card card shadow">
 						  		<h5 class="card-header">Tutor Name</h5>
@@ -162,6 +168,19 @@
 						    		<a href="#" class="btn btn-primary">Join Group</a>
 						  		</div>
 							</div>
+					  	</div>
+
+					  	<div class="tab-pane" id="yourGroups" role="tabpanel">
+					  		<div class="group-card card shadow">
+						  		<h5 class="card-header">Tutor Name</h5>
+						  		<div class="card-body">
+						    		<h5 class="card-title">Group Name</h5>
+						    		<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						    		<a href="#" class="btn btn-primary">Join Group</a>
+						  		</div>
+							</div>
+
+							<hr/>
 					  	</div>
 					</div>
 					<!--tab content end-->

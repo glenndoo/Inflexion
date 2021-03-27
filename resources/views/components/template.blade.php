@@ -41,6 +41,7 @@
     {{ $err }}
     @endforeach
 @endif
+
 <!-- login Modal -->
 <div class="splashModal modal fade" id="logInTeacherModal" tabindex="-1" role="dialog" aria-labelledby="logInTeacherModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -57,9 +58,9 @@
                     <!-- Login Form -->
                     <form action="{{ route('LoginUser') }}" method="post">
                     @csrf
-                        <input type='text' name='username' placeholder="enter email e.g example@gmail.com " required/><br />
-                        <input type='password' name='password' placeholder ="password" required/><br />
-                        <input type='submit' value='Login' />
+                        <input class="form-control" type='text' name='username' placeholder="enter email e.g example@gmail.com " required/><br />
+                        <input class="form-control" type='password' name='password' placeholder ="password" required/><br />
+                        <button class="btn btn-primary" type='submit' value='Login'>Login</button>
                     </form>
 
                     <!-- Remind Passowrd -->
@@ -86,53 +87,43 @@
             </div>
             <div class="modal-body">
                 <div class="wrapper fadeInDown">
-                  <div id="formContent">
-                    <!-- Login Form -->
-                    <form action="{{ route('ValidateRegistry') }}" method="post" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
-                        @csrf
-                            <div class="form-group row">
-                                <div class="col-sm">
-                                    <input type='email' name='username' placeholder="email address" required /><br />
+                    <div id="formContent">
+                        <!-- Login Form -->
+                        <form action="{{ route('ValidateRegistry') }}" method="post" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
+                            @csrf
+                                <div class="form-group row">
+                                    <div class="col-sm">
+                                        <input class="form-control" type='email' name='username' placeholder="email address" required /><br />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm">
-                                    <input type='password' name='password' placeholder="password" required/><br />
+                                <div class="form-group row">
+                                    <div class="col-sm">
+                                        <input class="form-control" type='password' name='password' placeholder="password" required/><br />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm">
-                                    <input type='password' name='confirmPassword' placeholder="confirm password" required/><br />
+                                <div class="form-group row">
+                                    <div class="col-sm">
+                                        <input class="form-control" type='password' name='confirmPassword' placeholder="confirm password" required/><br />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-12 align-middle">
-                                    <select class="" name='type' required>
-                                        <option value="" disabled selected>are you student or teacher?</option>
-                                        <option value='1' >Student</option>
-                                        <option value='2'>Tutor</option>
-                                    </select>
+                                <div class="form-group row">
+                                    <div class="col-sm-8 align-middle">
+                                        <select class="form-control" name='type' required>
+                                            <option value="" disabled selected>are you student or teacher?</option>
+                                            <option value='1' >Student</option>
+                                            <option value='2'>Tutor</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="btn btn-primary form-control" type='submit' value='Register'>Register</button> 
+                                    </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    
-                                <input type='submit' value='Register' />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                
-                            </div>
-
-                    </form>
-                  </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript">
-	$('.navbar-collapse a').click(function(){
-    $(".navbar-collapse").collapse('hide');
-});
-</script>
 </html>

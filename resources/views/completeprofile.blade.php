@@ -9,8 +9,9 @@
         <br/>
     </div>
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
             <center>
                 <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
                     @csrf
@@ -22,6 +23,7 @@
                         </div>
                     </div>
                     
+                    <hr/>
 
                     <div class="form-group row">
                         <div class="col-sm">
@@ -40,17 +42,47 @@
                             <input class="form-control" type="text" name='lastName'  placeholder='Last Name'required/>
                         </div>
                     </div>
-
+                    <hr/>
                     <div class="form-group row">
-                        <div class="col-sm">
-                            <select name='country'>
-                            <option>Select Country</option>
-                            @foreach($Countries as $country)
+                        <div class="col-sm-3">
+                            <select class="form-control" name='country' required>
+                                <option selected disabled>Country</option>
+                                @foreach($Countries as $country)
                                 <option value='{{ $country }}'>{{ $country }}</option>
-                            @endforeach
+                                @endforeach
                             </select>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <select class="form-control" name="state" required>
+                                    <option selected disabled>State</option>    
+                                    <option>1</option>
+                                    <option>2</option>
+                                </select>
+                              </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name='city'  placeholder='City'required/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name='zipCode'  placeholder='Zip Code'required/>
+                            </div>
+                        </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-sm-3">
+                            
+                        </div>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" name='street'  placeholder='street'required/>
+                        </div>
+                    </div>
+
+                    <hr/>
+
                     <div class="form-group row">
                         <div class="col-sm">
                             <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
@@ -66,7 +98,7 @@
                     <div class="form-group row">
                         
                     </div>
-                    <input class="btn btn-submit" type="submit" value="Register Information" />
+                    <button class="btn btn-primary" type="submit" value="Register Information">Register Information</button>
                 </form>
             </center>
             

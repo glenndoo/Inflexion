@@ -114,7 +114,7 @@
 			                        </div>
 			                        <div class="col-md-2">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="State" value=""/>
+			                                <input type="text" class="form-control" placeholder="street" value=""/>
 			                            </div>
 			                        </div>
 			                    </div>

@@ -19,12 +19,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm">
+			<div class="col-sm-3">
+			</div>
+			<div class="col-sm-6">
 				<form action="{{ route('LoginUser') }}" method="post">
 			    	@csrf
-			        <input type='text' name='username' /><br />
-			        <input type='password' name='password' /><br />
-			        <input type='submit' value='Login' />
+			        <input class="form-control" type='text' name='username' /><br />
+			        <input class="form-control" type='password' name='password' /><br />
+			        <button class="btn btn-primary" type='submit' value='Login'>Login</button>
 			    </form>
 			</div>
 		</div>
