@@ -24,10 +24,11 @@
 	        <div class="navbar-nav">
 	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
 
-	            <!-- trigger modalMail -->
+	            <!-- trigger modalMail
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalMail">
 					<i class="fa fa-envelope" aria-hidden="true"></i>mail
 				</a>
+				-->
 				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
 					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
@@ -91,9 +92,9 @@
 	        </li>
 	        <li class="has-subnav">
 	            <a href="#">
-	               <i class="fa fa-folder-open icon-side fa-size"></i>
+	               <i class="fa fa-inbox icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    link
+	                    Inbox
 	                </span>
 	            </a>
 	           
@@ -184,7 +185,7 @@
 		</div>
       </div>
       <div class="modal-footer">
-        <a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>
+        <!--a href="/studentinbox" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>Inbox</a>-->
         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
         <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>send</button>
       </div>
