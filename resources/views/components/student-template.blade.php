@@ -74,7 +74,7 @@
 				  	</div>
 				</div>
 	            <div class="search ">
-	            	<input type="text" class="search-input" placeholder="Search..." name="">
+	            	<input type="text" class="search-input" placeholder="Search..." name=""/>
             		<a href="#" class="search-icon">
             			<i class="fa fa-search"></i>
             		</a>
@@ -196,7 +196,7 @@
 
 <!-- modalCredits -->
 <div class="modal fade" id="modalCredits" tabindex="-1" role="dialog" aria-labelledby="modalCredits" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">modalCredits</h5>
@@ -205,11 +205,44 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="row">
+        	<div class="col-sm-2">
+        		<label>current:</label>
+        	</div>
+        	<div class="col-sm-10 text-right">
+        		<label><b title="Inflexion Global Credits">100 IG Credits </b> </label>
+        	</div>
+        	<div class="col-sm-12 text-right">
+        		<small><i>credits allow you to book classes with tutors</i></small>
+        	</div>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+        	<div class="col-sm-3">
+        		<i title="desired amount of credits 1 IGC = 1$."class="fa fa-info-circle" aria-hidden="true"></i>
+        		<input type="number" class="form-control" placeholder="amount" name="creditAmount" min="10"/>
+        	</div>
+        	<div class="col-sm-5"> <i title="your 16 digit credit card number"class="fa fa-info-circle" aria-hidden="true"></i>
+        		<input type="text" class="form-control" placeholder="card number" name=""/>
+        	</div>
+        	<div class="col-sm-2">
+        		 <i title="four-digit code assigned to or chosen by you after opening a credit card."class="fa fa-info-circle" aria-hidden="true"></i>
+        		<input type="text" class="form-control" placeholder="pin" name=""/>
+        	</div>
+        	<div class="col-sm-2">
+        		<i title="submit after completing credit card info and desired IG credit ammount information"class="fa fa-info-circle" aria-hidden="true"></i>
+        		<button class="form-control btn btn-primary">submit</button>
+        	</div>
+        	<div class="col-sm-12">
+        		<small><i>we will never share or save your credit card information</i></small>
+        	</div>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button-->
       </div>
     </div>
   </div>
