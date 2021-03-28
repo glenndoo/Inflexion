@@ -19,11 +19,12 @@ class InflexionInboxModel extends Model
       'inflexion_inbox_message',
       'inflexion_inbox_rcpt',
       'inflexion_inbox_date',
-      'inflexion_inbox_read'
+      'inflexion_inbox_read',
+      'inflexion_inbox_type'
     ];
 
     public function fetchAllMessages($request){
-        $fetchMessage = $this->join('inflexion_users','inflexion_username','=','inflexion_inbox_rcpt')->join('inflexion_user_details','inflexion_detail_id','=','inflexion_inbox_owner')->where('inflexion_username','=',$request->session()->get('info.userName'))->orderBy('inflexion_inbox_date','desc')->get();
+        $fetchMessage = $this->join('inflexion_users','inflexion_user_id','=','inflexion_inbox_rcpt')->join('inflexion_user_details','inflexion_detail_id','=','inflexion_inbox_rcpt')->where('inflexion_user_id','=',$request->session()->get('info.userId'))->orderBy('inflexion_inbox_date','desc')->get();
         return $fetchMessage;
     }
 
@@ -37,9 +38,10 @@ class InflexionInboxModel extends Model
             $sendMsg->inflexion_inbox_owner = $request->session()->get('info.userId');
             $sendMsg->inflexion_inbox_message = $request->message;
             $sendMsg->inflexion_inbox_subject = $request->subject;
-            $sendMsg->inflexion_inbox_rcpt = $request->rcpt;
+            $sendMsg->inflexion_inbox_rcpt = $checkUser->inflexion_user_id;
             $sendMsg->inflexion_inbox_date = Carbon::now();
             $sendMsg->inflexion_inbox_read = 0;
+            $sendMsg->inflexion_inbox_type = 1;
             
             if($sendMsg->save()){
                 return $status;
@@ -55,7 +57,7 @@ class InflexionInboxModel extends Model
 
 
     public function fetchSentMessages($request){
-        $fetch = $this->where('inflexion_inbox_owner','=',$reques->session()->get('info.userId'))->get();
+        $fetch = $this->join('inflexion_users','inflexion_user_id','=','inflexion_inbox_rcpt')->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_inbox_owner','=',$request->session()->get('info.userId'))->orderBy('inflexion_inbox_date','desc')->get();
         return $fetch;
     }
 }

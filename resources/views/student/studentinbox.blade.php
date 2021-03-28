@@ -58,7 +58,7 @@
 							        </li>
 							        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel sentMessages-->
 							            <a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
-								            <i class="fa fa-mail-forward"></i> Sent
+								            <i class="fa fa-mail-forward"></i> Sent {{ $SentCount }}
 								        </a>
 							        </li>
 							        <!-- for each start here for joined groups-->
@@ -175,16 +175,18 @@
 										<div class="table-responsive">
 											<table class="table">
 												<tbody>
+												@foreach($Sent as $sent)
 													<tr>
 														<td class="action"><input type="checkbox" /></td>
 														<td class="action"><i class="fa fa-star-o"></i></td>
 														<td class="action"><i class="fa fa-bookmark-o"></i></td>
-														<td class="name"><a href="#">FIRTS NAME LAST NAME</a></td>
+														<td class="name"><a href="#">{{ $sent->inflexion_detail_first.' '.$sent->inflexion_detail_last }}</a></td>
 														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-															<a href="#">SUBJECT</a>
+															<a href="#">{{ $sent->inflexion_inbox_subject }}</a>
 														</td>
-														<td class="time">2021-03-27 15:38:06</td>
+														<td class="time">{{ $sent->inflexion_inbox_date }}</td>
 													</tr>
+												@endforeach
 												</tbody>
 											</table>
 										</div>

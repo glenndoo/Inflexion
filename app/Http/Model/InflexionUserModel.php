@@ -88,7 +88,7 @@ class InflexionUserModel extends Model
         $find = $this->where('inflexion_username','=',$request)->first();
 
         if($find){
-            return true;
+            return $find;
         }else{
             return false;
         }

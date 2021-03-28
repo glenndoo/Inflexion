@@ -212,8 +212,9 @@ class InflexionController extends Controller
     //INBOX FUNCTION
     public function ShowInbox(Request $request){
         $messages = $this->InflexionInboxModel->fetchAllMessages($request);
+        $sent = $this->InflexionInboxModel->fetchSentMessages($request);
         
-        return view('student.studentinbox')->with('Messages', $messages);
+        return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent', $sent);
     }
 
 
@@ -221,13 +222,14 @@ class InflexionController extends Controller
     public function SendMessageInbox(Request $request){
         $sendMessage = $this->InflexionInboxModel->sendMessage($request);
         $messages = $this->InflexionInboxModel->fetchAllMessages($request);
+        $sent = $this->InflexionInboxModel->fetchSentMessages($request);
         // dd($messages);
         if($sendMessage == 0){
-            return view('student.studentinbox')->with('Messages', $messages)->with('Success', 'Sent message successfully!');
+            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Success', 'Sent message successfully!');
         }else if($sendMessage == 1){
-            return view('student.studentinbox')->with('Messages', $messages)->with('Errors', 'Failed to send message');
+            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Failed to send message');
         }else{
-            return view('student.studentinbox')->with('Messages', $messages)->with('Errors', 'Receipient not found');
+            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Receipient not found');
         }
     }
 
@@ -237,4 +239,5 @@ class InflexionController extends Controller
 
         return redirect()->back()->with('Sent', $fetchSent);
     }
+
 }
