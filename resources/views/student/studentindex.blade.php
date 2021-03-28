@@ -15,8 +15,8 @@
 			</div>
 		</div>
 		<!--start post to feed -->
-		<div class="row ">
-			<div class="col-sm-12">
+		<div class="row d-flex justify-content-center">
+			<div class="col-sm-8 ">
 				<form action="{{ route('PostMessage') }}" method="post">
 				@csrf
 				<div class="panel shadow">
@@ -38,7 +38,7 @@
 		<!--start posts-->
 		@if(count($details) > 0)
 		@foreach($details as $post)
-		<div class="row d-flex justify-content-center"">
+		<div class="row d-flex justify-content-center">
 			<div class="col-sm-8 ">
 				<div class="social-feed-box shadow">
 			        <div class="pull-right social-action dropdown">
@@ -75,7 +75,7 @@
 								add html class collapse_long_element for paragraph body
 								add a pr button for collapse toggle (see example below) -Maiko
 			        	-->
-			        	
+
 			        	<div id="collapse_module">
 			        		<p class="collapse" id="collapse_long_element" aria-expanded="false">
 			                	{{ $post->inflexion_post_message }}
