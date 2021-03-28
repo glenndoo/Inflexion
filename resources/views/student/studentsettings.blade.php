@@ -31,17 +31,17 @@
 			                    <div class="row">
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="First Name *" value="{{ session()->get('persInfo.inflexion_detail_first') }}" name="first"/>
+			                                <input type="text" class="form-control" placeholder="First Name *" value="{{ session()->get('info.userDetails.inflexion_detail_first') }}" name="first"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Middle Name*" value="{{ session()->get('persInfo.inflexion_detail_middle') }}"/>
+			                                <input type="text" class="form-control" placeholder="Middle Name*" value="{{ session()->get('info.userDetails.inflexion_detail_middle') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Last Name*" value="{{ session()->get('persInfo.inflexion_detail_last') }}"/>
+			                                <input type="text" class="form-control" placeholder="Last Name*" value="{{ session()->get('info.userDetails.inflexion_detail_last') }}"/>
 			                            </div>
 			                        </div>
 			                    </div>
@@ -53,7 +53,7 @@
 			                        </div>
 			                        <div class="col-md-3">
 			                            <div class="form-group">
-			                                <input type="date" class="form-control" value="" name="dob"/>
+			                                <input type="text" class="form-control" value="{{ session()->get('info.userDetails.inflexion_detail_birth') }}" name="dob" disabled='disabled'/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
@@ -79,42 +79,42 @@
 			                    <div class="row">
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Email Address*" value="{{ session()->get('persInfo.inflexion_username') }}" disabled/>
+			                                <input type="text" class="form-control" placeholder="Email Address*" value="{{ session()->get('info.userDetails.inflexion_username') }}" disabled/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-2">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="VALIDATED" value="VALIDATED" disabled />
+			                                <input type="text" class="form-control" placeholder="VALIDATED" value="{{ strtoupper(session()->get('info.userDetails.inflexion_user_token')) }} Profile" disabled />
 			                            </div>
 			                        </div>
 			                        <div class="col-md-6">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Phone Number*" value="{{ session()->get('persInfo.inflexion_detail_contact') }}"/>
+			                                <input type="text" class="form-control" placeholder="Phone Number*" value="{{ session()->get('info.userDetails.inflexion_detail_contact') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-3">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Country" value=""/>
+			                                <input type="text" class="form-control" placeholder="Country" value="{{ session()->get('info.userDetails.inflexion_detail_country') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-3">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="State / province" value=""/>
+			                                <input type="text" class="form-control" placeholder="State / province" value="{{ session()->get('info.userDetails.inflexion_detail_state') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-2">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="city / town" value=""/>
+			                                <input type="text" class="form-control" placeholder="city / town" value="{{ session()->get('info.userDetails.inflexion_detail_city') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-2">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Zip Code" value=""/>
+			                                <input type="text" class="form-control" placeholder="Zip Code" value="{{ session()->get('info.userDetails.inflexion_detail_zip') }}"/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-2">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="street" value=""/>
+			                                <input type="text" class="form-control" placeholder="street" value="{{ session()->get('info.userDetails.inflexion_detail_street') }}"/>
 			                            </div>
 			                        </div>
 			                    </div>

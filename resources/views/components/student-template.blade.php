@@ -87,7 +87,7 @@
 				  	<a href="#" class="dropdown-button disabled" tabindex="-1"><img class="circleLogo" src="{{ asset('img/placeholder-male-square.png') }}"></a>
 				  </button>
 				  	<div class="dropdown-menu dropdown-menu-right shadow">
-				    	<button class="dropdown-item" type="button">User's Name</button>
+				    	<button class="dropdown-item" type="button">{{ session()->get('info.userWholeName') }}</button>
 				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
 				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
 				   	 <!--button class="dropdown-item" type="button">Profile</button-->

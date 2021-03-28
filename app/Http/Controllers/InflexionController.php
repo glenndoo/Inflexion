@@ -143,7 +143,8 @@ class InflexionController extends Controller
                         'status' => $login->inflexion_user_type,
                         'userId' => $login->inflexion_user_id,
                         'userName' => $login->inflexion_username,
-                        'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last
+                        'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last,
+                        'userDetails' => $login
                     ];
                     $request->session()->put('info', $sess);
                     return redirect('/studentIndex');
