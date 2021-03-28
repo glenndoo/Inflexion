@@ -237,6 +237,7 @@
         	</div>
         	<div class="col-sm-12">
         		<small><i>we will never share or save your credit card information</i></small>
+        		<small class="pull-right"><i>make sure all information are correct</i></small>
         	</div>
         </div>
       </div>
