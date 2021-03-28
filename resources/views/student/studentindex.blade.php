@@ -72,15 +72,16 @@
 			        <div class="social-body">
 			        	<!--start post body
 						note: (3 part collapse no JS, pure CSS)  put inside collapse_module for collapse property for two line paragraph
-								add html class collapse_long_paragraph for paragraph body
+								add html class collapse_long_element for paragraph body
 								add a pr button for collapse toggle (see example below) -Maiko
 			        	-->
+			        	
 			        	<div id="collapse_module">
-			        		<p class="collapse" id="collapse_long_paragraph" aria-expanded="false">
+			        		<p class="collapse" id="collapse_long_element" aria-expanded="false">
 			                	{{ $post->inflexion_post_message }}
 			            	</p>
 			            	@if(strlen($post->inflexion_post_message)>154)
-			            		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_paragraph" aria-expanded="false" aria-controls="collapse_long_paragraph"></a>
+			            		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
 			            	@endif
 			            	
 			        	</div>
