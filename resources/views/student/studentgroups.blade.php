@@ -349,24 +349,30 @@
 									<div class="group-members-card card shadow">
 								      	<div class="card-body">
 								        	<h5 class="card-title">MEMBERS</h5>
-								        	<p class="card-text">NEWEST</p>
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<hr/>
+								        	<!--start post body
+											note: (3 part collapse no JS, pure CSS)  put inside collapse_module for collapse property for two line paragraph
+													add html class collapse_long_element for paragraph body
+													add a pr button for collapse toggle (see example below) -Maiko
+								        	-->
+								        	<div id="collapse_module">
+								        		<div class="collapse" id="collapse_long_element" aria-expanded="false">
+								        			<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        		</div>
 
-								        	<p class="card-text">ALL</p>
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<a href="#">Load more...</a>
+								        		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+								        	</div>
 								      	</div>
 								    </div>
 								    <!--start members area-->
@@ -420,26 +426,30 @@
 									<div class="group-members-card card shadow">
 								      	<div class="card-body">
 								        	<h5 class="card-title">MEMBERS</h5>
-								        	<p class="card-text">NEWEST</p>
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<hr/>
+								        	<!--start post body
+											note: (3 part collapse no JS, pure CSS)  put inside collapse_module for collapse property for two line paragraph
+													add html class collapse_long_element for paragraph body
+													add a pr button for collapse toggle (see example below) -Maiko
+								        	-->
+								        	<div id="collapse_module">
+								        		<div class="collapse" id="collapse_long_element" aria-expanded="false">
+								        			<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
+										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
+								        		</div>
 
-								        	<p class="card-text">ALL</p>
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
-								        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
-								        	<a href="#">Load more...</a>
+								        		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+								        	</div>
 								      	</div>
 								    </div>
 								    <!--start members area-->

@@ -1122,8 +1122,8 @@ time.datebox {
 }
 .group-members-card img {
   border-radius: 50%;
-  width: 50px;
-  margin: .5rem;
+  width: 40px;
+  margin: .2rem;
 }
 
 /*post message index collapse*/
