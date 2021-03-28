@@ -38,8 +38,8 @@
 		<!--start posts-->
 		@if(count($details) > 0)
 		@foreach($details as $post)
-		<div class="row">
-			<div class="col-sm-12">
+		<div class="row d-flex justify-content-center"">
+			<div class="col-sm-8 ">
 				<div class="social-feed-box shadow">
 			        <div class="pull-right social-action dropdown">
 			            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
@@ -70,9 +70,22 @@
 			            </div>
 			        </div>
 			        <div class="social-body">
-			            <p>
-			                {{ $post->inflexion_post_message }}
-			            </p>
+			        	<!--start post body
+						note: (3 part collapse no JS, pure CSS)  put inside collapse_module for collapse property for two line paragraph
+								add html class collapse_long_paragraph for paragraph body
+								add a pr button for collapse toggle (see example below) -Maiko
+			        	-->
+			        	<div id="collapse_module">
+			        		<p class="collapse" id="collapse_long_paragraph" aria-expanded="false">
+			                	{{ $post->inflexion_post_message }}
+			            	</p>
+			            	@if(strlen($post->inflexion_post_message)>154)
+			            		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_paragraph" aria-expanded="false" aria-controls="collapse_long_paragraph"></a>
+			            	@endif
+			            	
+			        	</div>
+			            
+			            <!--end post body-->
 			            <div class="row post-status">
 			           		<div class="btn-group">
 			            		<div class="col-sm-12">

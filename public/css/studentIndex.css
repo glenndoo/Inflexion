@@ -1125,3 +1125,30 @@ time.datebox {
   width: 50px;
   margin: .5rem;
 }
+
+/*post message index collapse*/
+#collapse_module {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+#collapse_module #collapse_long_paragraph.collapse:not(.show) {
+  display: block;
+  height: 3rem;
+  overflow: hidden;
+}
+
+#collapse_module #collapse_long_paragraph.collapsing {
+  height: 3rem;
+}
+
+#collapse_module a.collapsed::after {
+  content: '+ Show More';
+  font-size: 10pt;
+}
+
+#collapse_module a:not(.collapsed)::after {
+  content: '- Show Less';
+  font-size: 10pt;
+}
