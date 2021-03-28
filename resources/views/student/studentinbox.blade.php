@@ -58,7 +58,8 @@
 							        </li>
 							        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel sentMessages-->
 							            <a class="nav-link group-tabs" data-toggle="tab" href="#sentMessages" role="tab" aria-controls="sentMessages">
-								            <i class="fa fa-mail-forward"></i> Sent {{ $SentCount }}
+								            <i class="fa fa-mail-forward"></i>
+								            Sent <span class="badge">{{ $SentCount }}</span>
 								        </a>
 							        </li>
 							        <!-- for each start here for joined groups-->
@@ -119,11 +120,61 @@
 														<td class="action"><i class="fa fa-star-o"></i></td>
 														<td class="action"><i class="fa fa-bookmark-o"></i></td>
 														<td class="name">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</td>
-														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-															<a href="{{ route('ShowMessage',[$id]) }}">{{ $msgs->inflexion_inbox_subject }}</a>
+														<td class="subject" data-toggle="modal" data-target="#modalInboxMessage_{{ $msgs->inflexion_inbox_id }}"> <!--sample modal at the bottom, scroll down-->
+															<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
 														</td>
 														<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
+														<td class="delete">
+															<button class="btn btn-danger">
+																<i class="fa fa-trash" aria-hidden="true"></i>
+															</button>
+														</td>
 													</tr>
+													<!-- modalMessage Start -->
+													<div class="modal fade" id="modalInboxMessage_{{ $msgs->inflexion_inbox_id }}" tabindex="-1" role="dialog" aria-labelledby="modalInboxMessage_{{ $msgs->inflexion_inbox_id }}" aria-hidden="true">
+													  <div class="modal-dialog modal-dialog-centered" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+													        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </button>
+													      </div>
+													      <div class="modal-body">
+													  	 	<div class="form-group row">
+															    <label for="staticEmail" class="col-sm-2 col-form-label">From:</label>
+															    <div class="col-sm-5">
+															      <input type="text" class="form-control" id="name" value="{{  $msgs->inflexion_inbox_owner }}" disabled placeholder="recievers name">
+															    </div>
+															    <div class="col-sm-5">
+															      <input type="text" class="form-control" id="staticEmail" value="{{  $msgs->inflexion_inbox_rcpt }}" disabled placeholder="recievers name">
+															    </div>
+														  	</div>
+													  	 	<div class="form-group row">
+															    <label for="subject_{{ $msgs->inflexion_inbox_id }}" class="col-sm-2 col-form-label">Subject:</label>
+															    <div class="col-sm-10">
+															      <input type="text" class="form-control" id="subject_{{ $msgs->inflexion_inbox_id }}" value="{{  $msgs->inflexion_inbox_subject }}" placeholder="e.g last lesson" disabled>
+															    </div>
+														  	</div>
+
+														  	<hr/>
+
+													        <div class="form-group">
+															  <label for="comment"><b>Message:</b></label>
+															  <p class="text-justify">
+															  	{{  $msgs->inflexion_inbox_message }}
+															  </p>
+															</div>
+													      </div>
+													      <div class="modal-footer">
+													        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
+													        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</button>
+													        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
+													      </div>
+													    </div>
+													  </div>
+													</div>
+													<!-- modalMessage end -->
 													@endforeach
 												@else
 												No messages to show
@@ -161,21 +212,22 @@
 													</ul>
 												</div>
 											</div>
-
 											<div class="col-md-6 search-form">
-												<!--form action="#" class="text-right">
+												<form action="#" class="text-right">
 													<div class="input-group">
 														<input type="text" class="form-control input-sm" placeholder="Search sent...">
-
 														<span class="input-group-btn">
-				                                            <button type="submit" name="searchInbox" class="btn btn-primary form-control"><i class="fa fa-search"></i></button></span>
+				                                            <button type="submit" name="searchInbox" class="btn btn-primary form-control">
+				                                            	<i class="fa fa-search"></i>
+				                                            </button>
+				                                        </span>
 													</div>			 
-												</form-->
+												</form>
 											</div>
 										</div>
 								
 										<div class="padding"></div>
-								
+										
 										<div class="table-responsive">
 											<table class="table">
 												<tbody>
@@ -185,11 +237,62 @@
 														<td class="action"><i class="fa fa-star-o"></i></td>
 														<td class="action"><i class="fa fa-bookmark-o"></i></td>
 														<td class="name"><a href="#">{{ $sent->inflexion_detail_first.' '.$sent->inflexion_detail_last }}</a></td>
-														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
+														<td class="subject" data-toggle="modal" data-target="#modalSentMessage_{{ $sent->inflexion_inbox_id }}"> <!--sample modal at the bottom, scroll down-->
 															<a href="#">{{ $sent->inflexion_inbox_subject }}</a>
 														</td>
 														<td class="time">{{ $sent->inflexion_inbox_date }}</td>
+														<td class="delete">
+															<button class="btn btn-danger">
+																<i class="fa fa-trash" aria-hidden="true"></i>
+															</button>
+														</td>
 													</tr>
+
+													<!-- modalMessage Start -->
+													<div class="modal fade" id="modalSentMessage_{{ $sent->inflexion_inbox_id }}" tabindex="-1" role="dialog" aria-labelledby="modalSentMessage_{{ $sent->inflexion_inbox_id }}" aria-hidden="true">
+													  <div class="modal-dialog modal-dialog-centered" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+													        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </button>
+													      </div>
+													      <div class="modal-body">
+													  	 	<div class="form-group row">
+															    <label for="staticEmail" class="col-sm-2 col-form-label">From:</label>
+															    <div class="col-sm-5">
+															      <input type="text" class="form-control" id="name" value="{{  $sent->inflexion_inbox_owner }}" disabled placeholder="recievers name">
+															    </div>
+															    <div class="col-sm-5">
+															      <input type="text" class="form-control" id="staticEmail" value="{{  $sent->inflexion_inbox_rcpt }}" disabled placeholder="recievers name">
+															    </div>
+														  	</div>
+													  	 	<div class="form-group row">
+															    <label for="staticSubject" class="col-sm-2 col-form-label">Subject:</label>
+															    <div class="col-sm-10">
+															      <input type="text" class="form-control" id="staticSubject" value="{{  $sent->inflexion_inbox_subject }}" placeholder="e.g last lesson" disabled>
+															    </div>
+														  	</div>
+
+														  	<hr/>
+
+													        <div class="form-group">
+															  	<label for="comment"><b>Message:</b></label>
+															  	<p class="text-justify">
+															  		{{  $sent->inflexion_inbox_message }}
+															  	</p>
+															</div>
+													      </div>
+													      <div class="modal-footer">
+													        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
+													        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</button>
+													        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
+													      </div>
+													    </div>
+													  </div>
+													</div>
+													<!-- modalMessage end -->
 												@endforeach
 												</tbody>
 											</table>
@@ -217,51 +320,6 @@
 	</div>
 </div>
 
-<!-- modalMessage -->
-<div class="modal fade" id="modalMessage" tabindex="-1" role="dialog" aria-labelledby="modalMessage" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  	 	<div class="form-group row">
-		   @if(isset($MessageDetails))
-		    <label for="staticEmail" class="col-sm-2 col-form-label">From:</label>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="name" value="" disabled placeholder="recievers name">
-		    </div>
-		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="staticEmail" value="" disabled placeholder="recievers name">
-		    </div>
-	  	</div>
-  	 	<div class="form-group row">
-		    <label for="staticSubject" class="col-sm-2 col-form-label">Subject:</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticSubject" value="{{ $MessageDetails->inflexion_inbox_subject }}" placeholder="e.g last lesson" disabled>
-		    </div>
-	  	</div>
-
-	  	<hr/>
-
-        <div class="form-group">
-		  <label for="comment">Message:</label>
-		  <p class="text-justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		  </p>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
-        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</button>
-        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
-      </div>
-    </div>
-  </div>
-</div>
-@endif
 <!-- modalCompose -->
 <form action="{{ route('SendMessageInbox') }}" method="post">
 @csrf
