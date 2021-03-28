@@ -234,5 +234,10 @@ class InflexionController extends Controller
         }
     }
 
+    //SHOW MESSAGE FOR MAIL
+    public function ShowMessage(Request $request,$id){
+        $showMess = $this->InflexionInboxModel->showMessage($id);
 
+        return redirect()->back()->with('MessageDetails',$showMess);
+    }
 }

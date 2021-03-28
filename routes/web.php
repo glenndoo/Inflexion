@@ -57,47 +57,65 @@ use Illuminate\Support\Facades\Route;
         'as' => 'LogoutUser',
         'uses' => 'InflexionController@LogoutUser'
     ));
+
     Route::post('CompleteRegistration', array(
         'as' => 'CompleteRegistration',
         'uses' => 'InflexionController@CompleteRegistration'
     ));
+
     Route::get('DeletePost/{id}', array(
         'as' => 'DeletePost',
         'uses' => 'InflexionController@DeletePost'
     ));
+
     Route::get('LikePost/{id}', array(
         'as' => 'LikePost',
         'uses' => 'InflexionController@LikePost'
     ));
 
+    Route::get('ShowMessage/{id}', array(
+        'as' => 'ShowMessage',
+        'uses' => 'InflexionController@ShowMessage'
+    ));
 
-Route::group(['middleware' => 'Student'], function(){
-    Route::post('PostMessage', array(
-        'as' => 'PostMessage',
-        'uses' => 'InflexionController@PostMessage'
-    ));
-    Route::get('/studentIndex', array(
-        'as' => 'studentIndex',
-        'uses' => 'StudentController@studentIndex'
-    ));
-    Route::get('/studentSettings', function () { //added for testing maiko
-        return view('student.studentsettings');
-    });
-    Route::get('/studentProfile', function () { //added for testing maiko
-        return view('student.studentProfile');
-    });
-    Route::get('/studentGroups', function () { //added for testing maiko
-        return view('student.studentgroups');
-    });
-    Route::get('/studentInbox', function () { //added for testing maiko
-        return view('student.studentinbox');
-    });
     Route::get('/ShowInbox', array(
         'as' => 'ShowInbox',
         'uses' => 'InflexionController@ShowInbox'
     ));
+
     Route::post('/SendMessageInbox', array(
         'as' => 'SendMessageInbox',
         'uses' => 'InflexionController@SendMessageInbox'
     ));
+
+
+    //STUDENT GROUP ROUTE
+    Route::group(['middleware' => 'Student'], function(){
+
+    Route::post('PostMessage', array(
+        'as' => 'PostMessage',
+        'uses' => 'InflexionController@PostMessage'
+    ));
+
+    Route::get('/studentIndex', array(
+        'as' => 'studentIndex',
+        'uses' => 'StudentController@studentIndex'
+    ));
+
+    Route::get('/studentSettings', function () { //added for testing maiko
+        return view('student.studentsettings');
+    });
+
+    Route::get('/studentProfile', function () { //added for testing maiko
+        return view('student.studentProfile');
+    });
+
+    Route::get('/studentGroups', function () { //added for testing maiko
+        return view('student.studentgroups');
+    });
+    
+    Route::get('/studentInbox', function () { //added for testing maiko
+        return view('student.studentinbox');
+    });
+    
 });

@@ -60,4 +60,9 @@ class InflexionInboxModel extends Model
         $fetch = $this->join('inflexion_users','inflexion_user_id','=','inflexion_inbox_rcpt')->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_inbox_owner','=',$request->session()->get('info.userId'))->orderBy('inflexion_inbox_date','desc')->get();
         return $fetch;
     }
+
+    public function showMessage($id){
+        $show = $this->where('inflexion_inbox_id','=',$id)->first();
+        return $show;
+    }
 }

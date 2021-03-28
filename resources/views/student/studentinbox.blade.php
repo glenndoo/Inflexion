@@ -109,14 +109,18 @@
 											<table class="table">
 												<tbody>
 												@if(count($Messages) > 0)
+													
 													@foreach($Messages as $msgs)
+													@php
+													$id = $msgs->inflexion_inbox_id;
+													@endphp
 													<tr>
 														<td class="action"><input type="checkbox" /></td>
 														<td class="action"><i class="fa fa-star-o"></i></td>
 														<td class="action"><i class="fa fa-bookmark-o"></i></td>
-														<td class="name"><a href="#">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</a></td>
+														<td class="name">{{ $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}</td>
 														<td class="subject" data-toggle="modal" data-target="#modalMessage"> <!--sample modal at the bottom, scroll down-->
-															<a href="#">{{ $msgs->inflexion_inbox_subject }}</a>
+															<a href="{{ route('ShowMessage',[$id]) }}">{{ $msgs->inflexion_inbox_subject }}</a>
 														</td>
 														<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
 													</tr>
@@ -218,16 +222,17 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Compose Mail</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
   	 	<div class="form-group row">
+		   @if(isset($MessageDetails))
 		    <label for="staticEmail" class="col-sm-2 col-form-label">From:</label>
 		    <div class="col-sm-5">
-		      <input type="text" class="form-control" id="name" value="Glenn Dumaguin" disabled placeholder="recievers name">
+		      <input type="text" class="form-control" id="name" value="" disabled placeholder="recievers name">
 		    </div>
 		    <div class="col-sm-5">
 		      <input type="text" class="form-control" id="staticEmail" value="" disabled placeholder="recievers name">
@@ -236,7 +241,7 @@
   	 	<div class="form-group row">
 		    <label for="staticSubject" class="col-sm-2 col-form-label">Subject:</label>
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="staticSubject" value="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed" placeholder="e.g last lesson" disabled>
+		      <input type="text" class="form-control" id="staticSubject" value="{{ $MessageDetails->inflexion_inbox_subject }}" placeholder="e.g last lesson" disabled>
 		    </div>
 	  	</div>
 
@@ -256,7 +261,7 @@
     </div>
   </div>
 </div>
-
+@endif
 <!-- modalCompose -->
 <form action="{{ route('SendMessageInbox') }}" method="post">
 @csrf
