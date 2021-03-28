@@ -234,10 +234,4 @@ class InflexionController extends Controller
     }
 
 
-    public function FetchSentMessages(Request $request){
-        $fetchSent = $this->InflexionInboxModel->fetchSentMessages($request);
-
-        return redirect()->back()->with('Sent', $fetchSent);
-    }
-
 }
