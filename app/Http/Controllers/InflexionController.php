@@ -225,11 +225,11 @@ class InflexionController extends Controller
         $sent = $this->InflexionInboxModel->fetchSentMessages($request);
         // dd($messages);
         if($sendMessage == 0){
-            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Success', 'Message sent successfully!');
+            return redirect()->back()->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Success', 'Message sent successfully!');
         }else if($sendMessage == 1){
-            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Failed to send message');
+            return redirect()->back()->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Failed to send message');
         }else{
-            return view('student.studentinbox')->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Receipient not found');
+            return redirect()->back()->with('Messages', $messages)->with('SentCount',count($sent))->with('Sent',$sent)->with('Errors', 'Receipient not found');
         }
     }
 
