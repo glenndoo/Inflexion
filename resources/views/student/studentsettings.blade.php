@@ -89,12 +89,12 @@
 			                                <input type="text" class="form-control" placeholder="Phone Number*" value="{{ session()->get('info.userDetails.inflexion_detail_contact') }}"required/>
 			                            </div>
 			                        </div>
-			                        <div class="col-md-3">
+			                        <div class="col-md-2">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="Country" value="{{ session()->get('info.userDetails.inflexion_detail_country') }}"required/>
 			                            </div>
 			                        </div>
-			                        <div class="col-md-3">
+			                        <div class="col-md-2">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="State / province" value="{{ session()->get('info.userDetails.inflexion_detail_state') }}"required/>
 			                            </div>
@@ -104,12 +104,12 @@
 			                                <input type="text" class="form-control" placeholder="city / town" value="{{ session()->get('info.userDetails.inflexion_detail_city') }}"required/>
 			                            </div>
 			                        </div>
-			                        <div class="col-md-2">
+			                        <div class="col-md-1">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="Zip Code" value="{{ session()->get('info.userDetails.inflexion_detail_zip') }}"required/>
 			                            </div>
 			                        </div>
-			                        <div class="col-md-2">
+			                        <div class="col-md-5">
 			                            <div class="form-group">
 			                                <input type="text" class="form-control" placeholder="street" value="{{ session()->get('info.userDetails.inflexion_detail_street') }}" required/>
 			                            </div>
@@ -138,17 +138,17 @@
 			                    <div class="row">
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Current Password"name="p1" required/>
+			                                <input type="password" class="form-control" placeholder="Current Password"name="p1" required/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="New Password" name="p2" required/>
+			                                <input type="password" class="form-control" placeholder="New Password" name="p2" required/>
 			                            </div>
 			                        </div>
 			                        <div class="col-md-4">
 			                            <div class="form-group">
-			                                <input type="text" class="form-control" placeholder="Confirm  New Password" name="p3" required/>
+			                                <input type="password" class="form-control" placeholder="Confirm  New Password" name="p3" required/>
 			                            </div>
 			                         </div>
 			                    </div>
@@ -158,6 +158,7 @@
 		                 <!-- End Form Settings -->
 		            </div>
 		        </div>
+		        <h6>Side note:</h6> email sent to notify profile update / password update
 			</div>
 		</div>
 		<!--end settings-->

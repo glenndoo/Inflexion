@@ -62,7 +62,7 @@
 									<!-- About -->
 									<h3 class="text-black">
 										John Doe 
-										<small class="text-gray size-14"> Tutor</small>
+										<small class="text-gray size-14"> Student</small>
 									</h3>
 									<p class="size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p>
 									<!-- /About -->
