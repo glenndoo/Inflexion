@@ -38,24 +38,6 @@
 								</div>
 							</div>
 							<br/>
-							<!--start post body
-							note: (3 part collapse no JS, pure CSS)  put inside collapse_module for collapse property for two line paragraph
-									add html class collapse_long_paragraph for paragraph body
-									add a pr button for collapse toggle (see example below) -Maiko
-				        	-->
-				        	
-				        	<div id="collapse_module">
-				        		<p class="collapse" id="collapse_long_paragraph" aria-expanded="false">
-				                	
-				            	</p>
-				            	<li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
-						            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
-						        </li>
-
-				            	
-				            		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_paragraph" aria-expanded="false" aria-controls="collapse_long_paragraph"></a>
-				            	
-				        	</div>
 
 							<!-- for each start here for joined groups-->
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
