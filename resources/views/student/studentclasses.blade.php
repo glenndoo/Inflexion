@@ -78,8 +78,9 @@
 										  					</h4>
 										  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
 										  				</div>
-										  				<div class="col-sm-4">
+										  				<div class="col-sm-4 text-right">
 										  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
+										  					<small><i>45 IG credits used</i></small>
 										  				</div>
 										  			</div>
 										  		</div>
