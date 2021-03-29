@@ -54,90 +54,112 @@
 						<!--all group posts start--> 
 					  	<div class="tab-pane active" id="bookedClasses" role="tabpanel">
 					  		<h6>BOOKED CLASSES</h6>
-
-					  		<div class="col-sm-9">
-						  		<!--start results for booked -->
-						  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
-								    <div class="row ">
-										<div class="col-sm-12">
-											<div class="group-card card shadow">
-										  		<div class="card-header">
-										  			<div class="row">
-										  				<div class="col-sm-1">
-										  					<time datetime="2014-06-29" class="pull-left datebox">
-																<strong>Mar</strong>
-																<span>{{$d}}</span>
-															</time>
-										  				</div>
-										  				<div class="col-sm-7">
-										  					<h4 title="Your Tutor for this class">
-										  						 Glenn Dumaguing
-										  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tutorInfo_{{$d}}">
-										  							<i class="fa fa-user" aria-hidden="true"></i>
-										  						</button>
-										  					</h4>
-										  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
-										  				</div>
-										  				<div class="col-sm-4 text-right">
-										  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
-										  					<small><i>45 IG credits used</i></small>
-										  				</div>
-										  			</div>
-										  		</div>
-										  		<div class="card-body">
-										  			<div class="row">
-										  				<div class="col-sm-8">
-											    		ENGLISH FOR BEGGINERS
+					  		<div class="row ">
+					  			<!--middle column this tab-->
+						  		<div class="col-sm-9">
+							  		<!--start results for booked -->
+							  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
+									    <div class="row ">
+											<div class="col-sm-12">
+												<div class="group-card card shadow">
+											  		<div class="card-header">
+											  			<div class="row">
+											  				<div class="col-sm-1">
+											  					<time datetime="2014-06-29" class="pull-left datebox">
+																	<strong>Mar</strong>
+																	<span>{{$d}}</span>
+																</time>
+											  				</div>
+											  				<div class="col-sm-7">
+											  					<h4 title="Your Tutor for this class">
+											  						 Glenn Dumaguing
+											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tutorInfo_{{$d}}">
+											  							<i class="fa fa-user" aria-hidden="true"></i>
+											  						</button>
+											  					</h4>
+											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
+											  				</div>
+											  				<div class="col-sm-4 text-right">
+											  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
+											  					<small><i>45 IG credits used</i></small>
+											  				</div>
 											  			</div>
-											  			<div class="col-sm-2">
-										  					<a href="#" class="btn btn-danger form-control">cancel</a>
-										  				</div>
-											  			<div class="col-sm-2">
-										  					<a href="#" class="btn btn-primary form-control">resched</a>
-										  				</div>
-										  			</div>
-										  			
-										  		</div>
+											  		</div>
+											  		<div class="card-body">
+											  			<div class="row">
+											  				<div class="col-sm-8">
+												    		ENGLISH FOR BEGGINERS
+												  			</div>
+												  			<div class="col-sm-2">
+											  					<a href="#" class="btn btn-danger form-control">cancel</a>
+											  				</div>
+												  			<div class="col-sm-2">
+											  					<a href="#" class="btn btn-primary form-control">resched</a>
+											  				</div>
+											  			</div>
+											  			
+											  		</div>
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<!-- looped Modal -->
-									<div class="modal fade" id="tutorInfo_{{$d}}" tabindex="-1" role="dialog" aria-labelledby="tutorInfo_{{$d}}" aria-hidden="true">
-									  <div class="modal-dialog modal-dialog-centered" role="document">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <h5 class="modal-title" id="exampleModalLongTitle">Glenn Dumaguing</h5>
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									          <span aria-hidden="true">&times;</span>
-									        </button>
-									      </div>
-									      <div class="modal-body">
-									      	{{$d}}
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">PROFILE</button>
-									      </div>
-									    </div>
-									  </div>
-									</div>
+										<!-- looped Modal -->
+										<div class="modal fade" id="tutorInfo_{{$d}}" tabindex="-1" role="dialog" aria-labelledby="tutorInfo_{{$d}}" aria-hidden="true">
+										  <div class="modal-dialog modal-dialog-centered" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLongTitle">Glenn Dumaguing</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+										      	{{$d}}
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">PROFILE</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
 
-									<hr/><!--break to next entry-->
-								@endforeach
-								<!--end results for booked -->
-							</div>
-
-							<div class="col-sm-3">
-								
+										<hr/><!--break to next entry-->
+									@endforeach
+									<!--end results for booked -->
+								</div>
+								<!--right most column this tab-->
+								<div class="col-sm-3">
+									empty column
+								</div>
 							</div>
 
 					  	</div>
 					  	<div class="tab-pane" id="classHistory" role="tabpanel">
 					  		<h6>class history tab pane</h6>
+					  		<div class="row ">
+					  			<!--middle column this tab-->
+						  		<div class="col-sm-9">
+						  			middle column class history
+						  		</div>
+						  		<!--right most column this tab-->
+						  		<div class="col-sm-3">
+									empty column
+								</div>
+							</div>
 					  	</div>
 					  	<div class="tab-pane" id="classTutors" role="tabpanel">
-					  		<h6>YOur Tutors tab pane</h6>
+					  		<h6>Your Tutors tab pane</h6>
+					  		<div class="row ">
+					  			<!--middle column this tab-->
+						  		<div class="col-sm-9">
+						  			middle column class tutors
+						  		</div>
+						  		<!--right most column this tab-->
+						  		<div class="col-sm-3">
+									empty column
+								</div>
+							</div>
 					  	</div>
 					</div>
 				</div>
