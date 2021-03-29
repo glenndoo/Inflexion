@@ -38,7 +38,7 @@
 								</div>
 							</div>
 							<br/>
-
+							
 							<!-- for each start here for joined groups-->
 					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
@@ -354,8 +354,8 @@
 													add html class collapse_long_element for paragraph body
 													add a pr button for collapse toggle (see example below) -Maiko
 								        	-->
-								        	<div id="collapse_module">
-								        		<div class="collapse" id="collapse_long_element" aria-expanded="false">
+								        	<div class="collapse_module">
+								        		<div class="collapse collapse_long_element" id="memberList_1" aria-expanded="false">
 								        			<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
 										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
 										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
@@ -371,7 +371,7 @@
 										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
 								        		</div>
 
-								        		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+								        		<a role="button" class="collapsed" data-toggle="collapse" href="#memberList_1" aria-expanded="false" aria-controls="memberList_1"></a>
 								        	</div>
 								      	</div>
 								    </div>
@@ -431,8 +431,8 @@
 													add html class collapse_long_element for paragraph body
 													add a pr button for collapse toggle (see example below) -Maiko
 								        	-->
-								        	<div id="collapse_module">
-								        		<div class="collapse" id="collapse_long_element" aria-expanded="false">
+								        	<div class="collapse_module">
+								        		<div class="collapse collapse_long_element" id="memberList_2" aria-expanded="false">
 								        			<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
 										        	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar">
 										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
@@ -448,7 +448,7 @@
 										        	<img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar">
 								        		</div>
 
-								        		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+								        		<a role="button" class="collapsed" data-toggle="collapse" href="#memberList_2" aria-expanded="false" aria-controls="memberList_2"></a>
 								        	</div>
 								      	</div>
 								    </div>

@@ -1133,22 +1133,22 @@ time.datebox {
 }
 
 
-#collapse_module #collapse_long_element.collapse:not(.show) {
+.collapse_module .collapse_long_element.collapse:not(.show) {
   display: block;
   height: 3rem;
   overflow: hidden;
 }
 
-#collapse_module #collapse_long_element.collapsing {
+.collapse_module .collapse_long_element.collapsing {
   height: 3rem;
 }
 
-#collapse_module a.collapsed::after {
+.collapse_module a.collapsed::after {
   content: '+ Show More';
   font-size: 10pt;
 }
 
-#collapse_module a:not(.collapsed)::after {
+.collapse_module a:not(.collapsed)::after {
   content: '- Show Less';
   font-size: 10pt;
 }
