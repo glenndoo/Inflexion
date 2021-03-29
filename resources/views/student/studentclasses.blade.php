@@ -74,7 +74,7 @@
 											  					<h4 title="Your Tutor for this class">
 											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
-											  							<i class="fa fa-user" aria-hidden="true"></i>
+											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i></i>
 											  						</button>
 											  					</h4>
 											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
@@ -157,7 +157,7 @@
 											  					<h4 title="Your Tutor for this class">
 											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_info_h{{$d}}">
-											  							<i class="fa fa-user" aria-hidden="true"></i>
+											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 											  						</button>
 											  					</h4>
 											  					<h6>Monday February {{$d}} 2021 at 3:30pm</h6>
