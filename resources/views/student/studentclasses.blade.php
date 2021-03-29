@@ -140,7 +140,7 @@
 					  		<div class="row ">
 					  			<!--middle column this tab-->
 						  		<div class="col-sm-9">
-						  			<!--start results for booked -->
+						  			<!--start results for history -->
 							  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
 									    <div class="row ">
 											<div class="col-sm-12">
@@ -203,7 +203,7 @@
 
 										<hr/><!--break to next entry-->
 									@endforeach
-									<!--end results for booked -->
+									<!--end results for history -->
 						  		</div>
 						  		<!--right most column this tab-->
 						  		<div class="col-sm-3">
@@ -216,7 +216,59 @@
 					  		<div class="row ">
 					  			<!--middle column this tab-->
 						  		<div class="col-sm-9">
-						  			middle column class tutors
+						  			<!--start results for history -->
+							  		@foreach(range(date('d')-2, date('d')) as $d)<!--just to loop results for 4 days-->
+									    <div class="row ">
+											<div class="col-sm-12">
+												<div class="group-card card shadow">
+											  		<div class="card-header">
+											  			<div class="row">
+											  				<div class="col-sm-1">
+											  					B
+											  				</div>
+											  				<div class="col-sm-7">
+											  					<h4 title="Your Tutor for this class">
+											  						D
+											  					</h4>
+											  					<h6>C</h6>
+											  				</div>
+											  				<div class="col-sm-4 text-right">
+											  					A
+											  				</div>
+											  			</div>
+											  		</div>
+											  		<div class="card-body">
+											  			<div class="row">
+											  				<div class="col-sm-4">
+												    		F
+												  			</div>
+											  				<div class="col-sm-4">
+												    		G
+												  			</div>
+											  				<div class="col-sm-4">
+												    		H
+												  			</div>
+											  			</div>
+											  			
+											  			<div class="row">
+											  				<div class="col-sm-4">
+												    		I
+												  			</div>
+											  				<div class="col-sm-4">
+												    		J
+												  			</div>
+											  				<div class="col-sm-4">
+												    		K
+												  			</div>
+											  			</div>
+											  			
+											  		</div>
+												</div>
+											</div>
+										</div>
+										<hr/><!--break to next entry-->
+									@endforeach
+									<!--end results for history -->
 						  		</div>
 						  		<!--right most column this tab-->
 						  		<div class="col-sm-3">
