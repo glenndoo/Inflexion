@@ -78,7 +78,7 @@
 										  					</h4>
 										  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
 										  				</div>
-										  				<div class="col-sm-4 text-right">
+										  				<div class="col-sm-4">
 										  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
 										  				</div>
 										  			</div>
