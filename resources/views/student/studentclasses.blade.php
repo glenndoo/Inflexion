@@ -73,7 +73,7 @@
 											  				<div class="col-sm-7">
 											  					<h4 title="Your Tutor for this class">
 											  						 Glenn Dumaguing
-											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#tutorInfo_{{$d}}">
+											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
 											  							<i class="fa fa-user" aria-hidden="true"></i>
 											  						</button>
 											  					</h4>
@@ -104,7 +104,7 @@
 										</div>
 
 										<!-- looped Modal -->
-										<div class="modal fade" id="tutorInfo_{{$d}}" tabindex="-1" role="dialog" aria-labelledby="tutorInfo_{{$d}}" aria-hidden="true">
+										<div class="modal fade" id="t_Info_b{{$d}}" tabindex="-1" role="dialog" aria-labelledby="t_Info_b{{$d}}" aria-hidden="true">
 										  <div class="modal-dialog modal-dialog-centered" role="document">
 										    <div class="modal-content">
 										      <div class="modal-header">
@@ -136,11 +136,74 @@
 
 					  	</div>
 					  	<div class="tab-pane" id="classHistory" role="tabpanel">
-					  		<h6>class history tab pane</h6>
+					  		<h6>CLASSES HISTORY</h6>
 					  		<div class="row ">
 					  			<!--middle column this tab-->
 						  		<div class="col-sm-9">
-						  			middle column class history
+						  			<!--start results for booked -->
+							  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
+									    <div class="row ">
+											<div class="col-sm-12">
+												<div class="group-card card shadow">
+											  		<div class="card-header">
+											  			<div class="row">
+											  				<div class="col-sm-1">
+											  					<time datetime="2014-06-29" class="pull-left datebox">
+																	<strong>Feb</strong>
+																	<span>{{$d}}</span>
+																</time>
+											  				</div>
+											  				<div class="col-sm-7">
+											  					<h4 title="Your Tutor for this class">
+											  						 Glenn Dumaguing
+											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_info_h{{$d}}">
+											  							<i class="fa fa-user" aria-hidden="true"></i>
+											  						</button>
+											  					</h4>
+											  					<h6>Monday February {{$d}} 2021 at 3:30pm</h6>
+											  				</div>
+											  				<div class="col-sm-4 text-right">
+											  					<a href="#" class="btn btn-secondary form-control">Completed</a>
+											  					<small><i>45 IG credits used</i></small>
+											  				</div>
+											  			</div>
+											  		</div>
+											  		<div class="card-body">
+											  			<div class="row">
+											  				<div class="col-sm-12">
+												    		ENGLISH FOR BEGGINERS
+												  			</div>
+											  			</div>
+											  			
+											  		</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- looped Modal -->
+										<div class="modal fade" id="t_info_h{{$d}}" tabindex="-1" role="dialog" aria-labelledby="t_info_h{{$d}}" aria-hidden="true">
+										  <div class="modal-dialog modal-dialog-centered" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLongTitle">Glenn Dumaguing</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <div class="modal-body">
+										      	{{$d}}
+										      </div>
+										      <div class="modal-footer">
+										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										        <button type="button" class="btn btn-primary">PROFILE</button>
+										      </div>
+										    </div>
+										  </div>
+										</div>
+
+										<hr/><!--break to next entry-->
+									@endforeach
+									<!--end results for booked -->
 						  		</div>
 						  		<!--right most column this tab-->
 						  		<div class="col-sm-3">
