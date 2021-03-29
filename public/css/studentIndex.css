@@ -1152,3 +1152,30 @@ time.datebox {
   content: '- Show Less';
   font-size: 10pt;
 }
+
+/*page nav collapse*/
+#collapse_module_page {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+.collapse_module_page .collapse_page_element.collapse:not(.show) {
+  display: block;
+  height: 14.5rem;
+  overflow: hidden;
+}
+
+.collapse_module_page .collapse_page_element.collapsing {
+  height: 14.5rem;
+}
+
+.collapse_module_page a.collapse_button.collapsed::after {
+  content: '+More';
+  font-size: 10pt;
+}
+
+.collapse_module_page a.collapse_button:not(.collapsed)::after {
+  content: '-Less';
+  font-size: 10pt;
+}

@@ -20,9 +20,10 @@
 			            </div>
 		            </div>
 				</div>
+
 				<div class="row">
-				    <div class="col-sm-12">
-				      	<ul class="nav nav-tabs group-tabs" id="myTab" role="tablist">
+				    <div class="col-sm-12 collapse_module_page">
+				      	<ul class="nav nav-tabs group-tabs collapse collapse_page_element" id="myTab" role="tablist" aria-expanded="false">
 					        <li class="nav-item  group-tabs"><!-- connected to active tab-pane tabpanel allYourGroupFeed-->
 					            <a class="nav-link active group-tabs" data-toggle="tab" href="#allYourGroupFeed" role="tab" aria-controls="allYourGroupFeed">Your Feed</a>
 					        </li>
@@ -38,18 +39,32 @@
 								</div>
 							</div>
 							<br/>
-							
+
 							<!-- for each start here for joined groups-->
-					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
-					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="yourGroups">English for Begginers</a>
+
+							<!-- This connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
+					        <li class="nav-item group-tabs">
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="joined_group_1">English for Begginers</a>
 					        </li>
 
-					        <li class="nav-item group-tabs"><!-- connected to tab-pane tabpanel joined_group_2 (start at line 318)-->
-					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_2" role="tab" aria-controls="yourGroups">ESL Master Chefs</a>
+					        <!-- This connected to tab-pane tabpanel joined_group_2 (start at line 318)-->
+					        <li class="nav-item group-tabs">
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_2" role="tab" aria-controls="joined_group_2">ESL Master Chefs</a>
 					        </li>
 
-					        <!-- for each start here for joined groups-->
+					        <!-- just for content-->
+					        <li class="nav-item group-tabs">
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#" role="tab" aria-controls="">a third group</a>
+					        </li>
+
+					        <li class="nav-item group-tabs">
+					            <a class="nav-link group-tabs" data-toggle="tab" href="#" role="tab" aria-controls="">a fourth group</a>
+					        </li>
+					        <!-- just for content end-->
+
+					        <!-- for each end here for joined groups-->
 					    </ul>
+					    <a role="button" class="collapsed collapse_button" data-toggle="collapse" href="#myTab" aria-expanded="false" aria-controls="myTab"></a>
 					</div>
 				</div>
 			</div>
