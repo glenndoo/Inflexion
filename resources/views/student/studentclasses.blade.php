@@ -72,7 +72,7 @@
 											  				</div>
 											  				<div class="col-sm-7">
 											  					<h4 title="Your Tutor for this class">
-											  						 Glenn Dumaguing
+											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
 											  							<i class="fa fa-user" aria-hidden="true"></i>
 											  						</button>
@@ -108,7 +108,7 @@
 										  <div class="modal-dialog modal-dialog-centered" role="document">
 										    <div class="modal-content">
 										      <div class="modal-header">
-										        <h5 class="modal-title" id="exampleModalLongTitle">Glenn Dumaguing</h5>
+										        <h5 class="modal-title" id="exampleModalLongTitle">John Doe</h5>
 										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										          <span aria-hidden="true">&times;</span>
 										        </button>
@@ -155,7 +155,7 @@
 											  				</div>
 											  				<div class="col-sm-7">
 											  					<h4 title="Your Tutor for this class">
-											  						 Glenn Dumaguing
+											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_info_h{{$d}}">
 											  							<i class="fa fa-user" aria-hidden="true"></i>
 											  						</button>
@@ -185,7 +185,7 @@
 										  <div class="modal-dialog modal-dialog-centered" role="document">
 										    <div class="modal-content">
 										      <div class="modal-header">
-										        <h5 class="modal-title" id="exampleModalLongTitle">Glenn Dumaguing</h5>
+										        <h5 class="modal-title" id="exampleModalLongTitle">John Doe</h5>
 										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 										          <span aria-hidden="true">&times;</span>
 										        </button>
