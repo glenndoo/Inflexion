@@ -57,7 +57,7 @@
 
 					  		<div class="col-sm-9">
 						  		<!--start results for booked -->
-						  		@foreach(range(date('d')-3, date('d')) as $d)
+						  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
 								    <div class="row ">
 										<div class="col-sm-12">
 											<div class="group-card card shadow">
