@@ -117,5 +117,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/studentInbox', function () { //added for testing maiko
         return view('student.studentinbox');
     });
+    Route::get('/studentClasses', function () { //added for testing maiko
+        return view('student.studentclasses');
+    });
     
 });

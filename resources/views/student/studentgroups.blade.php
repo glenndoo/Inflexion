@@ -10,6 +10,7 @@
 		<!--start group main -->
 		<div class="row">
 			<div class="col-sm-3">
+				<!--side search-->
 				<div class="row">
 					<div class="col-sm-12 ">
 						<div class="search ">
@@ -20,7 +21,7 @@
 			            </div>
 		            </div>
 				</div>
-
+				<!-- side sub nav-->
 				<div class="row">
 				    <div class="col-sm-12 collapse_module_page">
 				      	<ul class="nav nav-tabs group-tabs collapse collapse_page_element" id="myTab" role="tablist" aria-expanded="false">

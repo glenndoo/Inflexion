@@ -123,7 +123,7 @@
 	            
 	        </li>
 	        <li class="has-subnav">
-	            <a href="#">
+	            <a href="/studentClasses">
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    My classes
@@ -144,7 +144,7 @@
 	            <a href="#">
 	                <i class="fa fa-bar-chart-o icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    link
+	                    Market
 	                </span>
 	            </a>
 	        </li>
