@@ -1125,6 +1125,10 @@ time.datebox {
   width: 40px;
   margin: .2rem;
 }
+.group-card.card .card-header{
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
 
 /*post message index collapse*/
 #collapse_module {
