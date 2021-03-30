@@ -17,7 +17,6 @@
 						<div class="search ">
 			            	<div type="text" class="search-input" placeholder="Search groups..." name="">
 			            		<h4>Your Classes</h4>
-			            		
 			            	</div>
 			            </div>
 		            </div>
@@ -74,7 +73,7 @@
 											  					<h4 title="Your Tutor for this class">
 											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
-											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i></i>
+											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 											  						</button>
 											  					</h4>
 											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
@@ -97,12 +96,10 @@
 											  					<a href="#" class="btn btn-primary form-control">resched</a>
 											  				</div>
 											  			</div>
-											  			
 											  		</div>
 												</div>
 											</div>
 										</div>
-
 										<!-- looped Modal -->
 										<div class="modal fade" id="t_Info_b{{$d}}" tabindex="-1" role="dialog" aria-labelledby="t_Info_b{{$d}}" aria-hidden="true">
 										  <div class="modal-dialog modal-dialog-centered" role="document">
@@ -281,6 +278,6 @@
 			</div>
 			<!-- main tab column end-->
 		</div>
+		<!--end myclasses main-->
 	</div>
-	<!--end myclasses main-->
 </div>

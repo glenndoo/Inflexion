@@ -12,7 +12,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
 </head>
-<body>
+<body id="app">
 	<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
 	    <a href="#" class="navbar-brand">
 	       <img class="" src="{{ asset('img/inflex_icon.png') }}" >
@@ -135,24 +135,24 @@
 	            <a href="{{ route('ShowInbox') }}">
 	               <i class="fa fa-envelope icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Mail
+	                    Mailbox
 	                </span>
 	            </a>
 	           
 	        </li>
 	        <li>
-	            <a href="#">
-	                <i class="fa fa-bar-chart-o icon-side fa-size"></i>
+	            <a href="/studentFindTutor">
+	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Market
+	                   Find Tutor
 	                </span>
 	            </a>
 	        </li>
 	        <li>
 	            <a href="#">
-	                <i class="fa fa-font icon-side fa-size"></i>
+	                <i class="fa fa-bar-chart-o icon-side fa-size"></i>
 	                <span class="nav-text">
-	                   link
+	                    link
 	                </span>
 	            </a>
 	        </li>
