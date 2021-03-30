@@ -88,6 +88,10 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@SendMessageInbox'
     ));
 
+    Route::get('DeleteInboxMessage/{id}', array(
+        'as' => 'DeleteInboxMessage',
+        'uses' => 'InflexionController@DeleteInboxMessage'
+    ));
 
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){

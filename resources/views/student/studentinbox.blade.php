@@ -84,7 +84,7 @@
 														<li><a href="#">Mark as important</a></li>
 														<li class="divider"></li>
 														<li><a href="#">Report spam</a></li>
-														<li><a href="#">Delete</a></li>
+														<li><a href="">Delete</a></li>
 													</ul>
 												</div>
 											</div>
@@ -125,7 +125,7 @@
 														</td>
 														<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
 														<td class="delete">
-															<button class="btn btn-danger">
+															<a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" class="btn btn-danger">
 																<i class="fa fa-trash" aria-hidden="true"></i>
 															</button>
 														</td>
@@ -144,10 +144,10 @@
 													  	 	<div class="form-group row">
 															    <label for="staticEmail" class="col-sm-2 col-form-label">From:</label>
 															    <div class="col-sm-5">
-															      <input type="text" class="form-control" id="name" value="{{  $msgs->inflexion_inbox_owner }}" disabled placeholder="recievers name">
+															      <input type="text" class="form-control" id="name" value="{{  $msgs->inflexion_detail_first.' '.$msgs->inflexion_detail_last }}" disabled placeholder="recievers name">
 															    </div>
 															    <div class="col-sm-5">
-															      <input type="text" class="form-control" id="staticEmail" value="{{  $msgs->inflexion_inbox_rcpt }}" disabled placeholder="recievers name">
+															      <input type="text" class="form-control" id="staticEmail" value="You" disabled placeholder="recievers name">
 															    </div>
 														  	</div>
 													  	 	<div class="form-group row">
@@ -168,7 +168,7 @@
 													      </div>
 													      <div class="modal-footer">
 													        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
-													        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</button>
+													        <a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</a>
 													        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
 													      </div>
 													    </div>

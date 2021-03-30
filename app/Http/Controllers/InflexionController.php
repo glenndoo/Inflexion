@@ -240,4 +240,14 @@ class InflexionController extends Controller
 
         return redirect()->back()->with('MessageDetails',$showMess);
     }
+
+    //DELETE INBOX MESSAGE
+    public function DeleteInboxMessage(Request $request, $id){
+        $deleteMessage = $this->InflexionInboxModel->deleteMessage($id);
+        if($deleteMessage){
+            return redirect()->back()->with('Success', 'Message deleted');
+        }else{
+            return redirect()->back()->with('Errors', 'Failed to delete message');
+        }
+    }
 }

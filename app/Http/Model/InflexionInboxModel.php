@@ -65,4 +65,14 @@ class InflexionInboxModel extends Model
         $show = $this->where('inflexion_inbox_id','=',$id)->first();
         return $show;
     }
+
+    public function deleteMessage($id){
+        $delete = $this->where('inflexion_inbox_id','=',$id)->delete();
+
+        if($delete){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
