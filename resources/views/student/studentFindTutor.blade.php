@@ -17,7 +17,7 @@
 				<div class="group-card card shadow">
 			  		<div class="card-header">
 			  			<div class="row">
-			  				<div class="col-sm-1">
+			  				<div class="col-sm-2">
 			  					S
 			  				</div>
 			  				<div class="col-sm-7"> s

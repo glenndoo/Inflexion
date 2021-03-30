@@ -63,13 +63,13 @@
 												<div class="group-card card shadow">
 											  		<div class="card-header">
 											  			<div class="row">
-											  				<div class="col-sm-1">
-											  					<time datetime="2014-06-29" class="pull-left datebox">
+											  				<div class="col-sm-2 pull-left">
+											  					<time datetime="2014-06-29" class="datebox">
 																	<strong>Mar</strong>
 																	<span>{{$d}}</span>
 																</time>
 											  				</div>
-											  				<div class="col-sm-7">
+											  				<div class="col-sm-6">
 											  					<h4 title="Your Tutor for this class">
 											  						 John Doe
 											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
@@ -78,7 +78,7 @@
 											  					</h4>
 											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
 											  				</div>
-											  				<div class="col-sm-4 text-right">
+											  				<div class="col-sm-4">
 											  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
 											  					<small><i>45 IG credits used</i></small>
 											  				</div>
