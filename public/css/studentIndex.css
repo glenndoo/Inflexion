@@ -1131,7 +1131,7 @@ time.datebox {
 }
 
 /*post message index collapse*/
-#collapse_module {
+.collapse_module {
   font-size: 1rem;
   line-height: 1.5;
 }

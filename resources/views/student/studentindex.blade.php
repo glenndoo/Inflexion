@@ -76,12 +76,12 @@
 								add a pr button for collapse toggle (see example below) -Maiko
 			        	-->
 
-			        	<div id="collapse_module">
-			        		<p class="collapse" id="collapse_long_element" aria-expanded="false">
+			        	<div class="collapse_module">
+			        		<p class="collapse collapse_long_element" id="collapse_long_element" aria-expanded="false">
 			                	{{ $post->inflexion_post_message }}
 			            	</p>
 			            	@if(strlen($post->inflexion_post_message)>154)
-			            		<a role="button" class="collapsed" data-toggle="collapse" href="#collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+			            		<a role="button" class="collapsed" data-toggle="collapse" href=".collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
 			            	@endif
 			            	
 			        	</div>
