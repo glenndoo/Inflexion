@@ -150,30 +150,7 @@
 	                </span>
 	            </a>
 	        </li>
-	        <li>
-	            <a href="#">
-	                <i class="fa fa-bar-chart-o icon-side fa-size"></i>
-	                <span class="nav-text">
-	                    link
-	                </span>
-	            </a>
-	        </li>
-	        <li>
-	           <a href="#">
-	               <i class="fa fa-table icon-side fa-size"></i>
-	                <span class="nav-text">
-	                    link
-	                </span>
-	            </a>
-	        </li>
-	        <li>
-	           <a href="#">
-	                <i class="fa fa-map-marker icon-side fa-size"></i>
-	                <span class="nav-text">
-	                    link
-	                </span>
-	            </a>
-	        </li>
+	        
 	        <li>
 	            <a href="#">
 	               <i class="fa fa-info icon-side fa-size"></i>

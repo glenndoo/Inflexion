@@ -28,12 +28,10 @@
 						      	<input type="text" class="form-control" id="tutorName" placeholder="e.g JOHN">
 						    </div>
 						    <div class="col-sm-2">
-
 						    	<label for="countryCitizenship" class="col-form-label">Country of Citizenship</label>
 						      	<select class="form-control" id="countryCitizenship">
 							      	<option selected>unspecified</option>
-							      	<option>2</option>
-							      	<option>3</option>
+							      	<option>Country from API</option>
 							    </select>
 						    </div>
 						    <div class="col-sm-2">
@@ -100,19 +98,38 @@
 									</ul>
 								</div>
 
-					    		<div class="col-sm-4">
+					    		<div class="col-sm-3">
 				    				<div class="form-group">
 									    	<label for="tutorName" class="col-form-label">Hobbies & Interest</label>
 									      	<input type="text" class="form-control" id="tutorName" placeholder="e.g Photography">
 									</div>
 					    		</div>
-					    		<div class="col-sm-4">
+					    		<div class="col-sm-3">
 				    				<div class="form-group">
 									    	<label for="tutorName" class="col-form-label">Tags</label>
 									      	<input type="text" class="form-control" id="tutorName" placeholder="e.g TOEIC">
 									</div>
 					    		</div>
-					    		<div class="col-sm-4">
+					    		<div class="col-sm-2">
+				    				<label for="countryCitizenship" class="col-form-label">Preferred Time</label>
+							      	<select class="form-control" id="countryCitizenship">
+								      	<option selected>unspecified</option>
+								      	<option>Morning</option>
+								      	<option>Afternoon</option>
+								      	<option>Evening</option>
+								    </select>
+					    		</div>
+					    		<div class="col-sm-2">
+				    				<label for="countryCitizenship" class="col-form-label">Schedule availability</label>
+							      	<select class="form-control" id="countryCitizenship">
+								      	<option selected>unspecified</option>
+								      	<option>MWF</option>
+								      	<option>TTHS</option>
+								      	<option>Weekdays</option>
+								      	<option>Weekends</option>
+								    </select>
+					    		</div>
+					    		<div class="col-sm-2">
 				    				<div class="form-group">
 									    	<label for="tutorName" class="col-form-label">Minimum credits</label>
 									      	<input type="text" class="form-control" id="tutorName" placeholder="e.g 25">
