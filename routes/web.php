@@ -96,43 +96,66 @@ use Illuminate\Support\Facades\Route;
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
-    Route::post('PostMessage', array(
-        'as' => 'PostMessage',
-        'uses' => 'InflexionController@PostMessage'
-    ));
+        Route::post('PostMessage', array(
+            'as' => 'PostMessage',
+            'uses' => 'InflexionController@PostMessage'
+        ));
 
-    Route::get('/studentIndex', array(
-        'as' => 'studentIndex',
-        'uses' => 'StudentController@studentIndex'
-    ));
+        Route::get('/studentIndex', array(
+            'as' => 'studentIndex',
+            'uses' => 'StudentController@studentIndex'
+        ));
 
-    Route::get('/studentSettings', function () { //added for testing maiko
-        return view('student.studentsettings');
+        Route::get('/studentSettings', function () { //added for testing maiko
+            return view('student.studentsettings');
+        });
+
+        Route::get('/studentProfile', function () { //added for testing maiko
+            return view('student.studentProfile');
+        });
+
+        Route::get('/studentGroups', function () { //added for testing maiko
+            return view('student.studentgroups');
+        });
+        
+        Route::get('/studentInbox', function () { //added for testing maiko
+            return view('student.studentinbox');
+        });
+        Route::get('/studentClasses', function () { //added for testing maiko
+            return view('student.studentclasses');
+        });
+        Route::get('/studentFindTutor', function () { //added for testing maiko
+            return view('student.studentFindTutor');
+        });
+
     });
 
-    Route::get('/studentProfile', function () { //added for testing maiko
-        return view('student.studentProfile');
-    });
 
-    Route::get('/studentGroups', function () { //added for testing maiko
-        return view('student.studentgroups');
-    });
-    
-    Route::get('/studentInbox', function () { //added for testing maiko
-        return view('student.studentinbox');
-    });
-    Route::get('/studentClasses', function () { //added for testing maiko
-        return view('student.studentclasses');
-    });
-    Route::get('/studentFindTutor', function () { //added for testing maiko
-        return view('student.studentFindTutor');
-    });
-
-});
-
-
+    //TUTOR GROUP ROUTE
     Route::group(['middleware' => 'Tutor'], function(){
         Route::get('/tutorIndex', function () { //added for testing maiko
         return view('tutor.tutorIndex');
-    });
+
+        });
+        Route::get('/tutorSettings', function () { //added for testing maiko
+        return view('tutor.tutorSettings');
+
+        });
+        Route::get('/tutorProfile', function () { //added for testing maiko
+        return view('tutor.tutorProfile');
+
+        });
+        Route::get('/tutorGroups', function () { //added for testing maiko
+        return view('tutor.tutorGroups');
+
+        });
+        Route::get('/tutorSchedule', function () { //added for testing maiko
+        return view('tutor.tutorSchedule');
+
+        });
+        Route::get('/tutorInbox', function () { //added for testing maiko
+        return view('tutor.tutorInbox');
+
+        });
+
     });

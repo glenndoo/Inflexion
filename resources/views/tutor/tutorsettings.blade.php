@@ -1,4 +1,4 @@
-<x-tutor-template data="tutorIndex" />
+<x-tutor-template data="tutorSettings" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container-fluid">
 		<div class="row">
@@ -13,7 +13,7 @@
 			<!-- Middle Column -->
 			<div class="col-sm-8">
 				<br/>
-				<h6>Tutor Index</h6>
+				<h6>Tutor Settings</h6>
 			</div>
 			<!-- Middle Column end -->
 		</div>
