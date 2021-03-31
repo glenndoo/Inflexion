@@ -8,10 +8,10 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-2">
+			<div class="col-sm-1">
 			</div>
 			<!-- Middle Column -->
-			<div class="col-sm-8">
+			<div class="col-sm-10">
 				<br/>
 				<h6>Find tutor</h6>
 				<div class="group-card card shadow">
@@ -23,19 +23,52 @@
 			  		</div>
 			  		<div class="card-body">
 			  			<div class="form-group row">
-						    <label for="staticEmail" class="col-sm-2 col-form-label">TUTOR NAME</label>
-						    <div class="col-sm-10">
-						      <input type="text" readonly class="form-control" id="staticEmail" placeholder="tutor name e.g JOHN">
+						    <div class="col-sm-6">
+						    	<label for="tutorName" class="col-form-label">Tutor Name</label>
+						      	<input type="text" class="form-control" id="tutorName" placeholder="e.g JOHN">
+						    </div>
+						    <div class="col-sm-2">
+
+						    	<label for="countryCitizenship" class="col-form-label">Country of Citizenship</label>
+						      	<select class="form-control" id="countryCitizenship">
+							      	<option>1</option>
+							      	<option>2</option>
+							      	<option>3</option>
+							      	<option>4</option>
+							      	<option>5</option>
+							    </select>
+						    </div>
+						    <div class="col-sm-2">
+						    	<label for="tutorAge" class="col-form-label">Age</label>
+						      	<input type="text" class="form-control" id="tutorAge" placeholder="tutor name e.g JOHN">
+						    </div>
+						    <div class="col-sm-2">
+						    	<label for="tutorAge" class="col-form-label">Gender</label>
+						      	<select class="form-control" id="countryCitizenship">
+							      	<option selected disabled>Select Gender</option>
+							      	<option>Male</option>
+							      	<option>Female</option>
+							    </select>
 						    </div>
 						</div>
 			  			<div class="form-group row">
-						    <label for="staticEmail" class="col-sm-2 col-form-label">TUTOR NAME</label>
-						    <div class="col-sm-4">
-						      <input type="text" readonly class="form-control" id="staticEmail" placeholder="tutor name e.g JOHN">
-						    </div>
-						    <label for="staticEmail" class="col-sm-2 col-form-label">TUTOR NAME</label>
-						    <div class="col-sm-4">
-						      <input type="text" readonly class="form-control" id="staticEmail" placeholder="tutor name e.g JOHN">
+						    <div class="col-sm-6">
+						    	<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+								  <label class="form-check-label" for="inlineCheckbox1">FREE TALKING</label>
+								</div>
+						    	<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+								  <label class="form-check-label" for="inlineCheckbox1">NATIVE SPEAKER</label>
+								</div>
+						    	<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+								  <label class="form-check-label" for="inlineCheckbox1">AVALABLE FOR KIDS</label>
+								</div>
+						    	<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+								  <label class="form-check-label" for="inlineCheckbox1">FOR BEGGINERS</label>
+								</div>
 						    </div>
 						</div>
 			  		</div>
