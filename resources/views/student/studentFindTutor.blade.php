@@ -151,14 +151,15 @@
 						<div class="card shadow">
 					  		<div class="card-header">
 					  			<div class="row">
-					  				<div class="col-sm-6">
+					  				<div class="col-sm-4">
 					  					<h5>John Doe</h5>
 					  				</div>
-					  				<div class="col-sm-3">
-					  					
-					  				</div>
-					  				<div class="col-sm-3 text-right">
-					  					
+					  				<div class="col-sm-8 text-right">
+					  					<span class="badge badge-secondary">TOEIC</span>
+								    	<span class="badge badge-secondary">FREETALKING</span>
+								    	<span class="badge badge-secondary">BEGGINER ENGLISH</span>
+								    	<span class="badge badge-secondary">BUSINESS ENGLISH</span>
+								    	<span class="badge badge-secondary">AVAILABLE FOR KIDS</span>
 					  				</div>
 					  			</div>
 					  		</div>
@@ -167,6 +168,7 @@
 					    			<div class="col-sm-11 form-inline">
 					    				<div class="col-sm-3">
 					    					<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="100rem">
+
 					    				</div>
 					    				<div class="col-sm-9">
 					    					<p>Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -174,20 +176,22 @@
 					    				
 					    			</div>
 					    			<div class="col-sm-1">
-					    				<button class="btn btn-primary form-control float-right" title="profile">
+					    				<a href="#" class="btn btn-primary form-control float-right" title="profile">
 					    					<i class="fa fa-user" aria-hidden="true"></i>
-					    				</button>
-					    				<button class="btn btn-info form-control float-right" title="Schedule">
+					    				</a>
+					    				<a class="btn btn-info form-control float-right" title="Schedule" data-toggle="collapse" href="#tutorSchedule" role="button" aria-expanded="false" aria-controls="tutorSchedule">
 					    					<i class="fa fa-calendar" aria-hidden="true"></i>
-					    				</button>
-					    				<button class="btn btn-warning form-control float-right" title="message">
+					    				</a>
+					    				<a href="#" class="btn btn-warning form-control float-right" title="message">
 					    					<i class="fa fa-envelope-o" aria-hidden="true"></i>
-					    				</button>
+					    				</a>
 					    			</div>
 					    		</div>
 					  		</div>
-					  		<div class="card-footer text-muted">
-						    
+					  		<div class="collapse" id="tutorSchedule">
+					  			<div class="card-footer text-muted">
+								    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+								</div>
 						  	</div>
 						</div>
 					</div>
