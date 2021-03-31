@@ -62,31 +62,39 @@
 										<li class="pz">
 											<label class="radio-inline">
 												<input type="checkbox" id="pro-chx-residential" name="gas_availability" class="pro-chx" value="yes">
-												<div class="clab">Native Speaker</div>
+												<div class="clab">
+													<i class="fa fa-black-tie" aria-hidden="true"></i>Native Speaker
+												</div>
 											</label>
 										</li>
 										<li class="pz">
 											<label class="radio-inline">
 												<input type="checkbox" id="pro-chx-residential" name="electricity_availability" class="pro-chx" value="yes">
-												<div class="clab">Available for kids</div>
+												<div class="clab">
+													<i class="fa fa-child" aria-hidden="true"></i>Available for kids
+												</div>
 											</label>
 										</li>
 										<li class="pz">
 											<label class="radio-inline">
 												<input type="checkbox" id="pro-chx-residential" name="phone_internet" class="pro-chx" value="yes">
-												<div class="clab">Free talking</div>
+												<div class="clab">
+													<i class="fa fa-comment" aria-hidden="true"></i>Free talking
+												</div>
 											</label>
 										</li>
 										<li class="pz">
 											<label class="radio-inline">
 												<input type="checkbox" id="pro-chx-residential" name="water_availability" class="pro-chx" value="yes">
-												<div class="clab">For begginers</div>
+												<div class="clab">
+													<i class="fa fa-book" aria-hidden="true"></i>For begginers
+												</div>
 											</label>
 										</li>
 										<li class="pz">
 											<label class="radio-inline">
 												<input type="checkbox" id="pro-chx-residential" name="sanitation" class="pro-chx" value="yes">
-												<div class="clab">Sanitation</div>
+												<div class="clab"><i class="fa fa-users" aria-hidden="true"></i> Group Class</div>
 											</label>
 										</li>
 									</ul>
