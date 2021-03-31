@@ -125,9 +125,10 @@
 														</td>
 														<td class="time">{{ $msgs->inflexion_inbox_date }}</td>
 														<td class="delete">
-															<a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" class="btn btn-danger">
+															<!--a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" class="btn btn-danger">
 																<i class="fa fa-trash" aria-hidden="true"></i>
-															</button>
+															</a-->
+															<a class="btn btn-sm" data-toggle="modal" data-target="#deleteModal_{{ $msgs->inflexion_inbox_id }}" data-dismiss="modal"><i class="fa fa-trash" aria-hidden="true"></i></a>
 														</td>
 													</tr>
 													<!-- modalMessage Start -->
@@ -168,14 +169,35 @@
 													      </div>
 													      <div class="modal-footer">
 													        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
-													        <a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>delete</a>
+													        <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_{{ $msgs->inflexion_inbox_id }}" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true" ></i>delete</a>
 
-													        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
+													        <!--button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button-->
 													      </div>
 													    </div>
 													  </div>
 													</div>
 													<!-- modalMessage end -->
+
+													<!-- deleteModal -->
+													<div class="modal fade" id="deleteModal_{{ $msgs->inflexion_inbox_id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModal_{{ $msgs->inflexion_inbox_id }}" aria-hidden="true">
+													  <div class="modal-dialog modal-dialog-centered" role="document">
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title" id="exampleModalCenterTitle">Are you sure you want to delete this message?</h5>
+													        <!--button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													          <span aria-hidden="true">&times;</span>
+													        </button-->
+													      </div>
+													      <!--div class="modal-body">
+													      	
+													      </div-->
+													      <div class="modal-footer">
+													        <a type="button" class="btn btn-danger" href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}">DELETE</a>
+													      	<button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+													      </div>
+													    </div>
+													  </div>
+													</div>
 													@endforeach
 												@else
 												No messages to show
