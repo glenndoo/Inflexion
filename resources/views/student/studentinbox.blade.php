@@ -28,7 +28,6 @@
 	                  </button>
 	                </div>
 	            @endif
-				<h6>student>studentinbox Note: top email has modal</h6>
 			</div>
 		</div>
 		<!--END SUCCESS ERROR MESSAGE -->

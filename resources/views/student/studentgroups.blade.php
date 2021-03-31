@@ -41,14 +41,15 @@
 							</div>
 							<br/>
 
-							<!-- for each start here for joined groups-->
+							<!-- for each start here for joined groups and "tab-pane" connected to each link should also be in another foreach
+							 		example<a href="#joined_group_1"> points to <div class="tab-pane" id="joined_group_1" role="tabpanel"> -->
 
-							<!-- This connected to tab-pane tabpanel joined_group_1 (start at line 185)-->
+							<!-- This connected to tab-pane tabpanel joined_group_1 (start at line 241)-->
 					        <li class="nav-item group-tabs">
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_1" role="tab" aria-controls="joined_group_1">English for Begginers</a>
 					        </li>
 
-					        <!-- This connected to tab-pane tabpanel joined_group_2 (start at line 318)-->
+					        <!-- This connected to tab-pane tabpanel joined_group_2 (start at line 403)-->
 					        <li class="nav-item group-tabs">
 					            <a class="nav-link group-tabs" data-toggle="tab" href="#joined_group_2" role="tab" aria-controls="joined_group_2">ESL Master Chefs</a>
 					        </li>
