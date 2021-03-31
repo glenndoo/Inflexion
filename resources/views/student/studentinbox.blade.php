@@ -168,7 +168,8 @@
 													      </div>
 													      <div class="modal-footer">
 													        <a href="" type="button" class="btn btn-primary mr-auto"><i class="fa fa-inbox"></i>reply</a>
-													        <a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>delete</a>
+													        <a href="{{ route('DeleteInboxMessage', [$msgs->inflexion_inbox_id]) }}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i>delete</a>
+
 													        <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>archive</button>
 													      </div>
 													    </div>
