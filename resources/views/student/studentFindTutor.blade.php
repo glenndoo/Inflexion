@@ -174,14 +174,14 @@
 					    				
 					    			</div>
 					    			<div class="col-sm-1">
-					    				<button class="btn btn-primary float-right">
-					    					x
+					    				<button class="btn btn-primary form-control float-right" title="profile">
+					    					<i class="fa fa-user" aria-hidden="true"></i>
 					    				</button>
-					    				<button class="btn btn-primary float-right">
-					    					x
+					    				<button class="btn btn-info form-control float-right" title="Schedule">
+					    					<i class="fa fa-calendar" aria-hidden="true"></i>
 					    				</button>
-					    				<button class="btn btn-primary float-right">
-					    					x
+					    				<button class="btn btn-warning form-control float-right" title="message">
+					    					<i class="fa fa-envelope-o" aria-hidden="true"></i>
 					    				</button>
 					    			</div>
 					    		</div>
