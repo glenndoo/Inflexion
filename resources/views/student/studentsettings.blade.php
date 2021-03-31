@@ -1,4 +1,4 @@
-<x-student-template data="studentindex" />
+<x-student-template data="studentsettings" />
 <div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container">
 		<div class="row">
