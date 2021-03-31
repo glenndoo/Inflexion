@@ -14,6 +14,7 @@
 			<div class="col-sm-10">
 				<br/>
 				<h6>Find tutor</h6>
+				<!-- search bar start-->
 				<div class="group-card card shadow">
 			  		<div class="card-header">
 			  			<div class="row">
@@ -139,6 +140,64 @@
 						</div>
 			  		</div>
 				</div>
+				<!-- search bar end-->
+
+				<hr/>
+
+				<!--result start -->
+				<div class="row d-flex justify-content-center">
+					<div class="col-sm-8">
+						<!--div class="group-card card shadow"-->
+						<div class="card shadow">
+					  		<div class="card-header">
+					  			<div class="row">
+					  				<div class="col-sm-6">
+					  					<h5>John Doe</h5>
+					  				</div>
+					  				<div class="col-sm-3">
+					  					
+					  				</div>
+					  				<div class="col-sm-3 text-right">
+					  					
+					  				</div>
+					  			</div>
+					  		</div>
+					  		<div class="card-body">
+					    		<div class="row">
+					    			<div class="col-sm-11 form-inline">
+					    				<div class="col-sm-3">
+					    					<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="100rem">
+					    				</div>
+					    				<div class="col-sm-9">
+					    					<p>Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+					    				</div>
+					    				
+					    			</div>
+					    			<div class="col-sm-1">
+					    				<button class="btn btn-primary float-right">
+					    					x
+					    				</button>
+					    				<button class="btn btn-primary float-right">
+					    					x
+					    				</button>
+					    				<button class="btn btn-primary float-right">
+					    					x
+					    				</button>
+					    			</div>
+					    		</div>
+					  		</div>
+					  		<div class="card-footer text-muted">
+						    
+						  	</div>
+						</div>
+					</div>
+				</div>
+				<div class="row  d-flex justify-content-center"> <!-- this row div just separates result div-->
+					<div class="col-sm-8">
+					<hr/>
+					</div>
+				</div>
+				<!--result start end-->
 			</div>
 		</div><!-- Middle Column end -->
 	</div><!--end myclasses main-->
