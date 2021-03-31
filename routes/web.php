@@ -127,9 +127,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/studentFindTutor', function () { //added for testing maiko
         return view('student.studentFindTutor');
     });
-    
+
+});
+
 
     Route::group(['middleware' => 'Tutor'], function(){
-
+        Route::get('/tutorIndex', function () { //added for testing maiko
+        return view('tutor.tutorIndex');
     });
-});
+    });

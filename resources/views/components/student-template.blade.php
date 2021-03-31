@@ -90,6 +90,8 @@
 				    	<button class="dropdown-item" type="button">{{ session()->get('info.userWholeName') }}</button>
 				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
 				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
+				    	<hr/>
+				    	<button class="dropdown-item" type="button"><a href="{{ route('LogoutUser') }}" class="">Logout</a></button>
 				   	 <!--button class="dropdown-item" type="button">Profile</button-->
 				  	</div>
 				</div>

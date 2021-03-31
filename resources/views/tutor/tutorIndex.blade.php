@@ -1,4 +1,4 @@
-<x-student-template data="studentfindtutor" />
+<x-tutor-template data="tutorIndex" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container-fluid">
 		<div class="row">
