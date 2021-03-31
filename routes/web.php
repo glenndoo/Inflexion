@@ -128,4 +128,8 @@ use Illuminate\Support\Facades\Route;
         return view('student.studentFindTutor');
     });
     
+
+    Route::group(['middleware' => 'Tutor'], function(){
+
+    });
 });

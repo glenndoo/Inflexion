@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class StudentMiddleware
+class TutorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,10 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // dd($request->session()->get('info.status'));
-
-        if($request->session()->get('info.status') == 1){
+        if($request->session()->get('info.status') == 2){
             return $next($request);
         }else{
-            return redirect()->back()->with('Errors', 'You are not allowed to access that page');
+            return redirect()->back()->with('Errors', 'You are not allowed to view that page');
         }
-        
     }
 }

@@ -70,16 +70,29 @@ class InflexionUserModel extends Model
 
 
     public function checkLogin($request){
-        $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
-        if($check != null){
-            if(Hash::check($request->password, $check->inflexion_user_pass)){
-                return $check;
-            }else{
-                return "Invalid username/password";
-            }
+        $findUser = $this->where('inflexion_username','=',$request->username)->first();
+        $status = 0;
+        if($findUser->inflexion_user_status == 0){
+            return $findUser;
+        }else if($findUser->inflexion_user_status == 1){
+            $check = $this->where('inflexion_username','=',$request->username)->first();
+            return $check;
         }else{
-            return false;
+            if($findUser){
+                $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
+            if($check != null){
+                if(Hash::check($request->password, $check->inflexion_user_pass)){
+                    return $check;
+                }else{
+                    return $check;
+                }
+            }
+            }else{
+                return $check;
+            }
         }
+        
+        
     }
 
 

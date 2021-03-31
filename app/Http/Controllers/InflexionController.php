@@ -129,16 +129,15 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
-
-            if(!$login){
-                return view('/login')->with('Errors','Username not found'); //changed from return redirect()->back()->with('Errors','Username not found'); -maiko
+            // dd($login);
+            if($login->inflexion_user_status == 0){
+                return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
+            }else if($login->inflexion_user_status == 1){
+                $countries = CountryListFacade::getList('en');
+                return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
+            }else if($login == null){
+                return view('/login')->with('Errors', 'Invalid username/password');
             }else{
-                if($login->inflexion_user_status == 1){
-                    $countries = CountryListFacade::getList('en');
-                    return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
-                }else if($login->inflexion_user_status == 0){
-                    return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
-                }else{
                     $sess = [
                         'status' => $login->inflexion_user_type,
                         'userId' => $login->inflexion_user_id,
@@ -147,9 +146,17 @@ class InflexionController extends Controller
                         'userDetails' => $login
                     ];
                     $request->session()->put('info', $sess);
-                    return redirect('/studentIndex');
-                }
+                    if($login->inflexion_user_type == 1){
+                        return redirect('/studentIndex');
+                    }else{
+                        return redirect('/tutorIndex');
+                    }
+                    
+                
             }
+                    
+                
+            
             
         }
     }
