@@ -93,6 +93,11 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@DeleteInboxMessage'
     ));
 
+    Route::get('TutorRegistryVerification', array(
+        'as' => 'TutorRegistryVerification',
+        'uses' => 'InflexionController@TutorRegistryVerification'
+    ));
+
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
@@ -155,7 +160,7 @@ use Illuminate\Support\Facades\Route;
         });
         Route::get('/tutorInbox', function () { //added for testing maiko
         return view('tutor.tutorInbox');
-
         });
+        
 
     });

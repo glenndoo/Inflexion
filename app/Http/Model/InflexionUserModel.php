@@ -17,7 +17,9 @@ class InflexionUserModel extends Model
       'inflexion_username',
       'inflexion_user_pass',
       'inflexion_user_type',
-      'inflexion_user_status'
+      'inflexion_user_status',
+      'inflexion_user_token',
+      'inflexion_user_tutor'
     ];
 
 
@@ -34,6 +36,9 @@ class InflexionUserModel extends Model
             $saveReg->inflexion_user_type = $request->type;
             $saveReg->inflexion_user_status = 0;
             $saveReg->inflexion_user_token = $token;
+            if($request->type == 2){
+                $saveReg->inflexion_user_tutor = 0;
+            }
                 if($saveReg->save()){
                     return true;
                 }else{
@@ -49,7 +54,8 @@ class InflexionUserModel extends Model
         // dd($checkInfo);
         if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
             if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
-                $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
+                if(empty($checkInfo->inflexion_)){
+                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
                     if($updateInfo){
                         $status = 1;
                         return $status;
@@ -57,6 +63,10 @@ class InflexionUserModel extends Model
                         $status = 2;
                         return $status;
                     }
+                }else{
+
+                }
+                
             }else{
                 $status = 3;
                 return $status;
@@ -72,25 +82,27 @@ class InflexionUserModel extends Model
     public function checkLogin($request){
         $findUser = $this->where('inflexion_username','=',$request->username)->first();
         $status = 0;
-        if($findUser->inflexion_user_status == 0){
-            return $findUser;
-        }else if($findUser->inflexion_user_status == 1){
-            $check = $this->where('inflexion_username','=',$request->username)->first();
-            return $check;
-        }else{
-            if($findUser){
-                $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
-            if($check != null){
-                if(Hash::check($request->password, $check->inflexion_user_pass)){
-                    return $check;
-                }else{
-                    return $check;
+        // dd($findUser);
+        if(!empty($findUser)){
+            if($findUser->inflexion_user_status == 0){
+                return $findUser;
+            }else if($findUser->inflexion_user_status == 1){
+                $check = $this->where('inflexion_username','=',$request->username)->first();
+                return $check;
+            }else{
+                    $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
+                if($check != null){
+                    if(Hash::check($request->password, $check->inflexion_user_pass)){
+                        return $check;
+                    }else{
+                        return $check;
+                    }
                 }
             }
-            }else{
-                return $check;
-            }
+        }else{
+            return $findUser;
         }
+        
         
         
     }
@@ -106,4 +118,31 @@ class InflexionUserModel extends Model
         }
     }
 
+    public function verifyTutorRegistry($request){
+        $status = 0;
+        $checkInfo = $this->where('inflexion_username','=',$request->val)->first();
+        // dd($checkInfo);
+        if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
+            if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token && $checkInfo->inflexion_user_tutor == 0){
+                if(empty($checkInfo->inflexion_)){
+                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated with no exam']);
+                    if($updateInfo){
+                        $status = 1;
+                        return $status;
+                    }else{
+                        $status = 2;
+                        return $status;
+                    }
+                }else{
+
+                }
+                
+            }else{
+                $status = 3;
+                return $status;
+            }
+        }else{
+            return $status;
+        }
+    }
 }

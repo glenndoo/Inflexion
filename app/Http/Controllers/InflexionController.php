@@ -11,6 +11,7 @@ use App\Http\Model\InflexionInboxModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
+use App\Mail\TutorRegisterMail;
 use Hash;
 use Session;
 use Monarobase\CountryList\CountryListFacade;
@@ -40,7 +41,8 @@ class InflexionController extends Controller
     public function ValidateRegistry(Request $request){
         $Valid = Validator::make($request->all(),[
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'type' => 'required'
         ],[
             'username.required' => 'Please enter your email address',
             'password.required' => 'Please set your password'
@@ -57,15 +59,30 @@ class InflexionController extends Controller
         $token = str_shuffle($pin);
         $SaveRegistry = $this->InflexionUserModel->saveRegistry($request, $token);
         if($SaveRegistry){
-            $details = [
-                'title' => 'Inflexion Global Registration',
-                'body' => 'Congratulations! You have successfully registered an account with Inflexion Global. To fully verify your account and utilize all our services, please click the link below.',
-                'token' => $token,
-                'email' => Hash::make($request->username),
-                'valid' => $request->username
-            ];
-            $mailerFunction = 'RegisterMail';
-            $this->SendEmail($request->username, $token, $details, $mailerFunction);
+            
+
+            if($request->type == 1){
+                $details = [
+                    'title' => 'Inflexion Global Registration',
+                    'body' => 'Congratulations! You have successfully registered an account with Inflexion Global. To fully verify your account and utilize all our services, please click the link below.',
+                    'token' => $token,
+                    'email' => Hash::make($request->username),
+                    'valid' => $request->username
+                ];
+                $mailerFunction = 'RegisterMail';
+                $this->SendEmail($request->username, $token, $details, $mailerFunction);
+            }else{
+                $details = [
+                    'title' => 'Inflexion Global Tutor Registration',
+                    'body' => 'Congratulations! You have successfully registered a tutor account with Inflexion Global. To fully verify your account and utilize all our services, you must first pass the qualifying test. Please click the link below to proceed to the qualifying test.',
+                    'token' => $token,
+                    'email' => Hash::make($request->username),
+                    'valid' => $request->username
+                ];
+                $mailerFunction = "TutorRegisterMail";
+                $this->SendEmail($request->username, $token, $details, $mailerFunction);
+            }
+            
             return view('welcome')->with('Success','Successfully registered! Please check your email to verify your account');
         }else{
             return view('register')->with("Errors","Username already taken");
@@ -112,6 +129,8 @@ class InflexionController extends Controller
            Mail::to($email)->send(new RegisterMail($details));
         }else if($mailFunction == "CompleteRegistryMail"){
             Mail::to($email)->send(new CompleteRegistryMail($details));
+        }else if($mailFunction == "TutorRegisterMail"){
+            Mail::to($email)->send(new TutorRegisterMail($details));
         }else{
 
         }
@@ -130,13 +149,15 @@ class InflexionController extends Controller
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
             // dd($login);
-            if($login->inflexion_user_status == 0){
+            if(isset($login->inflexion_user_status) == 0 && isset($login->inflexion_user_status)){
                 return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
-            }else if($login->inflexion_user_status == 1){
+            }else if(isset($login->inflexion_user_status) == 1 && isset($login->inflexion_user_status)){
                 $countries = CountryListFacade::getList('en');
                 return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
-            }else if($login == null){
+            }else if($login == 3){
                 return view('/login')->with('Errors', 'Invalid username/password');
+            }else if(!isset($login->inflexion_user_status)){
+                return view('/login')->with('Errors', 'Username does not exist');
             }else{
                     $sess = [
                         'status' => $login->inflexion_user_type,
@@ -255,6 +276,37 @@ class InflexionController extends Controller
             return redirect()->back()->with('Success', 'Message deleted');
         }else{
             return redirect()->back()->with('Errors', 'Failed to delete message');
+        }
+    }
+
+    //TUTOR EMAIL VERIFICATION
+    public function TutorRegistryVerification(Request $request){
+        $Valid = Validator::make($request->all(),[
+            'token' => 'required',
+            'vry' => 'required',
+            'val' => 'required'
+        ],[
+
+        ]
+        );
+
+        if($Valid->fails()){
+            return view('welcome');
+        }else{
+            
+                $check = $this->InflexionUserModel->verifyTutorRegistry($request);
+
+                if($check == 1){
+                    return redirect()->to('tutor.exam');
+                }else if($check == 2){
+                    return view('welcome')->with('Error','Cannot verify account');
+                }else if($check == 3){
+                    return view('welcome')->with('Error',"Account is already verified, please log in to your account");
+                }else{
+                    return view('welcome')->with('Error',"Invalid Verifcation Link");
+                }
+                
+                
         }
     }
 }
