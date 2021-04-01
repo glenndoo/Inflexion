@@ -162,9 +162,9 @@ class InflexionController extends Controller
                     return "CHECK ME";
                 }
                 
-            }else if(is_array($login) && $login == 3){
+            }else if(is_int($login) && $login == 3){
                 return view('/login')->with('Errors', 'Invalid username/password');
-            }else if(!isset($login->inflexion_user_status)){
+            }else if(is_int($login) && $login == 4){
                 // dd($login);
                 return view('/login')->with('Errors', 'Username does not exist');
             }else{

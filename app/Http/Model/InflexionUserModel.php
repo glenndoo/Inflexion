@@ -84,23 +84,28 @@ class InflexionUserModel extends Model
         $status = 0;
         // dd($findUser);
         if(!empty($findUser)){
+            // dd($findUser->inflexion_user_status);
             if($findUser->inflexion_user_status == 0){
                 return $findUser;
-            }else if($findUser->inflexion_user_status == 1){
-                $check = $this->where('inflexion_username','=',$request->username)->first();
-                return $check;
-            }else{
+            }else if($findUser->inflexion_user_status == 2){
                     $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
+                    // dd($check);
+                    // dd(Hash::check($request->password, $check->inflexion_user_pass));
+
                 if($check != null){
                     if(Hash::check($request->password, $check->inflexion_user_pass)){
                         return $check;
                     }else{
-                        return $check;
+                        $status = 3;
+                        return $status;
                     }
                 }
+            }else if($findUser->inflexion_user_status == 1){
+                return $findUser;
             }
         }else{
-            return $findUser;
+            $status = 4;
+            return $status;
         }
         
         
