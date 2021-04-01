@@ -20,7 +20,7 @@ class InflexionAnswersModel extends Model
 
 
     public function fetchAnswers (){
-        $answers = $this->get();
+        $answers = $this->inRandomOrder()->get();
         return $answers;
     }
 
