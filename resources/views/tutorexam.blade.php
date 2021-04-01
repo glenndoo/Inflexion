@@ -24,8 +24,6 @@
 							@endphp
 								<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count }}" role="tab" aria-controls="question_{{ $count }}" >to question {{ $count }}</a>
 							</div>
-							</div>
-							</div>
 					  		@foreach($Questions as $quest)<!--loops the next divs + 1-->
 					  			<div class="tab-pane" id="question_{{ $count }}" role="tabpanel">
 								    <div class="row">
