@@ -9,6 +9,7 @@ use App\Http\Model\InflexionDetailModel;
 use App\Http\Model\InflexionPostModel;
 use App\Http\Model\InflexionInboxModel;
 use App\Http\Model\InflexionQuestionsModel;
+use App\Http\Model\InflexionAnswersModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -24,12 +25,14 @@ class InflexionController extends Controller
     public $InflexionPostModel;
     public $InflexionInboxModel;
     public $InflexionQuestionsModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel){
+    public $InflexionAnswersModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
         $this->InflexionInboxModel = $InflexionInboxModel;
         $this->InflexionQuestionsModel = $InflexionQuestionsModel;
+        $this->InflexionAnswersModel = $InflexionAnswersModel;
     }
 
     //DISPLAY INDEX
@@ -324,8 +327,10 @@ class InflexionController extends Controller
         }
     }
 
+    // FOR TUTOR EXAM
     public function FetchQuestions(){
         $quests = $this->InflexionQuestionsModel->fetchQuestions();
-        return $quests;
+        $answers = $this->InflexionAnswersModel->fetchAnswers();
+        return view('tutorexam')->with('Questions', $quests)->with('Answers', $answers);
     }
 }

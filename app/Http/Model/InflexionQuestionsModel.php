@@ -18,7 +18,8 @@ class InflexionQuestionsModel extends Model
 
 
     public function fetchQuestions(){
-        $questions = $this->join('inflexion_test_answers','inflexion_answer_test','=','inflexion_test_id')->get();
+        $questions = $this->inRandomOrder()->limit(30)->get();
         return $questions;
     }
+
 }

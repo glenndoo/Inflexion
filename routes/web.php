@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
     Route::view('register','register');
 
     
-    Route::view('tutorExam','tutorexam');
+    Route::view('tutorexam','tutorexam');
 
     Route::view('login','login');
 

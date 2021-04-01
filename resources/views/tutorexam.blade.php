@@ -18,75 +18,46 @@
 						 <div class="tab-content"><!--inside this are tab panels-->
 						 	<div class="tab-pane active" id="question_1" role="tabpanel"><!-- tab panel marked active is shown first-->
 								<div class="row">
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-									
-								</div>
-								<div class="row">
-									<div class="form-check">
-									  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-									  <label class="form-check-label" for="defaultCheck1">
-									    Default checkbox
-									  </label>
-									</div>
-								</div>
-								<div class="row">
-									<div class="form-check">
-									  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-									  <label class="form-check-label" for="defaultCheck1">
-									    Default checkbox
-									  </label>
-									</div>
-								</div>
-								<div class="row">
-									<div class="form-check">
-									  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-									  <label class="form-check-label" for="defaultCheck1">
-									    Default checkbox
-									  </label>
-									</div>
-								</div>
-								<a class="btn btn-success" data-toggle="tab" href="#question_2" role="tab" aria-controls="question_2" >to question 2</a>
+									<p>DISCLOSURE HERE</p>
+							@php
+							$count = 1;
+							@endphp
+								<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count }}" role="tab" aria-controls="question_{{ $count }}" >to question {{ $count }}</a>
 							</div>
-					  		@for($i = 0; $i < 10; $i++)<!--loops the next divs + 1-->
-					  			<div class="tab-pane" id="question_{{$i}}" role="tabpanel">
+							</div>
+							</div>
+					  		@foreach($Questions as $quest)<!--loops the next divs + 1-->
+					  			<div class="tab-pane" id="question_{{ $count }}" role="tabpanel">
 								    <div class="row">
 										<div class="col-sm-12">
 											<div class="row">
-												<p>{{$i}} Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+												<p>{{ $count }}. {{ $quest->inflexion_test_quest }}</p>
 											</div>
+											@foreach($Answers as $ans)
+											@if($ans->inflexion_answer_test == $quest->inflexion_test_id)
 											<div class="row">
 												<div class="form-check">
-												  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+												  <input class="form-check-input" type="checkbox" value="{{ $ans->inflexion_answer_value }}" name="question[]" id="defaultCheck1">
 												  <label class="form-check-label" for="defaultCheck1">
-												    Default checkbox
+												    {{ $ans->inflexion_answer_choice }}
 												  </label>
 												</div>
 											</div>
-											<div class="row">
-												<div class="form-check">
-												  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												  <label class="form-check-label" for="defaultCheck1">
-												    Default checkbox
-												  </label>
-												</div>
-											</div>
-											<div class="row">
-												<div class="form-check">
-												  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												  <label class="form-check-label" for="defaultCheck1">
-												    Default checkbox
-												  </label>
-												</div>
-											</div>
-											@if($i != 9)
-												<a class="btn btn-success" data-toggle="tab" href="#question_{{$i+1}}" role="tab" aria-controls="question_{{$i}}">to question {{$i+1}}</a>
+											@endif
+											@endforeach
+
+											@if($count != 30)
+												<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count+1 }}" role="tab" aria-controls="question_{{$count}}">to question {{ $count+1 }}</a>
 											@else
 												<button type="submit" form="form1" value="Submit" class="btn btn-success">Submit</button>
 											@endif
 										</div>
 									</div>
 								</div>
-							@endfor
+								@php
+								$count++;
+								@endphp
+							@endforeach
 						</div>
 					</form>
 			</div>
