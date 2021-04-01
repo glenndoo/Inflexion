@@ -190,7 +190,28 @@
 					  		</div>
 					  		<div class="collapse" id="tutorSchedule">
 					  			<div class="card-footer text-muted">
-								    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+								    <table class="table">
+									  		<thead class="thead-dark">
+											    <tr>
+											      <th scope="col">Day</th>
+											      <th scope="col">8:00</th>
+											      <th scope="col">9:00</th>
+											      <th scope="col">10:00</th>
+											      <th scope="col">11:00</th>
+											      <th scope="col">12:00</th>
+											      <th scope="col">1:00</th>
+											      <th scope="col">2:00</th>
+											    </tr>
+									  		</thead>
+									  		<tbody>
+											    <tr>
+											      <th scope="row">M</th>
+											      <td>Mark</td>
+											      <td>Otto</td>
+											      <td>@mdo</td>
+											    </tr>
+									  		</tbody>
+									</table>
 								</div>
 						  	</div>
 						</div>

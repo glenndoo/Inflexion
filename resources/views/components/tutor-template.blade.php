@@ -22,18 +22,12 @@
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
-	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
-
-	            
-				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalMail">
-					<i class="fa fa-envelope" aria-hidden="true"></i>mail
-				</a>
 				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
 		            <center>
-		            	//THIS IS A TUTOR ACCOUNT
+		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
 		            </center>
-				</a>
+				</a>//THIS IS A TUTOR ACCOUNT
 	        </div>
 	        <div class="navbar-nav ml-auto">
 	        	<div class="btn-group">
@@ -143,14 +137,14 @@
 	            </a>
 	           
 	        </li>
-	        <!--li>
-	            <a href="/studentFindTutor">
-	                <i class="fa fa-users icon-side fa-size"></i>
+	        <li>
+	            <a href="#">
+	                <i class="fa fa-usd icon-side fa-size"></i>
 	                <span class="nav-text">
-	                   Find Tutor
+	                   Payment
 	                </span>
 	            </a>
-	        </li-->
+	        </li>
 	        <li>
 	            <a href="#">
 	               <i class="fa fa-info icon-side fa-size"></i>
@@ -192,7 +186,7 @@
         		<label><b title="Inflexion Global Credits">100 IG Credits </b> </label>
         	</div>
         	<div class="col-sm-12 text-right">
-        		<small><i>credits allow you to book classes with tutors</i></small>
+        		<small><i>1 IG credit =  1 usd</i></small>
         	</div>
         </div>
 
@@ -200,23 +194,16 @@
 
         <div class="row">
         	<div class="col-sm-3">
-        		<i title="desired amount of credits 1 IGC = 1$."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="number" class="form-control" placeholder="amount" name="creditAmount" min="10"/>
+        		
         	</div>
-        	<div class="col-sm-5"> <i title="your 16 digit credit card number"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="card number" name=""/>
-        	</div>
-        	<div class="col-sm-2">
-        		 <i title="four-digit code assigned to or chosen by you after opening a credit card."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="pin" name=""/>
+        	<div class="col-sm-5">
+        		
         	</div>
         	<div class="col-sm-2">
-        		<i title="submit after completing credit card info and desired IG credit ammount information"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<button class="form-control btn btn-primary">submit</button>
+        		
         	</div>
-        	<div class="col-sm-12">
-        		<small><i>we will never share or save your credit card information</i></small>
-        		<small class="pull-right"><i>make sure all information are correct</i></small>
+        	<div class="col-sm-2">
+        		<button class="form-control btn btn-primary">payout</button>
         	</div>
         </div>
       </div>
