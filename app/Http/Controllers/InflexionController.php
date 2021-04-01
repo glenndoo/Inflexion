@@ -151,22 +151,31 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
-            // dd($login);
+            // CHECK RETURN STATUS
             if(isset($login->inflexion_user_status) && $login->inflexion_user_status == 0){
                 return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
+
             }else if(isset($login->inflexion_user_status) && $login->inflexion_user_status == 1){
+
+                // CHECK USER TYPE
                 if($login->inflexion_user_type == 1){
                     $countries = CountryListFacade::getList('en');
                     return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
+
                 }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
                     return "CHECK ME";
                 }
-                
+
+            // IF USER ENTERED INVALID CREDENTIALS     
             }else if(is_int($login) && $login == 3){
                 return view('/login')->with('Errors', 'Invalid username/password');
+
+            // IF USERNAME IS NOT FOUND
             }else if(is_int($login) && $login == 4){
                 // dd($login);
                 return view('/login')->with('Errors', 'Username does not exist');
+
+            // IF USER IS VALID
             }else{
                     $sess = [
                         'status' => $login->inflexion_user_type,

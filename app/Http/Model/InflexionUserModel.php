@@ -31,7 +31,7 @@ class InflexionUserModel extends Model
             return false;
         }else{
             $saveReg = $this;
-            $saveReg->inflexion_username = $request->username;
+            $saveReg->inflexion_username = strtolower($request->username);
             $saveReg->inflexion_user_pass = $password;
             $saveReg->inflexion_user_type = $request->type;
             $saveReg->inflexion_user_status = 0;
@@ -84,25 +84,33 @@ class InflexionUserModel extends Model
         $status = 0;
         // dd($findUser);
         if(!empty($findUser)){
-            // dd($findUser->inflexion_user_status);
+            
+            // IF USER HAS NOT YET VERIFIED THEIR EMAIL
             if($findUser->inflexion_user_status == 0){
                 return $findUser;
+
+            // IF USER HAS ALREADY COMPLETED THE REGISTRATION PROCESS
             }else if($findUser->inflexion_user_status == 2){
                     $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
-                    // dd($check);
-                    // dd(Hash::check($request->password, $check->inflexion_user_pass));
-
+                
                 if($check != null){
+                    // IF USER ENTERED VALID CREDENTIALS
                     if(Hash::check($request->password, $check->inflexion_user_pass)){
                         return $check;
+
+                    // IF USER ENTERED INVALID CREDENTIALS
                     }else{
                         $status = 3;
                         return $status;
                     }
                 }
+            
+            // IF USER HAS NOT COMPLETED THEIR REGISTRATION YET
             }else if($findUser->inflexion_user_status == 1){
                 return $findUser;
             }
+        
+        // IF USERNAME WAS NOT FOUND
         }else{
             $status = 4;
             return $status;
