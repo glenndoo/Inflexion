@@ -114,11 +114,11 @@ class InflexionController extends Controller
                 if($check == 1){
                     return view('welcome')->with('Success','Account successfully verified. You may now login.');
                 }else if($check == 2){
-                    return view('welcome')->with('Error','Cannot verify account');
+                    return view('welcome')->with('Success','Cannot verify account');
                 }else if($check == 3){
-                    return view('welcome')->with('Error',"Account is already verified, please log in to your account");
+                    return view('welcome')->with('Success',"Account is already verified, please log in to your account");
                 }else{
-                    return view('welcome')->with('Error',"Invalid Verifcation Link");
+                    return view('welcome')->with('Success',"Invalid Verifcation Link");
                 }
                 
                 
@@ -193,10 +193,6 @@ class InflexionController extends Controller
                     
                 
             }
-                    
-                
-            
-            
         }
     }
 

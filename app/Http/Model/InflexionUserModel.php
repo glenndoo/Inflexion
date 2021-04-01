@@ -52,9 +52,7 @@ class InflexionUserModel extends Model
         $status = 0;
         $checkInfo = $this->where('inflexion_username','=',$request->val)->first();
         // dd($checkInfo);
-        if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
-            if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token){
-                if(empty($checkInfo->inflexion_)){
+        if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token && $checkInfo->inflexion_user_status == 0){
                     $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
                     if($updateInfo){
                         $status = 1;
@@ -63,15 +61,15 @@ class InflexionUserModel extends Model
                         $status = 2;
                         return $status;
                     }
-                }else{
-
-                }
-                
-            }else{
-                $status = 3;
-                return $status;
-            }
+        }else if($checkInfo->inflexion_user_status == 1){
+            
+            $status = 3;
+            return $status;
+        }else if($checkInfo->inflexion_user_status == 2){
+            $status = 3;
+            return $status;
         }else{
+            // dd($status);
             return $status;
         }
         
