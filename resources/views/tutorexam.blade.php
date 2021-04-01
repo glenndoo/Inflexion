@@ -37,7 +37,7 @@
 											@if($ans->inflexion_answer_test == $quest->inflexion_test_id)
 											<div class="row">
 												<div class="form-check">
-												  <input class="form-check-input" type="checkbox" value="{{ $ans->inflexion_answer_value }}" name="question[]" id="defaultCheck1">
+												  <input class="form-check-input" type="radio" value="{{ $ans->inflexion_answer_value }}" name="question[]" id="defaultCheck1">
 												  <label class="form-check-label" for="defaultCheck1">
 												    {{ $ans->inflexion_answer_choice }}
 												  </label>
