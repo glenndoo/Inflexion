@@ -101,6 +101,11 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@TutorRegistryVerification'
     ));
 
+    Route::get('FetchQuestions', array(
+        'as' => 'FetchQuestions',
+        'uses' => 'InflexionController@FetchQuestions'
+    ));
+
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 

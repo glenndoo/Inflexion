@@ -8,6 +8,7 @@ use App\Http\Model\InflexionUserModel;
 use App\Http\Model\InflexionDetailModel;
 use App\Http\Model\InflexionPostModel;
 use App\Http\Model\InflexionInboxModel;
+use App\Http\Model\InflexionQuestionsModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -22,11 +23,13 @@ class InflexionController extends Controller
     public $InflexionDetailModel;
     public $InflexionPostModel;
     public $InflexionInboxModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel){
+    public $InflexionQuestionsModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
         $this->InflexionInboxModel = $InflexionInboxModel;
+        $this->InflexionQuestionsModel = $InflexionQuestionsModel;
     }
 
     //DISPLAY INDEX
@@ -111,11 +114,11 @@ class InflexionController extends Controller
                 if($check == 1){
                     return view('welcome')->with('Success','Account successfully verified. You may now login.');
                 }else if($check == 2){
-                    return view('welcome')->with('Error','Cannot verify account');
+                    return view('welcome')->with('Success','Cannot verify account');
                 }else if($check == 3){
-                    return view('welcome')->with('Error',"Account is already verified, please log in to your account");
+                    return view('welcome')->with('Success',"Account is already verified, please log in to your account");
                 }else{
-                    return view('welcome')->with('Error',"Invalid Verifcation Link");
+                    return view('welcome')->with('Success',"Invalid Verifcation Link");
                 }
                 
                 
@@ -148,16 +151,31 @@ class InflexionController extends Controller
 
         }else{
             $login = $this->InflexionUserModel->checkLogin($request);
-            // dd($login);
-            if(isset($login->inflexion_user_status) == 0 && isset($login->inflexion_user_status)){
+            // CHECK RETURN STATUS
+            if(isset($login->inflexion_user_status) && $login->inflexion_user_status == 0){
                 return view('/login')->with('Errors','Please check your email to verify your account'); //changed return "Please check your email to verify your account"; -maiko
-            }else if(isset($login->inflexion_user_status) == 1 && isset($login->inflexion_user_status)){
-                $countries = CountryListFacade::getList('en');
-                return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
-            }else if($login == 3){
+
+            }else if(isset($login->inflexion_user_status) && $login->inflexion_user_status == 1){
+
+                // CHECK USER TYPE
+                if($login->inflexion_user_type == 1){
+                    $countries = CountryListFacade::getList('en');
+                    return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
+
+                }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
+                    return "CHECK ME";
+                }
+
+            // IF USER ENTERED INVALID CREDENTIALS     
+            }else if(is_int($login) && $login == 3){
                 return view('/login')->with('Errors', 'Invalid username/password');
-            }else if(!isset($login->inflexion_user_status)){
+
+            // IF USERNAME IS NOT FOUND
+            }else if(is_int($login) && $login == 4){
+                // dd($login);
                 return view('/login')->with('Errors', 'Username does not exist');
+
+            // IF USER IS VALID
             }else{
                     $sess = [
                         'status' => $login->inflexion_user_type,
@@ -175,10 +193,6 @@ class InflexionController extends Controller
                     
                 
             }
-                    
-                
-            
-            
         }
     }
 
@@ -308,5 +322,10 @@ class InflexionController extends Controller
                 
                 
         }
+    }
+
+    public function FetchQuestions(){
+        $quests = $this->InflexionQuestionsModel->fetchQuestions();
+        return $quests;
     }
 }
