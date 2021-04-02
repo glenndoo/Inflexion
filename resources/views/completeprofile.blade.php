@@ -9,100 +9,141 @@
         <br/>
     </div>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Results</h3>
+                </div>
+                <div class="card-body">
+                    @if(isset($Results))
+                        You got {{ $Results }}% of the total questions
+                    @endif
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6">
-            <center>
-            @if(isset($Results))
-                You got {{ $Results }}% of the total questions
-            @endif
-                <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
-                    @csrf
-                    <h3>Please complete your account information</h3>
-                    <input class="form-control" type='hidden' name='id' value='{{ $Details->inflexion_user_id }}'/>
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type='email' readonly='readonly' value='{{ $Details->inflexion_username }}' name='email'required/>
+        <div class="col-sm-8">
+            <div class="card shadow">
+                <div class="card-header">
+                     <h3>Complete your account information</h3>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
+                        @csrf
+                        <input class="form-control" type='hidden' name='id' value='{{ $Details->inflexion_user_id }}'/>
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <input class="form-control" type='email' readonly='readonly' value='{{ $Details->inflexion_username }}' name='email'required/>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <hr/>
+                        
+                        <hr/>
 
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type="text" name='firstName' placeholder='First Name'required/>
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <input class="form-control" type="text" name='firstName' placeholder='First Name'required/>
+                            </div>
+                            <div class="col-sm">
+                                <input class="form-control" type="text" name='middleName' placeholder='Middle Name' required/>
+                            </div>
+                            <div class="col-sm">
+                                <input class="form-control" type="text" name='lastName'  placeholder='Last Name'required/>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type="text" name='middleName' placeholder='Middle Name' required/>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type="text" name='lastName'  placeholder='Last Name'required/>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="form-group row">
-                        <div class="col-sm-3"><input class="form-control" type="text" name='street'  placeholder='street'required/>
-                            
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                            <input class="form-control" type="text" name='city'  placeholder='City'required/>
-                              </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                            <input class="form-control" type="text" name='state'  placeholder='State/Province'required/>
+                        <hr/>
+                        <div class="form-group row">
+                            <div class="col-sm-3"><input class="form-control" type="text" name='street'  placeholder='street'required/>
                                 
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                            <select class="form-control" name='country' required>
-                                <option selected disabled>Country</option>
-                                @foreach($Countries as $country)
-                                <option value='{{ $country }}'>{{ $country }}</option>
-                                @endforeach
-                            </select>
-                               
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <input class="form-control" type="text" name='city'  placeholder='City'required/>
+                                  </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <input class="form-control" type="text" name='state'  placeholder='State/Province'required/>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                <select class="form-control" name='country' required>
+                                    <option selected disabled>Country</option>
+                                    @foreach($Countries as $country)
+                                    <option value='{{ $country }}'>{{ $country }}</option>
+                                    @endforeach
+                                </select>
+                                   
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-3">
-                            
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                            <input class="form-control" type="number" name='zipCode'  placeholder='Zip Code'required/>
+                            </div>
+                            <div class="col-sm">
+                                <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                        <input class="form-control" type="number" name='zipCode'  placeholder='Zip Code'required/>
+
+                        <div class="form-group row">
+                                <label for="dateOfBirth" class="col-sm-2 col-form-label">Date of Birth</label>
+                                <div class="col-sm-10">
+                                     <input class="form-control" type="date" value="2011-08-19T13:45:00" id="dateOfBirth" name="dateOfBirth" required/>
+                                </div>
                         </div>
-                    </div>
 
-                    <hr/>
-
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type="number" name='contactNumber'  placeholder='Contact Number'required/>
+                        <!--this should only show for tutor login-->
+                        <hr/>
+                        @php
+                        date_default_timezone_set('Asia/Manila');
+                           
+                        @endphp
+                        Site time: {{date('F j, Y g:i:a  ')}} (GMT+8)Metro Manila, PH
+                        <div class="form-group row">
+                            <div class="col-sm">
+                                <table class="table table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                          <th scope="col">Mon</th>
+                                          <th scope="col">Tue</th>
+                                          <th scope="col">Wed</th>
+                                          <th scope="col">Thu</th>
+                                          <th scope="col">Fri</th>
+                                          <th scope="col">Sat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                          <td><small>9am - 3pm</small></td>
+                                          <td><small>9am - 3pm</small></td>
+                                          <td><small>9am - 3pm</small></td>
+                                          <td><small>9am - 3pm</small></td>
+                                          <td><small>9am - 3pm</small></td>
+                                          <td><small>9am - 3pm</small></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm">
-                            <input class="form-control" type="date" value="2011-08-19T13:45:00" id="dateOfBirth" name="dateOfBirth" required/>
+                        <div class="form-group row">
+                            <label for="interviewSchedule" class="col-sm-3 col-form-label">Interview schedule:</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="datetime-local" id="interviewSchedule" name="interviewSchedule">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
+                        <div class="form-group row">
+                            <label for="example-datetime-local-input" class="col-sm-3 col-form-label">skype account:</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="text" id="skype account" name="skype account">
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center">
+                            <button class="btn btn-primary" type="submit" value="Register Information">Register Information</button>
+                        </div>
                         
-                    </div>
-                    <button class="btn btn-primary" type="submit" value="Register Information">Register Information</button>
-                </form>
-            </center>
-            
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
