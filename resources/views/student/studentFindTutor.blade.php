@@ -234,6 +234,7 @@
 														<tbody>
 														    <tr>
 														    	@foreach ($period as $dt)
+														    		<!--foreach($tutorSchedTime) somthing something from database idk well shit-->
 															      	<td class="text-center">
 															      		<button class="btn-primary btn btn-schedule">8:00am</button><br/>
 															      		<button class="btn-secondary btn btn-schedule">9:00am</button><br/>
@@ -241,6 +242,7 @@
 															      		<button class="btn-primary btn btn-schedule">11:00am</button><br/>
 															      		<button class="btn-primary btn btn-schedule">12:00am</button><br/>
 															      	</td>
+															      	<!--endforeach-->
 														      	@endforeach
 														    </tr>
 														</tbody>
