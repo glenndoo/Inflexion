@@ -5,26 +5,23 @@
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
     </div>
     <div class="row">
         <div class="col-sm-2">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Results</h3>
-                </div>
-                <div class="card-body">
-                    @if(isset($Results))
-                        You got {{ $Results }}% of the total questions
-                    @endif
-                </div>
-            </div>
         </div>
         <div class="col-sm-8">
             <div class="card shadow">
                 <div class="card-header">
-                     <h3>Complete your account information</h3>
+                    <ul id="progress">
+                        <li>
+                            <i class="fa fa-check" aria-hidden="true"></i> EXAM:
+                            @if(isset($Results))
+                        {{ $Results }}%
+                    @endif
+                        </li>
+                        <li class="active">Complete information</li>
+                        <li>Skype Interview</li>
+                    </ul>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
@@ -128,13 +125,13 @@
                         <div class="form-group row">
                             <label for="interviewSchedule" class="col-sm-3 col-form-label">Interview schedule:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="datetime-local" id="interviewSchedule" name="interviewSchedule">
+                                <input class="form-control" type="datetime-local" id="interviewSchedule" name="interviewSchedule" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-datetime-local-input" class="col-sm-3 col-form-label">skype account:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" id="skype account" name="skype account">
+                                <input class="form-control" type="text" id="skype account" name="skype account" required>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center">
