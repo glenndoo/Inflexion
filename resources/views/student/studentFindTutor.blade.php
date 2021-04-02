@@ -213,8 +213,8 @@
 								      			</div>
 								      		</div>
 
-								      		<hr/>
-								      		@php <!--this just loopsbetween begin and end to output columns of current week supossedly-->
+								      		<hr/> <!--this just loopsbetween begin and end to output columns of current week supossedly-->
+								      		@php
 											$begin = new DateTime('2021-04-05');
 											$end = new DateTime('2021-04-12');
 
