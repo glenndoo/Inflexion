@@ -43,7 +43,7 @@
 									<br/>
 									<h3 class="text-center">
 										You have completed your exam but unfortunately your score is below the passing rate. <br/>you still have 2 tries for your exam<br/>
-										<a href="#" class="btn btn-primary">RETAKE EXAM NOW?</a> <!--not sure if needed-->
+										<a href="#" class="btn btn-primary">RETAKE EXAM NOW?</a> <!--not sure if needed
 									</h3>
 									<br/>-->
 								</div>
