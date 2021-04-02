@@ -441,3 +441,11 @@ footer{
 #progress li.active:after {
     border-left-color: #4980D5;
 }
+.exam-pass{
+	font-size:100pt;
+	color:green;
+}
+.exam-fail{
+	font-size:100pt;
+	color:red;
+}

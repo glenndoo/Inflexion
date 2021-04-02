@@ -1,6 +1,6 @@
 <x-template data="tutorexam" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
-	<div class="container">
+	<div class="container fade-load">
 		<div class="row">
 			<div class="col-sm-12">
 				<br/>
@@ -24,7 +24,7 @@
 												ENGLISH PROFICIENCY EXAM
 											</li>
 										    <li>Complete information</li>
-										    <li>Skype Interview</li>
+										    <li>Finish</li>
 										</ul>
 									</div>
 
@@ -77,7 +77,7 @@
 														EXAM {{$count}} / 30
 													</li>
 												    <li>Complete information</li>
-												    <li>Skype Interview</li>
+												    <li>Finish</li>
 												</ul>
 											</div>
 											<div class="card-header">

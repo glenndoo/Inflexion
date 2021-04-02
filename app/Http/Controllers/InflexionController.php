@@ -254,7 +254,7 @@ class InflexionController extends Controller
             $mailerFunction = 'CompleteRegistryMail';
             $token = "";
                 $this->SendEmail($request->email, $token, $details, $mailerFunction);
-            return view('welcome')->with('Success','You have successfully created your account! An email was sent to your email address with details of the result and possible interview schedule. Thank you!');
+            return redirect('tutorExamResult')->with('Success','You have successfully created your account! An email was sent to your email address with details of the result and possible interview schedule. Thank you!');
            }
         
        }else{

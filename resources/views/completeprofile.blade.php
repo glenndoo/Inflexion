@@ -1,6 +1,6 @@
 <x-template data='Complete Profile' />
     
-<div class="container">
+<div class="container fade-load">
     <div class="row">
         <br/>
         <br/>

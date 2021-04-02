@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Route;
     Route::view('register','register');
 
     
-    Route::view('tutorexam','tutorexam');
+    Route::view('tutorexam','tutorexam');//added by maiko
+    Route::view('tutorExamResult','tutorExamResult');//added by maiko this after completeprofile submit
 
     Route::view('login','login');
 
