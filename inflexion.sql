@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2021 at 05:47 PM
+-- Generation Time: Apr 02, 2021 at 09:11 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -227,7 +227,6 @@ INSERT INTO `inflexion_test_answers` (`inflexion_answer_id`, `inflexion_answer_c
 (126, 'conscientious', 32, 1),
 (127, 'contrite', 32, 0),
 (128, 'farther', 62, 1),
-(129, 'further', 62, 0),
 (130, 'farther', 33, 0),
 (131, 'further', 33, 1),
 (132, 'eminent', 34, 0),
@@ -432,20 +431,22 @@ CREATE TABLE `inflexion_users` (
   `inflexion_user_type` int(11) NOT NULL,
   `inflexion_user_status` varchar(45) NOT NULL,
   `inflexion_user_token` varchar(115) NOT NULL,
-  `inflexion_user_tutor` int(11) DEFAULT NULL
+  `inflexion_user_tutor` decimal(11,2) DEFAULT NULL,
+  `inflexion_user_take` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `inflexion_users`
 --
 
-INSERT INTO `inflexion_users` (`inflexion_user_id`, `inflexion_username`, `inflexion_user_pass`, `inflexion_user_type`, `inflexion_user_status`, `inflexion_user_token`, `inflexion_user_tutor`) VALUES
-(57, 'gmd013@gmail.com', '$2y$10$nuNsqvrqSLgNTp4v/dpfR.Ye7GCfe.fq6FSUOvHkC0gHP3E.hpm86', 1, '2', 'Completed', NULL),
-(58, 'r@r.com', '$2y$10$ZQlEgdDEjIMcSKrrUlqlBuTSciIYPtcYCq8pzj0veVyrJk9oxBSpG', 1, '2', 'Completed', NULL),
-(63, 'a@a.com', '$2y$10$2ykhr20/N2AF3hDaVcvLge8Zl/.YEaZyhuRz9fnJOL11D/FbLCX52', 2, '1', 'Validated with no exam', 0),
-(64, 'x@x.com', '$2y$10$kXGEG0mQwe3NNDCq6PvXDubowFUzxXw4pGm4b850QPTobfHTIXQXu', 1, '2', 'Completed', NULL),
-(65, 'j@j.com', '$2y$10$g3DmNdP4igkYP39/BjcK3eyrqHUbtmUNcG3ssi4YFhpcirKF6Pf2C', 1, '2', 'Completed', NULL),
-(66, 't@t.com', '$2y$10$Rzo40KL8TxU3edg/c85NLOy2142qiIHcft6/DHtNmDjaSk4QEPJCC', 1, '2', 'Completed', NULL);
+INSERT INTO `inflexion_users` (`inflexion_user_id`, `inflexion_username`, `inflexion_user_pass`, `inflexion_user_type`, `inflexion_user_status`, `inflexion_user_token`, `inflexion_user_tutor`, `inflexion_user_take`) VALUES
+(57, 'gmd013@gmail.com', '$2y$10$nuNsqvrqSLgNTp4v/dpfR.Ye7GCfe.fq6FSUOvHkC0gHP3E.hpm86', 1, '2', 'Completed', NULL, NULL),
+(58, 'r@r.com', '$2y$10$ZQlEgdDEjIMcSKrrUlqlBuTSciIYPtcYCq8pzj0veVyrJk9oxBSpG', 1, '2', 'Completed', NULL, NULL),
+(63, 'a@a.com', '$2y$10$2ykhr20/N2AF3hDaVcvLge8Zl/.YEaZyhuRz9fnJOL11D/FbLCX52', 2, '3', 'Failed', '23.33', 1),
+(64, 'x@x.com', '$2y$10$kXGEG0mQwe3NNDCq6PvXDubowFUzxXw4pGm4b850QPTobfHTIXQXu', 1, '2', 'Completed', NULL, NULL),
+(65, 'j@j.com', '$2y$10$g3DmNdP4igkYP39/BjcK3eyrqHUbtmUNcG3ssi4YFhpcirKF6Pf2C', 1, '2', 'Completed', NULL, NULL),
+(66, 't@t.com', '$2y$10$Rzo40KL8TxU3edg/c85NLOy2142qiIHcft6/DHtNmDjaSk4QEPJCC', 1, '2', 'Completed', NULL, NULL),
+(67, 's@s.com', '$2y$10$AAtvL0c1VU5mV3ntlpsvfu3IIoUbCp60JUKlCJ.cfe5Mluf.O5ezC', 2, '4', 'For interview', '86.67', 1);
 
 -- --------------------------------------------------------
 
@@ -474,9 +475,11 @@ CREATE TABLE `inflexion_user_details` (
 INSERT INTO `inflexion_user_details` (`inflexion_detail_id`, `inflexion_detail_first`, `inflexion_detail_middle`, `inflexion_detail_last`, `inflexion_detail_street`, `inflexion_detail_city`, `inflexion_detail_state`, `inflexion_detail_country`, `inflexion_detail_zip`, `inflexion_detail_contact`, `inflexion_detail_birth`) VALUES
 (57, 'Glenn Marlo', 'Javier', 'Dumaguing', '106 First Road Quezon Hill', 'Baguio', 'Benguet', 'Philippines', 2600, '09274160451', '1991-03-06'),
 (58, 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Nepal', 28393, '90234283423423', '2021-12-31'),
+(63, 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'Afghanistan', 8234923, '21039423482334', '2021-04-02'),
 (64, 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'Yemen', 34573, '1231253545', '2021-04-01'),
 (65, 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'Philippines', 2037, '123432479', '2021-04-01'),
-(66, 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'Taiwan', 12312, '1233565343', '2021-04-01');
+(66, 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'Taiwan', 12312, '1233565343', '2021-04-01'),
+(67, 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'Australia', 12344, '28934621', '2021-04-02');
 
 --
 -- Indexes for dumped tables
@@ -562,7 +565,7 @@ ALTER TABLE `inflexion_test_questions`
 -- AUTO_INCREMENT for table `inflexion_users`
 --
 ALTER TABLE `inflexion_users`
-  MODIFY `inflexion_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `inflexion_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
