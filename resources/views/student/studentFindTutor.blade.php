@@ -215,26 +215,33 @@
 
 								      		<hr/> <!--this just loopsbetween begin and end to output columns of current week supossedly-->
 								      		@php
-											$begin = new DateTime('2021-04-05');
-											$end = new DateTime('2021-04-12');
+								      		$date = date('Y-m-d'); //date today
+											$weekOfdays = array();
+											$begin = new DateTime($date);
+											$end = new DateTime($date);
+											$end = $end->add(new DateInterval('P7D'));
+											$interval = new DateInterval('P1D');
+											$daterange = new DatePeriod($begin, $interval ,$end);
 
-											$interval = DateInterval::createFromDateString('1 day');
-											$period = new DatePeriod($begin, $interval, $end);
-											@endphp
+								      		@endphp
 								      		<div class="row">
 								      			<div class="col-sm-12">
 										        	<table class="table table-bordered">
 													  	<thead class="thead-dark">
 														    <tr>
-														    	@foreach ($period as $dt)
-														    		<th scope="col">{{$dt->format("l")}}<br/><small>{{$dt->format("Y-m-d")}}</small></th>
+														    	@foreach($daterange as $dt)
+														    		<th scope="col">
+														    			 {{$weekOfdays[] = $dt->format('l')}}<br/>
+														    			<small>{{ $weekOfdays[] = $dt->format('Y-M-d')}}</small>
+														    		</th>
+														    		
 														    	@endforeach
 														    </tr>
 													  	</thead>
 														<tbody>
 														    <tr>
-														    	@foreach ($period as $dt)
-														    		<!--foreach($tutorSchedTime) somthing something from database idk well shit-->
+														    	@foreach($daterange as $dt)
+														    		<!--anoth hereforeach($tutorSchedTime) somthing something from database idk well shit-->
 															      	<td class="text-center">
 															      		<button class="btn-primary btn btn-schedule">8:00am</button><br/>
 															      		<button class="btn-secondary btn btn-schedule">9:00am</button><br/>
@@ -243,7 +250,7 @@
 															      		<button class="btn-primary btn btn-schedule">12:00am</button><br/>
 															      	</td>
 															      	<!--endforeach-->
-														      	@endforeach
+														    	@endforeach
 														    </tr>
 														</tbody>
 													</table>
