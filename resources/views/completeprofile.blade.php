@@ -13,6 +13,9 @@
         </div>
         <div class="col-sm-6">
             <center>
+            @if(isset($Results))
+                You got {{ $Results }}% of the total questions
+            @endif
                 <form class="needs-validation" action="{{ route('CompleteRegistration') }}" method="post" novalidate>
                     @csrf
                     <h3>Please complete your account information</h3>

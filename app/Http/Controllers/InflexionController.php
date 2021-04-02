@@ -166,7 +166,9 @@ class InflexionController extends Controller
                     return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
 
                 }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
-                    return "CHECK ME";
+                    $Questions = $this->FetchQuestions();
+                    $Answers = $this->FetchAnswers();
+                    return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
                 }
 
             // IF USER ENTERED INVALID CREDENTIALS     
@@ -213,14 +215,28 @@ class InflexionController extends Controller
         ]);
        $complete = $this->InflexionDetailModel->completeRegistration($request);
        if($complete){
-        $details = [
-            'title' => 'Inflexion Global Profile Completion',
-            'body' => 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!',
-        ];
-        $mailerFunction = 'CompleteRegistryMail';
-        $token = "";
-            $this->SendEmail($request->email, $token, $details, $mailerFunction);
-        return view('welcome')->with('Success','You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!');
+           // CHECK IF USER TYPE
+           if($complete->inflexion_user_type == 1){
+            $details = [
+                'title' => 'Inflexion Global Profile Completion',
+                'body' => 'You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!',
+            ];
+            $mailerFunction = 'CompleteRegistryMail';
+            $token = "";
+                $this->SendEmail($request->email, $token, $details, $mailerFunction);
+            return view('welcome')->with('Success','You have successfully created your account! You are now able to access all the features of Inflexion Global! Thank you!');
+           // IF TUTOR
+           }else if($complete->inflexion_user_type == 2){
+            $details = [
+                'title' => 'Inflexion Global Tutor Profile Completion',
+                'body' => 'You have successfully created your account! ',
+            ];
+            $mailerFunction = 'CompleteRegistryMail';
+            $token = "";
+                $this->SendEmail($request->email, $token, $details, $mailerFunction);
+            return view('welcome')->with('Success','You have successfully created your account! An email was sent to your email address with details of the result and possible interview schedule. Thank you!');
+           }
+        
        }else{
         return view('welcome')->with('Errors','Account creation failed');
        }
@@ -314,7 +330,7 @@ class InflexionController extends Controller
                 $check = $this->InflexionUserModel->verifyTutorRegistry($request);
 
                 if($check == 1){
-                    return redirect()->to('tutor.exam');
+                    return view('welcome')->with('Success', 'Account verified, you may now login.');
                 }else if($check == 2){
                     return view('welcome')->with('Error','Cannot verify account');
                 }else if($check == 3){
@@ -330,7 +346,28 @@ class InflexionController extends Controller
     // FOR TUTOR EXAM
     public function FetchQuestions(){
         $quests = $this->InflexionQuestionsModel->fetchQuestions();
+        return $quests;
+    }
+
+    public function FetchAnswers(){
         $answers = $this->InflexionAnswersModel->fetchAnswers();
-        return view('tutorexam')->with('Questions', $quests)->with('Answers', $answers);
+        return $answers;
+    }
+
+    public function ValidateAnswers(Request $request){
+        $details = [
+            'inflexion_user_id' => $request->userId,
+            'inflexion_username' => $request->userName
+        ];
+        $score = 0;
+        foreach($request->question as $ans){
+            if($ans == 1){
+                $score++;
+            }
+        }
+        $countries = CountryListFacade::getList('en');
+        $total = number_format(($score/count($request->question))*100,2);
+        $insert = $this->InflexionUserModel->userScore($total,$request->userId);
+        return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
     }
 }

@@ -156,4 +156,8 @@ class InflexionUserModel extends Model
             return $status;
         }
     }
+
+    public function userScore($score, $id){
+        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_tutor' => $score]);
+    }
 }

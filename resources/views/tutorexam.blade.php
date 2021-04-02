@@ -13,7 +13,10 @@
 			<!-- Middle Column -->
 			<div class="col-sm-8">
 				<br/>
-					<form action="#" method="get" id="form1">
+					<form action="{{ route('ValidateAnswers') }}" method="POST" id="form1">
+					@csrf
+					<input type="hidden" name="userId" value="{{ $Details->inflexion_user_id }}" />
+					<input type="hidden" name="userName" value="{{ $Details->inflexion_username }}" />
 						 <div class="tab-content"><!--inside this are tab panels-->
 						 	<!--disclosure start-->
 						 	<div class="tab-pane active" id="disclosure" role="tabpanel"><!-- tab panel marked active is shown first-->
@@ -71,7 +74,7 @@
 											@if($ans->inflexion_answer_test == $quest->inflexion_test_id)
 											<div class="card-body">
 												<div class="form-check">
-												  <input class="form-check-input" type="radio" value="{{ $ans->inflexion_answer_value }}" name="question[]">
+												  <input class="form-check-input" type="radio" value="{{ $ans->inflexion_answer_value }}" name="question[{{$count}}]">
 												  <label class="form-check-label" for="defaultCheck1">
 												    {{ $ans->inflexion_answer_choice }}
 												  </label>
@@ -88,7 +91,7 @@
 													</div>
 												@else
 													<div class="pull-right">
-														<button type="submit" form="form1" value="Submit" class="btn btn-success">Submit</button>
+														<input type="submit" form="form1" value="Submit" class="btn btn-success" />
 													</div>
 												@endif
 											</div>

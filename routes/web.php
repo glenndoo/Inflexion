@@ -106,6 +106,11 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@FetchQuestions'
     ));
 
+    Route::post('ValidateAnswers', array(
+        'as' => 'ValidateAnswers',
+        'uses' => 'InflexionController@ValidateAnswers'
+    ));
+
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
