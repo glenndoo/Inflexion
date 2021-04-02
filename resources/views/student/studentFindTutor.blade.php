@@ -215,7 +215,7 @@
 
 								      		<hr/> <!--this just loopsbetween begin and end to output columns of current week supossedly-->
 								      		@php
-								      		$date = date('Y-m-d'); //date today
+								      		$date = date('Y-m-d'); //date today, starts week table today
 											$weekOfdays = array();
 											$begin = new DateTime($date);
 											$end = new DateTime($date);
