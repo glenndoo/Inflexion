@@ -19,7 +19,8 @@ class InflexionUserModel extends Model
       'inflexion_user_type',
       'inflexion_user_status',
       'inflexion_user_token',
-      'inflexion_user_tutor'
+      'inflexion_user_tutor',
+      'inflexion_user_take'
     ];
 
 
@@ -38,6 +39,9 @@ class InflexionUserModel extends Model
             $saveReg->inflexion_user_token = $token;
             if($request->type == 2){
                 $saveReg->inflexion_user_tutor = 0;
+            }
+            if($request->type == 2){
+                $saveReg->inflexion_user_take = 0;
             }
                 if($saveReg->save()){
                     return true;
@@ -123,7 +127,7 @@ class InflexionUserModel extends Model
 
     public function findUserEmail($request){
         $find = $this->where('inflexion_username','=',$request)->first();
-
+        
         if($find){
             return $find;
         }else{
@@ -138,7 +142,7 @@ class InflexionUserModel extends Model
         if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
             if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token && $checkInfo->inflexion_user_tutor == 0){
                 if(empty($checkInfo->inflexion_)){
-                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated with no exam']);
+                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
                     if($updateInfo){
                         $status = 1;
                         return $status;
@@ -163,8 +167,9 @@ class InflexionUserModel extends Model
         $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_tutor' => $score]);
     }
 
-    public function insertTake($id){
-        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_take' => 1]);
+    public function insertTake($take, $id){
+        $take = $take + 1;
+        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_take' => $take]);
     }
 
     public function updateTake($take, $id){

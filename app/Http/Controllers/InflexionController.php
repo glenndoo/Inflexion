@@ -91,6 +91,7 @@ class InflexionController extends Controller
             
             return view('welcome')->with('Success','Successfully registered! Please check your email to verify your account');
         }else{
+            dd($SaveRegistry);
             return view('register')->with("Errors","Username already taken");
         }
     }
@@ -169,13 +170,26 @@ class InflexionController extends Controller
                 }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
                     $Questions = $this->FetchQuestions();
                     $Answers = $this->FetchAnswers();
-                    $take = $this->InflexionUserModel->insertTake($login->inflexion_user_id);
-                    return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
-
-                // FOR NTH TAKERS
-                
-
-                    
+                    $take = $login->inflexion_user_take;
+                    $this->InflexionUserModel->insertTake($take, $login->inflexion_user_id);
+                    $checkTake = $this->InflexionUserModel->findUserEmail($login->inflexion_username);
+                    if($checkTake->inflexion_user_take <= 3){
+                        return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
+                    }else{
+                        return view('welcome')->with('Success','You have already exceeded the maximum number of attempts.');
+                    }
+                // FOR NTH TAKER
+                }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor > 0){
+                    $Questions = $this->FetchQuestions();
+                    $Answers = $this->FetchAnswers();
+                    $take = $login->inflexion_user_take;
+                    $this->InflexionUserModel->insertTake($take, $login->inflexion_user_id);
+                    $checkTake = $this->InflexionUserModel->findUserEmail($login->inflexion_username);
+                    if($checkTake->inflexion_user_take <= 3){
+                        return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
+                    }else{
+                        return view('welcome')->with('Success','You have already exceeded the maximum number of attempts.');
+                    }
                 }
 
             // IF USER ENTERED INVALID CREDENTIALS     
@@ -390,11 +404,13 @@ class InflexionController extends Controller
         $insert = $this->InflexionUserModel->userScore($total,$request->userId);
         $checkUserTake = $this->InflexionUserModel->findUserEmail($request->userName);
 
-        if($checkUserTake->inflexion_user_take <= 1){
+        if($total >= 70){
             return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
         }else{
-            return view('welcome')->with('Results',$total);
+            return view('welcome')->with('Success',"You got ".$total."% out of 100%. Don't worry! You still have ".(3-$checkUserTake->inflexion_user_take)." attempts left out of 3.");
         }
+            
+
         
     }
 }
