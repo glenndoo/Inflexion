@@ -149,7 +149,7 @@ class InflexionController extends Controller
         $Valid = Validator::make($request->all(),[
 
         ]);
-
+            
         if($Valid->fails()){
 
         }else{
@@ -164,11 +164,18 @@ class InflexionController extends Controller
                 if($login->inflexion_user_type == 1){
                     $countries = CountryListFacade::getList('en');
                     return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
-
+                
+                // FIRST TIME TAKING THE EXAM
                 }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
                     $Questions = $this->FetchQuestions();
                     $Answers = $this->FetchAnswers();
+                    $take = $this->InflexionUserModel->insertTake($login->inflexion_user_id);
                     return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
+
+                // FOR NTH TAKERS
+                
+
+                    
                 }
 
             // IF USER ENTERED INVALID CREDENTIALS     
@@ -180,6 +187,19 @@ class InflexionController extends Controller
                 // dd($login);
                 return view('/login')->with('Errors', 'Username does not exist');
 
+           
+            }else if($login->inflexion_user_status == 3){
+                    // CHECK HOW MANY TAKES USER HAS
+                    $takeAgain = $login->inflexion_user_take;
+
+                    if($takeAgain <= 3){
+                        $Questions = $this->FetchQuestions();
+                        $Answers = $this->FetchAnswers();
+                        $insertTake = $this->InflexionUserModel->updateTake($takeAgain, $login->inflexion_user_id);
+                        return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
+                    }else{
+                        return view('welcome')->with('Success','Sorry, but you have already exceeded the maximum number of attempts to retake the exam');
+                    }
             // IF USER IS VALID
             }else{
                     $sess = [
@@ -368,6 +388,13 @@ class InflexionController extends Controller
         $countries = CountryListFacade::getList('en');
         $total = number_format(($score/count($request->question))*100,2);
         $insert = $this->InflexionUserModel->userScore($total,$request->userId);
-        return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
+        $checkUserTake = $this->InflexionUserModel->findUserEmail($request->userName);
+
+        if($checkUserTake->inflexion_user_take <= 1){
+            return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
+        }else{
+            return view('welcome')->with('Results',$total);
+        }
+        
     }
 }

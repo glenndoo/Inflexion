@@ -106,6 +106,8 @@ class InflexionUserModel extends Model
             // IF USER HAS NOT COMPLETED THEIR REGISTRATION YET
             }else if($findUser->inflexion_user_status == 1){
                 return $findUser;
+            }else if($findUser->inflexion_user_status == 3){
+                return $findUser;
             }
         
         // IF USERNAME WAS NOT FOUND
@@ -158,6 +160,15 @@ class InflexionUserModel extends Model
     }
 
     public function userScore($score, $id){
-        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_tutor' => $score]);
+        $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_tutor' => $score]);
+    }
+
+    public function insertTake($id){
+        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_take' => 1]);
+    }
+
+    public function updateTake($take, $id){
+        $take = $take + 1;
+        $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_take' => $take]);
     }
 }
