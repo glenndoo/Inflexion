@@ -179,7 +179,7 @@
 					    				<a href="#" class="btn btn-primary form-control float-right" title="profile">
 					    					<i class="fa fa-user" aria-hidden="true"></i>
 					    				</a>
-					    				<a class="btn btn-info form-control float-right" title="Schedule" data-toggle="collapse" href="#tutorSchedule" role="button" aria-expanded="false" aria-controls="tutorSchedule">
+					    				<a class="btn btn-info form-control float-right" title="Schedule"class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
 					    					<i class="fa fa-calendar" aria-hidden="true"></i>
 					    				</a>
 					    				<a href="#" class="btn btn-warning form-control float-right" title="message">
@@ -188,32 +188,72 @@
 					    			</div>
 					    		</div>
 					  		</div>
-					  		<div class="collapse" id="tutorSchedule">
-					  			<div class="card-footer text-muted">
-								    <table class="table">
-									  		<thead class="thead-dark">
-											    <tr>
-											      <th scope="col">Day</th>
-											      <th scope="col">8:00</th>
-											      <th scope="col">9:00</th>
-											      <th scope="col">10:00</th>
-											      <th scope="col">11:00</th>
-											      <th scope="col">12:00</th>
-											      <th scope="col">1:00</th>
-											      <th scope="col">2:00</th>
-											    </tr>
-									  		</thead>
-									  		<tbody>
-											    <tr>
-											      <th scope="row">M</th>
-											      <td>Mark</td>
-											      <td>Otto</td>
-											      <td>@mdo</td>
-											    </tr>
-									  		</tbody>
-									</table>
-								</div>
-						  	</div>
+					  		<!-- Modal -->
+							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+							    	<div class="modal-content">
+							     		<div class="modal-header">
+							        		<div class="modal-title" id="exampleModalCenterTitle">
+							        		BOOK A LESSON WITH JOHN DOE
+							        		</div>
+							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          		<span aria-hidden="true">&times;</span>
+							        		</button>
+							      		</div>
+								      	<div class="modal-body">
+								      		<div class="row d-flex justify-content-center">
+								      			<div class="col-sm-2">
+								      				<div href="" class="disabled btn-success text-center">Your Booking</div>
+								      			</div>
+								      			<div class="col-sm-2">
+									       	 		<div href="" class="disabled btn-secondary text-center">Reserved</div>
+									       	 	</div>
+									       	 	<div class="col-sm-2">
+									       	 		<div href="" class="disabled btn-primary text-center">Open</div>
+								      			</div>
+								      		</div>
+
+								      		<hr/>
+								      		@php
+											$begin = new DateTime('2021-04-05');
+											$end = new DateTime('2021-04-12');
+
+											$interval = DateInterval::createFromDateString('1 day');
+											$period = new DatePeriod($begin, $interval, $end);
+											@endphp
+								      		<div class="row">
+								      			<div class="col-sm-12">
+										        	<table class="table table-bordered">
+													  	<thead class="thead-dark">
+														    <tr>
+														    	@foreach ($period as $dt)
+														    		<th scope="col">{{$dt->format("l")}}<br/><small>{{$dt->format("Y-m-d")}}</small></th>
+														    	@endforeach
+														    </tr>
+													  	</thead>
+														<tbody>
+														    <tr>
+														    	@foreach ($period as $dt)
+															      	<td class="text-center">
+															      		<button class="btn-primary btn btn-schedule">8:00am</button><br/>
+															      		<button class="btn-secondary btn btn-schedule">9:00am</button><br/>
+															      		<button class="btn-success btn btn-schedule">10:00am</button><br/>
+															      		<button class="btn-primary btn btn-schedule">11:00am</button><br/>
+															      		<button class="btn-primary btn btn-schedule">12:00am</button><br/>
+															      	</td>
+														      	@endforeach
+														    </tr>
+														</tbody>
+													</table>
+								      			</div>
+								      		</div>
+								      	</div>
+								      	<div class="modal-footer">
+								      	</div>
+							    	</div>
+							  	</div>
+							</div>
+					  		<!-- Modal -->
 						</div>
 					</div>
 				</div>

@@ -176,5 +176,4 @@ use Illuminate\Support\Facades\Route;
         return view('tutor.tutorInbox');
         });
         
-
     });
