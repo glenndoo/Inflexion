@@ -1219,3 +1219,8 @@ ul.chec-radio li.pz {
     color: #fff;
     background-color: #000;
 }
+.btn-schedule{
+  font-size: 9pt;
+  width: 5.2rem;
+  margin-bottom: .5rem;
+}
