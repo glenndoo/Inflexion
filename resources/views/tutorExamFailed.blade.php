@@ -1,4 +1,4 @@
-<x-template data="tutorExamResult" />
+<x-template data="tutorExamFailed" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container fade-load">
 		<div class="row">

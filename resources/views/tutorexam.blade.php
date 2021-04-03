@@ -28,29 +28,9 @@
 										</ul>
 									</div>
 
-									<div class="card-body text-left">
-										<h4>This is an English proficiency test to determine your level of knowledge in English  </h4>
-
-										<br>
-										<hr/>
-
-										<p>-30 random questions</p>
-
-										<p>-Time limit of 15 minutes</p>
-										<p>-Multiple Choice</p>
-
-										<hr/>
-
-										<p>do not take this exam on a mobile device</p>
-										<p>Once you have clicked egree the exam will start and it cannot be canceled, you are given a total of 3 tries</p>
-
-										<p>
-											After the exam is finished your score will be automatically calculated and upon getting a passing score<br/> you will be asked to 
-											provide your contact information.
-											<br/><br/>
-											We require your skype acount for the interview phase, so please have it ready.
-
-										</p>
+									<div class="card-body text-center">
+										<h2>YOUR EXAM STARTED</h2>
+										<div class="h3" id="clockdiv"></div><!--timer shows here-->
 									</div>
 
 									<div class="card-footer d-flex justify-content-center">
@@ -58,12 +38,14 @@
 										@php
 										$count = 1;
 										@endphp
-										<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count }}" role="tab" aria-controls="question_{{ $count }}">AGREE
+										<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count }}" role="tab" aria-controls="question_{{ $count }}">
+											Go to question <i class="fa fa-forward" aria-hidden="true"></i>{{ $count }}
 										</a>
 									</div>
 								</div>
 							</div>
 							<!--disclosure start-->
+
 							<!--questions start-->
 					  		@foreach($Questions as $quest)<!--loops the next divs + 1-->
 				  			<div class="tab-pane" id="question_{{ $count }}" role="tabpanel">
@@ -73,7 +55,7 @@
 										<div class="card">
 											<div class="card-header text-center">
 												<ul id="progress">
-												    <li  class="active">
+												    <li  class="active inline-block">
 														EXAM {{$count}} / 30
 													</li>
 												    <li>Complete information</li>
@@ -98,8 +80,9 @@
 											@endif
 											@endforeach
 											<div class="card-footer">
+												<div class="float-left text-muted" id="clockdiv2"></div><!--timer shows here-->
 												@if($count != 30)
-													<div class="pull-right">
+													<div class="float-right">
 														<a class="btn btn-success" data-toggle="tab" href="#question_{{ $count+1 }}" role="tab" aria-controls="question_{{$count}}">
 															Next <i class="fa fa-forward" aria-hidden="true"></i>{{ $count+1 }}
 														</a>
@@ -128,3 +111,32 @@
 	</div>
 	<!--end myclasses main-->
 </div>
+
+<script type="text/javascript">
+// 15 minutes from now
+var time_in_minutes = 15;
+var current_time = Date.parse(new Date());
+var deadline = new Date(current_time + time_in_minutes*60*1000);
+
+
+function time_remaining(endtime){
+	var t = Date.parse(endtime) - Date.parse(new Date());
+	var seconds = Math.floor( (t/1000) % 60 );
+	var minutes = Math.floor( (t/1000/60) % 60 );
+	var hours = Math.floor( (t/(1000*60*60)) % 24 );
+	var days = Math.floor( t/(1000*60*60*24) );
+	return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
+}
+function run_clock(id,endtime){
+	var clock = document.getElementById(id);
+	function update_clock(){
+		var t = time_remaining(endtime);
+		clock.innerHTML = '00'+': '+t.minutes+': '+t.seconds;
+		if(t.total<=0){ clearInterval(timeinterval); }
+	}
+	update_clock(); // run function once at first to avoid delay
+	var timeinterval = setInterval(update_clock,1000);
+}
+run_clock('clockdiv',deadline);
+run_clock('clockdiv2',deadline);
+</script>
