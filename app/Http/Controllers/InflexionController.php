@@ -268,7 +268,8 @@ class InflexionController extends Controller
             $mailerFunction = 'CompleteRegistryMail';
             $token = "";
                 $this->SendEmail($request->email, $token, $details, $mailerFunction);
-            return redirect('tutorExamResult')->with('Success','You have successfully created your account! An email was sent to your email address with details of the result and possible interview schedule. Thank you!');
+            $details = $this->InflexionUserModel->fetchUserDetails($request->email);
+            return view('tutorExamResult')->with('Details', $details);
            }
         
        }else{
@@ -407,7 +408,7 @@ class InflexionController extends Controller
         if($total >= 70){
             return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
         }else{
-            return view('welcome')->with('Success',"You got ".$total."% out of 100%. Don't worry! You still have ".(3-$checkUserTake->inflexion_user_take)." attempts left out of 3.");
+            return view('tutorExamFailed')->with('Details',"You got ".$total."% out of 100%. Don't worry! You still have ".(3-$checkUserTake->inflexion_user_take)." attempts left out of 3.");
         }
             
 

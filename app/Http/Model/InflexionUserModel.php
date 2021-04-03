@@ -176,4 +176,9 @@ class InflexionUserModel extends Model
         $take = $take + 1;
         $result = $this->where('inflexion_user_id','=',$id)->update(['inflexion_user_take' => $take]);
     }
+
+    public function fetchUserDetails($userName){
+        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$userName)->first();
+        return $result;
+    }
 }

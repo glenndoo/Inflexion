@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
     
     Route::view('tutorexam','tutorexam');//added by maiko
     Route::view('tutorExamResult','tutorExamResult');//added by maiko this after completeprofile submit
-
+    Route::view('examResult','tutorExamFailed');//for failed exam
     Route::view('login','login');
 
     Route::post('ValidateRegistry', array(
