@@ -203,7 +203,7 @@
 								      	<div class="modal-body">
 								      		<div class="row d-flex justify-content-center">
 								      			<div class="col-sm-2">
-								      				<div href="" class="disabled btn-success text-center">Your Booking</div>
+								      				<div href="" class="disabled btn-warning text-center">Your Booking</div>
 								      			</div>
 								      			<div class="col-sm-2">
 									       	 		<div href="" class="disabled btn-secondary text-center">Reserved</div>
