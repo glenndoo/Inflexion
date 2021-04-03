@@ -242,12 +242,24 @@
 														    <tr>
 														    	@foreach($daterange as $dt)
 														    		<!--anoth hereforeach($tutorSchedTime) somthing something from database idk well shit-->
-															      	<td class="text-center">
-															      		<button class="btn-primary btn btn-schedule">8:00am</button><br/>
-															      		<button class="btn-secondary btn btn-schedule">9:00am</button><br/>
-															      		<button class="btn-success btn btn-schedule">10:00am</button><br/>
-															      		<button class="btn-primary btn btn-schedule">11:00am</button><br/>
-															      		<button class="btn-primary btn btn-schedule">12:00am</button><br/>
+															      	<td class="text-left">
+															      		<div class="form-check btn-primary">
+																	    	<input type="checkbox" class="form-check-input">
+																	    	<label class="form-check-label" for="">9:00</label>
+																	  	</div>
+
+																	  	<br/>
+
+																	  	<div class="form-check btn-secondary">
+																	    	<label class="form-check-label" for="">11:00</label>
+																	  	</div>
+
+																	  	<br/>
+
+																	  	<div class="form-check btn-warning">
+																	    	<input type="checkbox" class="form-check-input" checked>
+																	    	<label class="form-check-label" for="">11:00</label>
+																	  	</div>
 															      	</td>
 															      	<!--endforeach-->
 														    	@endforeach
@@ -258,6 +270,7 @@
 								      		</div>
 								      	</div>
 								      	<div class="modal-footer">
+								      		<button class="btn btn-success" type="submit">SAVE</button>
 								      	</div>
 							    	</div>
 							  	</div>
