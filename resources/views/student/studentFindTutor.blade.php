@@ -244,14 +244,42 @@
 												    	@endforeach
 												  		</tr>
 													</thead>
-												  	<tbody>
+													  <tbody>
 													    <tr>
 													    	@foreach($daterange as $dt)
-													      	
+													      	<td class="chec-time text-center">
+																<li class="pz">
+																	<label class="radio-time open">
+																		<input type="checkbox" class="pro-chx" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00">
+																		<div class="clab ">9:00
+																		</div>
+																	</label>
+												     			</li>
+
+												     			<br/>
+
+												     			<li class="pz">
+																	<label class="radio-time disabled">
+																		<input type="checkbox" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00" disabled>
+																		<div class="clab ">11:00
+																		</div>
+																	</label>
+												     			</li>
+
+												     			<br/>
+
+												     			<li class="pz">
+																	<label class="radio-time userbooked">
+																		<input type="checkbox" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00" checked>
+																		<div class="clab">11:00
+																		</div>
+																	</label>
+												     			</li>
+													      	</td>
 													     	@endforeach
 													    </tr>
-												  	</tbody>
-												</table>
+													  </tbody>
+													</table>
 								      		</div>
 								      	</div>
 								      	<div class="modal-footer">
