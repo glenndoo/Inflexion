@@ -244,24 +244,14 @@
 												    	@endforeach
 												  		</tr>
 													</thead>
-													  <tbody>
+												  	<tbody>
 													    <tr>
-													    	<ul class="chec-time">
 													    	@foreach($daterange as $dt)
-													      	<td class="chec-time text-center">
-																<li class="pz">
-																	<label class="radio-inline form-control">
-																		<input type="checkbox" id="pro-chx-residential" name="gas_availability" class="pro-chx" value="yes">
-																		<div class="clab">9:00
-																		</div>
-																	</label>
-												     			</li>
-													      	</td>
+													      	
 													     	@endforeach
-															</ul>
 													    </tr>
-													  </tbody>
-													</table>
+												  	</tbody>
+												</table>
 								      		</div>
 								      	</div>
 								      	<div class="modal-footer">

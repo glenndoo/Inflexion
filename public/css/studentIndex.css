@@ -1232,26 +1232,29 @@ td.chec-time {
 td.chec-time li.pz {
     display: inline;
 }
-.chec-time label.radio-inline input[type="checkbox"] {
+.chec-time label.radio-time input[type="checkbox"] {
     display: none;
 }
-.chec-time label.radio-inline input[type="checkbox"]:checked+div {
+.chec-time label.radio-time input[type="checkbox"]:checked+div {
     color: #fff;
     background-color: #000;
-}
-.chec-time .radio-inline .clab {
-    cursor: pointer;
-    background: #e7e7e7;
-    text-align: center;
-    color: #333;
     padding: 2px 5px 2px 5px;
-    margin-bottom: 5px;
+}
+.chec-time .radio-time.open .clab{
+    cursor: pointer;
+    color: #333;
+    background: #3490dc;
+    padding: 2px 5px 2px 5px;
 }
 
-.chec-time label.radio-inline input[type="radio"] {
-    display: none;
+.chec-time .radio-time.disabled .clab {
+    cursor: pointer;
+    color: #333;
+    background: #6c757d;
+    padding: 2px 5px 2px 5px;
 }
-.chec-time label.radio-inline input[type="radio"]:checked+div {
-    color: #fff;
-    background-color: #000;
+
+
+.chec-time label.radio-time input[type="radio"] {
+    display: none;
 }
