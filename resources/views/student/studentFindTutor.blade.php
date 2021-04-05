@@ -144,7 +144,7 @@
 
 				<hr/>
 
-				<!--result start -->
+				<!--result start this is a teacher's div from here-->
 				<div class="row d-flex justify-content-center">
 					<div class="col-sm-8">
 						<!--div class="group-card card shadow"-->
@@ -167,13 +167,21 @@
 					    		<div class="row">
 					    			<div class="col-sm-11 form-inline">
 					    				<div class="col-sm-3">
-					    					<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="100rem">
-
+					    					<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="100%">
 					    				</div>
 					    				<div class="col-sm-9">
-					    					<p>Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+					    					<div class="collapse_module">
+					    						@php
+					    							$aboutTutor = "Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+					    						@endphp
+								        		<p class="collapse collapse_long_element" id="collapse_long_element" aria-expanded="false">
+								                	{{$aboutTutor}}
+								            	</p>
+								            	@if(strlen($aboutTutor<140))
+								            		<a role="button" class="collapsed" data-toggle="collapse" href=".collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+								            	@endif
+								        	</div>
 					    				</div>
-					    				
 					    			</div>
 					    			<div class="col-sm-1">
 					    				<a href="#" class="btn btn-primary form-control float-right" title="profile">
@@ -188,7 +196,7 @@
 					    			</div>
 					    		</div>
 					  		</div>
-					  		<!-- Modal -->
+					  		<!-- Modal Schedule -->
 							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 							    	<div class="modal-content">
@@ -213,7 +221,7 @@
 								      			</div>
 								      		</div>
 
-								      		<hr/> <!--this just loopsbetween begin and end to output columns of current week supossedly-->
+								      		<hr/>
 								      		@php
 								      		$date = date('Y-m-d'); //date today, starts week table today
 											$weekOfdays = array();
@@ -241,7 +249,7 @@
 														<tbody>
 														    <tr>
 														    	@foreach($daterange as $dt)
-														    		<!--anoth hereforeach($tutorSchedTime) somthing something from database idk well shit-->
+														    		
 															      	<td class="text-left">
 															      		<div class="form-check btn-primary">
 																	    	<input type="checkbox" class="form-check-input">
@@ -261,7 +269,6 @@
 																	    	<label class="form-check-label" for="">11:00</label>
 																	  	</div>
 															      	</td>
-															      	<!--endforeach-->
 														    	@endforeach
 														    </tr>
 														</tbody>
@@ -279,6 +286,8 @@
 						</div>
 					</div>
 				</div>
+				<!--result end teacher's div, new tutor div insert from here-->
+
 				<div class="row  d-flex justify-content-center"> <!-- this row div just separates result div-->
 					<div class="col-sm-8">
 					<hr/>
