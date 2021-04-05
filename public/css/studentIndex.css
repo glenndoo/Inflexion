@@ -1224,3 +1224,34 @@ ul.chec-radio li.pz {
   width: 5.2rem;
   margin-bottom: .5rem;
 }
+
+/*********RADIO CHECK BOX SEARCH*********/
+td.chec-time {
+    margin: 1px;
+}
+td.chec-time li.pz {
+    display: inline;
+}
+.chec-time label.radio-inline input[type="checkbox"] {
+    display: none;
+}
+.chec-time label.radio-inline input[type="checkbox"]:checked+div {
+    color: #fff;
+    background-color: #000;
+}
+.chec-time .radio-inline .clab {
+    cursor: pointer;
+    background: #e7e7e7;
+    text-align: center;
+    color: #333;
+    padding: 2px 5px 2px 5px;
+    margin-bottom: 5px;
+}
+
+.chec-time label.radio-inline input[type="radio"] {
+    display: none;
+}
+.chec-time label.radio-inline input[type="radio"]:checked+div {
+    color: #fff;
+    background-color: #000;
+}

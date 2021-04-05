@@ -233,47 +233,35 @@
 
 								      		@endphp
 								      		<div class="row">
-								      			<div class="col-sm-12">
-										        	<table class="table table-bordered">
-													  	<thead class="thead-dark">
-														    <tr>
-														    	@foreach($daterange as $dt)
-														    		<th scope="col">
-														    			 {{$weekOfdays[] = $dt->format('l')}}<br/>
-														    			<small>{{ $weekOfdays[] = $dt->format('Y-M-d')}}</small>
-														    		</th>
-														    		
-														    	@endforeach
-														    </tr>
-													  	</thead>
-														<tbody>
-														    <tr>
-														    	@foreach($daterange as $dt)
-														    		
-															      	<td class="text-left">
-															      		<div class="form-check btn-primary">
-																	    	<input type="checkbox" class="form-check-input">
-																	    	<label class="form-check-label" for="">9:00</label>
-																	  	</div>
-
-																	  	<br/>
-
-																	  	<div class="form-check btn-secondary">
-																	    	<label class="form-check-label" for="">11:00</label>
-																	  	</div>
-
-																	  	<br/>
-
-																	  	<div class="form-check btn-warning">
-																	    	<input type="checkbox" class="form-check-input" checked>
-																	    	<label class="form-check-label" for="">11:00</label>
-																	  	</div>
-															      	</td>
-														    	@endforeach
-														    </tr>
-														</tbody>
+								      			<table class="table">
+												  	<thead class="thead-dark">
+												  		<tr>
+												    	@foreach($daterange as $dt)
+												        	<th scope="col" class=" text-center">
+												        		<h6>{{$weekOfdays[] = $dt->format('D')}}<br/></h6>
+										    					<small>{{ $weekOfdays[] = $dt->format('m-d')}}</small>
+										    				</th>
+												    	@endforeach
+												  		</tr>
+													</thead>
+													  <tbody>
+													    <tr>
+													    	<ul class="chec-time">
+													    	@foreach($daterange as $dt)
+													      	<td class="chec-time text-center">
+																<li class="pz">
+																	<label class="radio-inline form-control">
+																		<input type="checkbox" id="pro-chx-residential" name="gas_availability" class="pro-chx" value="yes">
+																		<div class="clab">9:00
+																		</div>
+																	</label>
+												     			</li>
+													      	</td>
+													     	@endforeach
+															</ul>
+													    </tr>
+													  </tbody>
 													</table>
-								      			</div>
 								      		</div>
 								      	</div>
 								      	<div class="modal-footer">
