@@ -209,6 +209,16 @@
 							        		</button>
 							      		</div>
 								      	<div class="modal-body">
+								      		@php
+								      		$date = date('Y-m-d'); //date today, starts week table today
+											$weekOfdays = array();
+											$begin = new DateTime($date, new DateTimeZone('Asia/Manila'));
+											$end = new DateTime($date);
+											$end = $end->add(new DateInterval('P7D'));
+											$interval = new DateInterval('P1D');
+											$daterange = new DatePeriod($begin, $interval ,$end);
+
+								      		@endphp
 								      		<div class="row d-flex justify-content-center">
 								      			<div class="col-sm-2">
 								      				<div href="" class="disabled btn-warning text-center">Your Booking</div>
@@ -220,18 +230,12 @@
 									       	 		<div href="" class="disabled btn-primary text-center">Open</div>
 								      			</div>
 								      		</div>
-
+								      		<div class="row d-flex">
+									      		<div class="col-sm-12 text-center">
+									      			Timezone {{date_format($begin, 'Y-m-d P')}}
+									      		</div>
+									      	</div>
 								      		<hr/>
-								      		@php
-								      		$date = date('Y-m-d'); //date today, starts week table today
-											$weekOfdays = array();
-											$begin = new DateTime($date);
-											$end = new DateTime($date);
-											$end = $end->add(new DateInterval('P7D'));
-											$interval = new DateInterval('P1D');
-											$daterange = new DatePeriod($begin, $interval ,$end);
-
-								      		@endphp
 								      		<div class="row">
 								      			<table class="table">
 												  	<thead class="thead-dark">
@@ -247,34 +251,30 @@
 													  <tbody>
 													    <tr>
 													    	@foreach($daterange as $dt)
-													      	<td class="chec-time text-center">
-																<li class="pz">
-																	<label class="radio-time open">
-																		<input type="checkbox" class="pro-chx" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00">
-																		<div class="clab ">9:00
-																		</div>
-																	</label>
-												     			</li>
+													      	<td class="check-time">
+													      		<!--if booking exists for this user-->
+																<label class="btn btn-warning form-control active">
+																	<input class="float-left" type="checkbox" autocomplete="off" checked name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
+																	<p class="text-right">10:00</p>
+																	<span class="fa fa-check "></span>
+																</label>
+																<!--end-->
+																
+																<!--if booked by other user-->
+																<label class="bg-secondary form-control text-left">
+																	<p class="text-right">11:00</p>
+																	<span class="fa fa-check"></span>
+																</label>	
+																<!--end-->
+															
+																<!--if time slot is open-->
+																<label class="btn btn-primary form-control text-left">
+																	<input class="float-left" type="checkbox" autocomplete="off" name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
+																	<p class="text-right">12:00</p>
+																	<span class="fa fa-check"></span>
+																</label>
+																<!--end-->
 
-												     			<br/>
-
-												     			<li class="pz">
-																	<label class="radio-time disabled">
-																		<input type="checkbox" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00" disabled>
-																		<div class="clab ">11:00
-																		</div>
-																	</label>
-												     			</li>
-
-												     			<br/>
-
-												     			<li class="pz">
-																	<label class="radio-time userbooked">
-																		<input type="checkbox" value="{{$weekOfdays[] = $dt->format('y-m-d')}} 9:00" checked>
-																		<div class="clab">11:00
-																		</div>
-																	</label>
-												     			</li>
 													      	</td>
 													     	@endforeach
 													    </tr>
