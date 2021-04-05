@@ -230,9 +230,15 @@
 									       	 		<div href="" class="disabled btn-primary text-center">Open</div>
 								      			</div>
 								      		</div>
+								      		<hr/>
 								      		<div class="row d-flex">
 									      		<div class="col-sm-12 text-center">
-									      			Timezone {{date_format($begin, 'Y-m-d P')}}
+									      			<SELECT>
+									      				<option>
+									      					<b>Timezone {{date_format($begin, 'Y-m-d P (e)')}}</b><!--this shows timezone of $begin, idk yet hot to set using this slect option-->
+									      				</option>
+									      			</SELECT>
+									      			
 									      		</div>
 									      	</div>
 								      		<hr/>
