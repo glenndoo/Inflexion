@@ -152,10 +152,18 @@
 	        </li>
 	        
 	        <li>
-	            <a href="#">
-	               <i class="fa fa-info icon-side fa-size"></i>
+	            <a href="/studentLibrary">
+	               <i class="fa fa-book icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Documentation
+	                    Library
+	                </span>
+	            </a>
+	        </li>
+	        <li>
+	            <a href="/studentHelp">
+	               <i class="fa fa-question-circle icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Help
 	                </span>
 	            </a>
 	        </li>
