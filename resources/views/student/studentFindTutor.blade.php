@@ -184,10 +184,10 @@
 					    				</div>
 					    			</div>
 					    			<div class="col-sm-1">
-					    				<a href="#" class="btn btn-primary form-control float-right" title="profile">
+					    				<a href="#" class="btn btn-primary form-control float-right" title="profile" data-toggle="modal" data-target="#profileModal">
 					    					<i class="fa fa-user" aria-hidden="true"></i>
 					    				</a>
-					    				<a class="btn btn-info form-control float-right" title="Schedule"class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+					    				<a class="btn btn-info form-control float-right" title="Schedule"class="btn btn-primary" data-toggle="modal" data-target="#scheduleModal">
 					    					<i class="fa fa-calendar" aria-hidden="true"></i>
 					    				</a>
 					    				<a href="#" class="btn btn-warning form-control float-right" title="message">
@@ -197,11 +197,11 @@
 					    		</div>
 					  		</div>
 					  		<!-- Modal Schedule -->
-							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModal" aria-hidden="true">
 							  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 							    	<div class="modal-content">
 							     		<div class="modal-header">
-							        		<div class="modal-title" id="exampleModalCenterTitle">
+							        		<div class="modal-title" id="scheduleModaltitle">
 							        		BOOK A LESSON WITH JOHN DOE
 							        		</div>
 							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -290,6 +290,27 @@
 								      	</div>
 								      	<div class="modal-footer">
 								      		<button class="btn btn-success" type="submit">SAVE</button>
+								      	</div>
+							    	</div>
+							  	</div>
+							</div>
+					  		<!-- Modal -->
+					  		<!-- Modal Schedule -->
+							<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalTitle" aria-hidden="true">
+							  	<div class="modal-dialog modal-dialog-centered" role="document">
+							    	<div class="modal-content">
+							     		<div class="modal-header">
+							        		<div class="modal-title" id="profileModalrTitle">
+							        		Profile Modal
+							        		</div>
+							        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          		<span aria-hidden="true">&times;</span>
+							        		</button>
+							      		</div>
+								      	<div class="modal-body">
+										</div>
+								      	<div class="modal-footer">
+								      		<button class="btn btn-success" type="submit">Full Profile</button>
 								      	</div>
 							    	</div>
 							  	</div>
