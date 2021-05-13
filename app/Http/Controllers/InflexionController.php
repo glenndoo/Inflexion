@@ -10,6 +10,7 @@ use App\Http\Model\InflexionPostModel;
 use App\Http\Model\InflexionInboxModel;
 use App\Http\Model\InflexionQuestionsModel;
 use App\Http\Model\InflexionAnswersModel;
+use App\Http\Model\CommentsModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -26,13 +27,15 @@ class InflexionController extends Controller
     public $InflexionInboxModel;
     public $InflexionQuestionsModel;
     public $InflexionAnswersModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel){
+    public $CommentsModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
         $this->InflexionInboxModel = $InflexionInboxModel;
         $this->InflexionQuestionsModel = $InflexionQuestionsModel;
         $this->InflexionAnswersModel = $InflexionAnswersModel;
+        $this->CommentsModel = $CommentsModel;
     }
 
     //DISPLAY INDEX
@@ -303,6 +306,12 @@ class InflexionController extends Controller
     public function LikePost(Request $request, $id){
         $likePost = $this->InflexionPostModel->likePost($request, $id);
 
+        return redirect('/studentIndex');
+    }
+
+    //COMMENT ON POST FUNCTION
+    public function CommentPost(Request $request){
+        $commentPost = $this->CommentsModel->addComment($request);
         return redirect('/studentIndex');
     }
 

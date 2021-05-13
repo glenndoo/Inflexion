@@ -80,6 +80,7 @@
 			        		<p class="collapse collapse_long_element" id="collapse_long_element" aria-expanded="false">
 			                	{{ $post->inflexion_post_message }}
 			            	</p>
+							
 			            	@if(strlen($post->inflexion_post_message)>154)
 			            		<a role="button" class="collapsed" data-toggle="collapse" href=".collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
 			            	@endif
@@ -129,10 +130,11 @@
 			                    <a href="#">
 			                        Glenn Dumaguing
 			                    </a>
-			                    Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words.
+			                    {{ $post->comment_message }}
 			                    <br>
 			                    <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
 			                    <small class="text-muted">12.06.2014</small>
+								
 			                </div>
 			            </div>
 
@@ -146,7 +148,12 @@
 			            	<div class="col-sm-11">
 			            		
 				                <div class="media-body">
-				                     <textarea class="form-control" placeholder="Write comment..."></textarea>
+								<form method="POST" action="{{ route('CommentPost', [$id]) }}">
+								@csrf
+								<input type='hidden' value='{{ $id }}' name='postId'/>
+				                     <input type='textarea' class="form-control" placeholder="Write comment..." name='commentMessage'></textarea>
+									 <input type='submit' value='Post Comment' />
+									 </form>
 				                </div>
 				            </div>
 			            </div>

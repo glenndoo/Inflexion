@@ -78,6 +78,11 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@LikePost'
     ));
 
+    Route::post('CommentPost/{id}', array(
+        'as' => 'CommentPost',
+        'uses' => 'InflexionController@CommentPost'
+    ));
+
     Route::get('ShowMessage/{id}', array(
         'as' => 'ShowMessage',
         'uses' => 'InflexionController@ShowMessage'
@@ -154,6 +159,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('/studentHelp', function () { //added for testing maiko
             return view('student.studentHelp');
         });
+        
 
     });
 
