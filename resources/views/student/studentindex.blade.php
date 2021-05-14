@@ -57,7 +57,7 @@
 			        </div>
 			        <div class="social-avatar">
 			            <a href="" class="pull-left">
-			                <img alt="image" src="https://tinyurl.com/376azf5j">
+			                <img alt="image" src="https://tinyurl.com/376azf5j">{{$id}}
 			            </a>
 			            <div class="media-body">
 			                <a href="#">
@@ -114,6 +114,7 @@
 			        <div class="social-footer">
 
 						@foreach($comments as $comment)
+						@if($id == $comment->poster_id )
 			        	<!-- this comment-->
 			            <div class="social-comment">
 			                <div class="pull-right social-action dropdown">
@@ -139,6 +140,7 @@
 								
 			                </div>
 			            </div>
+			            @endif
 			            @endforeach
 
 			            <!-- this write comment part-->
