@@ -148,18 +148,17 @@
 			            <div class="row social-comment">
 			            	<div class="col-sm-1">
 			            		<a href="" class="pull-left">
-			                    <img alt="image" src="https://tinyurl.com/376azf5j">
+			                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 				                </a>
 			            	</div>
 			            	<div class="col-sm-11">
-			            		
 				                <div class="media-body">
-								<form method="POST" action="{{ route('CommentPost', [$id]) }}">
-								@csrf
-								<input type='hidden' value='{{ $id }}' name='postId'/>
-				                     <input type='textarea' class="form-control" placeholder="Write comment..." name='commentMessage'></textarea>
-									 <input type='submit' value='Post Comment' />
-									 </form>
+									<form method="POST" action="{{ route('CommentPost', [$id]) }}">
+										@csrf
+										<input type='hidden' value='{{ $id }}' name='postId'/>
+					                    <input type='textarea' class="form-control" placeholder="Write comment..." name='commentMessage'/>
+										<input type='submit' class="float-right btn btn-sm btn-primary"value='Post Comment' />
+									</form>
 				                </div>
 				            </div>
 			            </div>
