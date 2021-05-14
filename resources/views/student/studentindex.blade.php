@@ -57,7 +57,7 @@
 			        </div>
 			        <div class="social-avatar">
 			            <a href="" class="pull-left">
-			                <img alt="image" src="https://tinyurl.com/376azf5j">{{$id}}
+			                <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 			            </a>
 			            <div class="media-body">
 			                <a href="#">
@@ -127,11 +127,12 @@
 					            </ul>
 					        </div>
 			                <a href="" class="pull-left">
-			                    <img alt="image" src="https://tinyurl.com/376azf5j">
+			                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 			                </a>
 			                <div class="media-body">
 			                    <a href="#">
-			                        Glenn Dumaguing
+			                        
+			                    {{ $comment->inflexion_detail_first.' '.$comment->inflexion_detail_last  }}
 			                    </a>
 			                    {{ $comment->comment_message }}
 			                    <br>

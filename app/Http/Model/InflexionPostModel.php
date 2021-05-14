@@ -44,7 +44,7 @@ class InflexionPostModel extends Model
     }
 
     public function fetchAllComments(){
-        $posts = $this->join('comments_models','comments_models.poster_id','=','inflexion_posts.inflexion_post_id')->orderBy('inflexion_post_timestamp','desc')->get();
+        $posts = $this->join('comments_models','comments_models.poster_id','=','inflexion_posts.inflexion_post_id')->join('inflexion_user_details','inflexion_detail_id','=', 'comments_models.comment_id')->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
 
