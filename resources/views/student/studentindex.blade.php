@@ -91,19 +91,24 @@
 			            <div class="row post-status">
 			           		<div class="btn-group">
 			            		<div class="col-sm-12">
-			            			@if($post->inflexion_post_like == 1)
+			            			<!--@if($post->inflexion_post_like == 1)
 										{{ $post->inflexion_post_like }}<a href="#"><i class="fa fa-thumbs-up">person likes this</i></a>
 									@elseif($post->inflexion_post_like > 1)
 										<a href="">{{ $post->inflexion_post_like }}<i class="fa fa-thumbs-up">people like this</i></a>
 									@else
-									@endif
+									@endif-->
 			            		</div>
 			            	</div>
 			            </div>
 			            <div class="row post-react">
 			            	<div class="btn-group">
 			            		<div class="col-sm-12">
-			            			<a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like</a>
+			            			@if($post->inflexion_post_like >= 1)
+			            				<a href='{{ route("LikePost", [$id]) }}' title="{{ $post->inflexion_post_like }} user/s has liked this"><i class="fa fa-thumbs-up"></i>{{ $post->inflexion_post_like }} Like</a>
+			            			@elseif($post->inflexion_post_like == 0)
+			            				<a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like</a>
+			            			@endif
+			            			
 					                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
 					                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
 								</div>
