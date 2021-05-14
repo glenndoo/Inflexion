@@ -43,7 +43,7 @@ class InflexionPostModel extends Model
         return $posts;
     }
 
-    public function fetchAllComments(){
+    public function fetchAllComments(){//uses comment_models and inflexion posts and inflexion_user_details
         $posts = $this->join('comments_models','comments_models.poster_id','=','inflexion_posts.inflexion_post_id')->join('inflexion_user_details','inflexion_detail_id','=', 'comments_models.comment_id')->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
