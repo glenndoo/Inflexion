@@ -112,6 +112,8 @@
 			        </div>
 
 			        <div class="social-footer">
+
+						@foreach($comments as $comment)
 			        	<!-- this comment-->
 			            <div class="social-comment">
 			                <div class="pull-right social-action dropdown">
@@ -130,13 +132,14 @@
 			                    <a href="#">
 			                        Glenn Dumaguing
 			                    </a>
-			                    {{ $post->comment_message }}
+			                    {{ $comment->comment_message }}
 			                    <br>
 			                    <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
 			                    <small class="text-muted">12.06.2014</small>
 								
 			                </div>
 			            </div>
+			            @endforeach
 
 			            <!-- this write comment part-->
 			            <div class="row social-comment">

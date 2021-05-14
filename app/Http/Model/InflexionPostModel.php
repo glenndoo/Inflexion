@@ -30,9 +30,21 @@ class InflexionPostModel extends Model
             return false;
         }
     }
-
+/**this before maiko edit
     public function fetchAllPosts(){
         $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->join('comments_models','comments_models.poster_id','=','inflexion_posts.inflexion_post_id')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
+        return $posts;
+    }**/
+
+//this after maiko edit
+
+    public function fetchAllPosts(){
+        $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
+        return $posts;
+    }
+
+    public function fetchAllComments(){
+        $posts = $this->join('comments_models','comments_models.poster_id','=','inflexion_posts.inflexion_post_id')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
 
