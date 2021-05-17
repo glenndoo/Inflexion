@@ -117,12 +117,13 @@
 			        </div>
 
 			        <div class="social-footer">
-
+						
 						@foreach($comments as $comment)
 						@if($id == $comment->poster_id )
 			        	<!-- this comment-->
 			            <div class="social-comment">
 			                <div class="pull-right social-action dropdown">
+					            @if($comment->comment_id == session()->get('info.userId'))
 					            <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
 					                <i class="fa fa-angle-down"></i>
 					            </button>
@@ -130,6 +131,7 @@
 					                <li><a class="postUser" href="">Delete</a></li>
 					                <li><a class="postUser" href="#">Edit</a></li>
 					            </ul>
+					            @endif
 					        </div>
 			                <a href="" class="pull-left">
 			                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
