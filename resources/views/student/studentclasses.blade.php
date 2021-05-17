@@ -215,52 +215,176 @@
 						  		<div class="col-sm-9">
 						  			<!--start results for history -->
 							  		@foreach(range(date('d')-2, date('d')) as $d)<!--just to loop results for 4 days-->
-									    <div class="row ">
-											<div class="col-sm-12">
-												<div class="group-card card shadow">
-											  		<div class="card-header">
-											  			<div class="row">
-											  				<div class="col-sm-1">
-											  					B
-											  				</div>
-											  				<div class="col-sm-7">
-											  					<h4 title="Your Tutor for this class">
-											  						D
-											  					</h4>
-											  					<h6>C</h6>
-											  				</div>
-											  				<div class="col-sm-4 text-right">
-											  					A
-											  				</div>
-											  			</div>
-											  		</div>
-											  		<div class="card-body">
-											  			<div class="row">
-											  				<div class="col-sm-4">
-												    		F
-												  			</div>
-											  				<div class="col-sm-4">
-												    		G
-												  			</div>
-											  				<div class="col-sm-4">
-												    		H
-												  			</div>
-											  			</div>
-											  			
-											  			<div class="row">
-											  				<div class="col-sm-4">
-												    		I
-												  			</div>
-											  				<div class="col-sm-4">
-												    		J
-												  			</div>
-											  				<div class="col-sm-4">
-												    		K
-												  			</div>
-											  			</div>
-											  			
-											  		</div>
+									    <div class="col-sm-12">
+											<!--div class="group-card card shadow"-->
+											<div class="card shadow">
+										  		<div class="card-header">
+										  			<div class="row">
+										  				<div class="col-sm-4">
+										  					<h5>John Doe</h5>
+										  				</div>
+										  				<div class="col-sm-8 text-right">
+										  					<span class="badge badge-secondary">TOEIC</span>
+													    	<span class="badge badge-secondary">FREETALKING</span>
+													    	<span class="badge badge-secondary">BEGGINER ENGLISH</span>
+													    	<span class="badge badge-secondary">BUSINESS ENGLISH</span>
+													    	<span class="badge badge-secondary">AVAILABLE FOR KIDS</span>
+										  				</div>
+										  			</div>
+										  		</div>
+										  		<div class="card-body">
+										    		<div class="row">
+										    			<div class="col-sm-11 form-inline">
+										    				<div class="col-sm-3">
+										    					<img class="img-responsive" src="{{ asset('img/placeholder-male-square.png')}}" alt="" width="100%">
+										    				</div>
+										    				<div class="col-sm-9">
+										    					<div class="collapse_module">
+										    						@php
+										    							$aboutTutor = "Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Loremjjjkd Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+										    						@endphp
+													        		<p class="collapse collapse_long_element" id="collapse_long_element" aria-expanded="false">
+													                	<b>About: </b>{{$aboutTutor}}
+													            	</p>
+													            	@if(strlen($aboutTutor<140))
+													            		<a role="button" class="collapsed" data-toggle="collapse" href=".collapse_long_element" aria-expanded="false" aria-controls="collapse_long_element"></a>
+													            	@endif
+													        	</div>
+										    				</div>
+										    			</div>
+										    			<div class="col-sm-1">
+										    				<a href="#" class="btn btn-primary form-control float-right" title="profile" data-toggle="modal" data-target="#profileModal">
+										    					<i class="fa fa-user" aria-hidden="true"></i>
+										    				</a>
+										    				<a class="btn btn-info form-control float-right" title="Schedule"class="btn btn-primary" data-toggle="modal" data-target="#scheduleModal">
+										    					<i class="fa fa-calendar" aria-hidden="true"></i>
+										    				</a>
+										    				<a href="#" class="btn btn-warning form-control float-right" title="message">
+										    					<i class="fa fa-envelope-o" aria-hidden="true"></i>
+										    				</a>
+										    			</div>
+										    		</div>
+										  		</div>
+										  		<!-- Modal Schedule -->
+												<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModal" aria-hidden="true">
+												  	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+												    	<div class="modal-content">
+												     		<div class="modal-header">
+												        		<div class="modal-title" id="scheduleModaltitle">
+												        		BOOK A LESSON WITH JOHN DOE
+												        		</div>
+												        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												          		<span aria-hidden="true">&times;</span>
+												        		</button>
+												      		</div>
+													      	<div class="modal-body">
+													      		@php
+													      		$date = date('Y-m-d'); //date today, starts week table today
+																$weekOfdays = array();
+																$begin = new DateTime($date, new DateTimeZone('Asia/Manila'));
+																$end = new DateTime($date);
+																$end = $end->add(new DateInterval('P7D'));
+																$interval = new DateInterval('P1D');
+																$daterange = new DatePeriod($begin, $interval ,$end);
+
+													      		@endphp
+													      		<div class="row d-flex justify-content-center">
+													      			<div class="col-sm-2">
+													      				<div href="" class="disabled btn-warning text-center">Your Booking</div>
+													      			</div>
+													      			<div class="col-sm-2">
+														       	 		<div href="" class="disabled btn-secondary text-center">Reserved</div>
+														       	 	</div>
+														       	 	<div class="col-sm-2">
+														       	 		<div href="" class="disabled btn-primary text-center">Open</div>
+													      			</div>
+													      		</div>
+													      		<hr/>
+													      		<div class="row d-flex">
+														      		<div class="col-sm-12 text-center">
+														      			<SELECT>
+														      				<option>
+														      					<b>Timezone {{date_format($begin, 'Y-m-d P (e)')}}</b><!--this shows timezone of $begin, idk yet hot to set using this slect option-->
+														      				</option>
+														      			</SELECT>
+														      			
+														      		</div>
+														      	</div>
+													      		<hr/>
+													      		<div class="row">
+													      			<table class="table">
+																	  	<thead class="thead-dark">
+																	  		<tr>
+																	    	@foreach($daterange as $dt)
+																	        	<th scope="col" class=" text-center">
+																	        		<h6>{{$weekOfdays[] = $dt->format('D')}}<br/></h6>
+															    					<small>{{ $weekOfdays[] = $dt->format('m-d')}}</small>
+															    				</th>
+																	    	@endforeach
+																	  		</tr>
+																		</thead>
+																		  <tbody>
+																		    <tr>
+																		    	@foreach($daterange as $dt)
+																		      	<td class="check-time">
+																		      		<!--if booking exists for this user-->
+																					<label class="btn btn-warning form-control active">
+																						<input class="float-left" type="checkbox" autocomplete="off" checked name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
+																						<p class="text-right">10:00</p>
+																						<span class="fa fa-check "></span>
+																					</label>
+																					<!--end-->
+																					
+																					<!--if booked by other user-->
+																					<label class="bg-secondary form-control text-left">
+																						<p class="text-right">11:00</p>
+																						<span class="fa fa-check"></span>
+																					</label>	
+																					<!--end-->
+																				
+																					<!--if time slot is open-->
+																					<label class="btn btn-primary form-control text-left">
+																						<input class="float-left" type="checkbox" autocomplete="off" name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
+																						<p class="text-right">12:00</p>
+																						<span class="fa fa-check"></span>
+																					</label>
+																					<!--end-->
+
+																		      	</td>
+																		     	@endforeach
+																		    </tr>
+																		  </tbody>
+																		</table>
+													      		</div>
+													      	</div>
+													      	<div class="modal-footer">
+													      		<button class="btn btn-success" type="submit">SAVE</button>
+													      	</div>
+												    	</div>
+												  	</div>
 												</div>
+										  		<!-- Modal -->
+										  		<!-- Modal Schedule -->
+												<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalTitle" aria-hidden="true">
+												  	<div class="modal-dialog modal-dialog-centered" role="document">
+												    	<div class="modal-content">
+												     		<div class="modal-header">
+												        		<div class="modal-title" id="profileModalrTitle">
+												        		Profile Modal
+												        		</div>
+												        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												          		<span aria-hidden="true">&times;</span>
+												        		</button>
+												      		</div>
+													      	<div class="modal-body">
+															</div>
+													      	<div class="modal-footer">
+													      		<button class="btn btn-success" type="submit">Full Profile</button>
+													      	</div>
+												    	</div>
+												  	</div>
+												</div>
+										  		<!-- Modal -->
 											</div>
 										</div>
 										<hr/><!--break to next entry-->
