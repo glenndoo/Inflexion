@@ -102,21 +102,32 @@
 			            <div class="row post-react">
 			            	<div class="btn-group">
 			            		<div class="col-sm-12">
-			            			@if($post->inflexion_post_like >= 1)
+			            			@if($post->inflexion_post_like == 1)<!--just 1 like)-->
 			            				<a href='{{ route("LikePost", [$id]) }}' title="{{ $post->inflexion_post_like }} user/s has liked this"><i class="fa fa-thumbs-up"></i>{{ $post->inflexion_post_like }} Like</a>
-			            			@elseif($post->inflexion_post_like == 0)
+			            			@elseif($post->inflexion_post_like > 1)<!--more then 1 like)-->
+			            				<a href='{{ route("LikePost", [$id]) }}' title="{{ $post->inflexion_post_like }} user/s has liked this"><i class="fa fa-thumbs-up"></i>{{ $post->inflexion_post_like }} Likes</a>
+			            			@else($post->inflexion_post_like == 0)<!--no likes)-->
 			            				<a href='{{ route("LikePost", [$id]) }}' class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like</a>
 			            			@endif
-			            			
-					                <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
+
+			            			@php
+						        		$rowCount = count($comments->where('poster_id', $id))
+						        	@endphp
+			            			@if($rowCount > 1)<!--more than 1 comment)-->
+					                	<a data-toggle="collapse" href="#social-comment-{{$id}}"><i class="fa fa-comments">{{$rowCount}}</i> Comments</a>
+					                @elseif($rowCount == 1)<!--just 1 comment)-->
+					                	<a data-toggle="collapse" href="#social-comment-{{$id}}"><i class="fa fa-comments">{{$rowCount}}</i> Comment</a>
+					                @else <!--no comments)-->
+					                	<a data-toggle="collapse" href="#social-comment-{{$id}}"><i class="fa fa-comments"></i> Comment</a>
+					                @endif
+					               
 					                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
 								</div>
 			            	</div>
 			            </div>
 			        </div>
 
-			        <div class="social-footer">
-						
+				        <div class="social-footer collapse" id="social-comment-{{$id}}">
 						@foreach($comments as $comment)
 						@if($id == $comment->poster_id )
 			        	<!-- this comment-->
