@@ -11,7 +11,6 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<h6>student>studentindex</h6>
 			</div>
 		</div>
 		<!--start post to feed -->
