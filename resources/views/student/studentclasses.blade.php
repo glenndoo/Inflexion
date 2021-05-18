@@ -1,6 +1,6 @@
 <x-student-template data="studentclasses" />
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
-	<div class="container-fluid">
+	<div class="container-fluid"><!--container start-->
 		<div class="row">
 			<div class="col-sm">
 				<br/>
@@ -79,7 +79,7 @@
 											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
 											  				</div>
 											  				<div class="col-sm-4">
-											  					<a href="#" class="btn btn-success form-control">Mark as Completed</a>
+											  					<a href="#" class="btn btn-success form-control" data-toggle="modal" data-target="#markCompletedModal">Mark as Completed</a>
 											  					<small><i>45 IG credits used</i></small>
 											  				</div>
 											  			</div>
@@ -90,10 +90,10 @@
 												    		ENGLISH FOR BEGGINERS
 												  			</div>
 												  			<div class="col-sm-2">
-											  					<a href="#" class="btn btn-danger form-control">cancel</a>
+											  					<a href="#" class="btn btn-danger form-control" data-toggle="modal" data-target="#cancelClassModal">cancel</a>
 											  				</div>
 												  			<div class="col-sm-2">
-											  					<a href="#" class="btn btn-primary form-control">resched</a>
+											  					<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#reschedClassModal">resched</a>
 											  				</div>
 											  			</div>
 											  		</div>
@@ -403,5 +403,67 @@
 			<!-- main tab column end-->
 		</div>
 		<!--end myclasses main-->
-	</div>
+	</div><!--container end-->
+</div>
+
+<!-- mark completed Modal -->
+<div class="modal fade" id="markCompletedModal" tabindex="-1" role="dialog" aria-labelledby="markCompletedModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- cancel Modal -->
+<div class="modal fade" id="cancelClassModal" tabindex="-1" role="dialog" aria-labelledby="cancelClassModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--resched Modal -->
+<div class="modal fade" id="reschedClassModal" tabindex="-1" role="dialog" aria-labelledby="reschedClassModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
