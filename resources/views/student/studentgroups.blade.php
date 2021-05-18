@@ -93,7 +93,7 @@
 								        </div>
 								        <div class="social-avatar">
 								            <a href="" class="pull-left">
-								                <img alt="image" src="https://tinyurl.com/376azf5j">
+								                <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 								            </a>
 								            <div class="media-body">
 								                <a href="#">Maiko Robles<i class="fa fa-caret-right" aria-hidden="true"></i>Group Name</a>
@@ -135,7 +135,7 @@
 										            </ul>
 										        </div>
 								                <a href="" class="pull-left">
-								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+								                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 								                </a>
 								                <div class="media-body">
 								                    <a href="#">
@@ -152,7 +152,7 @@
 								            <div class="row social-comment">
 								            	<div class="col-sm-1">
 								            		<a href="" class="pull-left">
-								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+								                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 									                </a>
 								            	</div>
 								            	<div class="col-sm-11">
@@ -288,7 +288,7 @@
 								        </div>
 								        <div class="social-avatar">
 								            <a href="" class="pull-left">
-								                <img alt="image" src="https://tinyurl.com/376azf5j">
+								                <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 								            </a>
 								            <div class="media-body">
 								                <a href="#">Glenn Dumaguing</a>
@@ -330,7 +330,7 @@
 										            </ul>
 										        </div>
 								                <a href="" class="pull-left">
-								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+								                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 								                </a>
 								                <div class="media-body">
 								                    <a href="#">
@@ -347,7 +347,7 @@
 								            <div class="row social-comment">
 								            	<div class="col-sm-1">
 								            		<a href="" class="pull-left">
-								                    <img alt="image" src="https://tinyurl.com/376azf5j">
+								                    <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 									                </a>
 								            	</div>
 								            	<div class="col-sm-11">
