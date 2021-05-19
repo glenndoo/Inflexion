@@ -154,8 +154,7 @@
               <!--First column-->
             <div class="col-md-4">
                 <h5 class="title mb-4 mt-3 font-bold">Footer Content</h5>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit.</p>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
             </div>
             <!--/.First column-->
 
@@ -163,7 +162,7 @@
 
             <!--Second column-->
             <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <h5 class="title mb-4 mt-3 font-bold">Contact us</h5>
                 <ul>
                     <li><a href="#!">Link 1</a></li>
                     <li><a href="#!">Link 2</a></li>
@@ -177,7 +176,7 @@
 
             <!--Third column-->
             <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <h5 class="title mb-4 mt-3 font-bold">FAQs</h5>
                 <ul>
                     <li><a href="#!">Link 1</a></li>
                     <li><a href="#!">Link 2</a></li>
@@ -191,7 +190,7 @@
 
             <!--Fourth column-->
             <div class="col-md-2 mx-auto">
-                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <h5 class="title mb-4 mt-3 font-bold ">The Team</h5>
                 <ul>
                     <li><a href="#!">Link 1</a></li>
                     <li><a href="#!">Link 2</a></li>
