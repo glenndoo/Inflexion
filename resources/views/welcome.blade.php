@@ -136,10 +136,72 @@
         </div>
     </div>
 <!--FOOTER-->
-  <footer class="py-4 bg-dark flex-shrink-0 ease-loadBot">
-    <div class="container text-center">
-      <a href="" class="text-muted">Copyright ©  2021 Inflexion Global</a>
-    </div>
+  <footer id="footer" class="py-4 bg-dark flex-shrink-0 ease-loadBot">
+
+
+        <div id="footerbuttonup">&#9650;</div>
+            
+      <div id="footerbuttondown">&#9660;</div>
+
+      <div class="row">
+          <div id="footercopyright">
+               <a href="" class="text-muted">Copyright ©  2021 Inflexion Global</a>
+          </div>
+      </div>
+
+      <div class="container">
+          <div class="row"id="footercont">
+              <!--First column-->
+            <div class="col-md-4">
+                <h5 class="title mb-4 mt-3 font-bold">Footer Content</h5>
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                    amet, consectetur adipisicing elit.</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="title mb-4 mt-3 font-bold ">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+          </div>
+      </div>
   </footer>
 <!--END FOOTER-->
 
@@ -231,3 +293,35 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+    document.getElementById("footerbuttondown").onclick = function(){shrink()};
+    document.getElementById("footerbuttonup").onclick = function(){ expand()};
+    document.getElementById("footer").style.height= "30px"; 
+ 
+function shrink(){
+  if(document.getElementById("footer").style.height= "300px"){
+  
+    document.getElementById("footer").style.height= "30px";
+    document.getElementById("footerbuttondown").style.visibility="hidden";  
+    document.getElementById("footerbuttonup").style.visibility="visible";  
+    document.getElementById("footercont").style.opacity="0";  
+    document.getElementById("footercont").style.visibility="hidden";
+                                      
+  }
+}
+
+function expand(){
+  if(document.getElementById("footer").style.height= "30px"){
+    document.getElementById("footer").style.height= "300px";
+    document.getElementById("footerbuttondown").style.visibility="visible";  
+    document.getElementById("footerbuttonup").style.visibility="hidden";  
+    document.getElementById("footercont").style.opacity="1";  
+    document.getElementById("footercont").style.visibility="visible";
+
+                                                  
+  }
+}
+
+</script>
