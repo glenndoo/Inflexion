@@ -274,8 +274,18 @@ $post_id = $post->inflexion_post_id;
         </button>
       </div>
       <div class="modal-body">
-      	If someone is in immediate danger, get help before reporting to Inflexion Global, Don't wait.
-      	Report this post if it violates any of Inflexion Global's guidelines.<br/>
+      	
+      	<div class="row">
+      		<div class="col-sm-8">
+      		If someone is in immediate danger, get help before reporting to Inflexion Global, Don't wait.
+      		Report this post if it violates any of Inflexion Global's guidelines.<br/>
+      	</div>
+	      	<div class="col-sm-4">
+	      		<i style="font-size: 6rem;"class="text-danger fa fa-exclamation-triangle" aria-hidden="true"></i>
+	      	</div>
+      	</div>
+
+      	
       	<hr/>
       	<b>Name:</b>
       	{{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}<br/>
