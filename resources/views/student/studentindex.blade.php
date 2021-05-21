@@ -20,10 +20,10 @@
 				@csrf
 				<div class="panel shadow">
 		            <div class="panel-body">
-		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea>
+		        		<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea><br/>
 		        		<div class="mar-top clearfix">
-		        			<input class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil fa-fw"></i>
-		        			<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
+		        			<button class="btn btn-sm btn-primary pull-right" type="submit"/><i class="fa fa-pencil-square-o"></i></button>
+							<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
 		        			<a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#" data-original-title="Add Photo" data-toggle="tooltip"></a>
 		        			<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
 		        		</div>
@@ -49,22 +49,45 @@
 						@endphp
 			            <ul class="dropdown-menu m-t-xs">
 						@if($post->inflexion_post_poster == session()->get('info.userId'))
-			                <li><a class="postUser" href="{{ route('DeletePost',[$id]) }}">Delete</a></li>
-			                <li><a class="postUser" href="#">Edit</a></li>
+			                <li><a class="postUser" href="#" data-toggle="modal" data-target="#delete-post-{{$id}}">Delete</a></li>
+			                <li><a class="postUser" href="#" data-toggle="modal" data-target="#edit-post-{{$id}}">Edit</a></li>
+			            @else
+			            	<li><a class="postUser" href="" data-toggle="modal" data-target="#report-post-{{$id}}">Report</a></li>
 						@endif
 			            </ul>
 			        </div>
+
+
 			        <div class="social-avatar">
 			            <a href="" class="pull-left">
 			                <img alt="image" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
 			            </a>
 			            <div class="media-body">
-			                <a href="#">
-			                    {{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}
-								@if($post->inflexion_post_poster == session()->get('info.userId'))
-			                (You)
-						@endif
-			                </a>
+			            	<div class=" form-inline">
+			            		<!--this name of poster-->
+			            		<a href="#">
+				                    {{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}
+									@if($post->inflexion_post_poster == session()->get('info.userId'))
+						                (You)
+									@endif
+				                </a>
+				                <!--this trigger for hidden badges of poster note: only if tutor show trigger-->
+				                <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#user-badge-{{$id}}" aria-expanded="false" aria-controls="collapseExample">
+									<i class="fa fa-info-circle"></i>
+								</button>
+								<!--this hidden badges of poster note: only if tutor show badge-->
+				                <div class="collapse" id="user-badge-{{$id}}">
+				                	<span class="badge badge-primary">Primary</span>
+									<span class="badge badge-secondary">Secondary</span>
+									<span class="badge badge-success">Success</span>
+									<span class="badge badge-danger">Danger</span>
+									<span class="badge badge-warning">Warning</span>
+									<span class="badge badge-info">Info</span>
+									<span class="badge badge-light">Light</span>
+									<span class="badge badge-dark">Dark</span>
+				                </div>
+			            	</div>
+			                
 			                <small class="text-muted">{{ $post->inflexion_post_timestamp }}</small>
 			            </div>
 			        </div>
@@ -173,7 +196,7 @@
 									<form method="POST" action="{{ route('CommentPost', [$id]) }}">
 										@csrf
 										<input type='hidden' value='{{ $id }}' name='postId'/>
-					                    <input type='textarea' class="form-control" placeholder="Write comment..." name='commentMessage'/>
+					                    <input type='textarea' class="form-control" placeholder="Write comment..." name='commentMessage' required/>
 										<input type='submit' class="float-right btn btn-sm btn-primary"value='Post Comment' />
 									</form>
 				                </div>
@@ -192,3 +215,80 @@
 		<!--end posts-->
 	</div>
 </div>
+
+<!--nilagay ko dito modal sa baba kasi nag contradict sya sa css ng naviagtion-->
+@foreach($details as $post)
+@php
+$post_id = $post->inflexion_post_id;
+@endphp
+<!-- Modal edit -->
+<div class="modal fade" id="edit-post-{{$post_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">EDIT YOUR POST</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       //POST id {{$post_id}} <br/>
+       <textarea class="form-control" rows="2" placeholder="What are you thinking?" name="editPost">{{ $post->inflexion_post_message }}</textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>Cancel</button>
+        <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-check" aria-hidden="true"></i>Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal delete -->
+<div class="modal fade" id="delete-post-{{$post_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete this post?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {{ $post->inflexion_post_message }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>Cancel</button>
+        <a href="{{ route('DeletePost',[$post_id]) }}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal report -->
+<div class="modal fade" id="report-post-{{$post_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Report this post?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	If someone is in immediate danger, get help before reporting to Inflexion Global, Don't wait.
+      	Report this post if it violates any of Inflexion Global's guidelines.<br/>
+      	<hr/>
+      	<b>Name:</b>
+      	{{ $post->inflexion_detail_first.' '.$post->inflexion_detail_last}}<br/>
+      	<b>POST:</b>
+       {{ $post->inflexion_post_message }}<br/>
+       <b>Date Posted:</b>
+       {{ $post->inflexion_post_timestamp }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i>Cancel</button>
+        <a href="{{ route('DeletePost',[$post_id]) }}" type="button" class="btn btn-danger btn-sm"><i class="fa fa-check" aria-hidden="true"></i>Submit</a>
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
