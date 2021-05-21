@@ -216,7 +216,7 @@
 	</div>
 </div>
 
-<!--nilagay ko dito modal sa baba kasi nag contradict sya sa css ng naviagtion-->
+<!--nilagay ko dito modal sa baba kasi nag contradict sya sa css ng naviagtion ganun din dapat para sa modal ng comments-->
 @foreach($details as $post)
 @php
 $post_id = $post->inflexion_post_id;
