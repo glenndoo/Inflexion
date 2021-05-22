@@ -153,7 +153,7 @@ use Illuminate\Support\Facades\Route;
             return view('student.studentFindTutor');
         });
 
-        Route::get('/studentLibrary', array ( //added for testing maiko
+        Route::get('/studentLibrary', array ( //added by maiko
             'as' => 'studentLibrary',
             'uses' => 'StudentController@studentLibrary'
         ));
