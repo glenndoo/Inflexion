@@ -9,10 +9,10 @@
 				<br/>
 			</div>
 		</div>
-		<!--start post to feed -->
+		<!--start search library pdf -->
 		<div class="row">
 			<div class="col-sm-12">
-				<!-- search bar start-->
+				<!-- search pdf start-->
 				<div class="group-card card shadow">
 			  		<div class="card-header">
 			  			<div class="row">
@@ -22,10 +22,11 @@
 			  		<div class="card-body">
 			  			<div class="form-group row">
 						    <div class="col-sm-12">
-						    	<!--label for="countryCitizenship" class="col-form-label">Citizenship</label-->
+						    	<!--javascript change iframe to selected pdf-->
 						      	<select class="form-control" id="countryCitizenship" ONCHANGE="document.getElementById('youriframe').src = this.options[this.selectedIndex].value">
 						      		<option selected>select a title</option>
 
+						      		<!--this loads pdf directory array-->
 					  				@foreach($files as $pdf)
 						  				@php
 							      		$filename = basename($pdf);
@@ -39,18 +40,19 @@
 						</div>
 			  		</div>
 				</div>
-				<!-- search bar end-->
+				<!-- search pdf end-->
 			</div>
 		</div>
-		<!--post to feed end-->
+		<!--post to search library pdf-->
 
-		<!--settings start-->
+		<!--iframe start-->
 		<div class="row">
 			<div class="col-sm-12">
+				<!--iframe to output selected pdf-->
 				<iframe name="iframe" id="youriframe" src=""  type="application/pdf" width="100%" height="700rem"></iframe>
 				<!--embed src="https://pdfobject.com/pdf/sample.pdf" type="application/pdf" width="100%" height="700rem"-->
 			</div>
 		</div>
-		<!--end settings-->
+		<!--end iframe-->
 	</div>
 </div>

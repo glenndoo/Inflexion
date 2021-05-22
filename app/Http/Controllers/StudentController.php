@@ -22,7 +22,7 @@ class StudentController extends Controller
 
         return view('student.studentindex')->with('details',$details)->with('comments',$comments);//modified by maiko added 2nd "with"
     }
-    public function studentLibrary(Request $request){
+    public function studentLibrary(Request $request){//added by maiko loads files in directory outputs to blade file
         $path = public_path('pdf');
         $files = File::files($path);
 
