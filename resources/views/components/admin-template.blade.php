@@ -88,8 +88,6 @@
 				  </button>
 				  	<div class="dropdown-menu dropdown-menu-right shadow">
 				    	<button class="dropdown-item" type="button">{{ session()->get('info.userWholeName') }}</button>
-				    	<button class="dropdown-item" type="button"><a href="/studentSettings" class="">Settings</a></button>
-				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
 				    	<hr/>
 				    	<button class="dropdown-item" type="button"><a href="{{ route('LogoutUser') }}" class="">Logout</a></button>
 				   	 <!--button class="dropdown-item" type="button">Profile</button-->
@@ -114,6 +112,38 @@
 	                </span>
 	            </a>
 	        </li>
+	        <li>
+	            <a href="/adminIndex">
+	                <i class="fa fa-users icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Users
+	                </span>
+	            </a>
+	        </li>
+	        <li>
+	            <a href="/adminIndex">
+	                <i class="fa fa-globe icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Posts
+	                </span>
+	            </a>
+	        </li>
+	        <li>
+	            <a href="/adminIndex">
+	                <i class="fa fa-bullhorn icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Announcements
+	                </span>
+	            </a>
+	        </li>
+	        <li>
+	            <a href="/adminIndex">
+	                <i class="fa fa-graduation-cap icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Classes
+	                </span>
+	            </a>
+	        </li>
 	    </ul>
 
 	    <ul class="logout">
@@ -127,61 +157,5 @@
 	        </li>  
 	    </ul>
 	</nav>
-
-<!-- modalCredits -->
-<div class="modal fade" id="modalCredits" tabindex="-1" role="dialog" aria-labelledby="modalCredits" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">modalCredits</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-        	<div class="col-sm-2">
-        		<label>current:</label>
-        	</div>
-        	<div class="col-sm-10 text-right">
-        		<label><b title="Inflexion Global Credits">100 IG Credits </b> </label>
-        	</div>
-        	<div class="col-sm-12 text-right">
-        		<small><i>credits allow you to book classes with tutors</i></small>
-        	</div>
-        </div>
-
-        <hr/>
-
-        <div class="row">
-        	<div class="col-sm-3">
-        		<i title="desired amount of credits 1 IGC = 1$."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="number" class="form-control" placeholder="amount" name="creditAmount" min="10"/>
-        	</div>
-        	<div class="col-sm-5"> <i title="your 16 digit credit card number"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="card number" name=""/>
-        	</div>
-        	<div class="col-sm-2">
-        		 <i title="four-digit code assigned to or chosen by you after opening a credit card."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="pin" name=""/>
-        	</div>
-        	<div class="col-sm-2">
-        		<i title="submit after completing credit card info and desired IG credit ammount information"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<button class="form-control btn btn-primary">submit</button>
-        	</div>
-        	<div class="col-sm-12">
-        		<small><i>we will never share or save your credit card information</i></small>
-        		<small class="pull-right"><i>make sure all information are correct</i></small>
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <!--button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button-->
-      </div>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
