@@ -16,25 +16,26 @@
 				<div class="group-card card shadow">
 			  		<div class="card-header">
 			  			<div class="row">
-			  				40 books available
+			  				<p><b>{{count($files)}} </b>books are available to view</p>
 			  			</div>
 			  		</div>
 			  		<div class="card-body">
 			  			<div class="form-group row">
 						    <div class="col-sm-12">
 						    	<!--label for="countryCitizenship" class="col-form-label">Citizenship</label-->
-						      	<select class="form-control" id="countryCitizenship">
-							      	<option selected>unspecified</option>
-							      	<option selected>unspecified</option>
-							      	<option selected>unspecified</option>
-							      	<option selected>unspecified</option>
-							      	<option selected>unspecified</option>
-							      	<option selected>unspecified</option>
+						      	<select class="form-control" id="countryCitizenship" ONCHANGE="document.getElementById('youriframe').src = this.options[this.selectedIndex].value">
+						      		<option selected>select a title</option>
+
+					  				@foreach($files as $pdf)
+						  				@php
+							      		$filename = basename($pdf);
+							      		@endphp
+									    <option value="{{ asset('pdf/'.$filename.'')}}">{{$filename}}</option>
+					  				@endforeach
 							    </select>
 						    </div>
 						</div>
 			  			<div class="form-group">
-					    	
 						</div>
 			  		</div>
 				</div>
@@ -46,7 +47,8 @@
 		<!--settings start-->
 		<div class="row">
 			<div class="col-sm-12">
-				<embed src="https://pdfobject.com/pdf/sample.pdf" type="application/pdf" width="100%" height="700rem">
+				<iframe name="iframe" id="youriframe" src=""  type="application/pdf" width="100%" height="700rem"></iframe>
+				<!--embed src="https://pdfobject.com/pdf/sample.pdf" type="application/pdf" width="100%" height="700rem"-->
 			</div>
 		</div>
 		<!--end settings-->
