@@ -14,7 +14,7 @@
 			<div class="col-sm-12">
 				<!-- search pdf start-->
 				<div class="group-card card shadow">
-			  		<div class="card-header">
+			  		<div class="card-header bg-info">
 			  			<div class="row">
 			  				<p><b>{{count($files)}} </b>books are available to view</p>
 			  			</div>
@@ -24,7 +24,7 @@
 						    <div class="col-sm-12">
 						    	<!--javascript change iframe to selected pdf-->
 						      	<select class="form-control" id="countryCitizenship" ONCHANGE="document.getElementById('youriframe').src = this.options[this.selectedIndex].value">
-						      		<option selected>select a title</option>
+						      		<option selected disabled>select a title</option>
 
 						      		<!--this loads pdf directory array-->
 					  				@foreach($files as $pdf)
@@ -48,9 +48,14 @@
 		<!--iframe start-->
 		<div class="row">
 			<div class="col-sm-12">
-				<!--iframe to output selected pdf-->
-				<iframe name="iframe" id="youriframe" src=""  type="application/pdf" width="100%" height="700rem"></iframe>
-				<!--embed src="https://pdfobject.com/pdf/sample.pdf" type="application/pdf" width="100%" height="700rem"-->
+				<div class="">
+					<div class="card-body">
+						<!--iframe to output selected pdf-->
+						<embed class="shadow"name="iframe" id="youriframe" src=""  type="application/pdf" width="100%" height="670rem"></embed>
+						<!--embed src="https://pdfobject.com/pdf/sample.pdf" type="application/pdf" width="100%" height="700rem"-->
+					</div>
+				</div>
+				
 			</div>
 		</div>
 		<!--end iframe-->
