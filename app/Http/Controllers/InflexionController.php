@@ -229,6 +229,8 @@ class InflexionController extends Controller
                     $request->session()->put('info', $sess);
                     if($login->inflexion_user_type == 1){
                         return redirect('/studentIndex');
+                    }elseif($login->inflexion_user_type == 0){//added by maiko for testing admin
+                        return redirect('/adminIndex');
                     }else{
                         return redirect('/tutorIndex');
                     }
