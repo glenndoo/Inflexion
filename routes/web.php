@@ -196,8 +196,8 @@ use Illuminate\Support\Facades\Route;
     
     //ADMIN GROUP ROUTE
     Route::group(['middleware' => 'Admin'], function(){
-        Route::get('/adminIndex', function () { //added for testing maiko
-        return view('admin.adminIndex');
-
-        });
+        Route::get('/adminIndex', array(
+            'as' => 'adminIndex',
+            'uses' => 'AdminController@index'
+        ));
     });

@@ -16,7 +16,28 @@
 			</div>
 		</div>
 		<!--post to feed end-->
-
+		Students<br />
+		@foreach($users as $user)
+			@if($user->inflexion_user_type == 1)
+				{{ $user->inflexion_username }}
+				<br />
+			@endif
+			
+		@endforeach
+		<br />
+		Tutors<br />
+		@foreach($users as $user)
+			@if($user->inflexion_user_type == 2)
+			{{ $user->inflexion_username }}
+				@if($user->inflexion_user_status == 4)
+				<a href="">For Interview</a>
+				@elseif($user->inflexion_user_status == 3)
+				Failed
+				@endif
+				<br />
+			@endif
+				
+		@endforeach
 		<!--settings start-->
 		<div class="row">
 			<div class="col-sm-12">
