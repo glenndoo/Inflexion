@@ -9,10 +9,79 @@
 				<br/>
 			</div>
 		</div>
-		<!--start top row-->
+		<div class="row">
+			<!-- total users   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Registered Users</h5>
+                            <h2 class="mb-0">{{count($users)}}</h2>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total users   -->
+
+            <!-- total tutors   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Active tutors</h5>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total tutors   -->
+            
+            <!-- total tutors   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Active Students</h5>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total tutors   -->
+
+            <!-- total tutors   -->
+            <!-- ============================================================== -->
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-inline-block">
+                            <h5 class="text-muted">Pending Activation</h5>
+                        </div>
+                        <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                            <i class="fa fa-user fa-fw fa-sm text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end total tutors   -->
+		</div>
+		<!--start user row-->
 		<div class="row">
 			<div class="col-sm-12">
-				<h6>adminIndex</h6>
                 <!-- ================================table student start============================== -->
                     <div class="card">
                         <h5 class="card-header">Recent Student Accounts</h5>
@@ -105,9 +174,7 @@
                 <!-- ================================table student end============================== -->
 			</div>
 		</div>
-		<!--end top row-->
-
-		<hr/>
+		<!--end user row-->
 
 		<!--start top row-->
 		<div class="row">
