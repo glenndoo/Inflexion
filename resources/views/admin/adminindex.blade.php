@@ -28,13 +28,14 @@
             <!-- ============================================================== -->
             <!-- end total users   -->
 
-            <!-- total tutors   -->
+            <!-- Active tutors   -->
             <!-- ============================================================== -->
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-inline-block">
                             <h5 class="text-muted">Active tutors</h5>
+                            <h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->where('inflexion_user_status', '2')->count() }}</h2>
                         </div>
                         <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -43,15 +44,16 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- end total tutors   -->
+            <!-- end Active tutors   -->
             
-            <!-- total tutors   -->
+            <!-- active students   -->
             <!-- ============================================================== -->
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-inline-block">
                             <h5 class="text-muted">Active Students</h5>
+                            <h2 class="mb-0">{{ $users->where('inflexion_user_type', '1')->where('inflexion_user_status', '2')->count() }}</h2>
                         </div>
                         <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -60,15 +62,16 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- end total tutors   -->
+            <!-- end Active tutors   -->
 
-            <!-- total tutors   -->
+            <!-- Interview tutors   -->
             <!-- ============================================================== -->
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-inline-block">
-                            <h5 class="text-muted">Pending Activation</h5>
+                            <h5 class="text-muted">Tutor/s to Interview</h5>
+                            <h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->where('inflexion_user_status', '4')->count() }}</h2>
                         </div>
                         <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -77,7 +80,7 @@
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- end total tutors   -->
+            <!-- end Interview tutors   -->
 		</div>
 		<!--start user row-->
 		<div class="row">
