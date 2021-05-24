@@ -114,7 +114,7 @@
 			<div class="col-sm-12">
                 <!-- ================================table tutor start============================== --> <!--hindi pa to tapos-->
                     <div class="card">
-                        <h5 class="card-header">Recent Student Accounts</h5>
+                        <h5 class="card-header">Recent Tutor Accounts</h5>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table">
@@ -137,7 +137,7 @@
 		                                            </td>
 		                                            <td>{{ $user->inflexion_username }}</td>
 		                                            <td>{{ $user->inflexion_user_id }}</td>
-		                                            <td>//#{{ $user->inflexion_user_status }}</td>
+		                                            <td>{{ $user->inflexion_user_status }}</td>
 
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor just verified email but has not tried to login yet has not seen exam-->
