@@ -114,7 +114,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminIndex">
+	            <a href="/adminUserList">
 	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Users
@@ -122,7 +122,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminIndex">
+	            <a href="/adminUserPosts">
 	                <i class="fa fa-globe icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Posts
@@ -130,7 +130,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminIndex">
+	            <a href="/adminAnnouncements">
 	                <i class="fa fa-bullhorn icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Announcements
@@ -138,10 +138,10 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminIndex">
+	            <a href="/adminLibrary">
 	                <i class="fa fa-graduation-cap icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    Classes
+	                    Site Library
 	                </span>
 	            </a>
 	        </li>

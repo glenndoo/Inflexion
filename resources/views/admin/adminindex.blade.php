@@ -167,7 +167,7 @@
 		                                	@endif
 										@endforeach
                                         <tr>
-                                            <td colspan="9"><a href="#" class="btn btn-outline-dark float-right">View all</a></td>
+                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -317,7 +317,7 @@
 		                                	@endif
 										@endforeach
                                         <tr>
-                                            <td colspan="9"><a href="#" class="btn btn-outline-dark float-right">View all</a></td>
+                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
