@@ -102,19 +102,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	@foreach($users as $user)
-											@if($user->inflexion_user_type == 1)
+                                    	@foreach($users as $student)
+											@if($student->inflexion_user_type == 1)
 		                                        <tr>
 		                                            <td>
 		                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
 		                                            </td>
-		                                            <td>{{ $user->inflexion_username }}</td>
-		                                            <td>{{ $user->inflexion_user_id }}</td>
+		                                            <td>{{ $student->inflexion_username }}</td>
+		                                            <td>{{ $student->inflexion_user_id }}</td>
 
-		                                            @if($user->inflexion_user_status == 2)
+		                                            @if($student->inflexion_user_status == 2)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
 																100%
 															</div>
 														</div>
@@ -127,10 +127,10 @@
 		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 		                                            	<button type="button" class="btn-sm btn btn-primary" title="reset this account to status 0 (unverified email and incomplete details">Reset 0</button>
 		                                            </td>
-		                                            @elseif($user->inflexion_user_status == 1)
+		                                            @elseif($student->inflexion_user_status == 1)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+															<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
 																Verified 50%
 															</div>
 														</div>
@@ -147,7 +147,7 @@
 		                                            @else
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
 																
 															</div>
 														</div>
@@ -199,22 +199,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    	@foreach($users as $user)
-											@if($user->inflexion_user_type == 2)
+                                    	@foreach($users as $tutor)
+											@if($tutor->inflexion_user_type == 2)
 		                                        <tr>
 		                                            <td>
 		                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
 		                                            </td>
-		                                            <td>{{ $user->inflexion_username }}</td>
-		                                            <td>{{ $user->inflexion_user_id }}</td>
-		                                            <td>{{ $user->inflexion_user_status }}</td>
+		                                            <td>{{ $tutor->inflexion_username }}</td>
+		                                            <td>{{ $tutor->inflexion_user_id }}</td>
+		                                            <td>{{ $tutor->inflexion_user_status }}</td>
 
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor just verified email but has not tried to login yet has not seen exam-->
-		                                            @if($user->inflexion_user_status == 1 && $user->inflexion_user_take == 0)
+		                                            @if($tutor->inflexion_user_status == 1 && $tutor->inflexion_user_take == 0)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																25%
 															</div>
 														</div>
@@ -230,29 +230,29 @@
 		                                            </td>
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
-		                                            @elseif($user->inflexion_user_status == 3 && $user->inflexion_user_take < 3 && $user->inflexion_user_take != 0)
+		                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take < 3 && $tutor->inflexion_user_take != 0)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																25%
 															</div>
 														</div>
 														<i class="fa fa-check" aria-hidden="true"></i>email verified
 													</td>
 		                                            <td>
-		                                            	{{$user->inflexion_user_take}} exam tries
+		                                            	{{$tutor->inflexion_user_take}} exam tries
 		                                            </td>
 		                                            <td>
 		                                            	options
 		                                            </td>
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor has reached maximum ammount of test tries and failed-->
-		                                            @elseif($user->inflexion_user_status == 3 && $user->inflexion_user_take == 3)
+		                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take == 3)
 		                                            <td>
 		                                            	FAILED 3 TIMES
 													</td>
 		                                            <td>
-		                                            	{{$user->inflexion_user_take}} exam tries
+		                                            	{{$tutor->inflexion_user_take}} exam tries
 		                                            </td>
 		                                            <td>
 		                                            	<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
@@ -261,16 +261,16 @@
 		                                            </td>
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor has passed exam waiting for interview-->
-		                                            @elseif($user->inflexion_user_status == 4)
+		                                            @elseif($tutor->inflexion_user_status == 4)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+															<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																75%
 															</div>
 														</div>
 													</td>
 		                                            <td>
-		                                            	PASSED(Tries: {{$user->inflexion_user_take}}) <b>FOR INTERVIEW</b>
+		                                            	PASSED(Tries: {{$tutor->inflexion_user_take}}) <b>FOR INTERVIEW</b>
 		                                            </td>
 		                                            <td>
 		                                            	<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
@@ -279,10 +279,10 @@
 		                                            </td>
 		                                            <!---------------------------------------------------------------------->
 		                                            <!--tutor has passed exam passed interview and account is now active-->
-		                                            @elseif($user->inflexion_user_status == 2)
+		                                            @elseif($tutor->inflexion_user_status == 2)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																100%
 															</div>
 														</div>
@@ -296,10 +296,10 @@
 		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">INTERVIEW DETAILS</button>
 		                                            </td><!---------------------------------------------------------------------->
 		                                            <!--tutor has passed exam passed interview and account is now active-->
-		                                            @elseif($user->inflexion_user_status == 0)
+		                                            @elseif($tutor->inflexion_user_status == 0)
 		                                            <td>
 		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $user->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																0%
 															</div>
 														</div>
