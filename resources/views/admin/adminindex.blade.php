@@ -82,252 +82,320 @@
             <!-- ============================================================== -->
             <!-- end Interview tutors   -->
 		</div>
-		<!--start user row-->
-		<div class="row">
-			<div class="col-sm-12">
-                <!-- ================================table student start============================== -->
-                    <div class="card">
-                        <h5 class="card-header">Recent Student Accounts</h5>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="bg-light">
-                                        <tr class="border-0">
-                                            <th class="border-0">Image</th>
-                                            <th class="border-0">Username</th>
-                                            <th class="border-0">User Id</th>
-                                            <th class="border-0">User Status</th>
-                                            <th class="border-0">Account Status</th>
-                                            <th class="border-0 text-center">Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	@foreach($users as $student)
-											@if($student->inflexion_user_type == 1)
-		                                        <tr>
-		                                            <td>
-		                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
-		                                            </td>
-		                                            <td>{{ $student->inflexion_username }}</td>
-		                                            <td>{{ $student->inflexion_user_id }}</td>
-
-		                                            @if($student->inflexion_user_status == 2)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
-																100%
-															</div>
-														</div>
-													</td>
-		                                            <td class="text-center">
-		                                            	ACTIVE
-		                                            </td>
-		                                            <td class="text-center">
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary" title="reset this account to status 0 (unverified email and incomplete details">Reset 0</button>
-		                                            </td>
-		                                            @elseif($student->inflexion_user_status == 1)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
-																Verified 50%
-															</div>
-														</div>
-		                                            	<i class="fa fa-times" aria-hidden="true"></i>account
-		                                            </td>
-		                                            <td class="text-center">
-		                                            	PENDING COMPLETION
-		                                            </td>
-		                                            <td class="text-center">
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary" title="send email reminder to complete account">Remind</button>
-		                                            </td>
-		                                            @else
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
-																
-															</div>
-														</div>
-		                                            	<i class="fa fa-times" aria-hidden="true"></i>email unverfied
-		                                            </td>
-
-		                                            <td class="text-center">
-		                                            	INACTIVE
-		                                            </td>
-		                                            <td class="text-center">
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary" title="resend email verification">Resend</button>
-		                                            </td>
-		                                            @endif
-		                                        </tr>
-		                                	@endif
-										@endforeach
-                                        <tr>
-                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                <!-- ================================table student end============================== -->
-			</div>
-		</div>
-		<!--end user row-->
-
 		<!--start top row-->
 		<div class="row">
 			<div class="col-sm-12">
-                <!-- ================================table tutor start============================== --> <!--hindi pa to tapos-->
-                    <div class="card">
-                        <h5 class="card-header">Recent Tutor Accounts</h5>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="bg-light">
-                                        <tr class="border-0">
-                                            <th class="border-0">Image</th>
-                                            <th class="border-0">Username</th>
-                                            <th class="border-0">User Id</th>
-                                            <th class="border-0" colspan=2>User Status</th>
-                                            <th class="border-0">Account Status</th>
-                                            <th class="border-0 text-center">Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	@foreach($users as $tutor)
-											@if($tutor->inflexion_user_type == 2)
-		                                        <tr>
-		                                            <td>
-		                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
-		                                            </td>
-		                                            <td>{{ $tutor->inflexion_username }}</td>
-		                                            <td>{{ $tutor->inflexion_user_id }}</td>
-		                                            <td>{{ $tutor->inflexion_user_status }}</td>
-
-		                                            <!---------------------------------------------------------------------->
-		                                            <!--tutor just verified email but has not tried to login yet has not seen exam-->
-		                                            @if($tutor->inflexion_user_status == 1 && $tutor->inflexion_user_take == 0)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																25%
-															</div>
-														</div>
-														<i class="fa fa-check" aria-hidden="true"></i>email verified
-													</td>
-		                                            <td>
-		                                            	has not taken any test
-		                                            </td>
-		                                            <td>
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">EMAIL REMINDER</button>
-		                                            </td>
-		                                            <!---------------------------------------------------------------------->
-		                                            <!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
-		                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take < 3 && $tutor->inflexion_user_take != 0)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																25%
-															</div>
-														</div>
-														<i class="fa fa-check" aria-hidden="true"></i>email verified
-													</td>
-		                                            <td>
-		                                            	{{$tutor->inflexion_user_take}} exam tries
-		                                            </td>
-		                                            <td>
-		                                            	options
-		                                            </td>
-		                                            <!---------------------------------------------------------------------->
-		                                            <!--tutor has reached maximum ammount of test tries and failed-->
-		                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take == 3)
-		                                            <td>
-		                                            	FAILED 3 TIMES
-													</td>
-		                                            <td>
-		                                            	{{$tutor->inflexion_user_take}} exam tries
-		                                            </td>
-		                                            <td>
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">RESET EXAM TAKES</button>
-		                                            </td>
-		                                            <!---------------------------------------------------------------------->
-		                                            <!--tutor has passed exam waiting for interview-->
-		                                            @elseif($tutor->inflexion_user_status == 4)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																75%
-															</div>
-														</div>
-													</td>
-		                                            <td>
-		                                            	PASSED(Tries: {{$tutor->inflexion_user_take}}) <b>FOR INTERVIEW</b>
-		                                            </td>
-		                                            <td>
-		                                            	<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">SCHED INTERVIEW</button>
-		                                            </td>
-		                                            <!---------------------------------------------------------------------->
-		                                            <!--tutor has passed exam passed interview and account is now active-->
-		                                            @elseif($tutor->inflexion_user_status == 2)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																100%
-															</div>
-														</div>
-													</td>
-		                                            <td>
-		                                            	ACTIVE
-		                                            </td>
-		                                            <td>
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">INTERVIEW DETAILS</button>
-		                                            </td><!---------------------------------------------------------------------->
-		                                            <!--tutor has passed exam passed interview and account is now active-->
-		                                            @elseif($tutor->inflexion_user_status == 0)
-		                                            <td>
-		                                            	<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																0%
-															</div>
-														</div>
-													</td>
-		                                            <td>
-		                                            	EMAIL UNVERIFIED
-		                                            </td>
-		                                            <td>
-		                                            	<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-		                                            	<button type="button" class="btn-sm btn btn-primary float-right" title="reset this account to status 0 (unverified email and incomplete details">INTERVIEW DETAILS</button>
-		                                            </td>
-		                                            @endif
+				<div class="simple-card">
+		        	<ul class="nav nav-tabs" id="myTab5" role="tablist">
+		                <li class="nav-item">
+		                    <a class="nav-link active border-left-0" id="product-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="product-tab-1" aria-selected="true">
+		                    	<span class="badge badge-primary badge-pill">{{ $users->where('inflexion_user_type', '2')->count() }}</span>Tutors Accounts
+		                	</a>
+		                </li>
+		                <li class="nav-item">
+		                    <a class="nav-link" id="product-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="product-tab-2" aria-selected="false">
+		                    	<span class="badge badge-primary badge-pill">{{ $users->where('inflexion_user_type', '1')->count() }}</span>
+		                    	Student Accounts
+		                	</a>
+		                </li>
+		            </ul>
+		            <div class="tab-content" id="myTabContent5">
+		            	<!-- ================================table tutor start============================== --> <!--hindi pa to tapos will limit it to five on this page-->
+		                <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="product-tab-1">
+		                    <div class="card">
+		                        <h5 class="card-header">Recent Tutor Accounts</h5>
+		                        <div class="card-body p-0">
+		                            <div class="table-responsive container">
+		                                <table class="table">
+		                                    <thead class="bg-light">
+		                                        <tr class="border-0">
+		                                            <th class="border-0">Image</th>
+		                                            <th class="border-0">Username</th>
+		                                            <!--th class="border-0">User Id</th-->
+		                                            <th class="border-0" colspan=2>User Status</th>
+		                                            <th class="border-0">Account Status</th>
+		                                            <th class="border-0 text-center">Options</th>
 		                                        </tr>
-		                                	@endif
-										@endforeach
-                                        <tr>
-                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                <!-- ================================table student end============================== -->
+		                                    </thead>
+		                                    <tbody>
+		                                    	@foreach($users as $tutor)
+													@if($tutor->inflexion_user_type == 2)
+				                                        <tr>
+				                                            <td>
+				                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
+				                                            </td>
+				                                            <td>{{ $tutor->inflexion_username }}</td>
+				                                            <td>{{ $tutor->inflexion_user_status }}</td>
+
+				                                            <!---------------------------------------------------------------------->
+				                                            <!--tutor just verified email but has not tried to login yet has not seen exam-->
+				                                            @if($tutor->inflexion_user_status == 1 && $tutor->inflexion_user_take == 0)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+																		25%
+																	</div>
+																</div>
+																<i class="fa fa-check" aria-hidden="true"></i>email
+																<i class="fa fa-times" aria-hidden="true"></i>test {{$tutor->inflexion_user_take}}/3
+															</td>
+				                                            <td>
+				                                            	INACTIVE
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="Send email for test reminder">EMAIL TEST REMINDER</button>
+				                                            	</div>
+				                                            </td>
+				                                            <!---------------------------------------------------------------------->
+				                                            <!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
+				                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take < 3 && $tutor->inflexion_user_take != 0)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+																		25%
+																	</div>
+																</div>
+																<i class="fa fa-check" aria-hidden="true"></i>email verified
+															</td>
+				                                            <td>
+				                                            	{{$tutor->inflexion_user_take}} exam tries
+				                                            </td>
+				                                            <td>
+				                                            	options
+				                                            </td>
+				                                            <!---------------------------------------------------------------------->
+				                                            <!--tutor has reached maximum ammount of test tries and failed-->
+				                                            @elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take == 3)
+				                                            <td>
+				                                            	<i class="fa fa-times" aria-hidden="true"></i>Failed test {{$tutor->inflexion_user_take}}/3
+															</td>
+				                                            <td>
+				                                            	INACTIVE
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">RESET TEST</button>
+				                                            	</div>
+				                                            </td>
+				                                            <!---------------------------------------------------------------------->
+				                                            <!--tutor has passed exam waiting for interview-->
+				                                            @elseif($tutor->inflexion_user_status == 4)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+																		75%
+																	</div>
+																</div>
+																<i class="fa fa-check" aria-hidden="true"></i>email
+																<i class="fa fa-check" aria-hidden="true"></i>test {{$tutor->inflexion_user_take}}/3
+															</td>
+				                                            <td>
+				                                            	<b>FOR INTERVIEW</b>
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">SCHEDULE INTERVIEW</button>
+				                                            	</div>
+				                                            </td>
+				                                            <!---------------------------------------------------------------------->
+				                                            <!--tutor has passed exam passed interview and account is now active-->
+				                                            @elseif($tutor->inflexion_user_status == 2)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+																		100%
+																	</div>
+																</div>
+															</td>
+				                                            <td>
+				                                            	ACTIVE
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">INTERVIEW DETAILS</button>
+				                                            	</div>
+				                                            </td><!---------------------------------------------------------------------->
+				                                            <!--tutor has passed exam passed interview and account is now active-->
+				                                            @elseif($tutor->inflexion_user_status == 0)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
+																		0%
+																	</div>
+				                                            		
+																</div>
+																<i class="fa fa-times" aria-hidden="true"></i>email verification
+															</td>
+				                                            <td>
+				                                            	INACTIVE
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">RESEND VERIFICATION</button>
+				                                            	</div>
+				                                            </td>
+				                                            @endif
+				                                        </tr>
+				                                	@endif
+												@endforeach
+		                                        <tr>
+		                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
+		                                        </tr>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <!-- ================================table tutor end============================== -->
+		                <!-- ================================table student start============================== -->
+		                <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-tab-2">
+		                    <div class="card">
+		                        <h5 class="card-header">Recent Student Accounts</h5>
+		                        <div class="card-body p-0">
+		                            <div class="table-responsive container">
+		                                <table class="table">
+		                                    <thead class="bg-light">
+		                                        <tr class="border-0">
+		                                            <th class="border-0">Image</th>
+		                                            <th class="border-0">Username</th>
+		                                            <th class="border-0">User Id</th>
+		                                            <th class="border-0">User Status</th>
+		                                            <th class="border-0">Account Status</th>
+		                                            <th class="border-0 text-center">Options</th>
+		                                        </tr>
+		                                    </thead>
+		                                    <tbody>
+		                                    	@foreach($users as $student)
+													@if($student->inflexion_user_type == 1)
+				                                        <tr>
+				                                            <td>
+				                                                <div class="m-r-10"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="user" class="rounded" width="45"></div>
+				                                            </td>
+				                                            <td>{{ $student->inflexion_username }}</td>
+				                                            <td>{{ $student->inflexion_user_id }}</td>
+
+				                                            @if($student->inflexion_user_status == 2)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+																		100%
+																	</div>
+																</div>
+															</td>
+				                                            <td class="text-center">
+				                                            	ACTIVE
+				                                            </td>
+				                                           <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="Reset account status to 0">Reset to 0</button>
+				                                            	</div>
+				                                            </td>
+				                                            @elseif($student->inflexion_user_status == 1)
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+																		Verified 50%
+																	</div>
+																</div>
+				                                            	<i class="fa fa-times" aria-hidden="true"></i>account details
+				                                            </td>
+				                                            <td class="text-center">
+				                                            	PENDING COMPLETION
+				                                            </td>
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="send email reminder to complete account">Remind</button>
+				                                            	</div>
+				                                            </td>
+				                                            @else
+				                                            <td>
+				                                            	<div class="progress">
+																	<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+																		25%
+																	</div>
+																</div>
+				                                            	<i class="fa fa-times" aria-hidden="true"></i>email verification
+				                                            </td>
+
+				                                            <td class="text-center">
+				                                            	INACTIVE
+				                                            </td>
+				                                           <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="send email reminder to complete account">Resend</button>
+				                                            	</div>
+				                                            </td>
+				                                            @endif
+				                                        </tr>
+				                                	@endif
+												@endforeach
+		                                        <tr>
+		                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
+		                                        </tr>
+		                                    </tbody>
+		                                </table>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		                <!-- ================================table student end============================== -->
+		            </div>
+		        </div>
 			</div>
 		</div>
 		<!--end top row-->
+
+
 		Tutors<br />
 		@foreach($users as $user)
 			@if($user->inflexion_user_type == 2)
@@ -339,7 +407,14 @@
 				@endif
 				<br />
 			@endif
-				
+		@endforeach
+
+		Students<br />
+		@foreach($users as $user)
+			@if($user->inflexion_user_type == 1)
+			{{ $user->inflexion_username }}
+				<br />
+			@endif
 		@endforeach
 
 		<!--settings start-->
