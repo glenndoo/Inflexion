@@ -11,9 +11,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/custom-style-template.css') }}" rel="stylesheet">
 </head>
 <body id="app">
-	<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
+	<!--nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
 	    <a href="#" class="navbar-brand">
 	       <img class="" src="{{ asset('img/inflex_icon.png') }}" >
 	    </a>
@@ -22,14 +24,6 @@
 	    </button>
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
-	            <!--<a href="#" class="nav-item nav-link">Profile</a>-->
-
-	            <!-- trigger modalMail
-				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalMail">
-					<i class="fa fa-envelope" aria-hidden="true"></i>mail
-				</a>
-				-->
-				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
 					<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
 				</a>
@@ -38,7 +32,6 @@
 	        	<div class="btn-group">
 				  	<div class="dropdown-menu dropdown-menu-left shadow">
 				    	<ul class="Notification-ul">
-				    		<!--should only show 3 latest-->
 				    		<li>
 				    			<div class="dropdown-item">
 				    				<div class="col-sm-12 ">
@@ -60,8 +53,6 @@
 				    				</div>
 				    			</div>
 				    		</li>
-
-				    		<!--see more link for modal-->
 				    		<li>
 				    			<div class="dropdown-item">
 				    				<div class="col-sm-12 text-center">
@@ -70,7 +61,6 @@
 				    			</div>
 				    		</li>
 				    	</ul>
-				   	 <!--button class="dropdown-item" type="button">Profile</button-->
 				  	</div>
 				</div>
 	            <div class="search ">
@@ -92,12 +82,128 @@
 				    	<button class="dropdown-item" type="button"><a href="/studentProfile" class="">Profile</a></button>
 				    	<hr/>
 				    	<button class="dropdown-item" type="button"><a href="{{ route('LogoutUser') }}" class="">Logout</a></button>
-				   	 <!--button class="dropdown-item" type="button">Profile</button-->
 				  	</div>
 				</div>
 	        </div>
 	    </div>
-	</nav>
+	</nav-->
+		<!-- ============================================================== -->
+        <!-- navbar -->
+        <!-- ============================================================== -->
+        <div class="dashboard-header">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-custom ease-loadTop">
+                <a class="navbar-brand" href="/adminIndex"><img class="" src="{{ asset('img/inflex_icon.png') }}" ></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item">
+                            <div id="custom-search" class="top-search-bar">
+                                <input class="form-control" type="text" placeholder="Search..">
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown notification">
+                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
+                                <li>
+                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-list">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
+                                                        <div class="notification-date">2 days ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action">
+                                                <div class="notification-info">
+                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
+                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
+                                                        <div class="notification-date">2 min ago</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-footer"> <a href="#">View all notifications</a></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--li class="nav-item dropdown connection">
+                            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-fw fa-th"></i> </a>
+                            <ul class="dropdown-menu dropdown-menu-right connection-dropdown">
+                                <li class="connection-list">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" > <span>Github</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" > <span>Dribbble</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" > <span>Dropbox</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt=""> <span>Bitbucket</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" ><span>Mail chimp</span></a>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 ">
+                                            <a href="#" class="connection-item"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" > <span>Slack</span></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="conntection-footer"><a href="#">More</a></div>
+                                </li>
+                            </ul>
+                        </li-->
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            	<img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">{{ session()->get('info.userWholeName') }}</h5>
+                                    <!--span class="status"></span><span class="ml-2">Available</span-->
+                                </div>
+                                <a class="dropdown-item" href="/studentSettings"><i class="fa fa-user mr-2"></i>Settings</a>
+                                <a class="dropdown-item" href="/studentProfile"><i class="fa fa-cog mr-2"></i>Profile</a>
+                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#modalCredits"><i class="fa fa-credit-card mr-2"></i>Credits</a>
+                                <a class="dropdown-item" href="{{ route('LogoutUser') }}"><i class="fa fa-power-off mr-2"></i>Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end navbar -->
+        <!-- ============================================================== -->
 	@if(isset($Errors))
 	    @foreach($Errors as $err)
 	    	{{ $err }}
