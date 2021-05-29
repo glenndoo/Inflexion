@@ -18,11 +18,10 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-custom
-ease-loadTop">
+            <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-custom ease-loadTop">
                 <a class="navbar-brand" href="/adminIndex"><img class="" src="{{ asset('img/inflex_icon.png') }}" ></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
