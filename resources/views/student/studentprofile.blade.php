@@ -102,6 +102,9 @@
                                     <li class="nav-item">
                                         <a class="nav-link" id="pills-msg-tab" data-toggle="pill" href="#pills-msg" role="tab" aria-controls="pills-msg" aria-selected="false">Send Messages</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-msg-tab" data-toggle="pill" href="#pills-sched" role="tab" aria-controls="pills-msg" aria-selected="false">Schedule</a>
+                                    </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-campaign" role="tabpanel" aria-labelledby="pills-campaign-tab">
@@ -370,6 +373,14 @@
                                                         </div>
                                                     </div>
                                                 </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-sched" role="tabpanel" aria-labelledby="pills-msg-tab">
+                                        <div class="card">
+                                            <h5 class="card-header">Send Messages</h5>
+                                            <div class="card-body">
+                                                SCHEDULE GOES HERE
                                             </div>
                                         </div>
                                     </div>
