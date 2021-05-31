@@ -150,7 +150,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="Send email for test reminder">EMAIL TEST REMINDER</button>
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="Send email for test reminder" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">EMAIL TEST REMINDER</button>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
@@ -187,7 +187,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">RESET TEST</button>
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
@@ -213,7 +213,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<a href="route()" type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">SCHEDULE INTERVIEW</a>
+				                                            		<a href="route()" type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">SCHEDULE INTERVIEW </a>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
@@ -237,7 +237,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">INTERVIEW DETAILS</button>
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">INTERVIEW DETAILS</button>
 				                                            	</div>
 				                                            </td><!---------------------------------------------------------------------->
 				                                            <!--tutor has passed exam passed interview and account is now active-->
@@ -262,7 +262,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">RESEND VERIFICATION</button>
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESEND VERIFICATION</button>
 				                                            	</div>
 				                                            </td>
 				                                            @endif
@@ -395,38 +395,128 @@
 		</div>
 		<!--end top row-->
 
-
-		Tutors<br />
-		@foreach($users as $user)
-			@if($user->inflexion_user_type == 2)
-			{{ $user->inflexion_username }}
-				@if($user->inflexion_user_status == 4)
-				<a href="">For Interview</a>
-				@elseif($user->inflexion_user_status == 3)
-				Failed
-				@endif
-				<br />
-			@endif
-		@endforeach
-
-		Students<br />
-		@foreach($users as $user)
-			@if($user->inflexion_user_type == 1)
-			{{ $user->inflexion_username }}
-				<br />
-			@endif
-		@endforeach
-
 		<!--settings start-->
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="row">
-					<div class="row">
-						
-			        </div>
-				</div>
+				<!--i dont know what to put here yet-->
 			</div>
 		</div>
 		<!--end settings-->
 	</div>
 </div>
+
+<!--modal show be here outside of <div class="area" z-index purposes and easy to find maiko-->
+@foreach($users as $tutor)
+	@if($tutor->inflexion_user_type == 2)
+	<!-- tutor Modal -->
+	<div class="modal fade" id="tutor-modal-{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="tutor-modal-{{ $tutor->inflexion_user_id }}" aria-hidden="true">
+	  	<div class="modal-dialog modal-dialog-centered" role="document">
+	    	<div class="modal-content">
+	     		<div class="modal-header">
+	        		<h5 class="modal-title" id="exampleModalLongTitle">OPTION</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+	      		</div>
+			    <!---------------------------------------------------------------------->
+				<!--tutor just verified email but has not tried to login yet has not seen exam-->
+				@if($tutor->inflexion_user_status == 1 && $tutor->inflexion_user_take == 0)
+				<div class="modal-body">
+			      	/*email verified no exam tries*/
+			    </div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+	        		<button type="button" class="btn btn-primary">Send Email reminder</button>
+	      		</div>
+
+				<!---------------------------------------------------------------------->
+				<!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
+				@elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take < 3 && $tutor->inflexion_user_take != 0)
+				<div class="modal-body">
+			      	/*email verified has tried for exam and exam tries under 3 takes*/
+			    </div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+	      		</div>
+
+				<!---------------------------------------------------------------------->
+				<!--tutor has reached maximum ammount of test tries and failed-->
+				@elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take == 3)
+				<div class="modal-body">
+			      	/*email verified maxed exam tries yet*/
+			    </div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+	        		<button type="button" class="btn btn-primary">Reset exam tries</button>
+	      		</div>
+
+				<!---------------------------------------------------------------------->
+				<!--tutor has passed exam waiting for interview-->
+				@elseif($tutor->inflexion_user_status == 4)
+	      		<!--interview form start-->
+	      		<form>
+					<div class="modal-body">
+				      	/*comment: waiting for interview*/
+				      	<div class="form-group">
+
+				      			<div class="input-group input-group-lg mb-3" title="tutor's skype account">
+			                        <div class="input-group-prepend">
+			                        	<span class="input-group-text">
+			                        		<i class="text-primary fa fa-skype" aria-hidden="true"></i>
+			                        	</span>
+			                        </div>
+			                        <input type="text" placeholder="tutorSkypeAccount" class="form-control" id="" disabled/>
+			                    </div>
+								<div class="input-group input-group-lg mb-3" title="tutor's interview schedule">
+			                        <div class="input-group-prepend">
+			                        	<span class="input-group-text">
+			                        		<i class="fa fa-clock-o" aria-hidden="true"></i>
+			                        	</span>
+			                        </div>
+			                         <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="" disabled>
+			                    </div>
+								<div class="input-group input-group-lg mb-3" title="tutor's email">
+			                        <div class="input-group-prepend">
+			                        	<span class="input-group-text">
+			                        		<i class="fa fa-envelope-o" aria-hidden="true"></i>
+			                        	</span>
+			                        </div>
+			                        <input type="text" placeholder="tutorSkypeAccount" class="form-control" value="{{ $tutor->inflexion_username }}" id=""disabled/>
+			                    </div>
+		                </div>
+				    </div>
+		      		<div class="modal-footer">
+		        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+		        		<button type="submit" class="btn btn-success">Send Interview Email</button>
+		      		</div>
+	      		</form>
+			    <!--interview form end-->
+
+				<!---------------------------------------------------------------------->
+				<!--tutor has passed exam passed interview and account is now active-->
+				@elseif($tutor->inflexion_user_status == 2)
+
+				<div class="modal-body">
+			      	/*active*/
+			    </div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+	      		</div>
+
+
+				<!--tutor has account is unverified-->
+				@elseif($tutor->inflexion_user_status == 0)
+				<div class="modal-body">
+			      	/*email unverified*/
+			    </div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+	        		<button type="button" class="btn btn-primary">Email reminder</button>
+	      		</div>
+
+				@endif
+	    	</div>
+	  	</div>
+	</div>
+	@endif
+@endforeach
