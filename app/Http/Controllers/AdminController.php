@@ -15,6 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         $userList = InflexionUserModel::all();
+        
         return view('admin/adminindex')->with('users',$userList);
     }
 

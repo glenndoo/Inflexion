@@ -131,7 +131,7 @@
                         <div class="form-group row">
                             <label for="example-datetime-local-input" class="col-sm-3 col-form-label">skype account:</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" id="skype account" name="skype account" required>
+                                <input class="form-control" type="text" id="skype account" name="skypeAccount" required>
                             </div>
                         </div>
                         <div class="row d-flex justify-content-center">

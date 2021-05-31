@@ -10,6 +10,7 @@ use App\Http\Model\InflexionPostModel;
 use App\Http\Model\InflexionInboxModel;
 use App\Http\Model\InflexionQuestionsModel;
 use App\Http\Model\InflexionAnswersModel;
+use App\Http\Model\ExamScheduleModel;
 use App\Http\Model\CommentsModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
@@ -28,7 +29,8 @@ class InflexionController extends Controller
     public $InflexionQuestionsModel;
     public $InflexionAnswersModel;
     public $CommentsModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel){
+    public $ExamScheduleModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
@@ -36,6 +38,7 @@ class InflexionController extends Controller
         $this->InflexionQuestionsModel = $InflexionQuestionsModel;
         $this->InflexionAnswersModel = $InflexionAnswersModel;
         $this->CommentsModel = $CommentsModel;
+        $this->ExamScheduleModel = $ExamScheduleModel;
     }
 
     //DISPLAY INDEX
@@ -253,6 +256,7 @@ class InflexionController extends Controller
 
         ]);
        $complete = $this->InflexionDetailModel->completeRegistration($request);
+       $insertSchedule = $this->ExamScheduleModel->insertSched($request, $complete->inflexion_user_id);
        if($complete){
            // CHECK IF USER TYPE
            if($complete->inflexion_user_type == 1){

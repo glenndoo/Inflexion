@@ -213,7 +213,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">SCHEDULE INTERVIEW</button>
+				                                            		<a href="route()" type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details">SCHEDULE INTERVIEW</a>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
