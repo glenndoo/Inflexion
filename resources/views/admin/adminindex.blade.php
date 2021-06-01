@@ -165,10 +165,18 @@
 																<i class="fa fa-check" aria-hidden="true"></i>email verified
 															</td>
 				                                            <td>
-				                                            	{{$tutor->inflexion_user_take}} exam tries
+				                                            	INACTIVE
 				                                            </td>
-				                                            <td>
-				                                            	options
+				                                            <td class="text-center row">
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-2">
+				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
+				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
 				                                            <!--tutor has reached maximum ammount of test tries and failed-->
