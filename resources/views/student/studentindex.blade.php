@@ -1,6 +1,6 @@
 <x-student-template data="Student Index" />
 <div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm">
 				<br/>
@@ -11,11 +11,25 @@
 		</div>
 		<!--start post to feed -->
 		<div class="row d-flex justify-content-center">
-			<div class="col-sm-8 ">
+			<div class="col-sm-2 ecommerce-widget ">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text-muted">Total No. of Posts</h5>
+                <div class="metric-value d-inline-block">
+                    <h1 class="mb-1">{{count($details)}}</h1>
+                </div>
+                <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                    <!--span><i class="fa fa-fw fa-arrow-up"></i></span><span>5.86%</span-->
+                </div>
+            </div>
+            <div id="sparkline-revenue"></div><br/>
+        </div>
+			</div>
+			<div class="col-sm-4 ">
 				<form action="{{ route('PostMessage') }}" method="post">
 					@csrf
-					<div class="panel shadow">
-	          <div class="panel-body">
+					<div class="card">
+	          <div class="card-body">
 	      			<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea><br/>
 	      			<div class="mar-top clearfix">
 	      				<button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil-square-o"></i></button>
@@ -27,6 +41,23 @@
 	     		</div>
 				</form>
 			</div>
+
+			<div class="col-sm-2 ecommerce-widget ">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="text-muted">Posts in groups</h5>
+                <div class="metric-value d-inline-block">
+                    <h1 class="mb-1">
+                    		5
+                    </h1>
+                </div>
+                <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                    <span><i class="fa fa-fw fa-arrow-right"></i></span><span><a href="/studentGroups">View</a></span>
+                </div>
+            </div>
+            <div id="sparkline-revenue"></div><br/>
+        </div>
+			</div>
 		</div>
 		<!--post to feed end-->
 
@@ -37,7 +68,7 @@
 		@if(count($details) > 0)
 		@foreach($details as $post)
 		<div class="row d-flex justify-content-center ">
-			<div class="col-sm-8 ">
+			<div class="col-sm-4 ">
 				<div class="social-feed-box shadow">
 	        <div class="pull-right social-action dropdown">
             <button class="btn btn-sm"data-toggle="dropdown" class="dropdown-toggle btn-white">
