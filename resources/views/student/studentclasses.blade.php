@@ -278,84 +278,7 @@
 												        		</button>
 												      		</div>
 													      	<div class="modal-body">
-													      		@php
-													      		$date = date('Y-m-d'); //date today, starts week table today
-																$weekOfdays = array();
-																$begin = new DateTime($date, new DateTimeZone('Asia/Manila'));
-																$end = new DateTime($date);
-																$end = $end->add(new DateInterval('P7D'));
-																$interval = new DateInterval('P1D');
-																$daterange = new DatePeriod($begin, $interval ,$end);
-
-													      		@endphp
-													      		<div class="row d-flex justify-content-center">
-													      			<div class="col-sm-2">
-													      				<div href="" class="disabled btn-warning text-center">Your Booking</div>
-													      			</div>
-													      			<div class="col-sm-2">
-														       	 		<div href="" class="disabled btn-secondary text-center">Reserved</div>
-														       	 	</div>
-														       	 	<div class="col-sm-2">
-														       	 		<div href="" class="disabled btn-primary text-center">Open</div>
-													      			</div>
-													      		</div>
-													      		<hr/>
-													      		<div class="row d-flex">
-														      		<div class="col-sm-12 text-center">
-														      			<SELECT>
-														      				<option>
-														      					<b>Timezone {{date_format($begin, 'Y-m-d P (e)')}}</b><!--this shows timezone of $begin, idk yet hot to set using this slect option-->
-														      				</option>
-														      			</SELECT>
-														      			
-														      		</div>
-														      	</div>
-													      		<hr/>
-													      		<div class="row">
-													      			<table class="table">
-																	  	<thead class="thead-dark">
-																	  		<tr>
-																	    	@foreach($daterange as $dt)
-																	        	<th scope="col" class=" text-center">
-																	        		<h6>{{$weekOfdays[] = $dt->format('D')}}<br/></h6>
-															    					<small>{{ $weekOfdays[] = $dt->format('m-d')}}</small>
-															    				</th>
-																	    	@endforeach
-																	  		</tr>
-																		</thead>
-																		  <tbody>
-																		    <tr>
-																		    	@foreach($daterange as $dt)
-																		      	<td class="check-time">
-																		      		<!--if booking exists for this user-->
-																					<label class="btn btn-warning form-control active">
-																						<input class="float-left" type="checkbox" autocomplete="off" checked name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
-																						<p class="text-right">10:00</p>
-																						<span class="fa fa-check "></span>
-																					</label>
-																					<!--end-->
-																					
-																					<!--if booked by other user-->
-																					<label class="bg-secondary form-control text-left">
-																						<p class="text-right">11:00</p>
-																						<span class="fa fa-check"></span>
-																					</label>	
-																					<!--end-->
-																				
-																					<!--if time slot is open-->
-																					<label class="btn btn-primary form-control text-left">
-																						<input class="float-left" type="checkbox" autocomplete="off" name="" value="{{ $weekOfdays[] = $dt->format('y-m-d')}}" />
-																						<p class="text-right">12:00</p>
-																						<span class="fa fa-check"></span>
-																					</label>
-																					<!--end-->
-
-																		      	</td>
-																		     	@endforeach
-																		    </tr>
-																		  </tbody>
-																		</table>
-													      		</div>
+													      		
 													      	</div>
 													      	<div class="modal-footer">
 													      		<button class="btn btn-success" type="submit">SAVE</button>
@@ -377,6 +300,7 @@
 												        		</button>
 												      		</div>
 													      	<div class="modal-body">
+													      		
 															</div>
 													      	<div class="modal-footer">
 													      		<button class="btn btn-success" type="submit">Full Profile</button>
