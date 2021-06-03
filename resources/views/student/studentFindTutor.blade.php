@@ -163,7 +163,7 @@
                                                 <div class="pl-xl-3">
                                                     <div class="m-b-0">
                                                         <div class="user-avatar-name d-inline-block">
-                                                            <h2 class="font-24 m-b-10">Jane Doe</h2>
+                                                            <h2 class="font-24 m-b-10">Jane Doe ({{$i}})</h2>
                                                         </div>
                                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
                                                             <i class="fa fa-fw fa-star"></i>
@@ -185,9 +185,15 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                                    <a href="#" class="btn btn-info" title="send message"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                                                    <a href="#" class="btn btn-info" title="book class"><i class="fa fa-calendar" aria-hidden="true"></i></a>
-                                                    <a href="#" class="btn btn-info" title="vew profile"><i class="fa fa-user" aria-hidden="true"></i></a>
+                                                    <a href="#" class="btn btn-info" title="send message"  data-toggle="modal" data-target="#tutorMessage{{$i}}">
+                                                    	<i class="fa fa-envelope" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{$i}}">
+                                                    	<i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{$i}}">
+                                                    	<i class="fa fa-user" aria-hidden="true"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,6 +207,69 @@
                                         <div class="user-social-media d-xl-inline-block"><span class="mr-2"></span><span></span></div>
                                     </div>
                                 </div>
+
+                                <!-- Modal calendar -->
+								<div class="modal fade" id="calendarSchedule{{$i}}" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule{{$i}}" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        ...
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+								<!-- Modal Message -->
+								<div class="modal fade" id="tutorMessage{{$i}}" tabindex="-1" role="dialog" aria-labelledby="tutorMessage{{$i}}" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        ...
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+								<!-- Modal Profile -->
+								<div class="modal fade" id="tutorViewProfile{{$i}}" tabindex="-1" role="dialog" aria-labelledby="tutorViewProfile{{$i}}" aria-hidden="true">
+								  <div class="modal-dialog modal-dialog-centered" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="modal-body">
+								        ...
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
                                 @endfor
                                 <!-- ============================================================== -->
                                 <!-- end card tutor one -->
