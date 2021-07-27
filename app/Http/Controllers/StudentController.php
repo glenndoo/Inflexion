@@ -19,7 +19,7 @@ class StudentController extends Controller
     public function studentIndex(Request $request){
         $details = $this->InflexionPostModel->fetchAllPosts();
         $comments = $this->InflexionPostModel->fetchAllComments();//added by maiko
-
+        
         return view('student.studentindex')->with('details',$details)->with('comments',$comments);//modified by maiko added 2nd "with"
     }
     public function studentLibrary(Request $request){//added by maiko loads files in directory outputs to blade file

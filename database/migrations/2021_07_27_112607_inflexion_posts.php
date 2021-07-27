@@ -30,5 +30,6 @@ class InflexionPosts extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('inflexion_posts');
     }
 }
