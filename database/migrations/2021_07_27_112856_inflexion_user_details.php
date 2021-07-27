@@ -37,5 +37,6 @@ class InflexionUserDetails extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('inflexion_user_details');
     }
 }
