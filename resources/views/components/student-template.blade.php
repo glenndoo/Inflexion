@@ -11,7 +11,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('img/inflex_icon.png') }}" rel="icon">
     <link href="{{ asset('css/custom-style-template.css') }}" rel="stylesheet">
 </head>
 <body id="app">

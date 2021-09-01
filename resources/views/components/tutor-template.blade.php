@@ -11,6 +11,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
+    <link href="{{ asset('img/inflex_icon.png') }}" rel="icon">
 </head>
 <body id="app">
 	<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
