@@ -8,11 +8,20 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
    
+
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+  	<script src="{{ asset('js/kinetic.min.js') }}"></script>
+  	<script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
     <link href="{{ asset('img/inflex_icon.png') }}" rel="icon">
     <link href="{{ asset('css/custom-style-template.css') }}" rel="stylesheet">
+
+     <!-- Enjoyhint library -->
+  	<link href="{{ asset('enjoyhint/enjoyhint.css') }}" rel="stylesheet">
+  	<script src="{{ asset('enjoyhint/enjoyhint.min.js') }}"></script>
 </head>
 <body id="app">
 	<!--nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
@@ -91,7 +100,7 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top navbar-custom ease-loadTop">
+            <nav class="navbar navbar-expand-lg bg-white navbar-custom ease-loadTop">
                 <a class="navbar-brand" href="/adminIndex"><img class="" src="{{ asset('img/inflex_icon.png') }}" ></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars" aria-hidden="true"></i>
@@ -104,7 +113,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown notification">
-                            <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                            <a class="nav-link nav-icons guidestep4" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
                                     <div class="notification-title"> Notification</div>
@@ -182,7 +191,7 @@
                                 </li>
                             </ul>
                         </li-->
-                        <li class="nav-item dropdown nav-user">
+                        <li class="nav-item dropdown nav-user guidestep5">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             	<img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle">
                             </a>
@@ -341,6 +350,41 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+	//initialize instance
+var enjoyhint_instance = new EnjoyHint({});
 
+//simple config. 
+//Only one step - highlighting(with description) "New" button 
+//hide EnjoyHint after a click on the button.
+var enjoyhint_script_steps = [
+  {
+    'click .guidestep1' : 'Share your thoughts to the community'
+  },
+  {
+    'click .guidestep2' : 'This displays the total number of posts'
+  },
+  {
+    'click .guidestep3' : 'this shows the number of posts in groups you are part of'
+  },
+  {
+    'click .guidestep4' : 'you can edit your settings, view  your profile or add credits here'
+  },
+  {
+    'click .guidestep5' : 'you can edit your settings, view  your profile or add credits here'
+  }
+];
+var options = {
+
+    "closeButton": {left: 100, top: 100}
+}
+
+
+//set script config
+enjoyhint_instance.set(enjoyhint_script_steps);
+
+//run Enjoyhint script
+enjoyhint_instance.run();
+</script>
 </body>
 </html>

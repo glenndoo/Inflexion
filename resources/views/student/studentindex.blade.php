@@ -11,7 +11,7 @@
 		</div>
 		<!--start post to feed -->
 		<div class="row d-flex justify-content-center">
-			<div class="col-sm-2 ecommerce-widget ">
+			<div class="col-sm-2 ecommerce-widget guidestep2">
         <div class="card">
             <div class="card-body">
                 <h5 class="text-muted">Total No. of Posts</h5>
@@ -25,7 +25,7 @@
             <div id="sparkline-revenue"></div><br/>
         </div>
 			</div>
-			<div class="col-sm-4 ">
+			<div class="col-sm-4 guidestep1">
 				<form action="{{ route('PostMessage') }}" method="post">
 					@csrf
 					<div class="card">
@@ -42,7 +42,7 @@
 				</form>
 			</div>
 
-			<div class="col-sm-2 ecommerce-widget ">
+			<div class="col-sm-2 ecommerce-widget guidestep3">
         <div class="card">
             <div class="card-body">
                 <h5 class="text-muted">Posts in groups</h5>
@@ -304,3 +304,4 @@ $post_id = $post->inflexion_post_id;
   </div>
 </div>
 @endforeach
+
