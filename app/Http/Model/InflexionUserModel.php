@@ -84,7 +84,6 @@ class InflexionUserModel extends Model
     public function checkLogin($request){
         $findUser = $this->where('inflexion_username','=',$request->username)->first();
         $status = 0;
-        // dd($findUser);
         if(!empty($findUser)){
             
             // IF USER HAS NOT YET VERIFIED THEIR EMAIL
@@ -94,10 +93,10 @@ class InflexionUserModel extends Model
             // IF USER HAS ALREADY COMPLETED THE REGISTRATION PROCESS
             }else if($findUser->inflexion_user_status == 2){
                     $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
-                
                 if($check != null){
                     // IF USER ENTERED VALID CREDENTIALS
                     if(Hash::check($request->password, $check->inflexion_user_pass)){
+                
                         return $check;
 
                     // IF USER ENTERED INVALID CREDENTIALS
@@ -179,6 +178,11 @@ class InflexionUserModel extends Model
 
     public function fetchUserDetails($userName){
         $result = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$userName)->first();
+        return $result;
+    }
+
+    public function showAllUsers(){
+        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->get();
         return $result;
     }
 }

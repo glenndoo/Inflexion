@@ -218,7 +218,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminUserList">
+	            <a href="/showAllUsers">
 	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Users
@@ -226,7 +226,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="/adminUserPosts">
+	            <a href="/showAllPosts">
 	                <i class="fa fa-globe icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Posts

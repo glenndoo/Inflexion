@@ -429,4 +429,16 @@ class InflexionController extends Controller
 
         
     }
+
+    //ADMIN FOR SHOWING ALL USERS
+    public function showAllUsers(){
+        $users = $this->InflexionUserModel->showAllUsers();
+        return view('admin/adminuserlist')->with('users', $users);
+    }
+
+    // ADMIN FOR SHOWING ALL POSTS
+    public function showAllPosts(){
+        $posts = $this->InflexionPostModel->fetchAllPosts();
+        return view('admin/adminuserposts')->with('posts', $posts);
+    }
 }

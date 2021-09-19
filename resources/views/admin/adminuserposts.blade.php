@@ -15,6 +15,14 @@
 				<div class="row">
 					<div class="row">
 						<h1>USER POSTS</h1>
+						<!-- TABLE ULI ITO -->
+						Date Posted &nbsp; Post &nbsp; Posted by<br />
+						@foreach($posts as $post)
+							{{ $post->inflexion_post_timestamp }}
+							{{ $post->inflexion_post_message }}
+							{{ $post->inflexion_detail_first }}
+							{{ $post->inflexion_detail_last }}
+						@endforeach
 			        </div>
 				</div>
 			</div>

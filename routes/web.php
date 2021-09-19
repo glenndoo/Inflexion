@@ -200,12 +200,14 @@ use Illuminate\Support\Facades\Route;
             'as' => 'adminIndex',
             'uses' => 'AdminController@index'
         ));
-        Route::get('/adminUserList', function () { //added for testing maiko
-            return view('admin.adminuserlist');
-        });
-        Route::get('/adminUserPosts', function () { //added for testing maiko
-            return view('admin.adminuserposts');
-        });
+        Route::get('/showAllUsers', array(
+            'as' => 'showAllUsers',
+            'uses' => 'InflexionController@showAllUsers'
+        ));
+        Route::get('/showAllPosts', array(
+            'as' => 'showAllPosts',
+            'uses' => 'InflexionController@showAllPosts'
+        ));
         Route::get('/adminAnnouncements', function () { //added for testing maiko
             return view('admin.adminannouncements');
         });

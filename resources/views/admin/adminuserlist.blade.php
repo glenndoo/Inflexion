@@ -14,7 +14,19 @@
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="row">
-						<h1>USER LIST (ALL)</h1>
+						<h1>USER LIST (ALL)</h1><br />
+						<!-- PAGAWA NG TABLE MGA ITO -->
+						Usernames: <br />
+						First Name: <br />
+						Last Name: <br />
+						Country: <br />
+						@foreach($users as $details)
+						{{ $details->inflexion_username }} <br />
+						{{ $details->inflexion_detail_first }}
+						{{ $details->inflexion_detail_last }} <br />
+						{{ $details->inflexion_detail_country }} <br />
+
+						@endforeach
 			        </div>
 				</div>
 			</div>
