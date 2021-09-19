@@ -119,7 +119,7 @@
                                     <div class="notification-title"> Notification</div>
                                     <div class="notification-list">
                                         <div class="list-group">
-                                            <a href="#" class="list-group-item list-group-item-action active">
+                                            <a href="#" class="list-group-item list-group-item-action active guidestep5">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
@@ -191,7 +191,7 @@
                                 </li>
                             </ul>
                         </li-->
-                        <li class="nav-item dropdown nav-user guidestep5">
+                        <li class="nav-item dropdown nav-user guidestep6">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             	<img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle">
                             </a>
@@ -200,10 +200,10 @@
                                     <h5 class="mb-0 text-white nav-user-name">{{ session()->get('info.userWholeName') }}</h5>
                                     <!--span class="status"></span><span class="ml-2">Available</span-->
                                 </div>
-                                <a class="dropdown-item" href="/studentSettings"><i class="fa fa-user mr-2"></i>Settings</a>
-                                <a class="dropdown-item" href="/studentProfile"><i class="fa fa-cog mr-2"></i>Profile</a>
-                                <a class="dropdown-item" href="#"data-toggle="modal" data-target="#modalCredits"><i class="fa fa-credit-card mr-2"></i>Credits</a>
-                                <a class="dropdown-item" href="{{ route('LogoutUser') }}"><i class="fa fa-power-off mr-2"></i>Logout</a>
+                                <a class="dropdown-item guidestep7" href="/studentSettings"><i class="fa fa-user mr-2"></i>Settings</a>
+                                <a class="dropdown-item guidestep8" href="/studentProfile"><i class="fa fa-cog mr-2"></i>Profile</a>
+                                <a class="dropdown-item guidestep9" href="#"data-toggle="modal" data-target="#modalCredits"><i class="fa fa-credit-card mr-2"></i>Credits</a>
+                                <a class="dropdown-item guidestep10" href="{{ route('LogoutUser') }}"><i class="fa fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -354,8 +354,7 @@
 	//initialize instance
 var enjoyhint_instance = new EnjoyHint({});
 
-//simple config. 
-//Only one step - highlighting(with description) "New" button 
+//simple config.
 //hide EnjoyHint after a click on the button.
 var enjoyhint_script_steps = [
   {
@@ -368,16 +367,18 @@ var enjoyhint_script_steps = [
     'click .guidestep3' : 'this shows the number of posts in groups you are part of'
   },
   {
-    'click .guidestep4' : 'you can edit your settings, view  your profile or add credits here'
+    'click .guidestep4' : 'view your notifications and alerts'
   },
   {
-    'click .guidestep5' : 'you can edit your settings, view  your profile or add credits here'
+    'click .guidestep5' : 'description'
+  },
+  {
+    'click .guidestep6' : 'description1'
+  },
+  {
+    'click .guidestep7' : 'description1'
   }
 ];
-var options = {
-
-    "closeButton": {left: 100, top: 100}
-}
 
 
 //set script config
