@@ -185,4 +185,9 @@ class InflexionUserModel extends Model
         $result = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->get();
         return $result;
     }
+
+    public function deleteUser($user){
+        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_type' => 9]);
+        return $result;
+    }
 }

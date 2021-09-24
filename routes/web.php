@@ -208,6 +208,10 @@ use Illuminate\Support\Facades\Route;
             'as' => 'showAllPosts',
             'uses' => 'InflexionController@showAllPosts'
         ));
+        Route::get('/deleteUser', array(
+            'as' => 'deleteUser',
+            'uses' => 'InflexionController@deleteUser'
+        ));
         Route::get('/adminAnnouncements', function () { //added for testing maiko
             return view('admin.adminannouncements');
         });

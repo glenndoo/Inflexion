@@ -218,10 +218,10 @@
 				                                            		<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            		<a class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<a href="route()" type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">SCHEDULE INTERVIEW </a>
+				                                            		<a type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">SCHEDULE INTERVIEW </a>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
@@ -267,7 +267,8 @@
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+																<a href="deleteUser?$tutor->inflexion_user_id" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESEND VERIFICATION</button>
@@ -278,7 +279,7 @@
 				                                	@endif
 												@endforeach
 		                                        <tr>
-		                                            <td colspan="9"><a href="/adminUserList" class="btn btn-outline-dark float-right">View all</a></td>
+		                                            <td colspan="9"><a href="/showAllUsers" class="btn btn-outline-dark float-right">View all</a></td>
 		                                        </tr>
 		                                    </tbody>
 		                                </table>
@@ -330,7 +331,8 @@
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="Reset account status to 0">Reset to 0</button>

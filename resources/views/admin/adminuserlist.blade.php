@@ -14,18 +14,27 @@
 			<div class="col-sm-12">
 				<div class="row">
 					<div class="row">
-						<h1>USER LIST (ALL)</h1><br />
+						<h1>USER LIST (ALL)</h1>
 						<!-- PAGAWA NG TABLE MGA ITO -->
-						Usernames: <br />
-						First Name: <br />
-						Last Name: <br />
-						Country: <br />
+						Usernames: 
+						First Name: 
+						Last Name: 
+						Country: 
+						User Type: 
 						@foreach($users as $details)
-						{{ $details->inflexion_username }} <br />
+						{{ $details->inflexion_username }} 
 						{{ $details->inflexion_detail_first }}
-						{{ $details->inflexion_detail_last }} <br />
-						{{ $details->inflexion_detail_country }} <br />
-
+						{{ $details->inflexion_detail_last }} 
+						{{ $details->inflexion_detail_country }} 
+							@if($details->inflexion_user_type == 1)
+								Student
+							@elseif($details->inflexion_user_type == 2)
+								Tutor
+							@else
+								Admin
+							@endif
+						<a href="">Disable</a>
+						<a href="">Delete</a>
 						@endforeach
 			        </div>
 				</div>

@@ -441,4 +441,16 @@ class InflexionController extends Controller
         $posts = $this->InflexionPostModel->fetchAllPosts();
         return view('admin/adminuserposts')->with('posts', $posts);
     }
+
+    //ADMIN DELETE PARTICULAR USER
+    public function deleteUser(Request $request){
+        $user = $this->InflexionUserModel->deleteUser($request->user);
+        if($user == 1){
+            return redirect('/adminIndex')->with('success');
+
+        }else{
+            return redirect('/adminIndex')->with('error');
+
+        }
+    }
 }
