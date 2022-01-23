@@ -490,7 +490,7 @@ class InflexionController extends Controller
         $result = $this->loginUser($request);
         $take = $result->inflexion_user_take;
         $this->InflexionUserModel->insertTake($take, $result->inflexion_user_id);
-        if($result->inflexion_user_take <= 3){
+        if($result->inflexion_user_take <= 2){
             return view('tutorexam')->with('Details', $detailObj)->with('Answers',$Answers)->with('Questions',$Questions);
         }else{
             return view('welcome')->with('Success','You have already exceeded the maximum number of attempts.');
@@ -498,6 +498,7 @@ class InflexionController extends Controller
     }
 
     public function sendInterviewEmail(Request $request){
+        dd($request);
         $details = [
             'title' => 'Inflexion Global Tutor Interview Invite',
             'body' => 'Congratulations! You have received this email to confirm that your interview schedule will be on: ',
@@ -507,6 +508,11 @@ class InflexionController extends Controller
         $mailerFunction = 'TutorInterviewMail';
         $token = "interviewinvite";
         $this->SendEmail($request->username, $token, $details, $mailerFunction);
+        $this->ExamScheduleModel->where('tutor_id', $request->id)->update(['interview_status' => 1]);
         return back()->with('Success','Successfully sent Interview Invite');
+    }
+
+    public function interviewResult(Request $request){
+
     }
 }

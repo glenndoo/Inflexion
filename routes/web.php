@@ -229,4 +229,8 @@ use Illuminate\Support\Facades\Route;
             'as' => 'sendInterviewEmail',
             'uses' => 'InflexionController@sendInterviewEmail'
         ));
+        Route::get('/interviewResult', array(
+            'as' => 'interviewResult',
+            'uses' => 'InflexionController@interviewResult'
+        ));
     });

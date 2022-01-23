@@ -19,6 +19,7 @@ class InterviewSchedule extends Migration
             $table->integer('tutor_id');
             $table->string('schedule')->nullable();
             $table->string('skype_account');
+            $table->integer('interview_status')->nullable();
             $table->timestamps();
         });
     }

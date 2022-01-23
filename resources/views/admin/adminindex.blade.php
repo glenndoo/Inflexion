@@ -118,7 +118,7 @@
 		                                        </tr>
 		                                    </thead>
 		                                    <tbody>
-		                                    	@foreach($users as $tutor)
+		                                    	@foreach($tutors as $tutor)
 													@if($tutor->inflexion_user_type == 2)
 				                                        <tr>
 				                                            <td>
@@ -202,14 +202,14 @@
 																<i class="fa fa-check" aria-hidden="true"></i>test {{$tutor->inflexion_user_take}}/3
 															</td>
 				                                            <td>
-				                                            	<b>FOR INTERVIEW</b>
+				                                            	<b>{{ $tutor->interview_status == 0 ? "FOR INTERVIEW" : "FOR EVALUATION" }}</b>
 				                                            </td>
 				                                            <td class="text-center row">
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
-				                                            		<a type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">SCHEDULE INTERVIEW </a>
+				                                            		<a type="button" class="btn-sm btn btn-primary form-control" title="Send Email for Interview" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }}">{{ $tutor->interview_status == 0 ? "Schedule Interview" : "Evaluate" }}</a>
 				                                            	</div>
 				                                            </td>
 				                                            <!---------------------------------------------------------------------->
@@ -227,7 +227,7 @@
 				                                            </td>
 				                                            <td class="text-center row">
 															<div class="col-sm-2">
-																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+																<a href="{{ route('deleteUser', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">INTERVIEW DETAILS</button>
@@ -462,7 +462,7 @@
 	      		<form>
 					  @csrf
 					<div class="modal-body">
-				      	/*comment: waiting for interview*/
+				      	<!-- /*comment: waiting for interview*/ -->
 				      	<div class="form-group">
 
 				      			<div class="input-group input-group-lg mb-3" title="tutor's skype account">
@@ -490,8 +490,13 @@
 		                </div>
 				    </div>
 		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
+		        		<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+						@if($tutor->interview_status == 0)
+		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
+						@else
+		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>
+		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Approve</a>
+						@endif
 		      		</div>
 	      		</form>
 			    <!--interview form end-->
