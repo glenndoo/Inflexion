@@ -106,8 +106,12 @@
 											<td>{{ $details->inflexion_detail_country }}</td>
 											<td>
 												<button class="btn btn-sm btn-primary" title="edit details"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-												<button class="btn btn-sm btn-warning" title="suspend user"><i class="fa fa-ban" aria-hidden="true"></i></button>
-												<button class="btn btn-sm btn-secondary" title="archive user"><i class="fa fa-archive" aria-hidden="true"></i></button>
+												@if($details->inflexion_user_status == 9)
+												<a href="{{ route('reactivateAccount', ['user' => $details->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Reactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+												@else
+												<a href="{{ route('deleteUser', ['user' => $details->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Suspend Account"><i class="fa fa-ban" aria-hidden="true"></i></a>
+												@endif
+												<!-- <button class="btn btn-sm btn-secondary" title="archive user"><i class="fa fa-archive" aria-hidden="true"></i></button> -->
 											</td>
 
 										</tr>

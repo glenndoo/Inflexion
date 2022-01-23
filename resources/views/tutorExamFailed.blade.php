@@ -25,27 +25,28 @@
 		                <div class="card-header text-center">
 							<h2>Exam Result</h2>
 						</div>
+
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-12">
-									<h1>
+									<!-- <h1>
 										<i class="fa fa-check-circle-o exam-pass" aria-hidden="true" ></i>
-									</h1>
+									</h1> -->
 									<br/>
 									<h3 class="d-flex justify-content-center">
-										{{ $Details }}
+										{{ $Details }}<br />
+										Click the button below to retake the exam
 									</h3>
 									<br/>
-									<!-- if fail
+									<!-- if fail -->
 									<h1>
 										<i class="fa fa-times-circle-o exam-fail" aria-hidden="true" ></i>
 									</h1>
 									<br/>
 									<h3 class="text-center">
-										You have completed your exam but unfortunately your score is below the passing rate. <br/>you still have 2 tries for your exam<br/>
-										<a href="#" class="btn btn-primary">RETAKE EXAM NOW?</a> <!--not sure if needed
+										<a href="{{ route('retakeExam', ['details' => $info, 'retake' => 1]) }}" class="btn btn-primary">CLICK HERE TO RETAKE EXAM NOW</a>
 									</h3>
-									<br/>-->
+									<br/>
 								</div>
 							</div>
 

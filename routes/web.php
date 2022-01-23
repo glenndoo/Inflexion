@@ -27,6 +27,10 @@ use Illuminate\Support\Facades\Route;
     Route::view('tutorExamResult','tutorExamResult');//added by maiko this after completeprofile submit
     Route::view('examResult','tutorExamFailed');//for failed exam
     Route::view('login','login');
+    Route::get('/retakeExam', array(
+        'as' => 'retakeExam',
+        'uses' => 'InflexionController@retakeExam'
+    ));
 
     Route::post('ValidateRegistry', array(
         'as' => 'ValidateRegistry',
@@ -191,7 +195,6 @@ use Illuminate\Support\Facades\Route;
         Route::get('/tutorInbox', function () { //added for testing maiko
         return view('tutor.tutorInbox');
         });
-        
     });
     
     //ADMIN GROUP ROUTE
@@ -212,10 +215,18 @@ use Illuminate\Support\Facades\Route;
             'as' => 'deleteUser',
             'uses' => 'InflexionController@deleteUser'
         ));
+        Route::get('/reactivateAccount', array(
+            'as' => 'reactivateAccount',
+            'uses' => 'InflexionController@reactivateAccount'
+        ));
         Route::get('/adminAnnouncements', function () { //added for testing maiko
             return view('admin.adminannouncements');
         });
         Route::get('/adminLibrary', function () { //added for testing maiko
             return view('admin.adminLibrary');
         });
+        Route::get('/sendInterviewEmail', array(
+            'as' => 'sendInterviewEmail',
+            'uses' => 'InflexionController@sendInterviewEmail'
+        ));
     });

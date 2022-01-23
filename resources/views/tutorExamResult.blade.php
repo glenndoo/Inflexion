@@ -52,12 +52,10 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<p class=" d-flex justify-content-center">
-										your selected time of interview is on <b> APRIL 25, 2021 at 1:00pm</b> Manila, PHstandard time
-									</p>
+										You will receive an email regarding your interview schedule to your provided email address:</p>
 									<br/>
 									<p class="text-center">
-										Please be online on your selected date and time of interview.<br/>
-										wear appropriate attire for a teacher.
+									<b>{{ $Details->inflexion_username }}</b>
 									</p>
 									<br/>
 									<p class=" d-flex justify-content-center">
@@ -65,7 +63,7 @@
 									</p>
 									<br/>
 									<p class=" d-flex justify-content-center">
-										<b>dummy69dsChopper<b/>
+										<b>{{ $skype }}</b>
 									</p>
 								</div>
 							</div>

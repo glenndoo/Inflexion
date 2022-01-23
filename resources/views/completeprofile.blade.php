@@ -91,11 +91,11 @@
 
                         <!--this should only show for tutor login-->
                         <hr/>
-                        @php
+                        <!-- @php
                         date_default_timezone_set('Asia/Manila');
                            
                         @endphp
-                        Site time: {{date('F j, Y g:i:a  ')}} (GMT+8)Metro Manila, PH
+                        <!-- Site time: {{date('F j, Y g:i:a  ')}} (GMT+8)Metro Manila, PH
                         <div class="form-group row">
                             <div class="col-sm">
                                 <table class="table table-bordered">
@@ -127,7 +127,7 @@
                             <div class="col-sm-9">
                                 <input class="form-control" type="datetime-local" id="interviewSchedule" name="interviewSchedule" required>
                             </div>
-                        </div>
+                        </div> --> 
                         <div class="form-group row">
                             <label for="example-datetime-local-input" class="col-sm-3 col-form-label">skype account:</label>
                             <div class="col-sm-9">

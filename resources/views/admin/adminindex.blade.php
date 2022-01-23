@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="d-inline-block">
                             <h5 class="text-muted">Active tutors</h5>
-                            <h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->where('inflexion_user_status', '2')->count() }}</h2>
+                            <h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->count() }}</h2>
                         </div>
                         <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
                             <i class="fa fa-user fa-fw fa-sm text-primary"></i>
@@ -146,9 +146,6 @@
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="Send email for test reminder" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">EMAIL TEST REMINDER</button>
 				                                            	</div>
@@ -171,9 +168,6 @@
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
-				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
 				                                            	</div>
@@ -190,9 +184,6 @@
 				                                            <td class="text-center row">
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
@@ -217,9 +208,6 @@
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<a class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
-				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<a type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">SCHEDULE INTERVIEW </a>
 				                                            	</div>
@@ -238,11 +226,8 @@
 				                                            	ACTIVE
 				                                            </td>
 				                                            <td class="text-center row">
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+															<div class="col-sm-2">
+																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">INTERVIEW DETAILS</button>
@@ -267,7 +252,7 @@
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-2">
-																<a href="deleteUser?$tutor->inflexion_user_id" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
+																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }} class="btn-sm btn btn-danger" title="Deactivate this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
 
 				                                            	</div>
 				                                            	<div class="col-sm-8">
@@ -328,11 +313,7 @@
 				                                            </td>
 				                                           <td class="text-center row">
 				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-warning" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-				                                            	</div>
-				                                            	<div class="col-sm-2">
-																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
-
+																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="Reset account status to 0">Reset to 0</button>
@@ -354,8 +335,25 @@
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
 				                                            	</div>
+				                                            	<div class="col-sm-8">
+				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="send email reminder to complete account">Remind</button>
+				                                            	</div>
+				                                            </td>
+															@elseif($student->inflexion_user_status == 9)
+															<td>
+				                                            	<div class="progress">
+																	<div class="progress-bar-suspended" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="2">
+																		0
+																	</div>
+																</div>
+				                                            	<i class="fa fa-times" aria-hidden="true"></i>Suspended/Removed
+				                                            </td>
+															<td class="text-center">
+				                                            	Suspended/Removed
+				                                            </td>
+				                                            <td class="text-center row">
 				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
+				                                            		<a href="{{ route('reactivateAccount', ['user' => $student->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Reactivate Account"><i class="fa fa-power-off"></i></a>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="send email reminder to complete account">Remind</button>
@@ -364,7 +362,7 @@
 				                                            @else
 				                                            <td>
 				                                            	<div class="progress">
-																	<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $student->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="2">
+																	<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="2">
 																		25%
 																	</div>
 																</div>
@@ -377,9 +375,6 @@
 				                                           <td class="text-center row">
 				                                            	<div class="col-sm-2">
 				                                            		<button type="button" class="btn-sm btn btn-warning" title="option not available" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-				                                            	</div>
-				                                            	<div class="col-sm-2">
-				                                            		<button type="button" class="btn-sm btn btn-danger" title="delete this account"><i class="fa fa-trash" aria-hidden="true"></i></button>
 				                                            	</div>
 				                                            	<div class="col-sm-8">
 				                                            		<button type="button" class="form-control btn-sm btn btn-primary" title="send email reminder to complete account">Resend</button>
@@ -416,7 +411,7 @@
 </div>
 
 <!--modal show be here outside of <div class="area" z-index purposes and easy to find maiko-->
-@foreach($users as $tutor)
+@foreach($tutors as $tutor)
 	@if($tutor->inflexion_user_type == 2)
 	<!-- tutor Modal -->
 	<div class="modal fade" id="tutor-modal-{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="tutor-modal-{{ $tutor->inflexion_user_id }}" aria-hidden="true">
@@ -465,6 +460,7 @@
 				@elseif($tutor->inflexion_user_status == 4)
 	      		<!--interview form start-->
 	      		<form>
+					  @csrf
 					<div class="modal-body">
 				      	/*comment: waiting for interview*/
 				      	<div class="form-group">
@@ -475,15 +471,13 @@
 			                        		<i class="text-primary fa fa-skype" aria-hidden="true"></i>
 			                        	</span>
 			                        </div>
-			                        <input type="text" placeholder="tutorSkypeAccount" class="form-control" id="" disabled/>
+			                        <input type="text" placeholder="{{ $tutor->skype_account }}" class="form-control" id="" value ="{{ $tutor->skype_account }}" name="skype" disabled/>
 			                    </div>
 								<div class="input-group input-group-lg mb-3" title="tutor's interview schedule">
 			                        <div class="input-group-prepend">
-			                        	<span class="input-group-text">
-			                        		<i class="fa fa-clock-o" aria-hidden="true"></i>
-			                        	</span>
+			                        	<span class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
 			                        </div>
-			                         <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="" disabled>
+			                         <input class="form-control" type="datetime-local" value="{{ $tutor->schedule }}" id="" name="schedule"/>
 			                    </div>
 								<div class="input-group input-group-lg mb-3" title="tutor's email">
 			                        <div class="input-group-prepend">
@@ -491,13 +485,13 @@
 			                        		<i class="fa fa-envelope-o" aria-hidden="true"></i>
 			                        	</span>
 			                        </div>
-			                        <input type="text" placeholder="tutorSkypeAccount" class="form-control" value="{{ $tutor->inflexion_username }}" id=""disabled/>
+			                        <input type="text" placeholder="User email address" class="form-control" value="{{ $tutor->inflexion_username }}" id="" name="username" disabled/>
 			                    </div>
 		                </div>
 				    </div>
 		      		<div class="modal-footer">
-		        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
-		        		<button type="submit" class="btn btn-success">Send Interview Email</button>
+		        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
 		      		</div>
 	      		</form>
 			    <!--interview form end-->
@@ -523,7 +517,6 @@
 	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
 	        		<button type="button" class="btn btn-primary">Email reminder</button>
 	      		</div>
-
 				@endif
 	    	</div>
 	  	</div>

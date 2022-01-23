@@ -13,7 +13,6 @@ class ExamScheduleModel extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
       'tutor_id',
-      'date',
       'skype_account',
       'created_at',
       'updated_at'
@@ -22,7 +21,6 @@ class ExamScheduleModel extends Model
     public function insertSched($data, $id){
         $insert = $this;
         $insert->tutor_id = $id;
-        $insert->schedule = $data->interviewSchedule;
         $insert->skype_account = $data->skypeAccount;
         $insert->save();
     }

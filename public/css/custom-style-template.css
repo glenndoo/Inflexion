@@ -1139,6 +1139,10 @@ Progress bar
 
     background-color: #5969ff;
 }
+.progress-bar-suspended {
+
+    background-color: #e00c0c;
+}
 
 .primary-progress-bar {
     background-color: #5969ff;

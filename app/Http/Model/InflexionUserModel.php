@@ -89,7 +89,10 @@ class InflexionUserModel extends Model
             // IF USER HAS NOT YET VERIFIED THEIR EMAIL
             if($findUser->inflexion_user_status == 0){
                 return $findUser;
-
+            }else if($findUser->inflexion_user_type == 0){
+                return $findUser;
+            
+            
             // IF USER HAS ALREADY COMPLETED THE REGISTRATION PROCESS
             }else if($findUser->inflexion_user_status == 2){
                     $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
@@ -186,8 +189,19 @@ class InflexionUserModel extends Model
         return $result;
     }
 
+    public function showAllTutors(){
+        $result = $this->join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->get();
+        var_dump($result);
+        return $result;
+    }
+
     public function deleteUser($user){
-        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_type' => 9]);
+        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 9]);
+        return $result;
+    }
+
+    public function reactivateAccount($user){
+        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 2]);
         return $result;
     }
 }

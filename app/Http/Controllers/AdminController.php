@@ -12,11 +12,17 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public $InflexionUserModel;
+    public function __construct(InflexionUserModel $InflexionUserModel){
+        $this->$InflexionUserModel = $InflexionUserModel;
+    }
+
     public function index()
     {
         $userList = InflexionUserModel::all();
-        
-        return view('admin/adminindex')->with('users',$userList);
+        $tutors = InflexionUserModel::join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->get();
+        return view('admin/adminindex')->with('users',$userList)->with('tutors', $tutors);
     }
 
     /**
