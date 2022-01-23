@@ -83,7 +83,7 @@ class InflexionUserModel extends Model
 
     public function checkLogin($request){
         $findUser = $this->where('inflexion_username','=',$request->username)->first();
-        $status = 0;
+        // $status = 0;
         if(!empty($findUser)){
             
             // IF USER HAS NOT YET VERIFIED THEIR EMAIL
@@ -113,6 +113,8 @@ class InflexionUserModel extends Model
             }else if($findUser->inflexion_user_status == 1){
                 return $findUser;
             }else if($findUser->inflexion_user_status == 3){
+                return $findUser;
+            }else if($findUser->inflexion_user_status == 4){
                 return $findUser;
             }
         

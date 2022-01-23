@@ -494,8 +494,8 @@
 						@if($tutor->interview_status == 0)
 		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
 						@else
-		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>
-		        		<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Approve</a>
+		        		<a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 3]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>
+		        		<a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 4]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Approve</a>
 						@endif
 		      		</div>
 	      		</form>

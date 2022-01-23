@@ -233,4 +233,8 @@ use Illuminate\Support\Facades\Route;
             'as' => 'interviewResult',
             'uses' => 'InflexionController@interviewResult'
         ));
+        Route::get('/tutorApproval', array(
+            'as' => 'tutorApproval',
+            'uses' => 'InflexionController@tutorApproval'
+        ));
     });

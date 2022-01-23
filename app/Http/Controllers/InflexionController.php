@@ -157,9 +157,9 @@ class InflexionController extends Controller
     //LOGIN FUNCTION
     public function LoginUser(Request $request){
         $Valid = Validator::make($request->all(),[
-
+            'username' => 'required',
+            'password' => 'required'
         ]);
-            
         if($Valid->fails()){
             
         }else{
@@ -512,7 +512,7 @@ class InflexionController extends Controller
         return back()->with('Success','Successfully sent Interview Invite');
     }
 
-    public function interviewResult(Request $request){
-
+    public function tutorApproval(Request $request){
+        dd($request->all());
     }
 }
