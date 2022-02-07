@@ -21,8 +21,9 @@ class AdminController extends Controller
     public function index()
     {
         $userList = InflexionUserModel::all();
-        $tutors = InflexionUserModel::join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->get();
-        return view('admin/adminindex')->with('users',$userList)->with('tutors', $tutors);
+        $studentList = InflexionUserModel::join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->get();
+        $tutors = InflexionUserModel::join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->get();
+        return view('admin/adminindex')->with('users',$userList)->with('tutors', $tutors)->with('students',$studentList);
     }
 
     /**
