@@ -198,12 +198,21 @@ class InflexionUserModel extends Model
     }
 
     public function deleteUser($user){
-        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 9]);
+        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 9,'inflexion_user_token' => 'Disabled']);
         return $result;
     }
 
     public function reactivateAccount($user){
         $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 2]);
         return $result;
+    }
+
+    public function approveTutor($user){
+        if($user['status'] == 4){
+            $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 2, 'inflexion_user_token' => 'Approved']);
+            return $approve;
+        }else{
+            $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 5, 'inflexion_user_token' => 'Disapproved']);
+        }
     }
 }

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2021 at 09:11 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Feb 07, 2022 at 02:57 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,13 +25,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inflexion_groups`
+-- Table structure for table `comments_models`
 --
 
-CREATE TABLE `inflexion_groups` (
-  `inflexion_group_id` int(11) NOT NULL,
-  `inflexion_group_name` varchar(115) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `comments_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `poster_id` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL,
+  `comment_message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam_schedule`
+--
+
+CREATE TABLE `exam_schedule` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tutor_id` int(11) NOT NULL,
+  `schedule` varchar(155) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `skype_account` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `interview_status` int(115) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exam_schedule`
+--
+
+INSERT INTO `exam_schedule` (`id`, `tutor_id`, `schedule`, `skype_account`, `interview_status`, `created_at`, `updated_at`) VALUES
+(1, 8, NULL, 'a@a.com', 0, NULL, NULL),
+(12, 11, NULL, 'glenn@skype.com', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -39,25 +83,22 @@ CREATE TABLE `inflexion_groups` (
 --
 
 CREATE TABLE `inflexion_inbox` (
-  `inflexion_inbox_id` int(11) NOT NULL,
-  `inflexion_inbox_owner` varchar(115) NOT NULL,
-  `inflexion_inbox_subject` varchar(115) NOT NULL,
-  `inflexion_inbox_message` longtext NOT NULL,
-  `inflexion_inbox_rcpt` varchar(115) NOT NULL,
-  `inflexion_inbox_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `inflexion_inbox_id` bigint(20) UNSIGNED NOT NULL,
+  `inflexion_inbox_owner` int(11) NOT NULL,
+  `inflexion_inbox_subject` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_inbox_message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_inbox_rcpt` int(11) NOT NULL,
+  `inflexion_inbox_date` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `inflexion_inbox_read` int(11) NOT NULL,
   `inflexion_inbox_type` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inflexion_inbox`
 --
 
 INSERT INTO `inflexion_inbox` (`inflexion_inbox_id`, `inflexion_inbox_owner`, `inflexion_inbox_subject`, `inflexion_inbox_message`, `inflexion_inbox_rcpt`, `inflexion_inbox_date`, `inflexion_inbox_read`, `inflexion_inbox_type`) VALUES
-(65, '57', '1234', '1234', '58', '2021-03-30 07:12:07', 0, 1),
-(66, '57', '1234', '1234', '58', '2021-03-30 07:24:12', 0, 0),
-(67, '57', '1234', '1234', '58', '2021-03-30 07:24:35', 0, 0),
-(68, '57', '1234', '1234', '58', '2021-03-30 07:25:14', 0, 0);
+(1, 8, 'Test message', 'Sent message to admin', 7, '2021-12-12 10:00:07', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -66,20 +107,18 @@ INSERT INTO `inflexion_inbox` (`inflexion_inbox_id`, `inflexion_inbox_owner`, `i
 --
 
 CREATE TABLE `inflexion_posts` (
-  `inflexion_post_id` int(11) NOT NULL,
-  `inflexion_post_message` longtext NOT NULL,
-  `inflexion_post_timestamp` datetime NOT NULL DEFAULT current_timestamp(),
-  `inflexion_post_poster` int(11) NOT NULL,
-  `inflexion_post_like` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `inflexion_post_id` bigint(20) UNSIGNED NOT NULL,
+  `inflexion_post_message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_post_timestamp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_post_poster` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inflexion_posts`
 --
 
-INSERT INTO `inflexion_posts` (`inflexion_post_id`, `inflexion_post_message`, `inflexion_post_timestamp`, `inflexion_post_poster`, `inflexion_post_like`) VALUES
-(22, 'Hello! My first post!', '2021-03-27 12:33:44', 57, 1),
-(23, 'Post again!!!!', '2021-03-28 01:43:48', 58, NULL);
+INSERT INTO `inflexion_posts` (`inflexion_post_id`, `inflexion_post_message`, `inflexion_post_timestamp`, `inflexion_post_poster`) VALUES
+(2, 'Post example', '2021-12-12 10:02:06', 8);
 
 -- --------------------------------------------------------
 
@@ -425,28 +464,32 @@ INSERT INTO `inflexion_test_questions` (`inflexion_test_id`, `inflexion_test_que
 --
 
 CREATE TABLE `inflexion_users` (
-  `inflexion_user_id` int(11) NOT NULL,
-  `inflexion_username` varchar(115) NOT NULL,
-  `inflexion_user_pass` varchar(115) NOT NULL,
-  `inflexion_user_type` int(11) NOT NULL,
-  `inflexion_user_status` varchar(45) NOT NULL,
-  `inflexion_user_token` varchar(115) NOT NULL,
-  `inflexion_user_tutor` decimal(11,2) DEFAULT NULL,
+  `inflexion_user_id` bigint(20) UNSIGNED NOT NULL,
+  `inflexion_username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_user_pass` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_user_type` int(11) NOT NULL COMMENT '0 - admin; 1 - student; 2 - tutor',
+  `inflexion_user_status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_user_token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_user_tutor` int(11) DEFAULT NULL,
   `inflexion_user_take` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inflexion_users`
 --
 
 INSERT INTO `inflexion_users` (`inflexion_user_id`, `inflexion_username`, `inflexion_user_pass`, `inflexion_user_type`, `inflexion_user_status`, `inflexion_user_token`, `inflexion_user_tutor`, `inflexion_user_take`) VALUES
-(57, 'gmd013@gmail.com', '$2y$10$nuNsqvrqSLgNTp4v/dpfR.Ye7GCfe.fq6FSUOvHkC0gHP3E.hpm86', 1, '2', 'Completed', NULL, NULL),
-(58, 'r@r.com', '$2y$10$ZQlEgdDEjIMcSKrrUlqlBuTSciIYPtcYCq8pzj0veVyrJk9oxBSpG', 1, '2', 'Completed', NULL, NULL),
-(63, 'a@a.com', '$2y$10$2ykhr20/N2AF3hDaVcvLge8Zl/.YEaZyhuRz9fnJOL11D/FbLCX52', 2, '3', 'Failed', '23.33', 1),
-(64, 'x@x.com', '$2y$10$kXGEG0mQwe3NNDCq6PvXDubowFUzxXw4pGm4b850QPTobfHTIXQXu', 1, '2', 'Completed', NULL, NULL),
-(65, 'j@j.com', '$2y$10$g3DmNdP4igkYP39/BjcK3eyrqHUbtmUNcG3ssi4YFhpcirKF6Pf2C', 1, '2', 'Completed', NULL, NULL),
-(66, 't@t.com', '$2y$10$Rzo40KL8TxU3edg/c85NLOy2142qiIHcft6/DHtNmDjaSk4QEPJCC', 1, '2', 'Completed', NULL, NULL),
-(67, 's@s.com', '$2y$10$AAtvL0c1VU5mV3ntlpsvfu3IIoUbCp60JUKlCJ.cfe5Mluf.O5ezC', 2, '4', 'For interview', '86.67', 1);
+(1, 'gmd013@gmail.com', '$2y$10$U3DScCtj7iWY45RlHWQwEO2ANSflI8LLueb33XUNSJtlXgmgX28Im', 1, '0', '81127330297O935', NULL, NULL),
+(2, 'test@test.com', '$2y$10$PK4gvM12xMor0il7cboB3e63hR9lHEzSApHZGVaBwwVoERrq.iZtq', 0, '0', '3233859602C1018', NULL, NULL),
+(3, 't@t.com', '$2y$10$qtiVeHxElWsVi8/7sL1Q8OXWtsWSJGue5MCxn0jAZHESe.zZqFVO.', 1, '0', '5H2013361693206', NULL, NULL),
+(4, 'a@a.com', '$2y$10$ZwujKoR13BcHf63FWdCBiOetRB85D9O/QqGmCyaNaVq/koCJuUtaK', 1, '0', '8967W2620528671', NULL, NULL),
+(5, 'q@q.com', '$2y$10$z/TFkxPmGHJz9HlyUOq4C.w3OijClQWFEVzZ.T8X1zYTK/ctj3lIi', 1, '0', '15718038366J780', NULL, NULL),
+(6, 'w@w.com', '$2y$10$agrNvipWWvvBB8rJustJhOKwbaG1QoY8uKkzxHA1pa.If9peePphW', 1, '0', '481G27540174802', NULL, NULL),
+(7, 'd@d.com', '$2y$10$PpPIwqe2JSRUU6jJxwZdsO2bleY8/4o0E2mbkuw2g6fub25HY6AWu', 0, '2', 'Validated', NULL, NULL),
+(8, 'aa@a.com', '$2y$10$tZWi3yBEZ/OSEJAHpNbAYOOSpPRmSVHAU.aj9xciX5l2pgucO8bjy', 1, '2', 'Disabled', NULL, NULL),
+(9, 'aa@aa.com', '$2y$10$k76Pa.Sqe9GZv2iTwNXBB.jN3XI9H911yTUTptMrn5vE42RbyYS/C', 2, '4', 'For video upload', 20, 1),
+(10, 'b@bc.om', '$2y$10$aJO4Oj4wjvUhK8IoIToqVOn9B3TxEGXzVZzKCv7wCxtDDsCSXutyu', 2, '1', 'Validated', 0, 0),
+(11, 'glenn@glenn.com', '$2y$10$1NnVybAp4AblLXh7nB.jO.vhnFu7kdQvgQtejo8wj.04c.oxFR.su', 2, '2', 'Approved', 77, 1);
 
 -- --------------------------------------------------------
 
@@ -455,41 +498,104 @@ INSERT INTO `inflexion_users` (`inflexion_user_id`, `inflexion_username`, `infle
 --
 
 CREATE TABLE `inflexion_user_details` (
-  `inflexion_detail_id` int(11) NOT NULL,
-  `inflexion_detail_first` varchar(115) NOT NULL,
-  `inflexion_detail_middle` varchar(115) NOT NULL,
-  `inflexion_detail_last` varchar(115) NOT NULL,
-  `inflexion_detail_street` varchar(250) NOT NULL,
-  `inflexion_detail_city` varchar(115) NOT NULL,
-  `inflexion_detail_state` varchar(115) NOT NULL,
-  `inflexion_detail_country` varchar(115) NOT NULL,
-  `inflexion_detail_zip` int(11) NOT NULL,
-  `inflexion_detail_contact` varchar(115) NOT NULL,
-  `inflexion_detail_birth` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `inflexion_detail_id` bigint(20) UNSIGNED NOT NULL,
+  `inflexion_detail_first` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_middle` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_last` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_street` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_city` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_state` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_country` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_zip` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_contact` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inflexion_detail_birth` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `inflexion_user_details`
 --
 
 INSERT INTO `inflexion_user_details` (`inflexion_detail_id`, `inflexion_detail_first`, `inflexion_detail_middle`, `inflexion_detail_last`, `inflexion_detail_street`, `inflexion_detail_city`, `inflexion_detail_state`, `inflexion_detail_country`, `inflexion_detail_zip`, `inflexion_detail_contact`, `inflexion_detail_birth`) VALUES
-(57, 'Glenn Marlo', 'Javier', 'Dumaguing', '106 First Road Quezon Hill', 'Baguio', 'Benguet', 'Philippines', 2600, '09274160451', '1991-03-06'),
-(58, 'Test', 'Test', 'Test', 'Test', 'Test', 'Test', 'Nepal', 28393, '90234283423423', '2021-12-31'),
-(63, 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'TUTOR AAAA', 'Afghanistan', 8234923, '21039423482334', '2021-04-02'),
-(64, 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'XXXX', 'Yemen', 34573, '1231253545', '2021-04-01'),
-(65, 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'JJJJ', 'Philippines', 2037, '123432479', '2021-04-01'),
-(66, 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'TTTT', 'Taiwan', 12312, '1233565343', '2021-04-01'),
-(67, 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'SSSS TUTOR', 'Australia', 12344, '28934621', '2021-04-02');
+(8, 'Glenn Marlo', 'Javier', 'Dumaguing', '106 First Road', 'Baguio', 'Benguet', 'Philippines', '2600', '2034983489', '1991-03-06'),
+(11, 'Tset', 'Test', 'Test', 'test', 'test', 'test', 'Philippines', '2600', '128312938', '1997-01-31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2021_05_13_031847_create_comments_models_table', 1),
+(5, '2021_05_31_122719_interview_schedule', 1),
+(6, '2021_07_27_112607_inflexion_posts', 1),
+(7, '2021_07_27_112856_inflexion_user_details', 1),
+(8, '2021_07_27_114414_inflexion_users', 1),
+(9, '2021_07_27_115457_inflexion_inbox', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `inflexion_groups`
+-- Indexes for table `comments_models`
 --
-ALTER TABLE `inflexion_groups`
-  ADD PRIMARY KEY (`inflexion_group_id`);
+ALTER TABLE `comments_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `exam_schedule`
+--
+ALTER TABLE `exam_schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `inflexion_inbox`
@@ -528,26 +634,57 @@ ALTER TABLE `inflexion_user_details`
   ADD PRIMARY KEY (`inflexion_detail_id`);
 
 --
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `inflexion_groups`
+-- AUTO_INCREMENT for table `comments_models`
 --
-ALTER TABLE `inflexion_groups`
-  MODIFY `inflexion_group_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `comments_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `exam_schedule`
+--
+ALTER TABLE `exam_schedule`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inflexion_inbox`
 --
 ALTER TABLE `inflexion_inbox`
-  MODIFY `inflexion_inbox_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `inflexion_inbox_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `inflexion_posts`
 --
 ALTER TABLE `inflexion_posts`
-  MODIFY `inflexion_post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `inflexion_post_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `inflexion_test_answers`
@@ -565,7 +702,25 @@ ALTER TABLE `inflexion_test_questions`
 -- AUTO_INCREMENT for table `inflexion_users`
 --
 ALTER TABLE `inflexion_users`
-  MODIFY `inflexion_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `inflexion_user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `inflexion_user_details`
+--
+ALTER TABLE `inflexion_user_details`
+  MODIFY `inflexion_detail_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

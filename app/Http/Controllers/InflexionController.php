@@ -513,6 +513,12 @@ class InflexionController extends Controller
     }
 
     public function tutorApproval(Request $request){
-        dd($request->all());
+        // dd($request->all());
+        $details = [
+            'user_id' => $request->id,
+            'status' => $request->eval
+        ];
+        $approval = $this->InflexionUserModel->approveTutor($details);
+        return back();
     }
 }
