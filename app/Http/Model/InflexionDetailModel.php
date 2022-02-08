@@ -48,7 +48,7 @@ class InflexionDetailModel extends Model
             $userModel = new InflexionUserModel;
             $check = $userModel->where('inflexion_user_id','=',$request->id)->first();
             if($check->inflexion_user_type == 1){
-                $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 2,'inflexion_user_token' => 'Completed']);
+                $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 2,'inflexion_user_token' => 'Active']);
             }else if($check->inflexion_user_type == 2){
                 if($check->inflexion_user_tutor >= 70){
                     $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 4,'inflexion_user_token' => 'For video upload']);
