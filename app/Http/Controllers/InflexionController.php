@@ -518,7 +518,7 @@ class InflexionController extends Controller
             'user_id' => $request->id,
             'status' => $request->eval
         ];
-        $approval = $this->InflexionUserModel->approveTutor($details);
+        $this->InflexionUserModel->approveTutor($details);
         return back();
     }
 }

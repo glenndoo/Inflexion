@@ -146,7 +146,7 @@ class InflexionUserModel extends Model
         if(Hash::check($request->val,$request->vry) && $request->token == $checkInfo->inflexion_user_token){
             if($checkInfo->inflexion_user_status == 0 && $checkInfo->inflexion_user_token == $request->token && $checkInfo->inflexion_user_tutor == 0){
                 if(empty($checkInfo->inflexion_)){
-                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Validated']);
+                    $updateInfo = $this->where('inflexion_username','=',$request->val)->update(['inflexion_user_status' => 1, 'inflexion_user_token' => 'Verified']);
                     if($updateInfo){
                         $status = 1;
                         return $status;
@@ -203,7 +203,7 @@ class InflexionUserModel extends Model
     }
 
     public function reactivateAccount($user){
-        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 2]);
+        $result = $this->where('inflexion_user_id',$user)->update(['inflexion_user_status' => 2, 'inflexion_user_token' => 'Active']);
         return $result;
     }
 

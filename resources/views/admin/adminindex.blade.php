@@ -36,7 +36,7 @@
 					<div class="card-body">
 						<div class="d-inline-block">
 							<h5 class="text-muted">Active tutors</h5>
-							<h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->count() }}</h2>
+							<h2 class="mb-0">{{ $users->where('inflexion_user_type', '2')->where('inflexion_user_status','2')->count() }}</h2>
 						</div>
 						<div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
 							<i class="fa fa-user fa-fw fa-sm text-primary"></i>
