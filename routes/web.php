@@ -180,10 +180,10 @@ use Illuminate\Support\Facades\Route;
         return view('tutor.tutorSettings');
 
         });
-        Route::get('/tutorProfile', function () { //added for testing maiko
-        return view('tutor.tutorProfile');
-
-        });
+        Route::get('/tutorProfile', array(
+            'as' => 'tutorProfile',
+            'uses' => 'InflexionController@fetchProfile'
+        ));
         Route::get('/tutorGroups', function () { //added for testing maiko
         return view('tutor.tutorGroups');
 
@@ -195,6 +195,14 @@ use Illuminate\Support\Facades\Route;
         Route::get('/tutorInbox', function () { //added for testing maiko
         return view('tutor.tutorInbox');
         });
+        Route::post('/insertHobby', array(
+            'as' => 'insertHobby',
+            'uses' => 'InflexionController@setHobbies'
+        ));
+        Route::post('/insertTag', array(
+            'as' => 'insertTag',
+            'uses' => 'InflexionController@setTags'
+        ));
     });
     
     //ADMIN GROUP ROUTE
