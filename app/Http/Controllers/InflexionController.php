@@ -12,12 +12,14 @@ use App\Http\Model\InflexionQuestionsModel;
 use App\Http\Model\InflexionAnswersModel;
 use App\Http\Model\ExamScheduleModel;
 use App\Http\Model\CommentsModel;
+use App\Http\Model\TutorDetailModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
 use App\Mail\TutorRegisterMail;
 use App\Mail\TutorInterviewMail;
 use Hash;
+use Illuminate\Support\Facades\DB;
 use Session;
 use Monarobase\CountryList\CountryListFacade;
 
@@ -31,7 +33,8 @@ class InflexionController extends Controller
     public $InflexionAnswersModel;
     public $CommentsModel;
     public $ExamScheduleModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel){
+    public $TutorDetailModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
@@ -40,6 +43,7 @@ class InflexionController extends Controller
         $this->InflexionAnswersModel = $InflexionAnswersModel;
         $this->CommentsModel = $CommentsModel;
         $this->ExamScheduleModel = $ExamScheduleModel;
+        $this->TutorDetailModel = $TutorDetailModel;
     }
 
     //DISPLAY INDEX
@@ -243,7 +247,7 @@ class InflexionController extends Controller
                         }elseif($login->inflexion_user_type == 0){//added by maiko for testing admin
                             return redirect('/adminIndex');
                         }else{
-                            return redirect('/tutorIndex');
+                            return view('tutor.tutorindex');
                         }
                         
                     
@@ -520,5 +524,41 @@ class InflexionController extends Controller
         ];
         $this->InflexionUserModel->approveTutor($details);
         return back();
+    }
+
+    public function setHobbies(Request $request){
+        $exist = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $this->TutorDetailModel::where('tutor_id', $request->id)->update(['hobbies' => !$exist->hobbies ? $request->hobbies : $exist->hobbies."|".$request->hobbies]);
+        $finalHobbies = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $hobbs = explode("|",$finalHobbies->hobbies);
+        $finalTags = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $tags = explode("|",$finalTags->tags);
+        return redirect()->back()->with('hobby', $hobbs)->with('tag',$tags);
+    }
+
+    public function fetchHobbies($id){
+        $finalHobbies = $this->TutorDetailModel::where('tutor_id', $id)->first();
+        $hobbs = explode("|",$finalHobbies->hobbies);
+        $finalTags = $this->TutorDetailModel::where('tutor_id', $id)->first();
+        $tags = explode("|",$finalTags->tags);
+        return view('tutor.tutorprofile')->with('hobby', $hobbs)->with('tag',$tags);
+    }
+
+    public function fetchProfile(){
+        $finalHobbies = $this->TutorDetailModel::where('tutor_id', session()->get('info.userDetails.inflexion_user_id'))->first();
+        $hobbs = explode("|",$finalHobbies->hobbies);
+        $finalHobbies = $this->TutorDetailModel::where('tutor_id', session()->get('info.userDetails.inflexion_user_id'))->first();
+        $tags = explode("|",$finalHobbies->tags);
+        return view('tutor.tutorprofile')->with('hobby', $hobbs)->with('tag',$tags);
+    }
+
+    public function setTags(Request $request){
+        $exist = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $this->TutorDetailModel::where('tutor_id', $request->id)->update(['tags' => !$exist->tags ? $request->tags : $exist->tags."|".$request->tags]);
+        $finalTags = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $tags = explode("|",$finalTags->tags);
+        $finalHobbies = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
+        $hobbs = explode("|",$finalHobbies->hobbies);
+        return redirect()->back()->with('tag', $tags)->with('hobby', $hobbs);
     }
 }

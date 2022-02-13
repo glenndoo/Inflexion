@@ -12,10 +12,11 @@
 		<!--start post to feed -->
 		<div class="row">
 			<div class="col-sm-12">
-				<h6>student>studentProfile</h6>
+				<h6></h6>
 			</div>
 		</div>
 		<!--post to feed end-->
+		@php $id = session()->get('info.userDetails.inflexion_user_id') @endphp
 
 		<!--start profile-->
 		<div class="row">
@@ -39,11 +40,13 @@
 									<!-- updated -->
 									<ul class="list-unstyled size-13">
 										<li class="text-gray">
-											<a href="#"><span class="badge badge-secondary">PHOTOGRAPHY</span>
-											<a href="#"><span class="badge badge-secondary">ART</span>
-											<a href="#"><span class="badge badge-secondary">TRAVEL</span>
-											<a href="#"><span class="badge badge-secondary">MUSIC</span>
-											<a href="#"><span class="badge badge-secondary">BOOKS</span>
+										@if(!empty($hobby))
+															@foreach($hobby as $hobbs)
+															<a href="#"><span class="badge badge-secondary">{{ $hobbs }}</span>
+														@endforeach
+														@else
+														Add your hobbies and interests now
+														@endif
 										</li>
 									</ul><!-- /updated -->
 
@@ -61,7 +64,7 @@
 
 									<!-- About -->
 									<h3 class="text-black">
-										John Doe 
+										{{ session()->get('info.userWholeName')}} 
 										<small class="text-gray size-14"> Tutor</small>
 									</h3>
 									<p class="size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p>
@@ -205,7 +208,8 @@
 									<!-- Edit -->
 									<div id="edit" class="tab-pane">
 
-										<form class="form-horizontal padding-10" method="get">
+										<form class="form-horizontal padding-10" method="POST" action="{{ route('insertHobby', ['id' => $id]) }}">
+											@csrf
 											<h4>YOUR BADGES</h4>
 											<fieldset>
 												<!--start hobbies And Interests input-->
@@ -215,23 +219,28 @@
 													</div>
 													<div class="row">
 														<div class="col-md">
-														<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">PHOTOGRAPHY<span aria-hidden="true">&times;</span></a>
-															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">ART<span aria-hidden="true">&times;</span></a>
-															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">TRAVEL<span aria-hidden="true">&times;</span></a>
-															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">MUSIC<span aria-hidden="true">&times;</span></a>
-															<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">BOOKS<span aria-hidden="true">&times;</span></a>
-													</div>
+															@if(!empty($hobby))
+															@foreach($hobby as $hobbs)
+														<a style="font-size: 7pt;" class="badge badge-secondary" aria-label="Close">{{ $hobbs }}<span aria-hidden="true">&times;</span></a>
+														@endforeach
+														@else
+														Add your hobbies and interests now
+														@endif
+														</div>
 													</div>
 													<div class="row">
 														<div class="col-md-10">
-															<input type="text" class="form-control" id="hobbiesAndInterests">
+															
+															<input type="text" class="form-control" name="hobbies" />
 														</div>
 														<div class="col-md-2">
-															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+															<input type="submit"><i class="fa fa-plus"></i></input>
 														</div>
+														
 													</div>
 													
 												</div>
+												</form>
 												<!--end hobbies And Interests input-->
 												<hr/>
 												<!--end tags input-->
@@ -240,22 +249,29 @@
 														<label class="col-md control-label" for="tags">Tags</label>
 													</div>
 													<div class="row">
+												<form class="form-horizontal padding-10" method="POST" action="{{ route('insertTag', ['id' => $id]) }}">
+													@csrf
 														<div class="col-md">
-															<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">TOEIC<span aria-hidden="true">&times;</span></a>
-																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">FREE TALKING<span aria-hidden="true">&times;</span></a>
-																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">AVAILABLE FOR KIDS<span aria-hidden="true">&times;</span></a>
-																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">BUSNINESS CONVERSATION<span aria-hidden="true">&times;</span></a>
-																<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">ACCENTS<span aria-hidden="true">&times;</span></a>
+															@if(isset($tag))
+															@foreach($tag as $tags)
+															<a style="font-size: 7pt;" class="badge badge-success" aria-label="Close">{{ $tags }}<span aria-hidden="true">&times;</span></a>
+
+															@endforeach
+															@else
+															Add your tags here now
+															@endif
+																
 														</div>
 													</div>
 													<div class="row">
 														<div class="col-md-10">
-															<input type="text" class="form-control" id="tags" value="ACCENTS">
+															<input type="text" class="form-control" id="tags" name="tags" />
 														</div>
 														<div class="col-md-2">
-															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
+															<input type='submit' class="form-control btn btn-sm btn-primary"><i class="fa fa-plus"></i></input>
 														</div>
 													</div>
+												</form>
 												</div>
 												<!--end tags input-->
 											</fieldset>
@@ -264,7 +280,7 @@
 
 											<h4>About me</h4>
 											<fieldset>
-												
+												<form method="POST" action="">
 												<div class="form-group">
 													<div class="row">
 														<div class="col-md-12">
@@ -280,7 +296,7 @@
 															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-save"></i></button>
 														</div>
 													</div>
-
+												</form>
 													
 													<div class="col-md-8">
 														
@@ -338,8 +354,6 @@
 												</div>
 											</div>
 											-->
-
-										</form>
 
 									</div>
 								</div>
