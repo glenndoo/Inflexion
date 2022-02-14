@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2022 at 02:57 PM
+-- Generation Time: Feb 14, 2022 at 12:36 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -489,7 +489,7 @@ INSERT INTO `inflexion_users` (`inflexion_user_id`, `inflexion_username`, `infle
 (8, 'aa@a.com', '$2y$10$tZWi3yBEZ/OSEJAHpNbAYOOSpPRmSVHAU.aj9xciX5l2pgucO8bjy', 1, '2', 'Disabled', NULL, NULL),
 (9, 'aa@aa.com', '$2y$10$k76Pa.Sqe9GZv2iTwNXBB.jN3XI9H911yTUTptMrn5vE42RbyYS/C', 2, '4', 'For video upload', 20, 1),
 (10, 'b@bc.om', '$2y$10$aJO4Oj4wjvUhK8IoIToqVOn9B3TxEGXzVZzKCv7wCxtDDsCSXutyu', 2, '1', 'Validated', 0, 0),
-(11, 'glenn@glenn.com', '$2y$10$1NnVybAp4AblLXh7nB.jO.vhnFu7kdQvgQtejo8wj.04c.oxFR.su', 2, '2', 'Approved', 77, 1);
+(11, 'glenn@glenn.com', '$2y$10$1NnVybAp4AblLXh7nB.jO.vhnFu7kdQvgQtejo8wj.04c.oxFR.su', 2, '4', 'Approved', 77, 1);
 
 -- --------------------------------------------------------
 
@@ -544,7 +544,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2021_07_27_112607_inflexion_posts', 1),
 (7, '2021_07_27_112856_inflexion_user_details', 1),
 (8, '2021_07_27_114414_inflexion_users', 1),
-(9, '2021_07_27_115457_inflexion_inbox', 1);
+(9, '2021_07_27_115457_inflexion_inbox', 1),
+(10, '2022_02_12_070715_create_tutor_detail_models_table', 2);
 
 -- --------------------------------------------------------
 
@@ -557,6 +558,30 @@ CREATE TABLE `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tutor_detail_models`
+--
+
+CREATE TABLE `tutor_detail_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tutor_id` bigint(20) UNSIGNED NOT NULL,
+  `hobbies` longtext COLLATE utf8mb4_unicode_ci,
+  `tags` longtext COLLATE utf8mb4_unicode_ci,
+  `interests` longtext COLLATE utf8mb4_unicode_ci,
+  `about_me` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tutor_detail_models`
+--
+
+INSERT INTO `tutor_detail_models` (`id`, `tutor_id`, `hobbies`, `tags`, `interests`, `about_me`, `created_at`, `updated_at`) VALUES
+(1, 11, 'Guitar playing|Music', 'IELTS|IELTS|kids', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -646,6 +671,13 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `tutor_detail_models`
+--
+ALTER TABLE `tutor_detail_models`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tutor_detail_models_tutor_id_foreign` (`tutor_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -714,13 +746,29 @@ ALTER TABLE `inflexion_user_details`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tutor_detail_models`
+--
+ALTER TABLE `tutor_detail_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tutor_detail_models`
+--
+ALTER TABLE `tutor_detail_models`
+  ADD CONSTRAINT `tutor_detail_models_tutor_id_foreign` FOREIGN KEY (`tutor_id`) REFERENCES `inflexion_users` (`inflexion_user_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
