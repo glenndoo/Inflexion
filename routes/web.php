@@ -29,6 +29,10 @@ use Illuminate\Support\Facades\Route;
         return view('pages.student.findTutor');
     });
 
+    Route::get('tutorprofile', function(){
+        return view('pages.tutor.tutorProfile');
+    });
+
     
     Route::view('tutorexam','tutorexam');//added by maiko
     Route::view('tutorBeforeExam','tutorBeforeExam');//added by maiko
