@@ -21,6 +21,18 @@ use Illuminate\Support\Facades\Route;
 
     Route::view('register','register');
 
+    Route::get('dashboard', function(){
+        return view('layouts.sample');
+    });
+
+    Route::get('findtutor', function(){
+        return view('pages.student.findTutor');
+    });
+
+    Route::get('tutorprofile', function(){
+        return view('pages.tutor.tutorProfile');
+    });
+
     
     Route::view('tutorexam','tutorexam');//added by maiko
     Route::view('tutorBeforeExam','tutorBeforeExam');//added by maiko
