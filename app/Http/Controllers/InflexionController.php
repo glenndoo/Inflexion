@@ -563,8 +563,14 @@ class InflexionController extends Controller
     }
 
     public function fetchTutor(){
+        $sess = Session::get('info');
+        $userId = $sess['userId'];
         $tutor = $this->InflexionUserModel->getAllTutors();
         $hobbies = $this->InflexionUserModel->getTutorHobbies();
-        return view('student.studentFindTutor')->with('tutors', $tutor)->with('hobbies', $hobbies);
+        return view('student.studentFindTutor')->with('tutors', $tutor)->with('hobbies', $hobbies)->with('userId', $userId);
+    }
+
+    public function bookSchedule(Request $request){
+        
     }
 }

@@ -179,7 +179,10 @@ use Illuminate\Support\Facades\Route;
             return view('student.studentHelp');
         });
         
-
+        Route::post('/bookSchedule', array(
+            'as' => 'bookSchedule',
+            'uses' => 'InflexionController@bookSchedule'
+        ));
     });
 
 
