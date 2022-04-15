@@ -175,15 +175,22 @@
                                                         </div>
                                                     </div>
                                                     <div class="user-avatar-address">
-                                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{ $tutor->inflexion_detail_country }}<span class="m-l-20">24 Year Old</span>
-                                                        </p>
-                                                        <div class="mt-3">
-                                                            @php
+                                                    @php
                                                             $hobb = [];
+                                                            $details = "";
+                                                            $age = 0;
                                                             foreach($hobbies as $hobby){
                                                                 $hobb = explode('|', $hobby->hobbies);
+                                                                $details = $hobby->about_me;
+                                                                $age = new DateTime($tutor->inflexion_detail_birth);
+                                                                $now = new DateTime();
+                                                                $age = $now->diff($age);
+                                                                $age = $age->y;
                                                             }
                                                             @endphp
+                                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{ $tutor->inflexion_detail_country }}<span class="m-l-20">{{ $age }} Years Old</span>
+                                                        </p>
+                                                        <div class="mt-3">
                                                             @foreach($hobb as $hb)
                                                             <a href="#" class="mr-1 badge badge-light">{{ $hb }}</a>
                                                             @endforeach
@@ -193,13 +200,10 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                                    <a href="#" class="btn btn-info" title="send message"  data-toggle="modal" data-target="#tutorMessage">
-                                                    	<i class="fa fa-envelope" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule">
+                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile">
+                                                    <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -217,63 +221,51 @@
                                 </div>
 
                                 <!-- Modal calendar -->
-								<div class="modal fade" id="calendarSchedule" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule" aria-hidden="true">
+								<div class="modal fade" id="calendarSchedule{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule{{ $tutor->inflexion_user_id }}" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
+								        <h5 class="modal-title" id="exampleModalLongTitle">Book class</h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								          <span aria-hidden="true">&times;</span>
 								        </button>
 								      </div>
 								      <div class="modal-body">
-								        ...
+                                          Please select your preferred schedule:
+								        <form method="POST" action="{{ route('bookSchedule', ['userId' => $userId]) }}">
+                                            @csrf
+                                            <input type="datetime-local" name="schedule" placeholder="Preffered date" /></br >
+                                        <br />
+                                        ** <strong>BOOKINGS SHOULD BE DONE 2 DAYS BEFORE PREFERRED SCHEDULE</strong><br />
+                                        ** You will be notified immediately as soon as the tutor reviews your preferred schedule
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save changes</button>
+								        <input type="submit" type="button" class="btn btn-primary" value="Book Class">
+                                        </form>
 								      </div>
 								    </div>
 								  </div>
 								</div>
 
-								<!-- Modal Message -->
-								<div class="modal fade" id="tutorMessage" tabindex="-1" role="dialog" aria-labelledby="tutorMessage" aria-hidden="true">
-								  <div class="modal-dialog modal-dialog-centered" role="document">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">&times;</span>
-								        </button>
-								      </div>
-								      <div class="modal-body">
-								        ...
-								      </div>
-								      <div class="modal-footer">
-								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save changes</button>
-								      </div>
-								    </div>
-								  </div>
-								</div>
 
 								<!-- Modal Profile -->
-								<div class="modal fade" id="tutorViewProfile" tabindex="-1" role="dialog" aria-labelledby="tutorViewProfile" aria-hidden="true">
+								<div class="modal fade" id="tutorViewProfile{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="tutorViewProfile{{ $tutor->inflexion_user_id }}" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
 								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">&times;</span>
+								          <span aria-hidden="true"></span>
 								        </button>
 								      </div>
 								      <div class="modal-body">
-								        ...
+                                          About me
+                                      {{ $details }}
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Save</button>
+								        <button type="button" class="btn btn-primary">Click here to view my Full Profile</button>
 								      </div>
 								    </div>
 								  </div>
