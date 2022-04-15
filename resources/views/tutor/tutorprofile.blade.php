@@ -290,7 +290,7 @@
 
 													<div class="row">
 														<div class="col-md-10">
-															<textarea class="form-control" rows="3" id="profileBio"></textarea>
+															<textarea class="form-control" rows="3" id="profileBio" name="about"></textarea>
 														</div>
 														<div class="col-md-2">
 															<button class="form-control btn btn-sm btn-primary"><i class="fa fa-save"></i></button>
