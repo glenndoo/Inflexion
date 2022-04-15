@@ -561,4 +561,10 @@ class InflexionController extends Controller
         $hobbs = explode("|",$finalHobbies->hobbies);
         return redirect()->back()->with('tag', $tags)->with('hobby', $hobbs);
     }
+
+    public function fetchTutor(){
+        $tutor = $this->InflexionUserModel->getAllTutors();
+        $hobbies = $this->InflexionUserModel->getTutorHobbies();
+        return view('student.studentFindTutor')->with('tutors', $tutor)->with('hobbies', $hobbies);
+    }
 }

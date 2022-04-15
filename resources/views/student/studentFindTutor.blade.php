@@ -152,7 +152,7 @@
                             <!-- ============================================================== -->
                             <!-- card tutor one -->
                             <!-- ============================================================== -->
-                            @for ($i = 0; $i < 5; $i++)
+                            @foreach($tutors as $tutor)
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row align-items-center">
@@ -163,7 +163,7 @@
                                                 <div class="pl-xl-3">
                                                     <div class="m-b-0">
                                                         <div class="user-avatar-name d-inline-block">
-                                                            <h2 class="font-24 m-b-10">Jane Doe ({{$i}})</h2>
+                                                            <h2 class="font-24 m-b-10">{{ $tutor->inflexion_detail_first . " " . $tutor->inflexion_detail_last}}</h2>
                                                         </div>
                                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
                                                             <i class="fa fa-fw fa-star"></i>
@@ -175,23 +175,31 @@
                                                         </div>
                                                     </div>
                                                     <div class="user-avatar-address">
-                                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>Avenal, CA, USA<span class="m-l-10">Female<span class="m-l-20">24 Year Old</span></span>
+                                                        <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{ $tutor->inflexion_detail_country }}<span class="m-l-20">24 Year Old</span>
                                                         </p>
                                                         <div class="mt-3">
-                                                            <a href="#" class="mr-1 badge badge-light">Fitness</a><a href="#" class="mr-1 badge badge-light">Life Style</a><a href="#" class="mr-1 badge badge-light">Gym</a><a href="#" class="badge badge-light">Crossfit</a>
+                                                            @php
+                                                            $hobb = [];
+                                                            foreach($hobbies as $hobby){
+                                                                $hobb = explode('|', $hobby->hobbies);
+                                                            }
+                                                            @endphp
+                                                            @foreach($hobb as $hb)
+                                                            <a href="#" class="mr-1 badge badge-light">{{ $hb }}</a>
+                                                            @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                                    <a href="#" class="btn btn-info" title="send message"  data-toggle="modal" data-target="#tutorMessage{{$i}}">
+                                                    <a href="#" class="btn btn-info" title="send message"  data-toggle="modal" data-target="#tutorMessage">
                                                     	<i class="fa fa-envelope" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{$i}}">
+                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule">
                                                     	<i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{$i}}">
+                                                    <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile">
                                                     	<i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
@@ -209,11 +217,11 @@
                                 </div>
 
                                 <!-- Modal calendar -->
-								<div class="modal fade" id="calendarSchedule{{$i}}" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule{{$i}}" aria-hidden="true">
+								<div class="modal fade" id="calendarSchedule" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								          <span aria-hidden="true">&times;</span>
 								        </button>
@@ -230,11 +238,11 @@
 								</div>
 
 								<!-- Modal Message -->
-								<div class="modal fade" id="tutorMessage{{$i}}" tabindex="-1" role="dialog" aria-labelledby="tutorMessage{{$i}}" aria-hidden="true">
+								<div class="modal fade" id="tutorMessage" tabindex="-1" role="dialog" aria-labelledby="tutorMessage" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								          <span aria-hidden="true">&times;</span>
 								        </button>
@@ -251,11 +259,11 @@
 								</div>
 
 								<!-- Modal Profile -->
-								<div class="modal fade" id="tutorViewProfile{{$i}}" tabindex="-1" role="dialog" aria-labelledby="tutorViewProfile{{$i}}" aria-hidden="true">
+								<div class="modal fade" id="tutorViewProfile" tabindex="-1" role="dialog" aria-labelledby="tutorViewProfile" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{$i}}</h5>
+								        <h5 class="modal-title" id="exampleModalLongTitle">Modal for {{ $tutor->inflexion_detail_first }}</h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								          <span aria-hidden="true">&times;</span>
 								        </button>
@@ -270,7 +278,7 @@
 								    </div>
 								  </div>
 								</div>
-                                @endfor
+                                @endforeach
                                 <!-- ============================================================== -->
                                 <!-- end card tutor one -->
                                 <!-- ============================================================== -->

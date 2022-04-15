@@ -165,9 +165,10 @@ use Illuminate\Support\Facades\Route;
         Route::get('/studentClasses', function () { //added for testing maiko
             return view('student.studentclasses');
         });
-        Route::get('/studentFindTutor', function () { //added for testing maiko
-            return view('student.studentFindTutor');
-        });
+        Route::get('/studentFindTutor', array(
+            'as' => 'fetchTutor',
+            'uses' => 'InflexionController@fetchTutor'
+        ));
 
         Route::get('/studentLibrary', array ( //added by maiko
             'as' => 'studentLibrary',
