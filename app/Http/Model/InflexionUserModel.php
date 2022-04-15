@@ -193,7 +193,7 @@ class InflexionUserModel extends Model
 
     public function showAllTutors(){
         $result = $this->join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->get();
-        var_dump($result);
+        // var_dump($result);
         return $result;
     }
 
@@ -214,5 +214,15 @@ class InflexionUserModel extends Model
         }else{
             $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 5, 'inflexion_user_token' => 'Disapproved']);
         }
+    }
+
+    public function getAllTutors(){
+        $tutors = $this->join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->where('inflexion_user_type',2)->get();
+        return $tutors;
+    }
+
+    public function getTutorHobbies(){
+        $hobbies = $this->join('tutor_detail_models', 'tutor_id', '=', 'inflexion_user_id')->get();
+        return $hobbies;
     }
 }
