@@ -18,8 +18,8 @@ class CreateTutorSchedulesTable extends Migration
             $table->unsignedBigInteger('tutor_id');
             $table->unsignedBigInteger('student_id');
             $table->dateTime('schedule');
-            $table->boolean('read')->default(0);
-            $table->boolean('status');
+            $table->boolean('read')->default(0)->comment('0 - unread, 1 - read');
+            $table->integer('status')->comment('0 - pending, 1 - approved, 2 - denied');
             $table->timestamps();
 
             $table->foreign('tutor_id')->references('inflexion_user_id')->on('inflexion_users')->onDelete('cascade');
