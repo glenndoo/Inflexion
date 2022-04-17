@@ -13,6 +13,7 @@ use App\Http\Model\InflexionAnswersModel;
 use App\Http\Model\ExamScheduleModel;
 use App\Http\Model\CommentsModel;
 use App\Http\Model\TutorDetailModel;
+use App\Http\Model\TutorSchedule;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -34,7 +35,8 @@ class InflexionController extends Controller
     public $CommentsModel;
     public $ExamScheduleModel;
     public $TutorDetailModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel){
+    public $TutorSchedule;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
@@ -44,6 +46,7 @@ class InflexionController extends Controller
         $this->CommentsModel = $CommentsModel;
         $this->ExamScheduleModel = $ExamScheduleModel;
         $this->TutorDetailModel = $TutorDetailModel;
+        $this->TutorSchedule = $TutorSchedule;
     }
 
     //DISPLAY INDEX
@@ -501,6 +504,7 @@ class InflexionController extends Controller
         }
     }
 
+    // ADMIN SEND TUTOR INTERVIEW EMAIL
     public function sendInterviewEmail(Request $request){
         dd($request);
         $details = [
@@ -516,6 +520,7 @@ class InflexionController extends Controller
         return back()->with('Success','Successfully sent Interview Invite');
     }
 
+    // ADMIN APPROVE TUTOR
     public function tutorApproval(Request $request){
         // dd($request->all());
         $details = [
@@ -526,6 +531,7 @@ class InflexionController extends Controller
         return back();
     }
 
+    // SET HOBBIES FOR TUTOR
     public function setHobbies(Request $request){
         $exist = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
         $this->TutorDetailModel::where('tutor_id', $request->id)->update(['hobbies' => !$exist->hobbies ? $request->hobbies : $exist->hobbies."|".$request->hobbies]);
@@ -536,6 +542,7 @@ class InflexionController extends Controller
         return redirect()->back()->with('hobby', $hobbs)->with('tag',$tags);
     }
 
+    // FETCH HOBBIES FOR TUTOR
     public function fetchHobbies($id){
         $finalHobbies = $this->TutorDetailModel::where('tutor_id', $id)->first();
         $hobbs = explode("|",$finalHobbies->hobbies);
@@ -544,6 +551,7 @@ class InflexionController extends Controller
         return view('tutor.tutorprofile')->with('hobby', $hobbs)->with('tag',$tags);
     }
 
+    // FETCH TUTOR PROFILE
     public function fetchProfile(){
         $finalHobbies = $this->TutorDetailModel::where('tutor_id', session()->get('info.userDetails.inflexion_user_id'))->first();
         $hobbs = explode("|",$finalHobbies->hobbies);
@@ -552,6 +560,7 @@ class InflexionController extends Controller
         return view('tutor.tutorprofile')->with('hobby', $hobbs)->with('tag',$tags);
     }
 
+    // SET TAGS FOR TUTOR
     public function setTags(Request $request){
         $exist = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
         $this->TutorDetailModel::where('tutor_id', $request->id)->update(['tags' => !$exist->tags ? $request->tags : $exist->tags."|".$request->tags]);
@@ -562,6 +571,7 @@ class InflexionController extends Controller
         return redirect()->back()->with('tag', $tags)->with('hobby', $hobbs);
     }
 
+    // FETCH TUTOR FOR STUDENT VIEW
     public function fetchTutor(){
         $sess = Session::get('info');
         $userId = $sess['userId'];
@@ -570,7 +580,17 @@ class InflexionController extends Controller
         return view('student.studentFindTutor')->with('tutors', $tutor)->with('hobbies', $hobbies)->with('userId', $userId);
     }
 
+    // BOOK SCHEDULE FROM STUDENT 
     public function bookSchedule(Request $request){
-        
+        $date = $request->schedule;
+        $id = $request->userId; 
+        $tutorId = $request->tutorId;
+        $data = $this->TutorSchedule->insertSchedule($date, $id, $tutorId);
+
+        if($data){
+            return redirect()->back();
+        }else{
+
+        }
     }
 }

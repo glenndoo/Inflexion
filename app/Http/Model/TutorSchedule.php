@@ -17,7 +17,18 @@ class TutorSchedule extends Model
       'student_id',
       'schedule',
       'read',
+      'status',
       'created_at',
       'updated_at',
     ];
+
+    public function insertSchedule($date, $id, $tutorId){
+        $insert = $this->firstOrCreate([
+            'tutor_id' => $tutorId,
+            'student_id' => $id,
+            'schedule' => $date,
+            'status' => false
+        ]);
+        return $insert;
+    }
 }

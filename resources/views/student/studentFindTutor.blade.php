@@ -232,7 +232,7 @@
 								      </div>
 								      <div class="modal-body">
                                           Please select your preferred schedule:
-								        <form method="POST" action="{{ route('bookSchedule', ['userId' => $userId]) }}">
+								        <form method="POST" action="{{ route('bookSchedule', ['userId' => $userId, 'tutorId' => $tutor->inflexion_user_id]) }}">
                                             @csrf
                                             <input type="datetime-local" name="schedule" placeholder="Preffered date" /></br >
                                         <br />
