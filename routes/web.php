@@ -183,6 +183,16 @@ use Illuminate\Support\Facades\Route;
             'as' => 'bookSchedule',
             'uses' => 'InflexionController@bookSchedule'
         ));
+
+        Route::get('/getNotificationsStudent', array(
+            'as' => 'getNotificationsStudent',
+            'uses' => 'InflexionController@getNotificationsStudent'
+        ));
+
+        Route::get('/markAsDoneStudent', array(
+            'as' => 'markAsDoneStudent',
+            'uses' => 'InflexionController@markAsDoneStudent'
+        ));
     });
 
 
@@ -218,6 +228,26 @@ use Illuminate\Support\Facades\Route;
         Route::post('/insertTag', array(
             'as' => 'insertTag',
             'uses' => 'InflexionController@setTags'
+        ));
+        Route::get('/getNotificationsTutor', array(
+            'as' => 'getNotificationsTutor',
+            'uses' => 'InflexionController@getNotificationsTutor'
+        ));
+        Route::get('/approveScheduleStudent', array(
+            'as' => 'approveScheduleStudent',
+            'uses' => 'InflexionController@approveScheduleStudent'
+        ));
+        Route::get('/declineScheduleStudent', array(
+            'as' => 'declineScheduleStudent',
+            'uses' => 'InflexionController@declineScheduleStudent'
+        ));
+        Route::get('/doneScheduleStudent', array(
+            'as' => 'doneScheduleStudent',
+            'uses' => 'InflexionController@doneScheduleStudent'
+        ));
+        Route::post('/modifyScheduleStudent', array(
+            'as' => 'modifyScheduleStudent',
+            'uses' => 'InflexionController@modifyScheduleStudent'
         ));
     });
     

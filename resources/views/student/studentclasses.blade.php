@@ -57,7 +57,8 @@
 					  			<!--middle column this tab-->
 						  		<div class="col-sm-9">
 							  		<!--start results for booked -->
-							  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
+							  		@foreach($notifs as $notif)<!--just to loop results for 4 days-->
+									  @if($notif->status == 1 && $notif->student_status == 0 || $notif->status == 0 || $notif->status == 3)
 									    <div class="row ">
 											<div class="col-sm-12">
 												<div class="group-card card shadow">
@@ -65,43 +66,63 @@
 											  			<div class="row">
 											  				<div class="col-sm-2 pull-left">
 											  					<time datetime="2014-06-29" class="datebox">
-																	<strong>Mar</strong>
-																	<span>{{$d}}</span>
+																	<strong></strong>
+																	<span></span>
 																</time>
 											  				</div>
-											  				<div class="col-sm-6">
+											  				<div class="col-sm-6"> Tutor name: 
 											  					<h4 title="Your Tutor for this class">
-											  						 John Doe
-											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b{{$d}}">
+											  						{{ $notif->inflexion_detail_first . " " . $notif->inflexion_detail_last}}
+											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b">
 											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 											  						</button>
 											  					</h4>
-											  					<h6>Monday March {{$d}} 2021 at 3:30pm</h6>
+											  					<h6></h6>
 											  				</div>
 											  				<div class="col-sm-4">
-											  					<a href="#" class="btn btn-success form-control" data-toggle="modal" data-target="#markCompletedModal">Mark as Completed</a>
-											  					<small><i>45 IG credits used</i></small>
-											  				</div>
+																  @if($notif->student_status == 0 && $notif->status == 1)
+											  					<a href="#" class="btn btn-success form-control" data-toggle="modal" data-target="#markCompletedModal{{ $notif->id }}">Mark as Done</a>
+																  Details: <br />
+																  Tutor approved schedule<br />
+																	Date and time of class: <strong>{{ $notif->schedule }}</strong><br />
+																	Class booked
+																  @elseif($notif->status == 0)
+																  CLASS APPROVAL IS PENDING<br />
+																  Details:<br />
+																  Awaiting tutor approval<br />
+																  Requested Date and time of class: <strong>{{ $notif->schedule }}</strong>
+																@elseif($notif->student_status == 1)
+																Details:
+																Class marked done by student
+																@elseif($notif->status == 3)
+																<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#markCompletedModal{{ $notif->id }}">Mark as Done</a>
+																Details:<br />
+																Class marked done by your tutor
+											  					  @endif
+															</div>
 											  			</div>
 											  		</div>
+													  @if($notif->student_status == 0 && $notif->status == 1)
 											  		<div class="card-body">
 											  			<div class="row">
 											  				<div class="col-sm-8">
-												    		ENGLISH FOR BEGGINERS
+												    		
 												  			</div>
 												  			<div class="col-sm-2">
 											  					<a href="#" class="btn btn-danger form-control" data-toggle="modal" data-target="#cancelClassModal">cancel</a>
 											  				</div>
 												  			<div class="col-sm-2">
 											  					<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#reschedClassModal">resched</a>
+
 											  				</div>
 											  			</div>
 											  		</div>
+													  @endif
 												</div>
 											</div>
 										</div>
 										<!-- looped Modal -->
-										<div class="modal fade" id="t_Info_b{{$d}}" tabindex="-1" role="dialog" aria-labelledby="t_Info_b{{$d}}" aria-hidden="true">
+										<div class="modal fade" id="t_Info_b" tabindex="-1" role="dialog" aria-labelledby="t_Info_b" aria-hidden="true">
 										  <div class="modal-dialog modal-dialog-centered" role="document">
 										    <div class="modal-content">
 										      <div class="modal-header">
@@ -111,7 +132,7 @@
 										        </button>
 										      </div>
 										      <div class="modal-body">
-										      	{{$d}}
+										      	
 										      </div>
 										      <div class="modal-footer">
 										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -122,6 +143,27 @@
 										</div>
 
 										<hr/><!--break to next entry-->
+										<!-- mark completed Modal -->
+<div class="modal fade" id="markCompletedModal{{ $notif->id }}" tabindex="-1" role="dialog" aria-labelledby="markCompletedModalTitle{{ $notif->id }}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Class Done</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You are about to mark this class as done, are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="{{ route('markAsDoneStudent', ['id' => $notif->id, 'username' => $notif->inflexion_username]) }}" type="button" class="btn btn-success">Mark as Done</a>
+      </div>
+    </div>
+  </div>
+</div>
+									@endif
 									@endforeach
 									<!--end results for booked -->
 								</div>
@@ -138,47 +180,65 @@
 					  			<!--middle column this tab-->
 						  		<div class="col-sm-9">
 						  			<!--start results for history -->
-							  		@foreach(range(date('d')-3, date('d')) as $d)<!--just to loop results for 4 days-->
+							  		@foreach($notifs as $notif)<!--just to loop results for 4 days-->
 									    <div class="row ">
 											<div class="col-sm-12">
 												<div class="group-card card shadow">
 											  		<div class="card-header">
 											  			<div class="row">
-											  				<div class="col-sm-1">
-											  					<time datetime="2014-06-29" class="pull-left datebox">
-																	<strong>Feb</strong>
-																	<span>{{$d}}</span>
+											  				<div class="col-sm-2 pull-left">
+											  					<time datetime="2014-06-29" class="datebox">
+																	<strong></strong>
+																	<span></span>
 																</time>
 											  				</div>
-											  				<div class="col-sm-7">
+											  				<div class="col-sm-6">
 											  					<h4 title="Your Tutor for this class">
-											  						 John Doe
-											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_info_h{{$d}}">
+											  						 {{ $notif->inflexion_detail_first . " " . $notif->inflexion_detail_last}}
+											  						<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#t_Info_b">
 											  							<i class="fa fa-graduation-cap" aria-hidden="true"></i>
 											  						</button>
 											  					</h4>
-											  					<h6>Monday February {{$d}} 2021 at 3:30pm</h6>
+											  					<h6></h6>
 											  				</div>
-											  				<div class="col-sm-4 text-right">
-											  					<a href="#" class="btn btn-secondary form-control">Completed</a>
-											  					<small><i>45 IG credits used</i></small>
-											  				</div>
+											  				<div class="col-sm-4">
+																  <strong>CLASS STATUS: </strong><br />
+																  @if($notif->status == 1 && $notif->student_status == 0)
+											  					<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#markCompletedModal{{ $notif->id }}">Mark as Done</a>
+											  					Details: <br />
+																  Tutor approved schedule<br />
+																	Date and time of class: <strong>{{ $notif->schedule }}</strong><br />
+																	Class in progress<br />
+																  @elseif($notif->status == 0)
+																  <button class="btn btn-primary btn-sm" disabled>PENDING APPROVAL</button>
+																  Details:<br />
+																  Awaiting tutor approval
+																  @elseif($notif->status == 2)
+																  <button class="btn btn-danger btn-sm" disabled>DECLINED</button>
+																  @elseif($notif->status == 4)
+																  <button class="btn btn-success btn-sm" disabled>CLASS COMPLETED</button><br />
+																  Details: <br />
+																  Tutor approved schedule<br />
+																	Date and time of class: <strong>{{ $notif->schedule }}</strong><br />
+																	<strong>Class completed</strong>
+																  @elseif($notif->student_status == 1)
+																  <button class="btn btn-primary btn-sm" disabled>YOU'VE MARKED THIS CLASS AS DONE</button>
+																  @elseif($notif->status == 3)
+																  <a href="#" class="btn btn-success form-control" data-toggle="modal" data-target="#markCompletedModal{{ $notif->id }}">Mark as Done</a>
+																  Details:<br />
+																Class marked done by your tutor 
+																  @endif
+															</div>
 											  			</div>
 											  		</div>
 											  		<div class="card-body">
-											  			<div class="row">
-											  				<div class="col-sm-12">
-												    		ENGLISH FOR BEGGINERS
-												  			</div>
-											  			</div>
 											  			
 											  		</div>
 												</div>
 											</div>
 										</div>
-
 										<!-- looped Modal -->
-										<div class="modal fade" id="t_info_h{{$d}}" tabindex="-1" role="dialog" aria-labelledby="t_info_h{{$d}}" aria-hidden="true">
+										<div class="modal fade" id="t_Info_b" tabindex="-1" role="dialog" aria-labelledby="t_Info_b" aria-hidden="true">
 										  <div class="modal-dialog modal-dialog-centered" role="document">
 										    <div class="modal-content">
 										      <div class="modal-header">
@@ -188,7 +248,7 @@
 										        </button>
 										      </div>
 										      <div class="modal-body">
-										      	{{$d}}
+										      	
 										      </div>
 										      <div class="modal-footer">
 										        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -388,6 +448,7 @@
 											</div>
 										</div>
 										<hr/><!--break to next entry-->
+										
 									@endforeach
 									<!--end results for history -->
 						  		</div>

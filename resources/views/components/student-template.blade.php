@@ -240,7 +240,7 @@
 	            
 	        </li>
 	        <li class="has-subnav">
-	            <a href="/studentClasses">
+	            <a href="/getNotificationsStudent">
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    My classes

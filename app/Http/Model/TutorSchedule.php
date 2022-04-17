@@ -31,4 +31,46 @@ class TutorSchedule extends Model
         ]);
         return $insert;
     }
+
+    public function getNotifications($id){
+        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->join('inflexion_users', 'inflexion_user_id', '=', 'student_id')->where('tutor_id', $id)->orderBy('schedule','desc')->get();
+        return $result;
+    }
+
+    public function getNotificationsStudent($id){
+        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('student_id', $id)->orderBy('schedule', 'desc')->get();
+        return $result;
+    }
+
+    public function approveScheduleStudent($id){
+        $result = $this->where('id', $id)->update(['read' => 1, 'status'=> 1]);
+        return $result;
+    }
+
+    public function declineScheduleStudent($id){
+        $this->where('id', $id)->update(['read' => 1, 'status'=> 2]);
+    }
+
+    public function doneScheduleStudent($id){
+        $this->where('id', $id)->update(['read' => 1, 'status'=> 3]);
+        $parties = $this->where('id', $id)->first();
+        if($parties->status == 3 && $parties->student_status == 1){
+            $this->where('id', $id)->update(['parties_approved' => 1, 'status' => 4]);
+        }
+    }
+
+    public function modifyScheduleStudent($id, $sched){
+        $this->where('id', $id)->update(['schedule' => $sched]);
+    }
+
+    public function doneClassStudent($id){
+        $result = $this->where('id', $id)->update(['student_status'=> 1]);
+        $parties = $this->where('id', $id)->first();
+        if($parties->status == 3 && $parties->student_status == 1){
+            $this->where('id', $id)->update(['parties_approved' => 1, 'status' => 4]);
+            return $result;
+        }
+        return $result;
+
+    }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>studentIndex</title>
+    <title>Tutor</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
    
@@ -28,7 +28,7 @@
 		            <center>
 		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
 		            </center>
-				</a>//THIS IS A TUTOR ACCOUNT
+				</a>
 	        </div>
 	        <div class="navbar-nav ml-auto">
 	        	<div class="btn-group">
@@ -121,7 +121,7 @@
 	            
 	        </li>
 	        <li class="has-subnav">
-	            <a href="/tutorSchedule">
+	            <a href="{{ route('getNotificationsTutor') }}">
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    My Schedule

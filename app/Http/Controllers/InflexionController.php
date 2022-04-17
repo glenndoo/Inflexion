@@ -19,6 +19,9 @@ use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
 use App\Mail\TutorRegisterMail;
 use App\Mail\TutorInterviewMail;
+use App\Mail\BookingClassMail;
+use App\Mail\ApprovedBookingMail;
+use App\Mail\StudentMarkDoneMail;
 use Hash;
 use Illuminate\Support\Facades\DB;
 use Session;
@@ -154,8 +157,12 @@ class InflexionController extends Controller
             Mail::to($email)->send(new TutorRegisterMail($details));
         }else if($mailFunction == "TutorInterviewMail"){
             Mail::to($email)->send(new TutorInterviewMail($details));
-        }else{
-
+        }else if($mailFunction == "BookingClassMail"){
+            Mail::to($email)->send(new BookingClassMail($details));
+        }else if($mailFunction == "ApprovedBooking"){
+            Mail::to($email)->send(new ApprovedBookingMail($details));
+        }else if($mailFunction == "StudentMarkDone"){
+            Mail::to($email)->send(new StudentMarkDoneMail($details));
         }
            
     }
@@ -506,7 +513,6 @@ class InflexionController extends Controller
 
     // ADMIN SEND TUTOR INTERVIEW EMAIL
     public function sendInterviewEmail(Request $request){
-        dd($request);
         $details = [
             'title' => 'Inflexion Global Tutor Interview Invite',
             'body' => 'Congratulations! You have received this email to confirm that your interview schedule will be on: ',
@@ -588,9 +594,80 @@ class InflexionController extends Controller
         $data = $this->TutorSchedule->insertSchedule($date, $id, $tutorId);
 
         if($data){
+            $details = [
+                'title' => 'Class booking from student',
+                'body' => 'Congratulations! A student has booked a class with you! Please login to your profile to check the booking details.'
+            ];
+            $mailerFunction = 'BookingClassMail';
+            $token = "bookingrequest";
+            $this->SendEmail($request->username, $token, $details, $mailerFunction);
             return redirect()->back();
         }else{
 
+        }
+    }
+
+    // GET SCHEDULES TUTOR
+    public function getNotificationsTutor(){
+        $userId = Session::get('info');
+        $userId = $userId['userId'];
+        $notification = $this->TutorSchedule->getNotifications($userId);
+        return view('tutor.tutorSchedule')->with('notifs', $notification);
+    }
+
+    // GET SCHEDULES STUDENT
+    public function getNotificationsStudent(){
+        $userId = Session::get('info');
+        $userId = $userId['userId'];
+        $notification = $this->TutorSchedule->getNotificationsStudent($userId);
+        return view('student.studentclasses')->with('notifs', $notification);
+    }
+
+    // APPROVE STUDENT SCHEDULE
+    public function approveScheduleStudent(Request $request){
+        $approve = $this->TutorSchedule->approveScheduleStudent($request->id);
+        if($approve){
+            $details = [
+                'title' => 'Class booking approved',
+                'body' => 'Congratulations! Your class booking for ' . $request->schedule . ' has been approved. Please login to your profile to view the details of your booked class.'
+            ];
+            $mailerFunction = 'ApprovedBooking';
+            $token = "approvebooking";
+            $this->SendEmail($request->username, $token, $details, $mailerFunction);
+        return redirect()->back();
+        }
+    }
+
+    // DECLINE STUDENT SCHEDULE
+    public function declineScheduleStudent(Request $request){
+        $this->TutorSchedule->declineScheduleStudent($request->id);
+        return redirect()->back();
+    }
+
+    // MARK AS DONE SCHEDULE
+    public function doneScheduleStudent(Request $request){
+        $this->TutorSchedule->doneScheduleStudent($request->id);
+        return redirect()->back();
+    }
+
+    // MODIFY STUDENT SCHEDULE
+    public function modifyScheduleStudent(Request $request){
+        $this->TutorSchedule->modifyScheduleStudent($request->id, $request->newSchedule);
+        return redirect()->back();
+    }
+
+    // STUDENT MARK AS DONE
+    public function markAsDoneStudent(Request $request){
+        $approve = $this->TutorSchedule->doneClassStudent($request->id);
+        if($approve){
+            $details = [
+                'title' => 'Class marked as done',
+                'body' => 'Congratulations! One of your students marked your class as done!'
+            ];
+            $mailerFunction = 'StudentMarkDone';
+            $token = "approvebooking";
+            $this->SendEmail($request->username, $token, $details, $mailerFunction);
+        return redirect()->back();
         }
     }
 }
