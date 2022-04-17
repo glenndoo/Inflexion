@@ -109,11 +109,10 @@
 												    		
 												  			</div>
 												  			<div class="col-sm-2">
-											  					<a href="#" class="btn btn-danger form-control" data-toggle="modal" data-target="#cancelClassModal">cancel</a>
+											  					<a href="#" class="btn btn-danger form-control" data-toggle="modal" data-target="#cancelClassModal">Cancel</a>
 											  				</div>
 												  			<div class="col-sm-2">
-											  					<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#reschedClassModal">resched</a>
-
+											  					<a href="#" class="btn btn-primary form-control" data-toggle="modal" data-target="#reschedClassModal">Reschedule</a>
 											  				</div>
 											  			</div>
 											  		</div>
@@ -519,7 +518,7 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        You can only reschedule 2 hours before your class 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
