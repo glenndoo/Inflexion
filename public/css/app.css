@@ -13985,3 +13985,10 @@ a.text-dark:focus {
   clip: auto;
 }
 
+span.num {
+  position: absolute;
+  font-size: 0.3em;
+  top: 1px;
+  color: #fff;
+  right: 2px;
+}
