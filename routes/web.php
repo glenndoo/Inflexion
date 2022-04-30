@@ -134,11 +134,6 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@ValidateAnswers'
     ));
 
-    Route::get('connectToStripe', array(
-        'as' => 'connectToStripe',
-        'uses' => 'InflexionController@connectToStripe'
-    ));
-
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
@@ -198,6 +193,15 @@ use Illuminate\Support\Facades\Route;
             'as' => 'markAsDoneStudent',
             'uses' => 'InflexionController@markAsDoneStudent'
         ));
+
+        Route::post('paymentIntent', array(
+            'as' => 'paymentIntent',
+            'uses' => 'InflexionController@paymentIntent'
+        ));
+
+        Route::get('checkout', function(){
+            return view('student.checkout');
+        });
     });
 
 
