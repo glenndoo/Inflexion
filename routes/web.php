@@ -134,6 +134,11 @@ use Illuminate\Support\Facades\Route;
         'uses' => 'InflexionController@ValidateAnswers'
     ));
 
+    Route::get('connectToStripe', array(
+        'as' => 'connectToStripe',
+        'uses' => 'InflexionController@connectToStripe'
+    ));
+
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
