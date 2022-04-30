@@ -670,4 +670,38 @@ class InflexionController extends Controller
         return redirect()->back();
         }
     }
+
+    //STRIPE INTEGRATION
+    public function connectToStripe(){
+        \Stripe\Stripe::setApiKey('sk_test_51KpWYEJS8Zj3NqcQvt4A2eT1INbYsTzzEVk69WyVT55yW75e05r3e6qvLxWQkuTDAYdahGD2W95fR54hs3XSHdoP00ZlYMGfsN');
+
+        try {
+            // retrieve JSON from POST body
+            $jsonStr = file_get_contents('php://input');
+            $jsonObj = json_decode($jsonStr);
+        
+            // Create a PaymentIntent with amount and currency
+            $paymentIntent = \Stripe\PaymentIntent::create([
+                'amount' => 5000,
+                'currency' => 'php',
+                'automatic_payment_methods' => [
+                    'enabled' => 'false',
+                ],
+            ]);
+        
+            $output = [
+                'clientSecret' => $paymentIntent->client_secret,
+                'result' => $paymentIntent,
+            ];
+        
+            if(!empty($output['clientSecret'])){
+                return $output;
+            }else{
+                return "Payment failed";
+            }
+        } catch (Error $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    }
 }
