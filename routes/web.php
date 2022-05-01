@@ -202,6 +202,11 @@ use Illuminate\Support\Facades\Route;
         Route::get('checkout', function(){
             return view('student.checkout');
         });
+
+        Route::get('getPaymentDetails', array(
+            'as' => 'getPaymentDetails',
+            'uses' => 'InflexionController@getPaymentDetails'
+        ));
     });
 
 

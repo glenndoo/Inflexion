@@ -706,10 +706,14 @@ class InflexionController extends Controller
         \Stripe\Stripe::setApiKey('sk_test_51KpWYEJS8Zj3NqcQvt4A2eT1INbYsTzzEVk69WyVT55yW75e05r3e6qvLxWQkuTDAYdahGD2W95fR54hs3XSHdoP00ZlYMGfsN');
     }
 
-    function calculateOrderAmount(array $items): int {
+    public function calculateOrderAmount(array $items): int {
         // Replace this constant with a calculation of the order's amount
         // Calculate the order total on the server to prevent
         // people from directly manipulating the amount on the client
         return 1400;
+    }
+
+    public function getPaymentDetails(Request $request){
+        return $request;
     }
 }
