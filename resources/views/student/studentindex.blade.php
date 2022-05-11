@@ -1,4 +1,12 @@
 <x-student-template data="Student Index" />
+@if(isset($Success))
+                <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>{{ $Success}}</strong><br/>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            @endif
 <div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container-fluid">
 		<div class="row">

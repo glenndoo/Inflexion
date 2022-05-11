@@ -20,10 +20,11 @@
     <link href="{{ asset('css/custom-style-template.css') }}" rel="stylesheet">
 
      <!-- Enjoyhint library -->
-  	<link href="{{ asset('enjoyhint/enjoyhint.css') }}" rel="stylesheet">
-  	<script src="{{ asset('enjoyhint/enjoyhint.min.js') }}"></script>
+  	<!-- <link href="{{ asset('enjoyhint/enjoyhint.css') }}" rel="stylesheet">
+  	<script src="{{ asset('enjoyhint/enjoyhint.min.js') }}"></script> -->
 </head>
 <body id="app">
+
 	<!--nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
 	    <a href="#" class="navbar-brand">
 	       <img class="" src="{{ asset('img/inflex_icon.png') }}" >
@@ -108,6 +109,13 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
+						Credits available: 
+						@if(session()->get('info.credits'))<strong>{{ session()->get('info.credits') }}</strong>
+						@elseif(!session()->get('info.credits'))
+						0
+						@endif
+						</li>
+						<li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
                                 <input class="form-control" type="text" placeholder="Search..">
                             </div>
@@ -116,7 +124,7 @@
                             <a class="nav-link nav-icons guidestep4" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
-                                    <div class="notification-title"> Notification</div>
+                                    <div class="notification-title"> Notifications</div>
                                     <div class="notification-list">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active guidestep5">
@@ -301,45 +309,50 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">modalCredits</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Credits</h5>
+		
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="row">
-        	<div class="col-sm-2">
-        		<label>current:</label>
-        	</div>
+        	<div class="col-sm-3">
+        		<label>Available credits: 
+					@if(session()->get('info.credits'))
+					<strong>{{ session()->get('info.credits') }}</strong></label>
+					@elseif(!session()->get('info.credits'))
+					<strong>0</strong>
+					@endif
+				</div>
         	<div class="col-sm-10 text-right">
-        		<label><b title="Inflexion Global Credits">100 IG Credits </b> </label>
+        		<label><b title="Inflexion Global Credits"></b> </label>
         	</div>
         	<div class="col-sm-12 text-right">
-        		<small><i>credits allow you to book classes with tutors</i></small>
         	</div>
         </div>
-
         <hr/>
-
+		<form method="POST" action="{{ route('initiatePayment') }}">
+			@csrf
         <div class="row">
-        	<div class="col-sm-3">
+        	<div class="col-sm-3">Credits:
         		<i title="desired amount of credits 1 IGC = 1$."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="number" class="form-control" placeholder="amount" name="creditAmount" min="10"/>
-        	</div>
-        	<div class="col-sm-5"> <i title="your 16 digit credit card number"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="card number" name=""/>
+        		<select name="amount" id="amount">
+					<option>----------</option>
+					<option value="2500">50 Credits ( $25 )</option>
+					<option value="3000">60 Credits ( $30 )</option>
+					<option value="3500">70 Credits ( $35 )</option>
+					<option value="4000">80 Credits ( $40 )</option>
+					<option value="4500">90 Credits ( $45 )</option>
+					<option value="5000">100 Credits ( $50 )</option>
+				</select>
         	</div>
         	<div class="col-sm-2">
-        		 <i title="four-digit code assigned to or chosen by you after opening a credit card."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<input type="text" class="form-control" placeholder="pin" name=""/>
-        	</div>
-        	<div class="col-sm-2">
-        		<i title="submit after completing credit card info and desired IG credit ammount information"class="fa fa-info-circle" aria-hidden="true"></i>
-        		<button class="form-control btn btn-primary">submit</button>
+        		<i title="You will be forwarded to a secure page to complete your credit purchase"class="fa fa-info-circle" aria-hidden="true"></i>
+        		<input type="submit" class="form-control btn btn-primary" value="Buy credits"></button>
+			</form>
         	</div>
         	<div class="col-sm-12">
-        		<small><i>we will never share or save your credit card information</i></small>
-        		<small class="pull-right"><i>make sure all information are correct</i></small>
         	</div>
         </div>
       </div>
