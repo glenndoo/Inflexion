@@ -14,6 +14,7 @@ use App\Http\Model\ExamScheduleModel;
 use App\Http\Model\CommentsModel;
 use App\Http\Model\TutorDetailModel;
 use App\Http\Model\TutorSchedule;
+use App\Http\Model\StripePaymentModel;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -39,7 +40,8 @@ class InflexionController extends Controller
     public $ExamScheduleModel;
     public $TutorDetailModel;
     public $TutorSchedule;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule){
+    public $StripePaymentModel;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule, StripePaymentModel $StripePaymentModel){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
@@ -50,6 +52,7 @@ class InflexionController extends Controller
         $this->ExamScheduleModel = $ExamScheduleModel;
         $this->TutorDetailModel = $TutorDetailModel;
         $this->TutorSchedule = $TutorSchedule;
+        $this->StripePaymentModel = $StripePaymentModel;
     }
 
     //DISPLAY INDEX
@@ -249,7 +252,8 @@ class InflexionController extends Controller
                             'userId' => $login->inflexion_user_id,
                             'userName' => $login->inflexion_username,
                             'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last,
-                            'userDetails' => $login
+                            'userDetails' => $login,
+                            'credits' => $login->credits
                         ];
                         $request->session()->put('info', $sess);
                         if($login->inflexion_user_type == 1){
@@ -672,30 +676,27 @@ class InflexionController extends Controller
     }
 
     //STRIPE INTEGRATION
-    public function paymentIntent(){
+    public function paymentIntent(Request $request){
         $this->connectToStripe();
-
         header('Content-Type: application/json');
-
         try {
             // retrieve JSON from POST body
             $jsonStr = file_get_contents('php://input');
-            $jsonObj = json_decode($jsonStr);
-
+            $jsonObj = json_decode($jsonStr, true);
+            
             // Create a PaymentIntent with amount and currency
             $paymentIntent = \Stripe\PaymentIntent::create([
-                'amount' => $this->calculateOrderAmount($jsonObj->items),
-                'currency' => 'eur',
-                'automatic_payment_methods' => [
-                    'enabled' => true,
-                ],
+                'amount' => $this->calculateOrderAmount($jsonObj),
+                'currency' => 'usd',
+                'payment_method_types' => ['card'],
             ]);
 
             $output = [
                 'clientSecret' => $paymentIntent->client_secret,
+                'amount' => $paymentIntent->amount
             ];
 
-            echo json_encode($output);
+            return json_encode($output);
         } catch (Error $e) {
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
@@ -710,10 +711,43 @@ class InflexionController extends Controller
         // Replace this constant with a calculation of the order's amount
         // Calculate the order total on the server to prevent
         // people from directly manipulating the amount on the client
-        return 1400;
+        $this->processPayment($items['items'][0]['transactId']);
+        return $items['items'][0]['paymentAmount'];
+    }
+
+    public function processPayment($id){
+        $this->StripePaymentModel->processPayment($id);
     }
 
     public function getPaymentDetails(Request $request){
+        if($request->redirect_status == 'succeeded'){
+            $updateCredit = $this->StripePaymentModel->finalizePayment($request->transactId, 1);
+            $creditAmount = ($updateCredit->amount/100)*2;
+            $creditSession = $this->InflexionUserModel->insertCredit($updateCredit->student_id, $creditAmount);
+            Session::put('info.credits', $creditSession);
+            return redirect()->to('studentIndex')->with('Success','Payment successful!');
+        }else{
+            $this->StripePaymentModel->finalizePayment($request->transactId, 0);
+            return redirect()->to('studentIndex')->with('Success','Payment failed');
+        }
         return $request;
+    }
+
+    public function initiatePayment(Request $request){
+        $userId = Session::get('info');
+        $userId = $userId['userId'];
+        $result = $this->StripePaymentModel->initiatePayment($userId, $request->amount);
+        // $amount = $request->creditAmount/100;
+        // if($amount >= 50){
+            $data = [
+                'amount' => $result->amount,
+                'currency' => "$",
+                'transact_id' => $result->id
+            ];
+            return view('student.checkout')->with('data', $data);
+        // }else{
+        //     return "Invalid amount";
+        // }
+        
     }
 }

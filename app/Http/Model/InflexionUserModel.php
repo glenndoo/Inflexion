@@ -225,4 +225,12 @@ class InflexionUserModel extends Model
         $hobbies = $this->join('tutor_detail_models', 'tutor_id', '=', 'inflexion_user_id')->get();
         return $hobbies;
     }
+
+    public function insertCredit($id, $credits){
+        $student = $this::find($id);
+        $currentCredit = $student->credits;
+        $student->credits = $currentCredit + $credits;
+        $student->save();
+        return $student->credits;
+    }
 }

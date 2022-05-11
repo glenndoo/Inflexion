@@ -1,8 +1,7 @@
       // This is your test publishable API key.
       const stripe = Stripe("pk_test_51KpWYEJS8Zj3NqcQmJlQzUa5kHudru3kJanIVSRgLIEgktk3o39J5vl0AfL9Jm0AiS1s0XVWCcyOt60VUBq5pdrQ00ksLwci9J");
-
       // The items the customer wants to buy
-      const items = [{ id: "xl-tshirt" }];
+      const items = [{ id: "credit", paymentAmount: $("#paymentAmount").val(), transactId: $("#transactId").val() }];
       
       let elements;
       
@@ -35,7 +34,7 @@
           elements,
           confirmParams: {
             // Make sure to change this to your payment completion page
-            return_url: "http://localhost:8000/getPaymentDetails",
+            return_url: "http://localhost:8000/getPaymentDetails?transactId="+$("#transactId").val(),
           },
         });
       

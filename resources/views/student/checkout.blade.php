@@ -12,11 +12,17 @@
     <script src="{{ asset('js/checkout.js') }}" defer></script>
   </head>
   <body>
+ 
+
     <!-- Display a payment form -->
     <form id="payment-form">
+    <div>Amount to be paid: <strong> {{ strtoupper($data['currency']) . " ". number_format($data['amount']/100, 2) }}</strong></div><br />
+
       <div id="payment-element">
         <!--Stripe.js injects the Payment Element-->
       </div>
+      <input type='hidden' id='paymentAmount' value="{{ $data['amount'] }}"/>
+			<input type="hidden" id="transactId" value="{{ $data['transact_id'] }}" />
       <button id="submit">
         <div class="spinner hidden" id="spinner"></div>
         <span id="button-text">Pay now</span>

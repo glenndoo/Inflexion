@@ -207,6 +207,11 @@ use Illuminate\Support\Facades\Route;
             'as' => 'getPaymentDetails',
             'uses' => 'InflexionController@getPaymentDetails'
         ));
+
+        Route::post('initiatePayment', array(
+            'as' => 'initiatePayment',
+            'uses' => 'InflexionController@initiatePayment'
+        ));
     });
 
 
