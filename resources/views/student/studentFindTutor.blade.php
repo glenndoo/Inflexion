@@ -241,8 +241,15 @@
 								      </div>
 								      <div class="modal-footer">
 								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-								        <input type="submit" type="button" class="btn btn-primary" value="Book Class">
-                                        </form>
+                                        @php
+                                            $creditCheck = Session::get('info.credits');
+                                        @endphp
+								        @if( $creditCheck >= 1)
+                                        <input type="submit" type="button" class="btn btn-primary" value="Book Class">
+                                        @else
+                                        <input type="submit" type="button" class="btn btn-primary" value="No credits" disabled>
+                                        @endif
+                                    </form>
 								      </div>
 								    </div>
 								  </div>

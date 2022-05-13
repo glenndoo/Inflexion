@@ -268,6 +268,11 @@ use Illuminate\Support\Facades\Route;
             'as' => 'modifyScheduleStudent',
             'uses' => 'InflexionController@modifyScheduleStudent'
         ));
+
+        Route::post('/setCreditCharge', array(
+            'as' => 'setCreditCharge',
+            'uses' => 'InflexionController@setCreditCharge'
+        ));
     });
     
     //ADMIN GROUP ROUTE

@@ -9,7 +9,7 @@ class TutorSchedule extends Model
     //
     protected $connection = "mysql";
     protected $table = "tutor_schedules";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -42,8 +42,8 @@ class TutorSchedule extends Model
         return $result;
     }
 
-    public function approveScheduleStudent($id){
-        $result = $this->where('id', $id)->update(['read' => 1, 'status'=> 1]);
+    public function approveScheduleStudent($id, $credit){
+        $result = $this->where('id', $id)->update(['read' => 1, 'status'=> 1, 'credit_charged' => $credit]);
         return $result;
     }
 
@@ -52,11 +52,14 @@ class TutorSchedule extends Model
     }
 
     public function doneScheduleStudent($id){
-        $this->where('id', $id)->update(['read' => 1, 'status'=> 3]);
-        $parties = $this->where('id', $id)->first();
+        $result = $this->where('id', $id)->update(['read' => 1, 'status'=> 3]);
+        $parties = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
         if($parties->status == 3 && $parties->student_status == 1){
             $this->where('id', $id)->update(['parties_approved' => 1, 'status' => 4]);
+            $result = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
+            return $result;
         }
+        return $result;
     }
 
     public function modifyScheduleStudent($id, $sched){
@@ -65,9 +68,10 @@ class TutorSchedule extends Model
 
     public function doneClassStudent($id){
         $result = $this->where('id', $id)->update(['student_status'=> 1]);
-        $parties = $this->where('id', $id)->first();
+        $parties = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
         if($parties->status == 3 && $parties->student_status == 1){
             $this->where('id', $id)->update(['parties_approved' => 1, 'status' => 4]);
+            $result = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
             return $result;
         }
         return $result;

@@ -15,6 +15,7 @@ use App\Http\Model\CommentsModel;
 use App\Http\Model\TutorDetailModel;
 use App\Http\Model\TutorSchedule;
 use App\Http\Model\StripePaymentModel;
+use App\Http\Model\CreditTransactions;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -41,7 +42,8 @@ class InflexionController extends Controller
     public $TutorDetailModel;
     public $TutorSchedule;
     public $StripePaymentModel;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule, StripePaymentModel $StripePaymentModel){
+    public $CreditTransactions;
+    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule, StripePaymentModel $StripePaymentModel, CreditTransactions $CreditTransactions){
         $this->InflexionUserModel = $InflexionUserModel;
         $this->InflexionDetailModel = $InflexionDetailModel;
         $this->InflexionPostModel = $InflexionPostModel;
@@ -53,6 +55,7 @@ class InflexionController extends Controller
         $this->TutorDetailModel = $TutorDetailModel;
         $this->TutorSchedule = $TutorSchedule;
         $this->StripePaymentModel = $StripePaymentModel;
+        $this->CreditTransactions = $CreditTransactions;
     }
 
     //DISPLAY INDEX
@@ -247,13 +250,18 @@ class InflexionController extends Controller
                         }
                 // IF USER IS VALID
                 }else{
+                    $tutorDetailId = null;
+                    if($login->inflexion_user_type == 2){
+                        $tutorDetailId = $this->TutorDetailModel->where('tutor_id', $login->inflexion_user_id)->first();
+                    }
                         $sess = [
                             'status' => $login->inflexion_user_type,
                             'userId' => $login->inflexion_user_id,
                             'userName' => $login->inflexion_username,
                             'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last,
                             'userDetails' => $login,
-                            'credits' => $login->credits
+                            'credits' => $login->credits,
+                            'creditCharge' => isset($tutorDetailId->credit_charge) ? $tutorDetailId->credit_charge : null
                         ];
                         $request->session()->put('info', $sess);
                         if($login->inflexion_user_type == 1){
@@ -581,6 +589,12 @@ class InflexionController extends Controller
         return redirect()->back()->with('tag', $tags)->with('hobby', $hobbs);
     }
 
+    // SET CREDIT CHARGE FOR TUTOR
+    public function setCreditCharge(Request $request){
+        $this->TutorDetailModel->creditCharge($request->id, $request->creditCharge);
+        return redirect()->back();
+    }
+
     // FETCH TUTOR FOR STUDENT VIEW
     public function fetchTutor(){
         $sess = Session::get('info');
@@ -629,7 +643,8 @@ class InflexionController extends Controller
 
     // APPROVE STUDENT SCHEDULE
     public function approveScheduleStudent(Request $request){
-        $approve = $this->TutorSchedule->approveScheduleStudent($request->id);
+        $creditCharge = Session::get('info.creditCharge');
+        $approve = $this->TutorSchedule->approveScheduleStudent($request->id, $creditCharge);
         if($approve){
             $details = [
                 'title' => 'Class booking approved',
@@ -650,7 +665,13 @@ class InflexionController extends Controller
 
     // MARK AS DONE SCHEDULE
     public function doneScheduleStudent(Request $request){
-        $this->TutorSchedule->doneScheduleStudent($request->id);
+        $charge = Session::get('info');
+        $creditCharge = $charge['creditCharge'];
+        $done = $this->TutorSchedule->doneScheduleStudent($request->id);
+        if(isset($done->parties_approved) == 1){
+            $currentCredit = $this->InflexionUserModel->insertCredit($done->student_id, ($creditCharge)*-1);
+            $this->CreditTransactions->insertTransaction($done->student_id, 1, $done->tutor_id, $creditCharge, $currentCredit);
+        }
         return redirect()->back();
     }
 
@@ -662,6 +683,7 @@ class InflexionController extends Controller
 
     // STUDENT MARK AS DONE
     public function markAsDoneStudent(Request $request){
+        
         $approve = $this->TutorSchedule->doneClassStudent($request->id);
         if($approve){
             $details = [
@@ -671,6 +693,12 @@ class InflexionController extends Controller
             $mailerFunction = 'StudentMarkDone';
             $token = "approvebooking";
             $this->SendEmail($request->username, $token, $details, $mailerFunction);
+            if(isset($approve->parties_approved) == 1){
+                $creditCharge = $this->TutorSchedule->where('student_id', $approve->student_id)->orderBy('created_at', 'desc')->first();
+                $currentCredit = $this->InflexionUserModel->insertCredit($approve->student_id, ($creditCharge->credit_charged)*-1);
+                $this->CreditTransactions->insertTransaction($approve->student_id, 1, $approve->tutor_id, $creditCharge->credit_charged, $currentCredit);
+                Session::put('info.credits', $currentCredit);
+            }
         return redirect()->back();
         }
     }
@@ -722,8 +750,9 @@ class InflexionController extends Controller
     public function getPaymentDetails(Request $request){
         if($request->redirect_status == 'succeeded'){
             $updateCredit = $this->StripePaymentModel->finalizePayment($request->transactId, 1);
-            $creditAmount = ($updateCredit->amount/100)*2;
+            $creditAmount = ($updateCredit->amount)*2;
             $creditSession = $this->InflexionUserModel->insertCredit($updateCredit->student_id, $creditAmount);
+            $this->CreditTransactions->insertTransaction($updateCredit->student_id, 0, null, $creditAmount, $creditSession);
             Session::put('info.credits', $creditSession);
             return redirect()->to('studentIndex')->with('Success','Payment successful!');
         }else{
@@ -740,10 +769,11 @@ class InflexionController extends Controller
         // $amount = $request->creditAmount/100;
         // if($amount >= 50){
             $data = [
-                'amount' => $result->amount,
+                'amount' => ($result->amount)*100,
                 'currency' => "$",
                 'transact_id' => $result->id
             ];
+            // dd($data['amount']);
             return view('student.checkout')->with('data', $data);
         // }else{
         //     return "Invalid amount";

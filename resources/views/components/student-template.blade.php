@@ -335,17 +335,9 @@
 		<form method="POST" action="{{ route('initiatePayment') }}">
 			@csrf
         <div class="row">
-        	<div class="col-sm-3">Credits:
+        	<div class="col-sm-6">Payment amount (2 credits = 1 USD):
         		<i title="desired amount of credits 1 IGC = 1$."class="fa fa-info-circle" aria-hidden="true"></i>
-        		<select name="amount" id="amount">
-					<option>----------</option>
-					<option value="2500">50 Credits ( $25 )</option>
-					<option value="3000">60 Credits ( $30 )</option>
-					<option value="3500">70 Credits ( $35 )</option>
-					<option value="4000">80 Credits ( $40 )</option>
-					<option value="4500">90 Credits ( $45 )</option>
-					<option value="5000">100 Credits ( $50 )</option>
-				</select>
+        		<input type="number" name="amount" min="50" id="amount" />
         	</div>
         	<div class="col-sm-2">
         		<i title="You will be forwarded to a secure page to complete your credit purchase"class="fa fa-info-circle" aria-hidden="true"></i>

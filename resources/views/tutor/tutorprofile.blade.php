@@ -367,29 +367,17 @@
 							<section class="panel panel-default shadow">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
-										<i class="fa fa-tag"></i> TAGS
+										 Credit Charge
 									</h2>
 								</header>
 
 								<div class="panel-body noradius padding-10">
-									<ul class="bullet-list list-unstyled">
-										<li class="red">
-											<h3>TOEIC</h3>
-											<span class="text-gray size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing </span>
-										</li>
-										<li class="green">
-											<h3>FREE TALKING</h3>
-											<span class="text-gray size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing </span>
-										</li>
-										<li class="blue">
-											<h3>AVAILABLE FOR KIDS</h3>
-											<span class="text-gray size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing </span>
-										</li>
-										<li class="orange">
-											<h3>BUSINESS CONVERSATION</h3>
-											<span class="text-gray size-12">Lorem ipsum dolor sit amet, consectetuer adipiscing </span>
-										</li>
-									</ul>
+									<span>How many credits would you charge for your classes?</span>
+									<form method="POST" action="{{ route('setCreditCharge', ['id' => $id ]) }}">
+										@csrf
+										<input type="number" name="creditCharge" />
+										<input type="submit" value="Save" />
+									</form>
 								</div>
 							</section>
 							<!-- /projects -->

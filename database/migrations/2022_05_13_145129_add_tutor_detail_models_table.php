@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPaidToInflexionUsersTable extends Migration
+class AddTutorDetailModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddPaidToInflexionUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('inflexion_users', function (Blueprint $table) {
+        Schema::table('tutor_detail_models', function (Blueprint $table) {
             //
-            $table->integer('credits')->nullable();
+            $table->integer('credit_charge');
         });
     }
 
@@ -26,7 +26,7 @@ class AddPaidToInflexionUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('inflexion_users', function (Blueprint $table) {
+        Schema::table('tutor_detail_models', function (Blueprint $table) {
             //
         });
     }
