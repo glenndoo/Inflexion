@@ -63,6 +63,8 @@
 														<td>--</td>
 														@elseif($notif->status == 1 && $notif->student_status != 1)
 														<td><a href="" class="btn btn-success" title="Mark as done" data-toggle="modal" data-target="#done-modal-{{ $notif->id }}">Mark as Done</a><a href="" class="btn btn-primary" title="Mark as done" data-toggle="modal" data-target="#done-modal-{{ $notif->id }}">Reschedule</a></td>
+														@elseif($notif->status == 1 && $notif->student_status == 1)
+														<td><a href="" class="btn btn-success" title="Mark as done" data-toggle="modal" data-target="#done-modal-{{ $notif->id }}">Mark as Done</a><a href="" class="btn btn-primary" title="Mark as done" data-toggle="modal" data-target="#done-modal-{{ $notif->id }}">Reschedule</a></td>
 														@elseif($notif->status == 3)
 														<td><button class="btn btn-primary btn-sm" disabled>Waiting for student approval</button></td>
 														@elseif($notif->status == 4)
