@@ -17,6 +17,8 @@ class AddCreditTransactionsTable extends Migration
             //
             $table->integer('current_credit');
             $table->integer('credit_amount');
+            $table->unsignedBigInteger('stripe_id')->nullable();
+            $table->foreign('stripe_id')->references('id')->on('stripe_payment_models')->onDelete('cascade');
         });
     }
 

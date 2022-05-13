@@ -752,7 +752,7 @@ class InflexionController extends Controller
             $updateCredit = $this->StripePaymentModel->finalizePayment($request->transactId, 1);
             $creditAmount = ($updateCredit->amount)*2;
             $creditSession = $this->InflexionUserModel->insertCredit($updateCredit->student_id, $creditAmount);
-            $this->CreditTransactions->insertTransaction($updateCredit->student_id, 0, null, $creditAmount, $creditSession);
+            $this->CreditTransactions->insertTransaction($updateCredit->student_id, 0, null, $creditAmount, $creditSession, $updateCredit->id);
             Session::put('info.credits', $creditSession);
             return redirect()->to('studentIndex')->with('Success','Payment successful!');
         }else{
