@@ -17,16 +17,18 @@ class CreditTransactions extends Model
       'transaction_type',
       'tutor_id',
       'credit_amount',
-      'current_credit'
+      'current_credit',
+      'stripe_id'
     ];
 
-    public function insertTransaction($id, $transactionType, $tutor = null, $creditAmount, $currentCredit){
+    public function insertTransaction($id, $transactionType, $tutor = null, $creditAmount, $currentCredit, $stripeId = null){
         $this->create([
             'student_id' => $id,
             'transaction_type' => $transactionType,
             'current_credit' => $currentCredit,
             'credit_amount' => $creditAmount,
-            'tutor_id' => $tutor
+            'tutor_id' => $tutor,
+            'stripe_id' => $stripeId
         ]);
     }
 }
