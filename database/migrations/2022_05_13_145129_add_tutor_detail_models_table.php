@@ -28,6 +28,8 @@ class AddTutorDetailModelsTable extends Migration
     {
         Schema::table('tutor_detail_models', function (Blueprint $table) {
             //
+        Schema::dropIfExists('tutor_detail_models');
+            
         });
     }
 }

@@ -31,6 +31,8 @@ class AddCreditTransactionsTable extends Migration
     {
         Schema::table('credit_transactions', function (Blueprint $table) {
             //
+        Schema::dropIfExists('credit_transactions');
+
         });
     }
 }
