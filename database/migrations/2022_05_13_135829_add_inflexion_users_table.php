@@ -28,6 +28,8 @@ class AddInflexionUsersTable extends Migration
     {
         Schema::table('inflexion_users', function (Blueprint $table) {
             //
+        Schema::dropIfExists('inflexion_users');
+
         });
     }
 }

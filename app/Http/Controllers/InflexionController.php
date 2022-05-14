@@ -3,20 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator;
-use App\Http\Model\InflexionUserModel;
-use App\Http\Model\InflexionDetailModel;
-use App\Http\Model\InflexionPostModel;
-use App\Http\Model\InflexionInboxModel;
-use App\Http\Model\InflexionQuestionsModel;
-use App\Http\Model\InflexionAnswersModel;
-use App\Http\Model\ExamScheduleModel;
-use App\Http\Model\CommentsModel;
-use App\Http\Model\TutorDetailModel;
-use App\Http\Model\TutorSchedule;
-use App\Http\Model\StripePaymentModel;
-use App\Http\Model\CreditTransactions;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
 use App\Mail\TutorRegisterMail;
@@ -24,40 +14,10 @@ use App\Mail\TutorInterviewMail;
 use App\Mail\BookingClassMail;
 use App\Mail\ApprovedBookingMail;
 use App\Mail\StudentMarkDoneMail;
-use Hash;
-use Illuminate\Support\Facades\DB;
-use Session;
 use Monarobase\CountryList\CountryListFacade;
 
 class InflexionController extends Controller
 {
-    public $InflexionUserModel;
-    public $InflexionDetailModel;
-    public $InflexionPostModel;
-    public $InflexionInboxModel;
-    public $InflexionQuestionsModel;
-    public $InflexionAnswersModel;
-    public $CommentsModel;
-    public $ExamScheduleModel;
-    public $TutorDetailModel;
-    public $TutorSchedule;
-    public $StripePaymentModel;
-    public $CreditTransactions;
-    public function __construct(InflexionUserModel $InflexionUserModel, InflexionDetailModel $InflexionDetailModel, InflexionPostModel $InflexionPostModel, InflexionInboxModel $InflexionInboxModel, InflexionQuestionsModel $InflexionQuestionsModel, InflexionAnswersModel $InflexionAnswersModel, CommentsModel $CommentsModel, ExamScheduleModel $ExamScheduleModel, TutorDetailModel $TutorDetailModel, TutorSchedule $TutorSchedule, StripePaymentModel $StripePaymentModel, CreditTransactions $CreditTransactions){
-        $this->InflexionUserModel = $InflexionUserModel;
-        $this->InflexionDetailModel = $InflexionDetailModel;
-        $this->InflexionPostModel = $InflexionPostModel;
-        $this->InflexionInboxModel = $InflexionInboxModel;
-        $this->InflexionQuestionsModel = $InflexionQuestionsModel;
-        $this->InflexionAnswersModel = $InflexionAnswersModel;
-        $this->CommentsModel = $CommentsModel;
-        $this->ExamScheduleModel = $ExamScheduleModel;
-        $this->TutorDetailModel = $TutorDetailModel;
-        $this->TutorSchedule = $TutorSchedule;
-        $this->StripePaymentModel = $StripePaymentModel;
-        $this->CreditTransactions = $CreditTransactions;
-    }
-
     //DISPLAY INDEX
 
     public function index(){
@@ -725,7 +685,7 @@ class InflexionController extends Controller
             ];
 
             return json_encode($output);
-        } catch (Error $e) {
+        } catch (\Error $e) {
             http_response_code(500);
             echo json_encode(['error' => $e->getMessage()]);
         }

@@ -28,6 +28,8 @@ class AddTutorSchedulesTable extends Migration
     {
         Schema::table('tutor_schedules', function (Blueprint $table) {
             //
+        Schema::dropIfExists('tutor_schedules');
+
         });
     }
 }
