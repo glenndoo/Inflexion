@@ -9,7 +9,7 @@ class InflexionDetailModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "inflexion_user_details";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'inflexion_detail_id';
     protected $fillable = [
@@ -25,10 +25,6 @@ class InflexionDetailModel extends Model
       'inflexion_detail_birth'
     ];
     public $InflexionUserModel;
-
-    public function __construct(InflexionUserModel $InflexionUserModel){
-        $this->InflexionUserModel = $InflexionUserModel;
-    }
 
     public function completeRegistration($request){
         $save = $this;

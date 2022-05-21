@@ -9,7 +9,7 @@ class InflexionPostModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "inflexion_posts";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'inflexion_post_id';
     protected $fillable = [
