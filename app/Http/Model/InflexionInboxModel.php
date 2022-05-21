@@ -10,7 +10,7 @@ class InflexionInboxModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "inflexion_inbox";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'inflexion_inbox_id';
     protected $fillable = [

@@ -315,4 +315,8 @@ use Illuminate\Support\Facades\Route;
             'as' => 'tutorApproval',
             'uses' => 'InflexionController@tutorApproval'
         ));
+        Route::get('/viewAllTutorClassTransactions', array(
+            'as' => 'viewAllTutorClassTransactions',
+            'uses' => 'InflexionController@viewAllTutorClassTransactions'
+        ));
     });

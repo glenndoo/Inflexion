@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Model\InflexionUserModel;
+use App\Http\Model\InflexionDetailModel;
+use App\Http\Model\InflexionPostModel;
+use App\Http\Model\InflexionInboxModel;
+use App\Http\Model\InflexionQuestionsModel;
+use App\Http\Model\InflexionAnswersModel;
+use App\Http\Model\ExamScheduleModel;
+use App\Http\Model\CommentsModel;
+use App\Http\Model\TutorDetailModel;
+use App\Http\Model\TutorSchedule;
+use App\Http\Model\StripePaymentModel;
+use App\Http\Model\CreditTransactions;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Mail\RegisterMail;
 use App\Mail\CompleteRegistryMail;
@@ -18,6 +30,34 @@ use Monarobase\CountryList\CountryListFacade;
 
 class InflexionController extends Controller
 {
+    protected $InflexionUserModel;
+    protected $InflexionDetailModel;
+    protected $InflexionPostModel;
+    protected $InflexionInboxModel;
+    protected $InflexionQuestionsModel;
+    protected $InflexionAnswersModel;
+    protected $CommentsModel;
+    protected $ExamScheduleModel;
+    protected $TutorDetailModel;
+    protected $TutorSchedule;
+    protected $StripePaymentModel;
+    protected $CreditTransactions;
+
+    public function __construct(){
+        $this->InflexionUserModel = new InflexionUserModel();
+        $this->InflexionDetailModel = new InflexionDetailModel();
+        $this->InflexionPostModel = new InflexionPostModel();
+        $this->InflexionInboxModel = new InflexionInboxModel();
+        $this->InflexionQuestionsModel = new InflexionQuestionsModel();
+        $this->InflexionAnswersModel = new InflexionAnswersModel();
+        $this->CommentsModel = new CommentsModel();
+        $this->ExamScheduleModel = new ExamScheduleModel();
+        $this->TutorDetailModel = new TutorDetailModel();
+        $this->TutorSchedule = new TutorSchedule();
+        $this->StripePaymentModel = new StripePaymentModel();
+        $this->CreditTransactions = new CreditTransactions();
+    }
+
     //DISPLAY INDEX
 
     public function index(){
@@ -707,6 +747,7 @@ class InflexionController extends Controller
         $this->StripePaymentModel->processPayment($id);
     }
 
+    // INSERT INTO CREDIT TRANSACTION
     public function getPaymentDetails(Request $request){
         if($request->redirect_status == 'succeeded'){
             $updateCredit = $this->StripePaymentModel->finalizePayment($request->transactId, 1);
@@ -722,6 +763,7 @@ class InflexionController extends Controller
         return $request;
     }
 
+    // FOR STUDENT WHEN INPUTTING AMOUNT
     public function initiatePayment(Request $request){
         $userId = Session::get('info');
         $userId = $userId['userId'];
@@ -739,5 +781,13 @@ class InflexionController extends Controller
         //     return "Invalid amount";
         // }
         
+    }
+
+    // ADMIN VIEW ALL TRANSACTIONS
+    public function viewAllTutorClassTransactions(){
+        $total = 0;
+        $name = "";
+        $tutorSummary = $this->CreditTransactions->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->select('credit_amount','tutor_id','inflexion_detail_last')->get();
+        return count($tutorSummary);
     }
 }
