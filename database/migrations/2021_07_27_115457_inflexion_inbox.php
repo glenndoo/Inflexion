@@ -23,6 +23,8 @@ class InflexionInbox extends Migration
             $table->string('inflexion_inbox_date');
             $table->integer('inflexion_inbox_read');
             $table->integer('inflexion_inbox_type');
+            $table->timestamps();
+
         });
     }
 

@@ -28,6 +28,13 @@ class InflexionDetailModel extends Model
 
     public function completeRegistration($request){
         $save = $this;
+        if($save::find($request->id)){
+            $userModel = new InflexionUserModel;
+            $check = $userModel::find($request->id);
+            $check->inflexion_user_take = $check->inflexion_user_take + 1;
+            $check->save();
+            return $check;
+        }else{
         $save->inflexion_detail_id = $request->id;
         $save->inflexion_detail_first = $request->firstName;
         $save->inflexion_detail_middle = $request->middleName;
@@ -42,14 +49,16 @@ class InflexionDetailModel extends Model
 
         if($save->save()){
             $userModel = new InflexionUserModel;
-            $check = $userModel->where('inflexion_user_id','=',$request->id)->first();
+            $check = $userModel::find($request->id);
             if($check->inflexion_user_type == 1){
-                $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 2,'inflexion_user_token' => 'Active']);
+               $check->where('inflexion_user_id', $request->id)->update(['inflexion_user_status' => 2,'inflexion_user_token' => 'Active']);
             }else if($check->inflexion_user_type == 2){
                 if($check->inflexion_user_tutor >= 70){
-                    $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 4,'inflexion_user_token' => 'For video upload']);
+                    $check->where('inflexion_user_id', $request->id)->update(['inflexion_user_status' => 4,'inflexion_user_token' => 'For video upload']);
+                }else if($check->inflexion_user_take <=3){
+                    $check->where('inflexion_user_id', $request->id)->update(['inflexion_user_status' => 5,'inflexion_user_token' => 'Exam']);
                 }else{
-                    $this->InflexionUserModel->where('inflexion_user_id','=',$request->id)->update(['inflexion_user_status' => 3,'inflexion_user_token' => 'Failed']);
+                    $check->where('inflexion_user_id', $request->id)->update(['inflexion_user_status' => 3,'inflexion_user_token' => 'Failed']);
                 }
                 
             }
@@ -59,5 +68,6 @@ class InflexionDetailModel extends Model
             return false;
         }
     }
+}
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class InflexionPosts extends Migration
+class CreateInflexionTestQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class InflexionPosts extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('inflexion_posts', function (Blueprint $table) {
-            $table->id('inflexion_post_id');
-            $table->longText('inflexion_post_message');
-            $table->string('inflexion_post_timestamp');
-            $table->integer('inflexion_post_poster');
+        Schema::create('inflexion_test_questions', function (Blueprint $table) {
+            $table->id('inflexion_test_id');
+            $table->longText('inflexion_test_quest');
             $table->timestamps();
-
         });
     }
 
@@ -31,7 +27,6 @@ class InflexionPosts extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('inflexion_posts');
+        Schema::dropIfExists('inflexion_test_questions');
     }
 }

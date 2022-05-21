@@ -20,10 +20,10 @@ class ExamScheduleModel extends Model
     ];
 
     public function insertSched($data, $id){
-        $insert = $this;
-        $insert->tutor_id = $id;
-        $insert->skype_account = $data->skypeAccount;
-        $insert->interview_status = 0;
-        $insert->save();
+        $this->firstOrCreate(['skype_account' => $data->skypeAccount],[
+          'tutor_id' => $id,
+          'skype_account' => $data->skype_account,
+          'interview_status' => 0
+        ]);
     }
 }

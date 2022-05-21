@@ -26,6 +26,8 @@ class InflexionUserDetails extends Migration
             $table->string('inflexion_detail_zip');
             $table->string('inflexion_detail_contact');
             $table->string('inflexion_detail_birth');
+            $table->timestamps();
+
         });
     }
 

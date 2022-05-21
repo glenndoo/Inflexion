@@ -20,10 +20,11 @@
 								<div class="card">
 									<div class="card-header text-center">
 										<ul id="progress">
+										<li class="fa fa-check">Completed information</li>
+
 										    <li  class="active">
 												ENGLISH PROFICIENCY EXAM
 											</li>
-										    <li>Complete information</li>
 										    <li>Finish</li>
 										</ul>
 									</div>

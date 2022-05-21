@@ -133,183 +133,51 @@
 
 													<!---------------------------------------------------------------------->
 													<!--tutor just verified email but has not tried to login yet has not seen exam-->
-													@if($tutor->inflexion_user_status == 1 && $tutor->inflexion_user_take == 0)
 													<td>
 														<div class="progress">
 															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
 																25%
 															</div>
 														</div>
-														<i class="fa fa-check" aria-hidden="true"></i>email
-														<i class="fa fa-times" aria-hidden="true"></i>test {{$tutor->inflexion_user_take}}/3
+														<i class="{{ $tutor->inflexion_user_token == 'Exam' ? 'fa fa-check' : ''}}" aria-hidden="true"></i>{{ $tutor->inflexion_user_token == 'Exam' ? 'Completed Profile' : 'Profile Not Yet Completed'}}
+														<!-- <i class="fa fa-times" aria-hidden="true"></i> -->
 													</td>
 													<td></td>
 													<td>
-														INACTIVE
-													</td>
-													<td class="text-center row">
-														<div class="col-sm-2">
-															<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-														</div>
-														<div class="col-sm-8">
-															<button type="button" class="btn-sm btn btn-primary form-control" title="Send email for test reminder" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">EMAIL TEST REMINDER</button>
-														</div>
+														{{ $tutor->inflexion_user_token}}
 													</td>
 													<!---------------------------------------------------------------------->
 													<!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
-													@elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take < 3 && $tutor->inflexion_user_take != 0)
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																	25%
-																</div>
-															</div>
-															<i class="fa fa-check" aria-hidden="true"></i>email verified
-														</td>
-														<td></td>
-														<td>
-															INACTIVE
-														</td>
 														<td class="text-center row">
-															<div class="col-sm-2">
-																<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-															</div>
-															<div class="col-sm-8">
+															<div class="col-sm-12">
 																<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
 															</div>
-														</td>
-														<!---------------------------------------------------------------------->
-														<!--tutor has reached maximum ammount of test tries and failed-->
-														@elseif($tutor->inflexion_user_status == 3 && $tutor->inflexion_user_take == 3)
-														<td>
-															<i class="fa fa-times" aria-hidden="true"></i>Failed test {{$tutor->inflexion_user_take}}/3
-														</td>
-														<td></td>
-														<td>
-															INACTIVE
-														</td>
-														<td class="text-center row">
-															<div class="col-sm-2">
-																<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
+															<div class="col-sm-12">
+															<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESEND VERIFICATION</button>
 															</div>
-															<div class="col-sm-8">
-																<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
-															</div>
-														</td>
-														@elseif($tutor->inflexion_user_status == 5)
-														<td></td>
-														<td></td>
-														<td>
-															{{ $tutor->inflexion_user_token }}
-														</td>
-														<td class="text-center row">
-															<!-- <div class="col-sm-2">
-																<button type="button" class="btn-sm btn btn-warning" title="option unavailable" disabled><i class="fa fa-power-off" aria-hidden="true"></i></button>
-															</div> -->
-															<div class="col-sm-8">
-																<!-- <button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button> -->
-															</div>
-														</td>
-														<!---------------------------------------------------------------------->
-														<!--tutor has passed exam waiting for interview-->
-														@elseif($tutor->inflexion_user_status == 4)
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																	75%
-																</div>
-															</div>
-															<i class="fa fa-check" aria-hidden="true"></i>email
-															<i class="fa fa-check" aria-hidden="true"></i>test {{$tutor->inflexion_user_take}}/3
-														</td>
-														<td></td>
-														<td>
-															<b>{{ $tutor->interview_status == 0 ? "FOR INTERVIEW" : "FOR EVALUATION" }}</b>
-														</td>
-														<td class="text-center row">
-															<div class="col-sm-2">
-																<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-															</div>
-															<div class="col-sm-8">
-																<a type="button" class="btn-sm btn btn-primary form-control" title="Send Email for Interview" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }}">{{ $tutor->interview_status == 0 ? "Schedule Interview" : "Evaluate" }}</a>
-															</div>
-														</td>
-														<!---------------------------------------------------------------------->
-														<!--tutor has passed exam passed interview and account is now active-->
-														@elseif($tutor->inflexion_user_status == 2)
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																	100%
-																</div>
-															</div>
-														</td>
-														<td></td>
-														<td>
-															{{ $tutor->inflexion_user_token }}
-														</td>
-														<td class="text-center row">
-															<div class="col-sm-2">
-																<a href="{{ route('deleteUser', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-danger" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
-															</div>
-															<!-- <div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">INTERVIEW DETAILS</button>
-				                                            	</div> -->
-														</td>
-														<!---------------------------------------------------------------------->
-														@elseif($tutor->inflexion_user_status == 9)
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																	100%
-																</div>
-															</div>
-														</td>
-														<td></td>
-														<td>
-															{{ $tutor->inflexion_user_token }}
-														</td>
-														<td class="text-center row">
-															<div class="col-sm-2">
+															<div class="col-sm-12">
 																@if($tutor->inflexion_user_status == 9)
 																<a href="{{ route('reactivateAccount', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Reactivate Account"><i class="fa fa-power-off"></i></a>
 																@else
 																<a href="{{ route('deleteUser', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+											
+																@endif
 															</div>
-															@endif
-															<!-- <div class="col-sm-8">
-				                                            		<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">INTERVIEW DETAILS</button>
-				                                            	</div> -->
 														</td>
 														<!---------------------------------------------------------------------->
+														<!--tutor has reached maximum ammount of test tries and failed-->
+														
+												
+														<!---------------------------------------------------------------------->
+														<!--tutor has passed exam waiting for interview-->
+											
+
+														<!---------------------------------------------------------------------->
 														<!--tutor has passed exam passed interview and account is now active-->
-														@elseif($tutor->inflexion_user_status == 0)
-														<td>
-															<div class="progress">
-																<div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																	0%
-																</div>
-
-															</div>
-															<i class="fa fa-times" aria-hidden="true"></i>email verification
-														</td>
-														<td></td>
-														<td>
-															INACTIVE
-														</td>
-														<td class="text-center row">
-															<div class="col-sm-2">
-																<button type="button" class="btn-sm btn btn-warning" title="deactivate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
-															</div>
-															<div class="col-sm-2">
-																<a href="{{ route('deleteUser', ['user' => $student->inflexion_user_id]) }} class=" btn-sm btn btn-danger" title="Deactivate this account"><i class="fa fa-trash" aria-hidden="true"></i></a>
-
-															</div>
-															<div class="col-sm-8">
-																<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESEND VERIFICATION</button>
-															</div>
-														</td>
-														@endif
+								
+														<!---------------------------------------------------------------------->
+														<!--tutor has passed exam passed interview and account is now active-->
+														
 												</tr>
 												@endif
 												@endforeach
