@@ -20,11 +20,11 @@ class AdminController extends Controller
 
     public function index()
     {
-        $userList = InflexionUserModel::all();
+        $userList = InflexionUserModel::where('inflexion_user_type','not like','0')->get();
         $studentList = InflexionUserModel::join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->get();
         $unverifiedTutorList = InflexionUserModel::join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->get();
         $tutors = InflexionUserModel::join('exam_schedule', 'tutor_id', '=', 'inflexion_user_id')->join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->get();
-        return view('admin/adminindex')->with('users',$userList)->with('tutors', $tutors)->with('students',$studentList)->with('tutorList', $unverifiedTutorList);
+        return view('admin/adminindex')->with('users',$userList)->with('tutors', $tutors)->with('students',$studentList);
     }
 
     /**

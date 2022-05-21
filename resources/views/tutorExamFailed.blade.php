@@ -13,12 +13,13 @@
 					<div class="card shadow">
 						<div class="card-header">
 							<ul id="progress">
+								<li>
+		                        	<i class="fa fa-check" aria-hidden="true"></i> Complete information
+		                        </li>
 		                        <li>
 		                            <i class="fa fa-check" aria-hidden="true"></i> EXAM
 		                        </li>
-		                        <li>
-		                        	<i class="fa fa-check" aria-hidden="true"></i> Complete information
-		                        </li>
+		                        
 		                        <li class="active">Finish</li>
 		                    </ul>
 		                </div>

@@ -23,6 +23,7 @@ class InflexionUsers extends Migration
             $table->string('inflexion_user_token');
             $table->integer('inflexion_user_tutor')->nullable();
             $table->integer('inflexion_user_take')->nullable();
+            $table->timestamps();
 
 
         });

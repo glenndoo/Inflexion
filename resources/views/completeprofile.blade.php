@@ -13,13 +13,13 @@
             <div class="card shadow">
                 <div class="card-header">
                     <ul id="progress">
+                    <li class="fa fa-check active">Complete information</li>
                         <li>
-                            <i class="fa fa-check" aria-hidden="true"></i> EXAM:
+                            <i  aria-hidden="true"></i> EXAM:
                             @if(isset($Results))
-                        {{ $Results }}%
-                    @endif
+                                {{ $Results }}%
+                            @endif
                         </li>
-                        <li class="active">Complete information</li>
                         <li>Skype Interview</li>
                     </ul>
                 </div>
