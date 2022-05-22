@@ -139,45 +139,50 @@
 																25%
 															</div>
 														</div>
-														<i class="{{ $tutor->inflexion_user_token == 'Exam' ? 'fa fa-check' : ''}}" aria-hidden="true"></i>{{ $tutor->inflexion_user_token == 'Exam' ? 'Completed Profile' : 'Profile Not Yet Completed'}}
+														<i class="" aria-hidden="true"></i>
 														<!-- <i class="fa fa-times" aria-hidden="true"></i> -->
 													</td>
 													<td></td>
 													<td>
 														{{ $tutor->inflexion_user_token}}
 													</td>
+													
 													<!---------------------------------------------------------------------->
 													<!--tutor just verified email and has tried to login and take exam but test takes is is less than 3(max)-->
+													
 														<td class="text-center row">
+														@if($tutor->inflexion_user_status == 2)
 															<div class="col-sm-12">
-																<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESET TEST</button>
+																<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">REVERT ACCOUNT</button>
 															</div>
+														@elseif($tutor->inflexion_user_status == 1)
 															<div class="col-sm-12">
 															<button type="button" class="btn-sm btn btn-primary form-control" title="reset this account to status 0 (unverified email and incomplete details" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }} ">RESEND VERIFICATION</button>
 															</div>
-															<div class="col-sm-12">
-																@if($tutor->inflexion_user_status == 9)
+													
+															
+														@elseif($tutor->inflexion_user_status == 9)
+																<div class="col-sm-12">
 																<a href="{{ route('reactivateAccount', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Reactivate Account"><i class="fa fa-power-off"></i></a>
-																@else
-																<a href="{{ route('deleteUser', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
-											
+																</div>
+														@elseif($tutor->interview_status == 0 || $tutor->interview_status == 1 )
+														<td class="text-center row">
+															<div class="col-sm-2">
+																<button type="button" class="btn-sm btn btn-success" title="activate this account"><i class="fa fa-power-off" aria-hidden="true"></i></button>
+															</div>
+															<div class="col-sm-8">
+																@if($tutor->inflexion_user_status == 6)
+																<a type="button" class="btn-sm btn btn-primary form-control" title="Send Email for Interview" data-toggle="modal" data-target="#tutor-modal-{{ $tutor->inflexion_user_id }}" > {{ $tutor->interview_status == 0 ? "Schedule Interview" : "Evaluation" }}</a>
 																@endif
+
 															</div>
 														</td>
-														<!---------------------------------------------------------------------->
-														<!--tutor has reached maximum ammount of test tries and failed-->
-														
-												
-														<!---------------------------------------------------------------------->
-														<!--tutor has passed exam waiting for interview-->
-											
-
-														<!---------------------------------------------------------------------->
-														<!--tutor has passed exam passed interview and account is now active-->
-								
-														<!---------------------------------------------------------------------->
-														<!--tutor has passed exam passed interview and account is now active-->
-														
+														@else
+																<div class="col-sm-12">
+																<a href="{{ route('deleteUser', ['user' => $tutor->inflexion_user_id]) }}" class="btn-sm btn btn-success" title="Deactivate Account"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+																</div>
+														@endif
+														</td>														
 												</tr>
 												@endif
 												@endforeach
@@ -377,14 +382,14 @@
 
 				<!---------------------------------------------------------------------->
 				<!--tutor has passed exam waiting for interview-->
-				@elseif($tutor->inflexion_user_status == 4)
+				@elseif($tutor->inflexion_user_status == 6)
 				<!--interview form start-->
-				<form>
+				<form method="POST" action="{{ route('tutorApproval') }}">
 					@csrf
 					<div class="modal-body">
 						<!-- /*comment: waiting for interview*/ -->
 						<div class="form-group">
-
+						@if($tutor->interview_status == 0)
 							<div class="input-group input-group-lg mb-3" title="tutor's skype account">
 								<div class="input-group-prepend">
 									<span class="input-group-text">
@@ -407,15 +412,48 @@
 								</div>
 								<input type="text" placeholder="User email address" class="form-control" value="{{ $tutor->inflexion_username }}" id="" name="username" disabled />
 							</div>
+						@else
+						Interview finished
+						<div class="input-group input-group-lg mb-3" title="tutor's skype account">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</span>
+								</div>
+								<input type="hidden" name="id" value="{{ $tutor->inflexion_user_id }}" />
+								<input type="text" placeholder="{{ $tutor->inflexion_detail_first . ' ' . $tutor->inflexion_detail_last }}" class="form-control" id="" value="{{ $tutor->inflexion_detail_first . ' ' . $tutor->inflexion_detail_last }}" name="skype" disabled />
+							</div>
+							<div class="input-group input-group-lg mb-3" title="tutor's interview schedule">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-commenting" aria-hidden="true"></i></span>
+								</div>
+								<input type="text" max="250" name="remarks" />
+							</div>
+							<div class="input-group input-group-lg mb-3" title="tutor's email">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fa fa-question-circle" aria-hidden="true"></i>
+									</span>
+								</div>
+								<select name="eval">
+									<option>-----</option>
+									<option value="4">Passed</option>
+									<option value="5">Failed</option>
+								</select>
+								<!-- <input type="text" placeholder="User email address" class="form-control" value="{{ $tutor->inflexion_username }}" id="" name="username" disabled /> -->
+							</div>
+						@endif
 						</div>
+
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
 						@if($tutor->interview_status == 0)
 						<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
 						@else
-						<a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 3]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>
-						<a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 4]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Approve</a>
+						<input class="btn btn-success" type="submit" value="Evaluate" />
+						<!-- <a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 3]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>
+						<a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 4]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Approve</a> -->
 						@endif
 					</div>
 				</form>

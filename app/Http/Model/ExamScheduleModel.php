@@ -8,7 +8,7 @@ class ExamScheduleModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "exam_schedule";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $fillable = [
@@ -25,5 +25,9 @@ class ExamScheduleModel extends Model
           'skype_account' => $data->skype_account,
           'interview_status' => 0
         ]);
+    }
+
+    public function updateInterviewStatus($id, $remarks){
+      $this->where('tutor_id', $id)->update(['interview_status' => '3', 'remarks' => $remarks]);
     }
 }

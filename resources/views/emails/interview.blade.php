@@ -11,7 +11,7 @@
     <p>{{ $details['body'] }}</p>
     <b>{{ date('Y-m-d H:i:s', strtotime($details['schedule'])) }}</b><br />
     <p>Your Skype ID: <b>{{ $details['skype'] }}</b></p>
-    <p>Please be ready 5 mins before the scheduled interview time. Be on your formal attire.
+    <p>Please be ready 5 mins before the scheduled interview time.
     <p>From Inflexion Global Team</p>
 </body>
 </html>

@@ -9,7 +9,7 @@ class InflexionAnswersModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "inflexion_test_answers";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'inflexion_answer_id';
     protected $fillable = [

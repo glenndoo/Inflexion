@@ -311,7 +311,7 @@ use Illuminate\Support\Facades\Route;
             'as' => 'interviewResult',
             'uses' => 'InflexionController@interviewResult'
         ));
-        Route::get('/tutorApproval', array(
+        Route::post('/tutorApproval', array(
             'as' => 'tutorApproval',
             'uses' => 'InflexionController@tutorApproval'
         ));
