@@ -83,18 +83,13 @@ class InflexionUserModel extends Model
 
     public function checkLogin($request){
         $findUser = $this->where('inflexion_username','=',$request->username)->first();
-        // $status = 0;
+        $statusList = [2, 5, 9, 6];
         if(!empty($findUser)){
-            
             // IF USER HAS NOT YET VERIFIED THEIR EMAIL
-            if($findUser->inflexion_user_status == 0){
+            if($findUser->inflexion_user_status == 0 || $findUser->inflexion_user_type == 0){
                 return $findUser;
-            }else if($findUser->inflexion_user_type == 0){
-                return $findUser;
-            
-            
             // IF USER HAS ALREADY COMPLETED THE REGISTRATION PROCESS
-            }else if($findUser->inflexion_user_status == 2){
+            }else if(in_array($findUser->inflexion_user_status, $statusList)){
                     $check = $this->join('inflexion_user_details','inflexion_detail_id','=','inflexion_user_id')->where('inflexion_username','=',$request->username)->first();
                 if($check != null){
                     // IF USER ENTERED VALID CREDENTIALS
@@ -212,7 +207,7 @@ class InflexionUserModel extends Model
             $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 2, 'inflexion_user_token' => 'Approved']);
             return $approve;
         }else{
-            $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 5, 'inflexion_user_token' => 'Disapproved']);
+            $approve = $this->where('inflexion_user_id',$user['user_id'])->update(['inflexion_user_status' => 7, 'inflexion_user_token' => 'Disapproved']);
         }
     }
 
@@ -233,4 +228,9 @@ class InflexionUserModel extends Model
         $student->save();
         return $student->credits;
     }
+
+    public function updateTutorStatus($id){
+        $this::where('inflexion_user_id', $id)->update(['inflexion_user_status' => 6, 'inflexion_user_token' => 'For interview']);
+    }
+
 }

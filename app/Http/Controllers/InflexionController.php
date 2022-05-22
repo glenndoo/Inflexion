@@ -176,19 +176,27 @@ class InflexionController extends Controller
 
     //LOGIN FUNCTION
     public function LoginUser(Request $request){
-            if(isset($request->details) && !empty($request->retake == 1)){
-                // dd($request->details['inflexion_username']);
-                $dts = $this->InflexionUserModel->findUserEmail($request->details['inflexion_username']);
-                return $dts;    
-            }else{
+
                 // TEST FOR TUTOR REGISTRATION BEFORE EXAM
                 $login = $this->InflexionUserModel->checkLogin($request);
-                
                 if($login->inflexion_user_type == 2){
                 $checkTutor = $this->InflexionDetailModel->find($login->inflexion_user_id);
                     if(empty($checkTutor)){
                         $countries = CountryListFacade::getList('en');
                         return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
+                    }
+                    if($login->inflexion_user_tutor <= 69 && $login->inflexion_user_status == 5){
+                        $Questions = $this->FetchQuestions();
+                        $Answers = $this->FetchAnswers();
+                        $take = $login->inflexion_user_take;
+                        $this->InflexionUserModel->insertTake($take, $login->inflexion_user_id);
+                        $checkTake = $this->InflexionUserModel->findUserEmail($login->inflexion_username);
+                        if($checkTake->inflexion_user_take <= 3){
+                            return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
+                        }else{
+                            return view('welcome')->with('Success','You have already exceeded the maximum number of attempts please contact the system administrator');
+                        }
+                    // FOR NTH TAKER
                     }
                 }
 
@@ -204,29 +212,6 @@ class InflexionController extends Controller
                         return view('completeprofile')->with('Details', $login)->with('Countries', $countries);
                     
                     // FIRST TIME TAKING THE EXAM
-                    }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor == 0){
-                        $Questions = $this->FetchQuestions();
-                        $Answers = $this->FetchAnswers();
-                        $take = $login->inflexion_user_take;
-                        $this->InflexionUserModel->insertTake($take, $login->inflexion_user_id);
-                        $checkTake = $this->InflexionUserModel->findUserEmail($login->inflexion_username);
-                        if($checkTake->inflexion_user_take <= 3){
-                            return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
-                        }else{
-                            return view('welcome')->with('Success','You have already exceeded the maximum number of attempts please contact the system administrator');
-                        }
-                    // FOR NTH TAKER
-                    }else if($login->inflexion_user_type == 2 && $login->inflexion_user_tutor > 0){
-                        $Questions = $this->FetchQuestions();
-                        $Answers = $this->FetchAnswers();
-                        $take = $login->inflexion_user_take;
-                        $this->InflexionUserModel->insertTake($take, $login->inflexion_user_id);
-                        $checkTake = $this->InflexionUserModel->findUserEmail($login->inflexion_username);
-                        if($checkTake->inflexion_user_take <= 3){
-                            return view('tutorexam')->with('Details', $login)->with('Questions', $Questions)->with('Answers', $Answers);
-                        }else{
-                            return view('welcome')->with('Success','You have already exceeded the maximum number of attempts please contact the system administrator');
-                        }
                     }
                 // IF USER ENTERED INVALID CREDENTIALS     
                 }else if(is_int($login) && $login == 3){
@@ -276,7 +261,7 @@ class InflexionController extends Controller
                         
                     
                 }
-                }
+                
             
             
         
@@ -477,8 +462,9 @@ class InflexionController extends Controller
 
         }else{
             // return view('completeprofile')->with('Results',$total)->with('Details', json_decode(json_encode($details)))->with('Countries', $countries);
-            $details = $this->InflexionDetailModel->join('inflexion_users','inflexion_user_id', $request->userId)->join('exam_schedule','tutor_id','=',$request->userId)->where('inflexion_user_id', $request->userId)->first();
-            return view('tutorExamResult')->with('Details', $details)->with('skype',$details->skypeAccount);
+            $this->InflexionUserModel->updateTutorStatus($request->userId);
+            $details = $this->InflexionDetailModel->join('inflexion_users','inflexion_user_id', '=', 'inflexion_detail_id')->join('exam_schedule','tutor_id','=','inflexion_detail_id')->where('inflexion_user_id', $request->userId)->first();
+            return view('tutorExamResult')->with('Details', $details)->with('skype',$details->skype_account);
         }
             
 
@@ -563,6 +549,7 @@ class InflexionController extends Controller
             'user_id' => $request->id,
             'status' => $request->eval
         ];
+        $this->ExamScheduleModel->updateInterviewStatus($request->id, $request->remarks);
         $this->InflexionUserModel->approveTutor($details);
         return back();
     }

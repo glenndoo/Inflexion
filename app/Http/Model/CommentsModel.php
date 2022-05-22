@@ -9,7 +9,7 @@ class CommentsModel extends Model
 {
     protected $connection = "mysql";
     protected $table = "comments_models";
-    public $timestamps = false;
+    public $timestamps = true;
     public $incrementing = false;
     protected $primaryKey = 'id';
     protected $fillable = [
