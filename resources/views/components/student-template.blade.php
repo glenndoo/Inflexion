@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>studentIndex</title>
+    <title>Inflexion</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
    
@@ -109,8 +109,8 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
-						Credits available: 
-						@if(session()->get('info.credits'))<strong>{{ session()->get('info.credits') }}</strong>
+						<span style="color: black !important;">Credits available: 
+						@if(session()->get('info.credits'))<strong>{{ session()->get('info.credits') }}</strong></span>
 						@elseif(!session()->get('info.credits'))
 						0
 						@endif
@@ -124,37 +124,13 @@
                             <a class="nav-link nav-icons guidestep4" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
-                                    <div class="notification-title"> Notifications</div>
+                                    <div class="notification-title">Notifications</div>
                                     <div class="notification-list">
                                         <div class="list-group">
                                             <a href="#" class="list-group-item list-group-item-action active guidestep5">
                                                 <div class="notification-info">
                                                     <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
                                                     <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">John Abraham </span>is now following you
-                                                        <div class="notification-date">2 days ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                        <div class="notification-date">2 min ago</div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="list-group-item list-group-item-action">
-                                                <div class="notification-info">
-                                                    <div class="notification-list-user-img"><img src="{{ asset('img/placeholder-male-square.png') }}" alt="" class="user-avatar-md rounded-circle"></div>
-                                                    <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
                                                         <div class="notification-date">2 min ago</div>
                                                     </div>
                                                 </div>
@@ -238,7 +214,7 @@
 	            </a>
 	          
 	        </li>
-	        <li class="has-subnav">
+	        <!-- <li class="has-subnav">
 	            <a href="/studentGroups">
 	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
@@ -246,7 +222,7 @@
 	                </span>
 	            </a>
 	            
-	        </li>
+	        </li> -->
 	        <li class="has-subnav">
 	            <a href="/getNotificationsStudent">
 	               <i class="fa fa-list icon-side fa-size"></i>
@@ -256,7 +232,7 @@
 	            </a>
 	            
 	        </li>
-	        <li class="has-subnav">
+	        <!-- <li class="has-subnav">
 	            <a href="{{ route('ShowInbox') }}">
 	               <i class="fa fa-envelope icon-side fa-size"></i>
 	                <span class="nav-text">
@@ -264,7 +240,7 @@
 	                </span>
 	            </a>
 	           
-	        </li>
+	        </li> -->
 	        <li>
 	            <a href="/studentFindTutor">
 	                <i class="fa fa-users icon-side fa-size"></i>

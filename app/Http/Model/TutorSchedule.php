@@ -20,6 +20,7 @@ class TutorSchedule extends Model
       'status',
       'created_at',
       'updated_at',
+      'credit_charged'
     ];
 
     public function insertSchedule($date, $id, $tutorId){
@@ -76,5 +77,10 @@ class TutorSchedule extends Model
         }
         return $result;
 
+    }
+
+    public function fetchTotalClasses(){
+        $allClasses = $this->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('parties_approved',1)->orderBy('tutor_id')->get();
+        return $allClasses;
     }
 }

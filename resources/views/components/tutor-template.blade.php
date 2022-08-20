@@ -24,9 +24,9 @@
 	    <div class="collapse navbar-collapse" id="navbarCollapse">
 	        <div class="navbar-nav">
 				<!-- trigger modalCredits -->
-				<a href="#" class="nav-item nav-link" data-toggle="modal" data-target="#modalCredits">
+				<a href="#" class="nav-item nav-link" style="color: black !important" data-toggle="modal" data-target="#modalCredits">
 		            <center>
-		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>credits
+		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>Your earnings
 		            </center>
 				</a>
 	        </div>
@@ -173,7 +173,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">modalCredits</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Credits Earned</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -181,13 +181,17 @@
       <div class="modal-body">
         <div class="row">
         	<div class="col-sm-2">
-        		<label>current:</label>
+        		<label></label>
         	</div>
         	<div class="col-sm-10 text-right">
-        		<label><b title="Inflexion Global Credits">100 IG Credits </b> </label>
+        		<label><b title="Inflexion Global Credits">
+				@php 
+				echo Session::get('info.earnings');
+				@endphp
+				</b> {{ Session::get('info.earnings') > 1 ? 'credits' : 'credit'}} earned</label>
         	</div>
         	<div class="col-sm-12 text-right">
-        		<small><i>1 IG credit =  1 usd</i></small>
+        		<small><i>Exchange rate for credits</i></small>
         	</div>
         </div>
 
@@ -203,9 +207,9 @@
         	<div class="col-sm-2">
         		
         	</div>
-        	<div class="col-sm-2">
+        	<!-- <div class="col-sm-2">
         		<button class="form-control btn btn-primary">payout</button>
-        	</div>
+        	</div> -->
         </div>
       </div>
       <div class="modal-footer">
