@@ -51,8 +51,8 @@
 			</div>
 
 			<div class="col-sm-2 ecommerce-widget guidestep3">
-        <div class="card">
-            <div class="card-body">
+        <!-- <div class="card"> -->
+            <!-- <div class="card-body">
                 <h5 class="text-muted">Posts in groups</h5>
                 <div class="metric-value d-inline-block">
                     <h1 class="mb-1">
@@ -62,9 +62,9 @@
                 <div class="metric-label d-inline-block float-right text-success font-weight-bold">
                     <span><i class="fa fa-fw fa-arrow-right"></i></span><span><a href="/studentGroups">View</a></span>
                 </div>
-            </div>
-            <div id="sparkline-revenue"></div><br/>
-        </div>
+            </div> -->
+            <!-- <div id="sparkline-revenue"></div><br/>
+        </div> -->
 			</div>
 		</div>
 		<!--post to feed end-->
@@ -154,7 +154,7 @@
 		                	<a data-toggle="collapse" href="#social-comment-{{$id}}"><i class="fa fa-comments"></i> Comment</a>
 		                @endif
 		               
-		                <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+		                <!-- <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button> -->
 								</div>
             	</div>
             </div>
@@ -183,8 +183,8 @@
 		               	 <b><a href="#">{{ $comment->inflexion_detail_first.' '.$comment->inflexion_detail_last  }}</a></b>
 		                {{ $comment->comment_message }}
 		                <br>
-		                <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
-		                <small class="text-muted">12.06.2014</small>
+		                <a href="#" class="small"><i class="fa fa-thumbs-up"></i> </a> -
+		                <small class="text-muted"></small>
 			            </div>
 			          </div>
 	        		</div>

@@ -100,7 +100,7 @@
 
 									    		<div class="col-sm-3">
 								    				<div class="form-group">
-													    	<label for="tutorName" class="col-form-label">Hobbies & Interest</label>
+													    	<label for="tutorName" class="col-form-label">Hobbies or Interest</label>
 													      	<input type="text" class="form-control" id="tutorName" placeholder="e.g Photography">
 													</div>
 									    		</div>
@@ -148,7 +148,7 @@
                         <!-- end search bar  -->
                         <!-- ============================================================== -->
 
-                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                        <div class="col-xl-12 col-lg-8 col-md-8 col-sm-12 col-12">
                             <!-- ============================================================== -->
                             <!-- card tutor one -->
                             <!-- ============================================================== -->
@@ -166,12 +166,12 @@
                                                             <h2 class="font-24 m-b-10">{{ $tutor->inflexion_detail_first . " " . $tutor->inflexion_detail_last}}</h2>
                                                         </div>
                                                         <div class="rating-star d-inline-block pl-xl-2 mb-2 mb-xl-0">
+                                                            <!-- <i class="fa fa-fw fa-star"></i>
                                                             <i class="fa fa-fw fa-star"></i>
                                                             <i class="fa fa-fw fa-star"></i>
                                                             <i class="fa fa-fw fa-star"></i>
-                                                            <i class="fa fa-fw fa-star"></i>
-                                                            <i class="fa fa-fw fa-star"></i>
-                                                            <p class="d-inline-block text-dark">14 Reviews </p>
+                                                            <i class="fa fa-fw fa-star"></i> -->
+                                                            <p class="d-inline-block text-dark"></p>
                                                         </div>
                                                     </div>
                                                     <div class="user-avatar-address">
@@ -179,14 +179,12 @@
                                                             $hobb = [];
                                                             $details = "";
                                                             $age = 0;
-                                                            foreach($hobbies as $hobby){
-                                                                $hobb = explode('|', $hobby->hobbies);
-                                                                $details = $hobby->about_me;
-                                                                $age = new DateTime($tutor->inflexion_detail_birth);
-                                                                $now = new DateTime();
-                                                                $age = $now->diff($age);
-                                                                $age = $age->y;
-                                                            }
+                                                            $details = $tutor->about_me;
+                                                            $age = new DateTime($tutor->inflexion_detail_birth);
+                                                            $now = new DateTime();
+                                                            $age = $now->diff($age);
+                                                            $age = $age->y;
+                                                            $hobb = explode('|', $tutor->hobbies);
                                                             @endphp
                                                         <p class="mb-2"><i class="fa fa-map-marker-alt mr-2  text-primary"></i>{{ $tutor->inflexion_detail_country }}<span class="m-l-20">{{ $age }} Years Old</span>
                                                         </p>
@@ -211,7 +209,18 @@
                                         </div>
                                     </div>
                                     <div class="border-top user-social-box">
-                                        <div class="text-primary user-social-media d-xl-inline-block" title="classes conducted"><span class="mr-2"> <i class="fa fa-book"  aria-hidden="true"></i></span><span>45</span></div>
+                                        <div class="text-primary user-social-media d-xl-inline-block" title="Classes completed"><span class="mr-2"> <i class="fa fa-book"  aria-hidden="true"></i></span><span>
+                                            @php
+                                            $classCount = 0;
+                                                if(isset($classes)){
+                                                    foreach($classes as $class){
+                                                        if($class->tutor_id == $tutor->tutor_id)
+                                                        $classCount += 1;
+                                                    }
+                                                }
+                                            @endphp
+                                            <b>{{ $classCount }}</b> {{ $classCount > 1 ? ' classes ' :' class ' }} completed
+                                        </span></div>
                                         <div class="text-primary user-social-media d-xl-inline-block" title="posts and comments made"><span class="mr-2"><i class="fa fa-comments-o" aria-hidden="true"></i></span><span>100</span></div>
                                         <div class="text-primary user-social-media d-xl-inline-block" title="years teaching"><span class="mr-2"><i class="fa fa-black-tie" aria-hidden="true"></i></span><span>3</span></div>
                                         <div class="text-primary user-social-media d-xl-inline-block" title="available images"><span class="mr-2"><i class="fa fa-picture-o" aria-hidden="true"></i></span><span>10</span></div>
@@ -285,10 +294,10 @@
                             <!-- ============================================================== -->
                             <!-- influencer sidebar  -->
                             <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                            <!-- <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h3 class="font-16">Sorting By</h3>
+                                        <h3 class="font-16">Filter By</h3>
                                         <select class="form-control">
                                             <option>Followers</option>
                                             <option>Followers</option>
@@ -384,7 +393,7 @@
                                         <a href="#" class="btn btn-secondary btn-lg btn-block">Submit</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- ============================================================== -->
                             <!-- end influencer sidebar  -->
                             <!-- ============================================================== -->

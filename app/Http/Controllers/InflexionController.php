@@ -238,8 +238,13 @@ class InflexionController extends Controller
                 // IF USER IS VALID
                 }else{
                     $tutorDetailId = null;
+                    $earnings = 0;
                     if($login->inflexion_user_type == 2){
                         $tutorDetailId = $this->TutorDetailModel->where('tutor_id', $login->inflexion_user_id)->first();
+                        $tutorEarnings = $this->TutorSchedule->select('credit_charged')->where('tutor_id', $login->inflexion_user_id)->where('paid', NULL)->get();
+                        foreach($tutorEarnings as $earn){
+                           $earnings += $earn->credit_charged;
+                        }
                     }
                         $sess = [
                             'status' => $login->inflexion_user_type,
@@ -248,7 +253,8 @@ class InflexionController extends Controller
                             'userWholeName' => $login->inflexion_detail_first.' '.$login->inflexion_detail_last,
                             'userDetails' => $login,
                             'credits' => $login->credits,
-                            'creditCharge' => isset($tutorDetailId->credit_charge) ? $tutorDetailId->credit_charge : null
+                            'creditCharge' => isset($tutorDetailId->credit_charge) ? $tutorDetailId->credit_charge : null,
+                            'earnings' => $earnings,
                         ];
                         $request->session()->put('info', $sess);
                         if($login->inflexion_user_type == 1){
@@ -613,8 +619,8 @@ class InflexionController extends Controller
         $sess = Session::get('info');
         $userId = $sess['userId'];
         $tutor = $this->InflexionUserModel->getAllTutors();
-        $hobbies = $this->InflexionUserModel->getTutorHobbies();
-        return view('student.studentFindTutor')->with('tutors', $tutor)->with('hobbies', $hobbies)->with('userId', $userId);
+        $classes = $this->TutorSchedule->fetchTotalClasses();
+        return view('student.studentFindTutor')->with('tutors', $tutor)->with('userId', $userId)->with('classes', $classes);
     }
 
     // BOOK SCHEDULE FROM STUDENT 

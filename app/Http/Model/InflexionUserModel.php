@@ -212,12 +212,12 @@ class InflexionUserModel extends Model
     }
 
     public function getAllTutors(){
-        $tutors = $this->join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->where('inflexion_user_type',2)->get();
+        $tutors = $this->join('inflexion_user_details', 'inflexion_detail_id', '=', 'inflexion_user_id')->join('tutor_detail_models', 'tutor_detail_models.tutor_id', '=', 'inflexion_user_id')->where('inflexion_user_type',2)->orderBy('inflexion_user_id')->get();
         return $tutors;
     }
 
     public function getTutorHobbies(){
-        $hobbies = $this->join('tutor_detail_models', 'tutor_id', '=', 'inflexion_user_id')->get();
+        $hobbies = $this->join('tutor_detail_models', 'tutor_detail_models.tutor_id', '=', 'inflexion_user_id')->get();
         return $hobbies;
     }
 
