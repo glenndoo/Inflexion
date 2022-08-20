@@ -133,20 +133,21 @@ use Illuminate\Support\Facades\Route;
         'as' => 'ValidateAnswers',
         'uses' => 'InflexionController@ValidateAnswers'
     ));
+    Route::get('/inflexionIndex', array(
+        'as' => 'inflexionIndex',
+        'uses' => 'StudentController@studentIndex'
+    ));
+
+    Route::post('PostMessage', array(
+        'as' => 'PostMessage',
+        'uses' => 'InflexionController@PostMessage'
+    ));
 
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
-        Route::post('PostMessage', array(
-            'as' => 'PostMessage',
-            'uses' => 'InflexionController@PostMessage'
-        ));
-
-        Route::get('/studentIndex', array(
-            'as' => 'studentIndex',
-            'uses' => 'StudentController@studentIndex'
-        ));
-
+        
+        
         Route::get('/studentSettings', function () { //added for testing maiko
             return view('student.studentsettings');
         });

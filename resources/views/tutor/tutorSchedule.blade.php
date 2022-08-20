@@ -26,7 +26,7 @@
 										<table class="table">
 											<thead class="bg-light">
 												<tr class="border-0">
-													<th class="border-0">Name</th>
+													<th class="border-0">Student Name</th>
 													<th class="border-0">Schedule</th>
 													<th class="border-0">Country</th>
 													<th class="border-0">Age</th>

@@ -258,11 +258,11 @@ class InflexionController extends Controller
                         ];
                         $request->session()->put('info', $sess);
                         if($login->inflexion_user_type == 1){
-                            return redirect('/studentIndex');
+                            return redirect('/inflexionIndex');
                         }elseif($login->inflexion_user_type == 0){//added by maiko for testing admin
                             return redirect('/adminIndex');
                         }else{
-                            return view('tutor.tutorindex');
+                            return redirect('/inflexionIndex');
                         }
                         
                     
@@ -334,7 +334,7 @@ class InflexionController extends Controller
         $savePost = $this->InflexionPostModel->insertPost($request);
         
         if($savePost){
-            return redirect('/studentIndex');
+            return redirect('/inflexionIndex');
         }else{
             return "Post failed";
         }
@@ -345,9 +345,9 @@ class InflexionController extends Controller
         $deletePost = $this->InflexionPostModel->deletePost($id);
 
         if($deletePost){
-            return redirect('/studentIndex')->with('Success','Successfully deleted post');
+            return redirect('/inflexionIndex')->with('Success','Successfully deleted post');
         }else{
-            return redirect('/studentIndex')->with('Errors','Failed to delete post');
+            return redirect('/inflexionIndex')->with('Errors','Failed to delete post');
         }
     }
 
@@ -355,13 +355,13 @@ class InflexionController extends Controller
     public function LikePost(Request $request, $id){
         $likePost = $this->InflexionPostModel->likePost($request, $id);
 
-        return redirect('/studentIndex');
+        return redirect('/inflexionIndex');
     }
 
     //COMMENT ON POST FUNCTION
     public function CommentPost(Request $request){
         $commentPost = $this->CommentsModel->addComment($request);
-        return redirect('/studentIndex');
+        return redirect('/inflexionIndex');
     }
 
     //INBOX FUNCTION
@@ -774,10 +774,10 @@ class InflexionController extends Controller
             $creditSession = $this->InflexionUserModel->insertCredit($updateCredit->student_id, $creditAmount);
             $this->CreditTransactions->insertTransaction($updateCredit->student_id, 0, null, $creditAmount, $creditSession, $updateCredit->id);
             Session::put('info.credits', $creditSession);
-            return redirect()->to('studentIndex')->with('Success','Payment successful!');
+            return redirect()->to('inflexionIndex')->with('Success','Payment successful!');
         }else{
             $this->StripePaymentModel->finalizePayment($request->transactId, 0);
-            return redirect()->to('studentIndex')->with('Success','Payment failed');
+            return redirect()->to('inflexionIndex')->with('Success','Payment failed');
         }
         return $request;
     }

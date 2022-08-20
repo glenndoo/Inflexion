@@ -103,7 +103,7 @@
 	<nav class="main-menu ease-loadLeft">
 	    <ul>
 	        <li>
-	            <a href="/tutorIndex">
+	            <a href="/inflexionIndex">
 	                <i class="fa fa-home icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Dashboard
@@ -111,7 +111,7 @@
 	            </a>
 	          
 	        </li>
-	        <li class="has-subnav">
+	        <!-- <li class="has-subnav">
 	            <a href="/tutorGroups">
 	                <i class="fa fa-users icon-side fa-size"></i>
 	                <span class="nav-text">
@@ -119,17 +119,17 @@
 	                </span>
 	            </a>
 	            
-	        </li>
+	        </li> -->
 	        <li class="has-subnav">
 	            <a href="{{ route('getNotificationsTutor') }}">
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
-	                    My Schedule
+	                    My Classes
 	                </span>
 	            </a>
 	            
 	        </li>
-	        <li class="has-subnav">
+	        <!-- <li class="has-subnav">
 	            <a href="/tutorInbox">
 	               <i class="fa fa-envelope icon-side fa-size"></i>
 	                <span class="nav-text">
@@ -137,15 +137,15 @@
 	                </span>
 	            </a>
 	           
-	        </li>
-	        <li>
+	        </li> -->
+	        <!-- <li>
 	            <a href="#">
 	                <i class="fa fa-usd icon-side fa-size"></i>
 	                <span class="nav-text">
 	                   Payment
 	                </span>
 	            </a>
-	        </li>
+	        </li> -->
 	        <li>
 	            <a href="#">
 	               <i class="fa fa-info icon-side fa-size"></i>
