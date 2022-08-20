@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.0",
         "monarobase/country-list": "^3.2",
-        "stripe/stripe-php": "^7.125"
+        "stripe/stripe-php": "^9.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
