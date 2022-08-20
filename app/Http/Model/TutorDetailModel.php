@@ -26,4 +26,14 @@ class TutorDetailModel extends Model
         'credit_charge' => $amount
       ]);
     }
+
+    public function insertDetail($id, $hobbs = null, $tags = null, $intrs = null, $about = null){
+      $details = $this::create([
+        'tutor_id' => $id,
+        'hobbies' => $hobbs,
+        'tags' => $tags,
+        'interests' => $intrs,
+        'about_me' => $about,
+      ]);
+    }
 }

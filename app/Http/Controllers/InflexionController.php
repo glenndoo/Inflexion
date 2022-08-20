@@ -557,11 +557,14 @@ class InflexionController extends Controller
     // SET HOBBIES FOR TUTOR
     public function setHobbies(Request $request){
         $exist = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
-        $this->TutorDetailModel::where('tutor_id', $request->id)->update(['hobbies' => !$exist->hobbies ? $request->hobbies : $exist->hobbies."|".$request->hobbies]);
+        if($exist){
+            $this->TutorDetailModel::where('tutor_id', $request->id)->update(['hobbies' => !$exist->hobbies ? $request->hobbies : $exist->hobbies."|".$request->hobbies]);
+        }else{
+            $this->TutorDetailModel->insertDetail($request->id, $request->hobbies, $request->tags, $request->interest, $request->about);
+        }
         $finalHobbies = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
-        $hobbs = explode("|",$finalHobbies->hobbies);
-        $finalTags = $this->TutorDetailModel::where('tutor_id', $request->id)->first();
-        $tags = explode("|",$finalTags->tags);
+            $hobbs = explode("|",$finalHobbies->hobbies);
+            $tags = explode("|",$finalHobbies->tags);
         return redirect()->back()->with('hobby', $hobbs)->with('tag',$tags);
     }
 
@@ -577,9 +580,14 @@ class InflexionController extends Controller
     // FETCH TUTOR PROFILE
     public function fetchProfile(){
         $finalHobbies = $this->TutorDetailModel::where('tutor_id', session()->get('info.userDetails.inflexion_user_id'))->first();
-        $hobbs = explode("|",$finalHobbies->hobbies);
-        $finalHobbies = $this->TutorDetailModel::where('tutor_id', session()->get('info.userDetails.inflexion_user_id'))->first();
-        $tags = explode("|",$finalHobbies->tags);
+        if($finalHobbies){
+            $hobbs = explode("|",$finalHobbies->hobbies);
+            $tags = explode("|",$finalHobbies->tags);
+        }else{
+            $hobbs = [];
+            $tags = [];
+        }
+        
         return view('tutor.tutorprofile')->with('hobby', $hobbs)->with('tag',$tags);
     }
 
