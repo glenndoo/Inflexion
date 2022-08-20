@@ -1,4 +1,8 @@
+@if(session()->get('info.status') == 1)
 <x-student-template data="Student Index" />
+@else
+<x-tutor-template data="tutorIndex" />
+@endif
 @if(isset($Success))
                 <div style="margin-top: 4.5rem; z-index: 9999; position: fixed; right: 1rem; " class="alert alert-warning alert-dismissible fade show" role="alert">
                   <strong>{{ $Success}}</strong><br/>
@@ -41,9 +45,9 @@
 	      			<textarea class="form-control" rows="2" placeholder="What are you thinking?" name="postMessage" required></textarea><br/>
 	      			<div class="mar-top clearfix">
 	      				<button class="btn btn-sm btn-primary pull-right" type="submit"><i class="fa fa-pencil-square-o"></i></button>
-								<a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
+								<!-- <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#" data-original-title="Add Video" data-toggle="tooltip"></a>
 	      				<a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#" data-original-title="Add Photo" data-toggle="tooltip"></a>
-	      				<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a>
+	      				<a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#" data-original-title="Add File" data-toggle="tooltip"></a> -->
 	      			</div>
 	      		</div>
 	     		</div>
@@ -108,18 +112,17 @@
 								@endif
 	              </a>
 	              <!--this trigger for hidden badges of poster note: only if tutor show trigger-->
-	              <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#user-badge-{{$id}}" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-info-circle"></i></button>
+	              <!-- <button class="btn btn-default btn-sm" type="button" data-toggle="collapse" data-target="#user-badge-{{$id}}" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-info-circle"></i></button> -->
 								<!--this hidden badges of poster note: only if tutor show badge-->
-	              <div class="collapse" id="user-badge-{{$id}}">
-	              	<span class="badge badge-primary">Primary</span>
-									<span class="badge badge-secondary">Secondary</span>
-									<span class="badge badge-success">Success</span>
-									<span class="badge badge-danger">Danger</span>
-									<span class="badge badge-warning">Warning</span>
-									<span class="badge badge-info">Info</span>
-									<span class="badge badge-light">Light</span>
-									<span class="badge badge-dark">Dark</span>
-	              </div>
+	              <!-- <div class="collapse" id="user-badge-{{$id}}"> -->
+					@if($post->inflexion_user_type == 1)
+	              	&nbsp<span style='font-size: 8px !important' class="badge badge-success">Student</span>
+					@elseif($post->inflexion_user_type == 2)
+					&nbsp<span style='font-size: 8px !important' class="badge badge-secondary">Tutor</span>
+					@else
+					&nbsp<span style='font-size: 8px !important' class="badge badge-primary">Admin</span>
+					@endif
+	              <!-- </div> -->
             	</div>
               <small class="text-muted">{{ $post->inflexion_post_timestamp }}</small>
             </div>

@@ -206,7 +206,7 @@
 	<nav class="main-menu ease-loadLeft">
 	    <ul>
 	        <li>
-	            <a href="/studentIndex">
+	            <a href="/inflexionIndex">
 	                <i class="fa fa-home icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    Dashboard

@@ -39,7 +39,7 @@ class InflexionPostModel extends Model
 //this after maiko edit
 
     public function fetchAllPosts(){
-        $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
+        $posts = $this->join('inflexion_user_details','inflexion_detail_id','=', 'inflexion_posts.inflexion_post_poster')->join('inflexion_users','inflexion_user_id','=','inflexion_post_poster')->distinct()->orderBy('inflexion_post_timestamp','desc')->get();
         return $posts;
     }
 
