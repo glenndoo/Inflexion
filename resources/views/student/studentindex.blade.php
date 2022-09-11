@@ -118,7 +118,7 @@
 					@if($post->inflexion_user_type == 1)
 	              	&nbsp<span style='font-size: 8px !important' class="badge badge-success">Student</span>
 					@elseif($post->inflexion_user_type == 2)
-					&nbsp<span style='font-size: 8px !important' class="badge badge-secondary">Tutor</span>
+					&nbsp<span style='font-size: 8px !important' class="badge badge-warning">Tutor</span>
 					@else
 					&nbsp<span style='font-size: 8px !important' class="badge badge-primary">Admin</span>
 					@endif
