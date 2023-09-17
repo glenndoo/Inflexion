@@ -27,6 +27,7 @@ use App\Mail\BookingClassMail;
 use App\Mail\ApprovedBookingMail;
 use App\Mail\StudentMarkDoneMail;
 use Monarobase\CountryList\CountryListFacade;
+use Illuminate\Html\HtmlFacade;
 
 class InflexionController extends Controller
 {
@@ -179,7 +180,8 @@ class InflexionController extends Controller
 
                 // TEST FOR TUTOR REGISTRATION BEFORE EXAM
                 $login = $this->InflexionUserModel->checkLogin($request);
-                if($login->inflexion_user_type == 2){
+                
+                if(isset($login->inflexion_user_type) && $login->inflexion_user_type == 2){
                 $checkTutor = $this->InflexionDetailModel->find($login->inflexion_user_id);
                     if(empty($checkTutor)){
                         $countries = CountryListFacade::getList('en');
@@ -620,6 +622,7 @@ class InflexionController extends Controller
         $userId = $sess['userId'];
         $tutor = $this->InflexionUserModel->getAllTutors();
         $classes = $this->TutorSchedule->fetchTotalClasses();
+        // dd($classes);
         return view('student.studentFindTutor')->with('tutors', $tutor)->with('userId', $userId)->with('classes', $classes);
     }
 
@@ -808,5 +811,31 @@ class InflexionController extends Controller
         $name = "";
         $tutorSummary = $this->CreditTransactions->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->select('credit_amount','tutor_id','inflexion_detail_last')->get();
         return count($tutorSummary);
+    }
+
+    public function fetchCredits(Request $request){
+        $id = $request->session()->get('info.userId');
+        $earnings = $request->session()->get('info.earnings');
+        $credit = 0;
+        if($earnings >= 1){
+            $details = $this->TutorSchedule->creditsEarned($id);
+            foreach($details as $credits){
+                $credit += $credits->credit_charged;
+            }
+        }else{
+            $details = $this->CreditTransactions->where('student_id',$id)->orderBy('created_at','desc')->first();
+            $credit = $details->current_credit;
+        }
+        return $credit;
+    }
+
+    public function classSchedules(Request $request){
+        $id = Session::get('info.userId');
+        $details = $this->TutorSchedule->getSchedule($id);
+        $schedule = array();
+        foreach($details as $sched){
+            $schedule[] = array('title' => 'Class with '.$sched->inflexion_detail_first.' '.$sched->inflexion_detail_last, 'start' => $sched->schedule);
+        }
+        return response()->json($schedule);
     }
 }

@@ -83,4 +83,14 @@ class TutorSchedule extends Model
         $allClasses = $this->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('parties_approved',1)->orderBy('tutor_id')->get();
         return $allClasses;
     }
+
+    public function creditsEarned($id){
+        $credits = $this->where('tutor_id', $id)->where('paid',null)->get();
+        return $credits;
+    }
+
+    public function getSchedule($id){
+        $sched = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->where('tutor_id',$id)->get();
+        return $sched;
+    }
 }
