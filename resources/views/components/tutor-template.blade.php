@@ -12,6 +12,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
     <link href="{{ asset('img/inflex_icon.png') }}" rel="icon">
+	<script src="{{ asset('js/credits.js') }}" defer></script>
 </head>
 <body id="app">
 	<nav class="navbar navbar-expand-md navbar-light bg-light navbar-custom fixed-top ease-loadTop">
@@ -26,7 +27,7 @@
 				<!-- trigger modalCredits -->
 				<a href="#" class="nav-item nav-link" style="color: black !important" data-toggle="modal" data-target="#modalCredits">
 		            <center>
-		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>Your earnings
+		            	<i class="fa fa-credit-card-alt" aria-hidden="true"></i>&nbspCredits Earned: <strong><p id="credits"></p></strong>
 		            </center>
 				</a>
 	        </div>
@@ -125,6 +126,15 @@
 	               <i class="fa fa-list icon-side fa-size"></i>
 	                <span class="nav-text">
 	                    My Classes
+	                </span>
+	            </a>
+	            
+	        </li>
+			<li class="has-subnav">
+	            <a href="/detailedSchedule">
+	               <i class="fa fa-calendar icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    My Schedule
 	                </span>
 	            </a>
 	            

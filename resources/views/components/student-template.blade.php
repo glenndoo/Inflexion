@@ -13,6 +13,9 @@
   	<script src="{{ asset('js/kinetic.min.js') }}"></script>
   	<script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
 
+	<!-- Credits -->
+	<script src="{{ asset('js/credits.js') }}"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/studentIndex.css') }}" rel="stylesheet">
@@ -110,10 +113,14 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
 						<span style="color: black !important;">Credits available: 
-						@if(session()->get('info.credits'))<strong>{{ session()->get('info.credits') }}</strong></span>
+						@if(session()->get('info.credits'))
+						<center>
+						<strong><p id="credits"></p></strong>
+						</center>
 						@elseif(!session()->get('info.credits'))
 						0
 						@endif
+						</span>
 						</li>
 						<li class="nav-item">
                             <div id="custom-search" class="top-search-bar">

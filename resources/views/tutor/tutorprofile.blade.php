@@ -406,73 +406,8 @@
 									<!-- activity list -->
 									<div class="row profile-activity">
 										<!-- activity item -->
-										<div class="col-sm-2">
-											<time datetime="2014-06-29" class="datebox">
-												<strong>Mar</strong>
-												<span>29</span>
-											</time>
-										</div>
 
-										<div class="col-sm-10">
-											<div class="row">
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">8:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a  class="sched-button form-control btn btn-success">9:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">10:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">11:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">12:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">13:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-secondary disabled">14:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">15:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">16:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">17:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">18:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">19:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">20:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">21:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">22:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">23:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">24:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">10:00</a>
-													</div>
-											</div>
-											
-											
-										</div>
+										
 										<!-- /activity item -->
 
 										<div class="col-sm-12">
@@ -480,71 +415,8 @@
 										</div><!-- /activity separator -->
 
 										<!-- activity item -->
-										<div class="col-sm-2">
-											<time datetime="2014-06-29" class="datebox">
-												<strong>Mar</strong>
-												<span>30</span>
-											</time>
-										</div>
 
-										<div class="col-sm-10">
-											<div class="row">
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">8:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a  class="sched-button form-control btn btn-success">9:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">10:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">11:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">12:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">13:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-secondary disabled">14:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">15:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">16:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">17:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">18:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">19:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">20:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">21:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-primary disabled">22:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">23:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">24:00</a>
-													</div>
-													<div class="col-sm-4">
-														<a class="sched-button form-control btn btn-success">00:00</a>
-													</div>
-											</div>
-										</div>
+										
 										<!-- /activity item -->
 
 										<div class="col-sm-12">
@@ -552,18 +424,7 @@
 										</div><!-- /activity separator -->
 
 										<!-- paginatoin -->
-										<div class="col-sm-12">
-											<div class="text-center">
-												<ul class="pagination pagination-sm">
-													<li class="disabled"><a href="#">Prev</a></li>
-													<li class="active"><a href="#">1</a></li>
-													<li><a href="#">2</a></li>
-													<li><a href="#">3</a></li>
-													<li><a href="#">4</a></li>
-													<li><a href="#">Next</a></li>
-												</ul>													
-											</div>
-										</div>
+										
 										
 										<!-- /paginatoin -->
 									</div>

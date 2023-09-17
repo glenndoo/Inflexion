@@ -142,7 +142,15 @@ use Illuminate\Support\Facades\Route;
         'as' => 'PostMessage',
         'uses' => 'InflexionController@PostMessage'
     ));
-
+    Route::get('/fetchCredits', array(
+        'as' => 'fetchCredits',
+        'uses' => 'InflexionController@fetchCredits'
+    ));
+    Route::get('/classSchedules', array(
+        'as' => 'classSchedules',
+        'uses' => 'InflexionController@classSchedules'
+    ));
+    
     //STUDENT GROUP ROUTE
     Route::group(['middleware' => 'Student'], function(){
 
@@ -274,6 +282,11 @@ use Illuminate\Support\Facades\Route;
             'as' => 'setCreditCharge',
             'uses' => 'InflexionController@setCreditCharge'
         ));
+
+        Route::get('/detailedSchedule', function(){
+            return view('tutor.tutorDetailedSchedule');
+        });
+
     });
     
     //ADMIN GROUP ROUTE
