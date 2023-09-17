@@ -177,10 +177,9 @@ class InflexionController extends Controller
 
     //LOGIN FUNCTION
     public function LoginUser(Request $request){
-
                 // TEST FOR TUTOR REGISTRATION BEFORE EXAM
                 $login = $this->InflexionUserModel->checkLogin($request);
-                
+                // dd($login);
                 if(isset($login->inflexion_user_type) && $login->inflexion_user_type == 2){
                 $checkTutor = $this->InflexionDetailModel->find($login->inflexion_user_id);
                     if(empty($checkTutor)){
@@ -284,9 +283,7 @@ class InflexionController extends Controller
 
     //COMPLETE REGISTRATION FUNCTION
     public function CompleteRegistration(Request $request){
-        $Valid = Validator::make($request->all(),[
-
-        ]);
+    // dd($request);
        $complete = $this->InflexionDetailModel->completeRegistration($request);
     //    dd($complete);
        $insertSchedule = $this->ExamScheduleModel->insertSched($request, $complete->inflexion_user_id);
@@ -536,18 +533,17 @@ class InflexionController extends Controller
     }
 
     // ADMIN SEND TUTOR INTERVIEW EMAIL
-    public function sendInterviewEmail(Request $request){
+    public function sendInterviewEmail($skype, $schedule, $username, $id){
         $details = [
             'title' => 'Inflexion Global Tutor Interview Invite',
             'body' => 'Congratulations! You have received this email to confirm that your interview schedule will be on: ',
-            'skype' => $request->skype,
-            'schedule' => $request->schedule
+            'skype' => $skype,
+            'schedule' => $schedule
         ];
         $mailerFunction = 'TutorInterviewMail';
         $token = "interviewinvite";
-        $this->SendEmail($request->username, $token, $details, $mailerFunction);
-        $this->ExamScheduleModel->where('tutor_id', $request->id)->update(['interview_status' => 1]);
-        return back()->with('Success','Successfully sent Interview Invite');
+        $this->SendEmail($username, $token, $details, $mailerFunction);
+        $this->ExamScheduleModel->where('tutor_id', $id)->update(['interview_status' => 1,'schedule' => $schedule]);
     }
 
     // ADMIN APPROVE TUTOR
@@ -555,11 +551,20 @@ class InflexionController extends Controller
         // dd($request->all());
         $details = [
             'user_id' => $request->id,
+            'schedule' => $request->schedule,
             'status' => $request->eval
         ];
-        $this->ExamScheduleModel->updateInterviewStatus($request->id, $request->remarks);
-        $this->InflexionUserModel->approveTutor($details);
-        return back();
+
+        if($request->eval == 1){
+            $this->sendInterviewEmail($request->skype, $request->schedule, $request->username, $request->id);
+        return back()->with('Success','Successfully sent Interview Invite');
+
+        }else{
+            $this->ExamScheduleModel->updateInterviewStatus($request->id, $request->remarks);
+            $this->InflexionUserModel->approveTutor($details);
+            return back();
+        }
+        
     }
 
     // SET HOBBIES FOR TUTOR
@@ -687,6 +692,7 @@ class InflexionController extends Controller
 
     // MARK AS DONE SCHEDULE
     public function doneScheduleStudent(Request $request){
+        // dd(Session::all());
         $charge = Session::get('info');
         $creditCharge = $charge['creditCharge'];
         $done = $this->TutorSchedule->doneScheduleStudent($request->id);
@@ -815,9 +821,9 @@ class InflexionController extends Controller
 
     public function fetchCredits(Request $request){
         $id = $request->session()->get('info.userId');
-        $earnings = $request->session()->get('info.earnings');
+        $earnings = $request->session()->get('info.status');
         $credit = 0;
-        if($earnings >= 1){
+        if($earnings == 2){
             $details = $this->TutorSchedule->creditsEarned($id);
             foreach($details as $credits){
                 $credit += $credits->credit_charged;
@@ -836,6 +842,16 @@ class InflexionController extends Controller
         foreach($details as $sched){
             $schedule[] = array('title' => 'Class with '.$sched->inflexion_detail_first.' '.$sched->inflexion_detail_last, 'start' => $sched->schedule);
         }
+        return response()->json($schedule);
+    }
+
+    public function interviewSchedules(){
+        $details = $this->ExamScheduleModel->getInterviews();
+        $schedule = array();
+        foreach($details as $sched){
+            $schedule[] = array('title' => 'Interview with '.$sched->inflexion_detail_first.' '.$sched->inflexion_detail_last, 'start' => $sched->schedule);
+        }
+        
         return response()->json($schedule);
     }
 }

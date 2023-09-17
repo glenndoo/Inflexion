@@ -135,8 +135,8 @@
 													<!--tutor just verified email but has not tried to login yet has not seen exam-->
 													<td>
 														<div class="progress">
-															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="4">
-																25%
+															<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="{{ $tutor->inflexion_user_status }}" aria-valuemin="0" aria-valuemax="6">
+																
 															</div>
 														</div>
 														<i class="" aria-hidden="true"></i>
@@ -144,7 +144,11 @@
 													</td>
 													<td></td>
 													<td>
-														{{ $tutor->inflexion_user_token}}
+														{{ $tutor->inflexion_user_token }}
+														@if($tutor->interview_status == 1)
+															<br />On <strong>{{ date_format(date_create($tutor->schedule),"Y/m/d H:i:s") }}</strong>
+														@endif
+
 													</td>
 													
 													<!---------------------------------------------------------------------->
@@ -396,7 +400,7 @@
 										<i class="text-primary fa fa-skype" aria-hidden="true"></i>
 									</span>
 								</div>
-								<input type="text" placeholder="{{ $tutor->skype_account }}" class="form-control" id="" value="{{ $tutor->skype_account }}" name="skype" disabled />
+								<input type="text" placeholder="{{ $tutor->skype_account }}" class="form-control" id="" value="{{ $tutor->skype_account }}" name="skype" readonly/>
 							</div>
 							<div class="input-group input-group-lg mb-3" title="tutor's interview schedule">
 								<div class="input-group-prepend">
@@ -410,7 +414,10 @@
 										<i class="fa fa-envelope-o" aria-hidden="true"></i>
 									</span>
 								</div>
-								<input type="text" placeholder="User email address" class="form-control" value="{{ $tutor->inflexion_username }}" id="" name="username" disabled />
+								<input type="text" placeholder="User email address" class="form-control" value="{{ $tutor->inflexion_username }}" id="" name="username" readonly/>
+								<input type="hidden" name="eval" value="1" />
+								<input type="hidden" name="id" value="{{$tutor->inflexion_user_id}}" />
+
 							</div>
 						@else
 						Interview finished
@@ -449,7 +456,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
 						@if($tutor->interview_status == 0)
-						<a href="{{ route('sendInterviewEmail', ['skype' => $tutor->skype_account, 'schedule' => $tutor->schedule, 'username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id]) }}" type="submit" class="btn btn-success" value="Send Interview Email">Send Interview Email</a>
+						<input type="submit" class="btn btn-success" value="Send Interview Email"></a>
 						@else
 						<input class="btn btn-success" type="submit" value="Evaluate" />
 						<!-- <a href="{{ route('tutorApproval', ['username' => $tutor->inflexion_username, 'id' => $tutor->inflexion_user_id, 'eval' => 3]) }}" type="submit" class="btn btn-danger" value="Send Interview Email">Disapprove</a>

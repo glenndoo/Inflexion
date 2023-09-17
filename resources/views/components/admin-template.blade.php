@@ -217,6 +217,14 @@
 	                </span>
 	            </a>
 	        </li>
+			<li>
+	            <a href="/interviewSched">
+	                <i class="fa fa-calendar icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    Interview Schedules
+	                </span>
+	            </a>
+	        </li>
 	        <li>
 	            <a href="/showAllUsers">
 	                <i class="fa fa-users icon-side fa-size"></i>

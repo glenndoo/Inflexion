@@ -386,17 +386,17 @@
 							<section class="panel panel-default shadow">
 								<header class="panel-heading">
 									<h2 class="panel-title elipsis">
-										<i class="fa fa-list"></i> SCHEDULE
-									</h2> (for tutor)
+										<i class="fa fa-list"></i>
+									</h2>
 									<div class="row">
 												<div class="col-sm-4">
-													<a class="sched-button legend form-control btn btn-secondary disabled">CLOSED</a>
+													<a class="sched-button legend form-control btn btn-secondary disabled"></a>
 												</div>
 												<div class="col-sm-4">
-													<a class="sched-button legend form-control btn btn-success disabled">OPEN</a>
+													<a class="sched-button legend form-control btn btn-success disabled"></a>
 												</div>
 												<div class="col-sm-4">
-													<a class="sched-button legend form-control btn btn-primary disabled">BOOKED</a>
+													<a class="sched-button legend form-control btn btn-primary disabled"></a>
 												</div>
 											</div>
 											<hr/>

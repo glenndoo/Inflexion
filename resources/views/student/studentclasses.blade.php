@@ -217,6 +217,7 @@
 																  @elseif($notif->status == 4)
 																  <button class="btn btn-success btn-sm" disabled>CLASS COMPLETED</button><br />
 																  Details: <br />
+																	Credit Charged: <strong>{{ $notif->credit_charged }}</strong><br />
 																  Tutor approved schedule<br />
 																	Date and time of class: <strong>{{ $notif->schedule }}</strong><br />
 																	<strong>Class completed</strong>

@@ -39,7 +39,7 @@ class TutorSchedule extends Model
     }
 
     public function getNotificationsStudent($id){
-        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('student_id', $id)->orderBy('schedule', 'desc')->get();
+        $result = $this->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('student_id', $id)->orderBy('schedule', 'desc')->get();
         return $result;
     }
 

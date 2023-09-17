@@ -333,4 +333,13 @@ use Illuminate\Support\Facades\Route;
             'as' => 'viewAllTutorClassTransactions',
             'uses' => 'InflexionController@viewAllTutorClassTransactions'
         ));
+
+        Route::get('/interviewSchedules', array(
+            'as' => 'interviewSchedules',
+            'uses' => 'InflexionController@interviewSchedules'
+        ));
+
+        Route::get('/interviewSched', function(){
+            return view('admin.interviewSchedules');
+        });
     });

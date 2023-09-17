@@ -195,10 +195,7 @@
         	</div>
         	<div class="col-sm-10 text-right">
         		<label><b title="Inflexion Global Credits">
-				@php 
-				echo Session::get('info.earnings');
-				@endphp
-				</b> {{ Session::get('info.earnings') > 1 ? 'credits' : 'credit'}} earned</label>
+				</b></label>
         	</div>
         	<div class="col-sm-12 text-right">
         		<small><i>Exchange rate for credits</i></small>

@@ -13,6 +13,7 @@ class ExamScheduleModel extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
       'tutor_id',
+      'schedule',
       'skype_account',
       'interview_status',
       'created_at',
@@ -29,5 +30,10 @@ class ExamScheduleModel extends Model
 
     public function updateInterviewStatus($id, $remarks){
       $this->where('tutor_id', $id)->update(['interview_status' => '3', 'remarks' => $remarks]);
+    }
+
+    public function getInterviews(){
+      $result = $this->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->get();
+      return $result;
     }
 }

@@ -234,7 +234,7 @@
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
-								        <h5 class="modal-title" id="exampleModalLongTitle">Book class</h5>
+								        <h5 class="modal-title" id="exampleModalLongTitle">Book class from <strong>{{ $tutor->inflexion_detail_first . ' ' . $tutor->inflexion_detail_last }}</strong></h5>
 								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								          <span aria-hidden="true">&times;</span>
 								        </button>
@@ -245,6 +245,7 @@
                                             @csrf
                                             <input type="datetime-local" name="schedule" placeholder="Preffered date" /></br >
                                         <br />
+                                        CREDITS TO BE CHARGED: <strong>{{ $tutor->credit_charge }} CREDITS</strong><br /><br />
                                         ** <strong>BOOKINGS SHOULD BE DONE 2 DAYS BEFORE PREFERRED SCHEDULE</strong><br />
                                         ** You will be notified immediately as soon as the tutor reviews your preferred schedule
 								      </div>

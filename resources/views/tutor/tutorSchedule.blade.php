@@ -31,11 +31,11 @@
 													<th class="border-0">Country</th>
 													<th class="border-0">Age</th>
 													<th class="border-0">Status</th>
+													<th class="border-0">Credit Charged</th>
 													<th class="border-0 text-center">Options</th>
 												</tr>
 											</thead>
 											<tbody>
-												
 												@foreach($notifs as $notif)
 												<tr>
 													@php
@@ -57,7 +57,7 @@
 														<td>{{ $notif->inflexion_detail_first . " " . $notif->inflexion_detail_last }}</td>
 														<td>{{ $notif->schedule }}</td>
 														<td>{{ $notif->inflexion_detail_country }}</td>
-														<td>31</td>
+														<td></td>
 														<td>{{ $status }}</td>
 														@if($notif->status == 2)
 														<td>--</td>
@@ -68,6 +68,7 @@
 														@elseif($notif->status == 3)
 														<td><button class="btn btn-primary btn-sm" disabled>Waiting for student approval</button></td>
 														@elseif($notif->status == 4)
+														<td><strong>{{ $notif->credit_charged == null ? "0" : $notif->credit_charged }} credits</strong></td>
 														<td><button class="btn btn-success btn-sm" disabled>Class completed</button></td>
 														@else
 														<td><a class="btn btn-success" title="Approve booked class" data-toggle="modal" data-target="#student-modal-{{ $notif->id }}">Approve</a><a href="" class="btn btn-danger" title="Decline booked class" data-toggle="modal" data-target="#decline-modal-{{ $notif->id }}">Decline</a><a href="" class="btn btn-primary" title="Modify booked class" data-toggle="modal" data-target="#modify-modal-{{ $notif->id }}">Modify</a></td>

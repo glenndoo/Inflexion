@@ -9,7 +9,7 @@
 <body>
     <h1>{{ $details['title'] }}</h1>
     <p>{{ $details['body'] }}</p>
-    <p><a href="http://localhost/TutorRegistryVerification?token={{ $details['token'] }}&vry={{ $details['email'] }}&val={{ $details['valid'] }}&&type=2">Verify tutor registration and take qualifying test</a></p>
+    <p><a href="https://localhost/TutorRegistryVerification?token={{ $details['token'] }}&vry={{ $details['email'] }}&val={{ $details['valid'] }}&&type=2">Verify tutor registration and take qualifying test</a></p>
     <p>From Inflexion Global Team</p>
 </body>
 </html>
