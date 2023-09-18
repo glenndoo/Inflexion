@@ -1238,7 +1238,7 @@ td.check-time .btn span.fa-check {
 
 .past-date .fc-daygrid-event {
   text-decoration: line-through !important;
-  color: gray;
+  color: gray !important;
 }
 
 .past-date .fc-daygrid-event-dot{

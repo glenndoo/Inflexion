@@ -239,6 +239,14 @@
 	            </a>
 	            
 	        </li>
+			<li>
+	            <a href="/calendar?sId={{Session::get('info.userId')}}">
+	               <i class="fa fa-calendar icon-side fa-size"></i>
+	                <span class="nav-text">
+	                    My Calendar
+	                </span>
+	            </a>
+	        </li>
 	        <!-- <li class="has-subnav">
 	            <a href="{{ route('ShowInbox') }}">
 	               <i class="fa fa-envelope icon-side fa-size"></i>

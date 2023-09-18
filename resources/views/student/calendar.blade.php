@@ -20,11 +20,19 @@
             <script>
                 const urlParams = new URLSearchParams(window.location.search);
                 params = urlParams.toString();
-                params = params.replace("=",'');
+                var fetchUrl = "";
+                if(params.includes("sId")){
+                    console.log(params);
+                    fetchUrl = '/fetchStudentSchedule?'+params;
+                }else{
+                    params = params.replace("=",'');
+                    params = params.split("|");
+                    const tutorId = params[1];
+                    const studentId = params[0];
+                    fetchUrl = '/fetchStudentSchedule?studentId='+studentId+"&tutorId="+tutorId
+                }
                 // Replace &amp; with &
-                params = params.split("|");
-                const tutorId = params[1];
-                const studentId = params[0];
+                
 
                 document.addEventListener('DOMContentLoaded', function() {
                 var updatedTimeSlot;
@@ -52,13 +60,14 @@
                     },
                     eventSources: [
                     {
-                        url: '/fetchStudentSchedule?studentId='+studentId+"&tutorId="+tutorId,
+                        url: fetchUrl,
                         method: 'GET',
                         failure: function(xhr) {
                         alert('Error fetching data: ' + xhr.status);
                         },
                         success: function(data) {
                         // Handle successful data retrieval if needed
+                        console.log(data);
                         data.forEach(function(times){
                             itemsToRemove.push({value: times.time, text: times.time});
                             dateList.push({date: times.date})
@@ -69,7 +78,44 @@
                         color: 'blue'
                     }
                     ],
-                    selectable: true, // Enable time slot selection
+                    eventContent: function(info) {
+                        if(info.event.title == "Scheduled Class"){
+                            var titleEl = document.createElement('div');
+                            titleEl.classList.add('fc-title');
+                            titleEl.style.color = 'green'; // Set the font color here (e.g., red)
+
+                            var titleText = document.createElement('span');
+                            titleText.textContent = info.timeText + "m " + info.event.title;
+
+                            titleEl.appendChild(titleText);
+                            return { domNodes: [titleEl] };
+
+                        }else if(info.event.title == "Class is Done"){
+                            var titleEl = document.createElement('div');
+                            titleEl.classList.add('fc-title');
+                            titleEl.style.color = 'gray'; // Set the font color here (e.g., red)
+
+                            var titleText = document.createElement('span');
+                            titleText.textContent = info.timeText + "m " + info.event.title;
+
+                            titleEl.appendChild(titleText);
+                            return { domNodes: [titleEl] };
+
+                        }else if(info.event.title == "Class Pending Approval"){
+                            var titleEl = document.createElement('div');
+                            titleEl.classList.add('fc-title');
+                            titleEl.style.color = 'blue'; // Set the font color here (e.g., red)
+
+                            var titleText = document.createElement('span');
+                            titleText.textContent = info.timeText + "m " + info.event.title;
+
+                            titleEl.appendChild(titleText);
+                            return { domNodes: [titleEl] };
+
+                        }
+                        
+                    },
+                    selectable: params.includes("sId") ? false : true, // Enable time slot selection
                     select: function(data) {
                         // console.log("data is", dateList);
                         var holdDate = [];
@@ -81,7 +127,6 @@
                         var formattedDate = `${year}-${month}-${day}`;
                         $('#timeSlot').empty();
                         // dateList.forEach(function(date){
-                        console.log(dateList.length);
                         for(let x = 0; x < dateList.length; x++){
                             if(dateList[x]['date'] === formattedDate){
                                 console.log("match");
@@ -139,6 +184,7 @@
                     slotMaxTime: '23:59:59', // Set the maximum time for slots (e.g., just before midnight)
                     dayCellDidMount: function(data) {
                     // Check if the date has already passed
+                    // console.log("event mount ",data);
                     var today = new Date();
                     if (data.date < today) {
                         // Get the day cell element
