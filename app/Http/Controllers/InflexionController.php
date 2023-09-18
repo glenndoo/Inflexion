@@ -850,7 +850,8 @@ class InflexionController extends Controller
     }
 
     public function fetchStudentSchedule(Request $request){
-        $details = $this->TutorSchedule->getStudentSchedule($request->studentId, $request->tutorId);
+        $ids = explode("|",$request->studentId);
+        $details = $this->TutorSchedule->getStudentSchedule($ids[1], $ids[0]);
         $schedule = array();
         foreach($details as $sched){
             $parse = explode(" ",$sched->schedule);

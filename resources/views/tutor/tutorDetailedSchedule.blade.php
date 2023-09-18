@@ -2,8 +2,7 @@
 <x-tutor-template data="detailedSchedule" />
 <div class="area fade-load"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
-										<script>
-
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
   var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -32,11 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // You can access the start and end dates of the selection from 'info.start' and 'info.end'.
 
       // Example: Display the selected time slot's start and end times
-      var modalContent = data.startStr;
-      $('#timeSlotModal').find('.modal-title').html(modalContent);
 
-      // Show the modal to select a time
-      $('#timeSlotModal').modal('show');
     },
     slotDuration: '00:30:00', // Set the duration of each time slot (e.g., 30 minutes)
     slotLabelFormat: {
@@ -75,6 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // You can customize the additional text as needed
         data.jsEvent.preventDefault(); // Prevent the default behavior (e.g., navigating to event URL)
         modalContent += '<strong><p>Class Done</p></strong>';
+        dayCell.classList.add('fc-day-disabled');
+
       }
       // Set the modal content
       $('#myModal').find('.modal-body').html(modalContent);
@@ -82,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Show the modal
       $('#myModal').modal('show');
     },
+    
   });
 
   calendar.render();
@@ -92,36 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
 										<br /><br /><br /><div id='calendar'></div>
 
 
-</div>
-<!-- Time Slot Selection Modal -->
-<div class="modal fade" id="timeSlotModal" tabindex="-1" role="dialog" aria-labelledby="timeSlotModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="timeSlotModalLabel">Select Time Slot for</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Add your time slot selection controls here -->
-        <!-- For example, a dropdown to select the time -->
-        <div class="form-group">
-			<p class="timeSlot"></p>
-          <label for="timeSlot">Select Time Slot:</label>
-          <select class="form-control" id="timeSlot">
-            <option value="8:00">8:00 AM</option>
-            <option value="9:00">9:00 AM</option>
-            <!-- Add more options as needed -->
-          </select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
