@@ -18,6 +18,13 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 										
             <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                params = urlParams.toString();
+                params = params.replace("=",'');
+                // Replace &amp; with &
+                params = params.split("|");
+                const tutorId = params[1];
+                const studentId = params[0];
 
                 document.addEventListener('DOMContentLoaded', function() {
                 var updatedTimeSlot;
@@ -45,7 +52,7 @@
                     },
                     eventSources: [
                     {
-                        url: '/fetchStudentSchedule?studentId=3&tutorId=2',
+                        url: '/fetchStudentSchedule?studentId='+studentId+"&tutorId="+tutorId,
                         method: 'GET',
                         failure: function(xhr) {
                         alert('Error fetching data: ' + xhr.status);

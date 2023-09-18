@@ -211,7 +211,7 @@
                                                     <!-- <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </a> -->
-                                                    <button type="button" class="btn btn-primary" id="openCalendarButton">Open Calendar</button>
+                                                    <button type="button" class="btn btn-primary" id="openCalendarButton{{$tutor->inflexion_user_id}}">Open Calendar</button>
                                                     <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>
@@ -239,7 +239,20 @@
                                         <div class="user-social-media d-xl-inline-block"><span class="mr-2"></span><span></span></div>
                                     </div>
                                 </div>
-                                
+                                @php
+                                            $userId = Session::get('info.userId');
+                                    @endphp
+                                <script>
+                                    document.getElementById('openCalendarButton{{$tutor->inflexion_user_id}}').addEventListener('click', function() {
+                                    // Define the URL of the page that will contain the FullCalendar
+                                    
+                                    var calendarUrl = '{{ asset("calendar?$tutor->inflexion_user_id|$userId") }}'; // Replace with your actual calendar page URL
+
+                                    // Open a new browser window with the calendar page
+                                    var popup = window.open(calendarUrl, 'FullCalendarPopup', 'width=1280,height=800');
+                                    popup.focus();
+                                    });
+                                    </script>
                                 
                                 <!-- Modal calendar
 								<div class="modal fade" id="calendarSchedule{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule{{ $tutor->inflexion_user_id }}" aria-hidden="true">
@@ -443,14 +456,3 @@
 	</div><!--end myclasses main-->
 </div>
 
-<script>
-document.getElementById('openCalendarButton').addEventListener('click', function() {
-  // Define the URL of the page that will contain the FullCalendar
-  var calendarUrl = '{{ asset("calendar") }}'; // Replace with your actual calendar page URL
-
-  // Open a new browser window with the calendar page
-  var popup = window.open(calendarUrl, 'FullCalendarPopup', 'width=1280,height=800');
-  popup.focus();
-});
-
-										</script>
