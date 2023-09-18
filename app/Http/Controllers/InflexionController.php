@@ -838,4 +838,31 @@ class InflexionController extends Controller
         }
         return response()->json($schedule);
     }
+
+    public function interviewSchedules(){
+        $details = $this->ExamScheduleModel->getInterviews();
+        $schedule = array();
+        foreach($details as $sched){
+            $schedule[] = array('title' => 'Interview with '.$sched->inflexion_detail_first.' '.$sched->inflexion_detail_last, 'start' => $sched->schedule);
+        }
+        
+        return response()->json($schedule);
+    }
+
+    public function fetchStudentSchedule(Request $request){
+        $details = $this->TutorSchedule->getStudentSchedule($request->studentId, $request->tutorId);
+        $schedule = array();
+        foreach($details as $sched){
+            $parse = explode(" ",$sched->schedule);
+            $checkStatus = $sched->status;
+            $status = "";
+            if($checkStatus == 4){
+                $status = "Class is Done";
+            }else if($checkStatus == 0){
+                $status = "Class is Pending";
+            }
+            $schedule[] = ['title' => $status,'start' => $sched->schedule, 'date' => $parse[0],'time' => $parse[1]];
+        }
+        return response()->json($schedule);
+    }
 }

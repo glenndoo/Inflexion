@@ -93,4 +93,9 @@ class TutorSchedule extends Model
         $sched = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->where('tutor_id',$id)->get();
         return $sched;
     }
+
+    public function getStudentSchedule($studentId, $tutorId){
+        $sched = $this->where('tutor_id',$tutorId)->where('student_id',$studentId)->get();
+        return $sched;
+    }
 }

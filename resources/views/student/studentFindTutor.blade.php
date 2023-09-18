@@ -1,4 +1,14 @@
 <x-student-template data="studentfindtutor" />
+<!-- Include Bootstrap CSS and JS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Include FullCalendar CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js"></script>
+
 <div class="area"> <!-- put all content inside area, outside area will mess with side naviagtion-->
 	<div class="container-fluid">
 		<div class="row">
@@ -198,9 +208,10 @@
                                             </div>
                                             <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="float-xl-right float-none mt-xl-0 mt-4">
-                                                    <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{ $tutor->inflexion_user_id }}">
+                                                    <!-- <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </a>
+                                                    </a> -->
+                                                    <button type="button" class="btn btn-primary" id="openCalendarButton">Open Calendar</button>
                                                     <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>
@@ -228,8 +239,9 @@
                                         <div class="user-social-media d-xl-inline-block"><span class="mr-2"></span><span></span></div>
                                     </div>
                                 </div>
-
-                                <!-- Modal calendar -->
+                                
+                                
+                                <!-- Modal calendar
 								<div class="modal fade" id="calendarSchedule{{ $tutor->inflexion_user_id }}" tabindex="-1" role="dialog" aria-labelledby="calendarSchedule{{ $tutor->inflexion_user_id }}" aria-hidden="true">
 								  <div class="modal-dialog modal-dialog-centered" role="document">
 								    <div class="modal-content">
@@ -240,6 +252,7 @@
 								        </button>
 								      </div>
 								      <div class="modal-body">
+                                        
                                           Please select your preferred schedule:
 								        <form method="POST" action="{{ route('bookSchedule', ['userId' => $userId, 'tutorId' => $tutor->inflexion_user_id, 'username' => $tutor->inflexion_username]) }}">
                                             @csrf
@@ -258,11 +271,11 @@
                                         @else
                                         <input type="submit" type="button" class="btn btn-primary" value="No credits" disabled>
                                         @endif
-                                    </form>
+                                        </form>
 								      </div>
 								    </div>
 								  </div>
-								</div>
+								</div> -->
 
 
 								<!-- Modal Profile -->
@@ -429,3 +442,15 @@
         
 	</div><!--end myclasses main-->
 </div>
+
+<script>
+document.getElementById('openCalendarButton').addEventListener('click', function() {
+  // Define the URL of the page that will contain the FullCalendar
+  var calendarUrl = '{{ asset("calendar") }}'; // Replace with your actual calendar page URL
+
+  // Open a new browser window with the calendar page
+  var popup = window.open(calendarUrl, 'FullCalendarPopup', 'width=1280,height=800');
+  popup.focus();
+});
+
+										</script>

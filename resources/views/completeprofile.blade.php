@@ -134,6 +134,12 @@
                                 <input class="form-control" type="text" id="skype account" name="skypeAccount" required>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="example-datetime-local-input" class="col-sm-3 col-form-label">Preferred Interview Schedule:</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="date" id="schedule" name="skypeAccount" required>
+                            </div>
+                        </div>
                         <div class="row d-flex justify-content-center">
                             <button class="btn btn-primary" type="submit" value="Register Information">Register Information</button>
                         </div>
