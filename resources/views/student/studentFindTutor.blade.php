@@ -211,7 +211,7 @@
                                                     <!-- <a href="#" class="btn btn-info" title="book class" data-toggle="modal" data-target="#calendarSchedule{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </a> -->
-                                                    <button type="button" class="btn btn-primary" id="openCalendarButton{{$tutor->inflexion_user_id}}">Open Calendar</button>
+                                                    <button type="button" class="btn btn-primary" id="openCalendarButton{{$tutor->inflexion_user_id}}"><i class="fa fa-calendar" aria-hidden="true"></i></button>
                                                     <a href="#" class="btn btn-info" title="vew profile"  data-toggle="modal" data-target="#tutorViewProfile{{ $tutor->inflexion_user_id }}">
                                                     	<i class="fa fa-user" aria-hidden="true"></i>
                                                     </a>

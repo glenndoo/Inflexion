@@ -95,7 +95,12 @@ class TutorSchedule extends Model
     }
 
     public function getStudentSchedule($studentId, $tutorId){
-        $sched = $this->where('tutor_id',$tutorId)->where('student_id',$studentId)->get();
+        if($tutorId != 0){
+            $sched = $this->where('tutor_id',$tutorId)->where('student_id',$studentId)->get();
+
+        }else{
+            $sched = $this->where('student_id',$studentId)->get();
+        }
         return $sched;
     }
 }

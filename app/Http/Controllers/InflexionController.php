@@ -851,7 +851,14 @@ class InflexionController extends Controller
 
     public function fetchStudentSchedule(Request $request){
         $ids = explode("|",$request->studentId);
-        $details = $this->TutorSchedule->getStudentSchedule($ids[1], $ids[0]);
+        $details = array();
+        if(!$request->sId){
+            $details = $this->TutorSchedule->getStudentSchedule($ids[1], $ids[0]);
+        }else{
+            $details = $this->TutorSchedule->getStudentSchedule($request->sId, 0);
+            // dd($details);
+        }
+        
         $schedule = array();
         foreach($details as $sched){
             $parse = explode(" ",$sched->schedule);
@@ -859,8 +866,10 @@ class InflexionController extends Controller
             $status = "";
             if($checkStatus == 4){
                 $status = "Class is Done";
+            }else if($checkStatus == 1){
+                $status = "Scheduled Class";
             }else if($checkStatus == 0){
-                $status = "Class is Pending";
+                $status = "Class Pending Approval";
             }
             $schedule[] = ['title' => $status,'start' => $sched->schedule, 'date' => $parse[0],'time' => $parse[1]];
         }
