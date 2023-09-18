@@ -1235,3 +1235,12 @@ td.check-time .btn span.fa-check {
 .btn.active span.fa-check {       
   opacity: 1;       
 }
+
+.past-date .fc-daygrid-event {
+  text-decoration: line-through !important;
+  color: gray;
+}
+
+.past-date .fc-daygrid-event-dot{
+  border-color: gray !important;
+}

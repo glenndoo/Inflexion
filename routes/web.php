@@ -221,6 +221,15 @@ use Illuminate\Support\Facades\Route;
             'as' => 'initiatePayment',
             'uses' => 'InflexionController@initiatePayment'
         ));
+
+        Route::get('/fetchStudentSchedule', array(
+            'as' => 'fetchStudentSchedule',
+            'uses' => 'InflexionController@fetchStudentSchedule'
+        ));
+
+        Route::get('/calendar', function(){
+            return view('student.calendar');
+        });
     });
 
 
@@ -286,7 +295,6 @@ use Illuminate\Support\Facades\Route;
         Route::get('/detailedSchedule', function(){
             return view('tutor.tutorDetailedSchedule');
         });
-
     });
     
     //ADMIN GROUP ROUTE
