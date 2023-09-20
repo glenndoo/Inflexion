@@ -266,13 +266,7 @@ class InflexionController extends Controller
                         }else{
                             return redirect('/inflexionIndex');
                         }
-                        
-                    
                 }
-                
-            
-            
-        
     }
 
     //LOGOUT FUNCTION
@@ -284,9 +278,6 @@ class InflexionController extends Controller
 
     //COMPLETE REGISTRATION FUNCTION
     public function CompleteRegistration(Request $request){
-        $Valid = Validator::make($request->all(),[
-
-        ]);
        $complete = $this->InflexionDetailModel->completeRegistration($request);
     //    dd($complete);
        $insertSchedule = $this->ExamScheduleModel->insertSched($request, $complete->inflexion_user_id);
@@ -628,8 +619,8 @@ class InflexionController extends Controller
 
     // BOOK SCHEDULE FROM STUDENT 
     public function bookSchedule(Request $request){
-        $date = $request->schedule;
-        $id = $request->userId; 
+        $date = $request->timeSlot;
+        $id = $request->studentId; 
         $tutorId = $request->tutorId;
         $data = $this->TutorSchedule->insertSchedule($date, $id, $tutorId);
 
@@ -640,7 +631,7 @@ class InflexionController extends Controller
             ];
             $mailerFunction = 'BookingClassMail';
             $token = "bookingrequest";
-            $this->SendEmail($request->username, $token, $details, $mailerFunction);
+            $this->SendEmail($request->email, $token, $details, $mailerFunction);
             return redirect()->back();
         }else{
 
@@ -807,8 +798,6 @@ class InflexionController extends Controller
 
     // ADMIN VIEW ALL TRANSACTIONS
     public function viewAllTutorClassTransactions(){
-        $total = 0;
-        $name = "";
         $tutorSummary = $this->CreditTransactions->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->select('credit_amount','tutor_id','inflexion_detail_last')->get();
         return count($tutorSummary);
     }
@@ -849,30 +838,37 @@ class InflexionController extends Controller
         return response()->json($schedule);
     }
 
-    public function fetchStudentSchedule(Request $request){
-        $ids = explode("|",$request->studentId);
-        $details = array();
-        if(!$request->sId){
+    public function fetchStudentSchedule(Request $request) {
+        if (!$request->sId) {
+            $ids = explode("|", $request->studentId);
             $details = $this->TutorSchedule->getStudentSchedule($ids[1], $ids[0]);
-        }else{
+        } else {
             $details = $this->TutorSchedule->getStudentSchedule($request->sId, 0);
-            // dd($details);
         }
-        
-        $schedule = array();
-        foreach($details as $sched){
-            $parse = explode(" ",$sched->schedule);
-            $checkStatus = $sched->status;
-            $status = "";
-            if($checkStatus == 4){
+    
+        $schedule = collect($details)->map(function ($sched) {
+            $parse = explode(" ", $sched->schedule);
+            $status = '';
+            
+            if ($sched->status == 4) {
                 $status = "Class is Done";
-            }else if($checkStatus == 1){
+            } elseif ($sched->status == 1) {
                 $status = "Scheduled Class";
-            }else if($checkStatus == 0){
+            } elseif ($sched->status == 0) {
                 $status = "Class Pending Approval";
             }
-            $schedule[] = ['title' => $status,'start' => $sched->schedule, 'date' => $parse[0],'time' => $parse[1]];
-        }
+    
+            return [
+                'title' => $status,
+                'start' => $sched->schedule,
+                'date' => $parse[0],
+                'time' => $parse[1],
+                'tutorName' => $sched->inflexion_detail_first ? $sched->inflexion_detail_first . " " . $sched->inflexion_detail_last : '',
+            ];
+        });
+    
         return response()->json($schedule);
     }
+    
+
 }

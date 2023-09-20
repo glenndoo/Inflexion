@@ -9,7 +9,7 @@
 <body>
     <h1>{{ $details['title'] }}</h1>
     <p>{{ $details['body'] }}</p>
-    <p><a href="http://localhost/RegistryVerification?token={{ $details['token'] }}&vry={{ $details['email'] }}&val={{ $details['valid'] }}">Verify Registration</a></p>
+    <p><a href="{{base_url()}}:8000/RegistryVerification?token={{ $details['token'] }}&vry={{ $details['email'] }}&val={{ $details['valid'] }}">Verify Registration</a></p>
     <p>From Inflexion Global Team</p>
 </body>
 </html>

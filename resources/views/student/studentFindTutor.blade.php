@@ -246,7 +246,7 @@
                                     document.getElementById('openCalendarButton{{$tutor->inflexion_user_id}}').addEventListener('click', function() {
                                     // Define the URL of the page that will contain the FullCalendar
                                     
-                                    var calendarUrl = '{{ asset("calendar?$tutor->inflexion_user_id|$userId") }}'; // Replace with your actual calendar page URL
+                                    var calendarUrl = '{{ asset("calendar?$tutor->inflexion_user_id|$userId|$tutor->inflexion_detail_first $tutor->inflexion_detail_last|$tutor->inflexion_username") }}'; // Replace with your actual calendar page URL
 
                                     // Open a new browser window with the calendar page
                                     var popup = window.open(calendarUrl, 'FullCalendarPopup', 'width=1280,height=800');

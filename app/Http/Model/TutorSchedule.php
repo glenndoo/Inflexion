@@ -72,26 +72,23 @@ class TutorSchedule extends Model
         $parties = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
         if($parties->status == 3 && $parties->student_status == 1){
             $this->where('id', $id)->update(['parties_approved' => 1, 'status' => 4]);
-            $result = $this->where('id', $id)->orderBy('created_at', 'desc')->first();
-            return $result;
+            return $this->where('id', $id)->orderBy('created_at', 'desc')->first();
         }
         return $result;
 
     }
 
     public function fetchTotalClasses(){
-        $allClasses = $this->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('parties_approved',1)->orderBy('tutor_id')->get();
-        return $allClasses;
+        return $this->join('inflexion_users','inflexion_user_id','=','tutor_id')->where('parties_approved',1)->orderBy('tutor_id')->get();
     }
 
     public function creditsEarned($id){
-        $credits = $this->where('tutor_id', $id)->where('paid',null)->get();
-        return $credits;
+        return $this->where('tutor_id', $id)->whereNull('paid')->get();
     }
+    
 
     public function getSchedule($id){
-        $sched = $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->where('tutor_id',$id)->get();
-        return $sched;
+        return $this->join('inflexion_user_details','inflexion_detail_id','=','student_id')->where('tutor_id',$id)->get();
     }
 
     public function getStudentSchedule($studentId, $tutorId){
@@ -99,7 +96,7 @@ class TutorSchedule extends Model
             $sched = $this->where('tutor_id',$tutorId)->where('student_id',$studentId)->get();
 
         }else{
-            $sched = $this->where('student_id',$studentId)->get();
+            $sched = $this->join('inflexion_user_details','inflexion_detail_id','=','tutor_id')->where('student_id',$studentId)->get();
         }
         return $sched;
     }
