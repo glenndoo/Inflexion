@@ -3,13 +3,13 @@
   foreach($dt as $d => $value){
     $list[] = $d;
   }
-  $details = explode('|',$list[0]);
+    $details = explode('|',$list[0]);
   try{
     $fullName = str_replace('_',' ',$details[2]);
-  $tutorId = $details[0];
-  $studentId = $details[1];
-  $email = $details[2];
-  $check = true;
+    $tutorId = $details[0];
+    $studentId = $details[1];
+    $email = $details[3];
+    $check = true;
   }catch(Exception $e){
     $check = false;
   }
@@ -72,7 +72,7 @@
         @if ($check)
         <input type="hidden" value="{{ $tutorId }}" name="tutorId" />
         <input type="hidden" value="{{ $studentId }}" name="studentId" />
-        <input type="hidden" value="{{ $email }}" name="studentId" />
+        <input type="hidden" value="{{ $email }}" name="studentEmail" />
         <input type="submit" class="btn btn-secondary" value="Book Class" />
           
         @endif

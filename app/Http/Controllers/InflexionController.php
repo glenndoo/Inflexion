@@ -27,7 +27,7 @@ use App\Mail\BookingClassMail;
 use App\Mail\ApprovedBookingMail;
 use App\Mail\StudentMarkDoneMail;
 use Monarobase\CountryList\CountryListFacade;
-use Illuminate\Html\HtmlFacade;
+use App\Http\Model\Notification;
 
 class InflexionController extends Controller
 {
@@ -43,6 +43,7 @@ class InflexionController extends Controller
     protected $TutorSchedule;
     protected $StripePaymentModel;
     protected $CreditTransactions;
+    protected $Notification;
 
     public function __construct(){
         $this->InflexionUserModel = new InflexionUserModel();
@@ -57,6 +58,7 @@ class InflexionController extends Controller
         $this->TutorSchedule = new TutorSchedule();
         $this->StripePaymentModel = new StripePaymentModel();
         $this->CreditTransactions = new CreditTransactions();
+        $this->Notification = new Notification();
     }
 
     //DISPLAY INDEX
@@ -89,7 +91,6 @@ class InflexionController extends Controller
         $token = str_shuffle($pin);
         $SaveRegistry = $this->InflexionUserModel->saveRegistry($request, $token);
         if($SaveRegistry){
-            
 
             if($request->type == 1){
                 $details = [
@@ -136,7 +137,6 @@ class InflexionController extends Controller
         if($Valid->fails()){
             return view('welcome');
         }else{
-            
                 $check = $this->InflexionUserModel->verifyRegistry($request);
 
                 if($check == 1){
@@ -148,8 +148,6 @@ class InflexionController extends Controller
                 }else{
                     return view('welcome')->with('Success',"Invalid Verifcation Link");
                 }
-                
-                
         }
     }
 
@@ -619,23 +617,32 @@ class InflexionController extends Controller
 
     // BOOK SCHEDULE FROM STUDENT 
     public function bookSchedule(Request $request){
-        $date = $request->timeSlot;
-        $id = $request->studentId; 
-        $tutorId = $request->tutorId;
-        $data = $this->TutorSchedule->insertSchedule($date, $id, $tutorId);
-
-        if($data){
-            $details = [
-                'title' => 'Class booking from student',
-                'body' => 'Congratulations! A student has booked a class with you! Please login to your profile to check the booking details.'
-            ];
-            $mailerFunction = 'BookingClassMail';
-            $token = "bookingrequest";
-            $this->SendEmail($request->email, $token, $details, $mailerFunction);
-            return redirect()->back();
-        }else{
-
+        try {
+            // Extract request data
+            $date = $request->input('timeSlot');
+            $studentId = $request->input('studentId');
+            $tutorId = $request->input('tutorId');
+        
+            // Insert the schedule
+            $schedule = $this->TutorSchedule->insertSchedule($date, $studentId, $tutorId);
+            if ($schedule) {
+                // Notify the tutor via email
+                $details = [
+                    'title' => 'Class booking from student',
+                    'body' => 'Congratulations! A student has booked a class with you! Please log in to your profile to check the booking details.'
+                ];
+                $token = 'bookingrequest';
+                $mailerFunction = 'BookingClassMail';
+                $this->sendEmail($request->input('studentEmail'), $token, $details, $mailerFunction);$this->createNotification($studentId, $tutorId, $details['body'],'Booking');
+                return redirect()->back()->with('success', 'Class booked successfully.');
+            } else {
+                return redirect()->back()->with('error', 'Failed to book the class. Please try again.');
+            }
+        } catch (\Exception $e) {
+            // Handle exceptions, log errors, or perform any necessary actions
+            return redirect()->back()->with('error', 'An error occurred while booking the class. Please try again later.');
         }
+        
     }
 
     // GET SCHEDULES TUTOR
@@ -870,5 +877,17 @@ class InflexionController extends Controller
         return response()->json($schedule);
     }
     
-
+    public function createNotification($user_id, $recipient_id, $message, $type, $data = null){
+        Notification::create([
+            'user_id' => $user_id,
+            'recipient_id' => $recipient_id,
+            'message' => $message,
+            'type' => $type,
+            'data' => $data,
+        ]);
+    }
+    
+    public function getNotifications($userId){
+        return Notification::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+    }
 }
